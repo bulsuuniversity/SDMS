@@ -18,7 +18,7 @@ const Contact = ({ setOpen }) => {
 
     const getDetails = async () => {
         try {
-            const details = await axios.get(`${url}/api/HomeDetails/${"650052b5a72ea4301b3147ab"}`,
+            const details = await axios.get(`${url}/api/HomeDetails/${"64fdc6b73128648258b80c86"}`,
                 { headers });
             setFormData({
                 location: details.data[0].address,
