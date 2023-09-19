@@ -1,3 +1,35 @@
+First thing first. Make sure you have installed node js version 16+ and git. 
+
+Open you vs code and do the following
+
+1. Click clone repository and you will be prompted to the file manager. Create a folder in the desktop
+to be noticed directly or any file directory that have less files. Name it to SDMS or any name you like for the project. Click save or Okay.
+2. press ctrl+shift+p or cmd+shift+p and paste this to the prompt: https://github.com/bulsuuniversity/SDMS.git
+3. Open terminal then navigate to the local directtory where you created the folder earlier using cd then enter this: npm i
+4. create .env file then paste the following:
+
+gmailusername = bulsubulacanuniversity@gmail.com
+gmailpassword = tlyrevkbecrwwpjj
+gmailappPassword = rirgwoicyyoohjxz
+
+DATABASE_URL = "mongodb+srv://bulsubulacanuniversity:IN3xkw1Cp7C5hCYT@cluster0.5bvmwdy.mongodb.net/bulsu"
+
+mongodbPassword = IN3xkw1Cp7C5hCYT
+mongodbUsername = bulsubulacanuniversity
+
+CLOUDINARY_API_SECRET = "WXE0cHogu5zyl62a_Bxfe_4SK7g"
+CLOUDINARY_CLOUD_NAME = "df9trcyks"
+CLOUDINARY_API_KEY = "187851431242187"
+
+NEXTAUTH_URL=http://localhost:3000
+URL = http://localhost:3000
+NEXT_PUBLIC_URL = http://localhost:3000
+
+5. enter this to the terminal npm run dev
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -104,3 +136,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 Replace your_cloud_name, your_api_key, and your_api_secret with the values obtained from your Cloudinary dashboard.
 
 Step 5 Create folders named 
+
+
+Best Regards,
+Aaron
