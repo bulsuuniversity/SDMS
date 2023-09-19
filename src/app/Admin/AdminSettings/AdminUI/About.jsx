@@ -11,7 +11,7 @@ const About = ({ setOpen }) => {
     const { loading, startLoading, stopLoading } = useLoading()
     const getDetails = async () => {
         try {
-            const details = await axios.get(`${url}/api/HomeAbout/${"650052b5a72ea4301b3147ab"}`,
+            const details = await axios.get(`${url}/api/HomeAbout/${"64fdc6b73128648258b80c86"}`,
                 { headers });
             setFormData(details.data[0].about)
         } catch (err) {
