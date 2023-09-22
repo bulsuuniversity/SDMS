@@ -49,7 +49,7 @@ const Contact = ({ setOpen }) => {
     const handleUpdate = async () => {
         startLoading()
         try {
-            await axios.put(`${url}/api/HomeDetails/${"650052b5a72ea4301b3147ab"}`,
+            await axios.put(`${url}/api/HomeDetails/${"64fdc6b73128648258b80c86"}`,
                 formData, { headers });
             setMessage(true)
             stopLoading()
