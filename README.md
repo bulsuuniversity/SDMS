@@ -8,22 +8,7 @@ to be noticed directly or any file directory that have less files. Name it to SD
 3. Open terminal then navigate to the local directtory where you created the folder earlier using cd then enter this: npm i
 4. create .env file then paste the following:
 
-gmailusername = bulsubulacanuniversity@gmail.com
-gmailpassword = tlyrevkbecrwwpjj
-gmailappPassword = rirgwoicyyoohjxz
 
-DATABASE_URL = "mongodb+srv://bulsubulacanuniversity:IN3xkw1Cp7C5hCYT@cluster0.5bvmwdy.mongodb.net/bulsu"
-
-mongodbPassword = IN3xkw1Cp7C5hCYT
-mongodbUsername = bulsubulacanuniversity
-
-CLOUDINARY_API_SECRET = "WXE0cHogu5zyl62a_Bxfe_4SK7g"
-CLOUDINARY_CLOUD_NAME = "df9trcyks"
-CLOUDINARY_API_KEY = "187851431242187"
-
-NEXTAUTH_URL=http://localhost:3000
-URL = http://localhost:3000
-NEXT_PUBLIC_URL = http://localhost:3000
 
 5. enter this to the terminal npm run dev
 
