@@ -14,7 +14,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const Page = () => {
-    const [reports, setReports] = useState()
+    const [filterReports, setFilterReports] = useState()
     const { loading, startLoading, stopLoading } = useLoading()
     const [status, setStatus] = useState(true)
 
@@ -27,13 +27,17 @@ const Page = () => {
         try {
             const response = await axios.get(`${url}/api/studentReport`, { headers });
             const responseData = response.data
-            setReports(responseData)
+            setFilterReports(responseData)
             stopLoading()
         } catch (err) {
             console.log(err);
             stopLoading()
         }
     }
+
+
+    const reports = filterReports && Object.values(filterReports).filter(report => report.status === `${status ? 'Cleared' : 'Pending'}`)
+
 
     const Cyberbullying = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Cyberbullying")).length : 1
     const Misinformation = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Misinformation")).length : 1
@@ -159,37 +163,38 @@ const Page = () => {
             <div className="px-14">
                 {loading && <div>Loading...</div>}
                 {reports && reports.length < 0 ? <div className="inset-0">No Records Found</div> :
-                    <div className="overflow-y-auto grid bg-blue-100 justify-center gap-10 max-h-96 pb-6">
-
-                        <h2 className="font-bold flex py-4 justify-center">
-                            REPORTED ACTIONS
-                        </h2>
-                        <div className="flex justify-end">
+                    <>
+                        <div className="flex gap-10 justify-center item-center my-6">
                             <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                                 {!status && <div className="grid items-center mx-4">Pending</div>}
                                 <button onClick={handleChangeStatus} className={`rounded-full px-4 bg-amber-500 py-2 border boder-black`}>
                                     {!status ? 'Cleared' : 'Pending'}</button>
                                 {status && <div className="grid items-center mx-4">Cleared</div>}
                             </div>
-                        </div>
-
-
-                        <div className="flex items-center p-5 gap-5 ">
-                            <div className="w-60 h-60 m-4">
-                                <Pie data={pieData} options={pieOptions} />
+                            <div className="font-bold grid items-center"> Number of {status ? 'Pending' : 'Cleared'} reports: {reports && reports.length}
                             </div>
-                            {reports && <ReportedCasesLegends data={reportedAction} />}
                         </div>
-                        <h2 className="font-bold flex py-4 justify-center">
-                            REPORTED STUDENTS
-                        </h2>
-                        <div className="flex items-center p-5 gap-5 ">
-                            <div className="w-60 h-60">
-                                <Pie data={UnpieData} options={pieOptions2} />
+                        <div className="overflow-y-auto grid bg-blue-100 justify-center gap-10 max-h-96 pb-6">
+                            <h2 className="font-bold flex py-4 justify-center">
+                                REPORTED ACTIONS&#40;{status ? 'Pending' : 'Cleared'}&#41;
+                            </h2>
+                            <div className="flex items-center p-5 gap-5 ">
+                                <div className="w-60 h-60 m-4">
+                                    <Pie data={pieData} options={pieOptions} />
+                                </div>
+                                {reports && <ReportedCasesLegends data={reportedAction} />}
                             </div>
-                            {reports && <ReportedStudentsLegends data={reportedStudent} />}
+                            <h2 className="font-bold flex py-4 justify-center">
+                                REPORTED STUDENTS&#40;{status ? 'Pending' : 'Cleared'}&#41;
+                            </h2>
+                            <div className="flex items-center p-5 gap-5 ">
+                                <div className="w-60 h-60">
+                                    <Pie data={UnpieData} options={pieOptions2} />
+                                </div>
+                                {reports && <ReportedStudentsLegends data={reportedStudent} />}
+                            </div>
                         </div>
-                    </div>
+                    </>
                 }
             </div>
         </DashboardLayout>
