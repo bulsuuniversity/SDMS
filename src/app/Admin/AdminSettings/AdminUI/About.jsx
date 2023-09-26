@@ -19,14 +19,13 @@ const About = ({ setOpen }) => {
         }
     }
 
-    
+
 
     const handleUpdate = async () => {
         startLoading()
         try {
-            const response = await axios.put(`${url}/api/HomeAbout/${"64fdc6b73128648258b80c86"}`,
-                {about: formData}, { headers });
-            console.log(response)
+            await axios.put(`${url}/api/HomeAbout/${"64fdc6b73128648258b80c86"}`,
+                { about: formData }, { headers });
             setMessage(true)
             stopLoading()
         } catch (err) {
