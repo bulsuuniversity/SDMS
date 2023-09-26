@@ -189,10 +189,10 @@ const page = () => {
     };
     return (
         <DashboardLayout>
-            <div className="bg-blue-100 px-14">
+            <div className=" px-14">
                 {loading && <div>loading...</div>}
                 {users && users.length < 0 ? <div className="inset-0">No records found</div> :
-                    <div className="overflow-y-auto grid justify-center gap-10 max-h-96 pb-6">
+                    <div className="overflow-y-auto bg-blue-100 grid justify-center gap-10 max-h-96 pb-6">
                         <h2 className="font-bold flex py-4 justify-center">
                             ACCOUNT STATUS
                         </h2>
