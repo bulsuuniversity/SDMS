@@ -12,7 +12,7 @@ to be noticed directly or any file directory that have less files. Name it to SD
 
 5. enter this to the terminal npm run dev
 6. If run successfully then stop the program 
-
+7. Build the program to have production build
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
