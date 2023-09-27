@@ -33,17 +33,6 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
             cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.rate}</div>,
         },
         {
-            name: <BiTrash size={32} />,
-            cell: (row) => (
-                <input
-                    style={{ whiteSpace: 'normal', textAlign: 'center' }}
-                    type="checkbox"
-                    checked={selectedRows.some((r) => r.id === row.id)}
-                    onChange={() => handleRowSelection(row)}
-                />
-            ),
-        },
-        {
             name: <div className='flex text-center'>STATUS</div>,
             selector: row => row.status,
             sortable: true,
@@ -62,6 +51,17 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
                     },
                 },
             ],
+        },
+        {
+            name: <BiTrash size={32} />,
+            cell: (row) => (
+                <input
+                    style={{ whiteSpace: 'normal', textAlign: 'center' }}
+                    type="checkbox"
+                    checked={selectedRows.some((r) => r.id === row.id)}
+                    onChange={() => handleRowSelection(row)}
+                />
+            ),
         },
     ];
     const data = Object.values(tableData).map((reports, index) => ({

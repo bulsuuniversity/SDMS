@@ -98,7 +98,15 @@ const Page = () => {
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Reports</p>
             </div>
-            <div className="flex gap-10 justify-center item-center my-6">
+            <div className="flex gap-10 bg-blue-300 py-2 md:mx-10 mx-1 justify-center item-center mt-6">
+                <div className="flex p-2 items-center">
+                    <p>Filter: </p>
+                    <input
+                        className="border-b-2"
+                        placeholder="Filter"
+                        type="date"
+                    />
+                </div>
                 <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                     {status && <div className="grid items-center mx-4">Pending</div>}
                     <button onClick={handleChangeStatus} className={`rounded-full px-4 bg-amber-500 py-2 border boder-black`}>
@@ -200,7 +208,7 @@ const Page = () => {
                     </div>
                 </div>
             </InformationModal>}
-            <div className="md:mx-10 mx-1 my-10 border border-blue-400 border-2">
+            <div className="md:mx-10 mx-1 mb-14 border border-blue-400 border-2">
                 {data && data.length > 0 ?
                     <ReportsDatagridview
                         setOpenINfo={setOpenINfo}
