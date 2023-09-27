@@ -65,8 +65,8 @@ const AdminMenu = ({ children }) => {
                             href={'/Admin/AdminStudentRecord'}>Student Records</Link>
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminReports" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports'}>Reports</Link>
-                        <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminCounseling" ? "bg-gray-600" : "hover:bg-gray-600"}`}
-                            href={'/Admin/AdminCounseling'}>Counselling</Link>
+                        {/* <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminCounseling" ? "bg-gray-600" : "hover:bg-gray-600"}`}
+                            href={'/Admin/AdminCounseling'}>Counselling</Link> */}
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminSettings" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>Settings</Link>
                         <Link className="px-4 pl-8 pt-2 hover:bg-gray-600" href={'/Admin/AdminSettings'} onClick={handleSignOut}>Logout</Link >
@@ -83,8 +83,8 @@ const AdminMenu = ({ children }) => {
                             href={'/Admin/AdminStudentRecord'}>Student Records</Link>
                         <Link className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports'}>Reports</Link>
-                        <Link className={`mx-2 pl-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminCounseling'}>Counselling</Link>
+                        {/* <Link className={`mx-2 pl-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminCounseling'}>Counselling</Link> */}
                         <Link className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>Settings</Link>
                         <Link className="mx-2 pl-8 py-2 hover:bg-gray-600 hover:rounded-lg" href={'/Admin/AdminSettings'} onClick={handleSignOut}>Logout</Link >

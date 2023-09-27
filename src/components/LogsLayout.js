@@ -24,7 +24,7 @@ const LogsLayout = ({ children }) => {
                         <div className="grid items-start"><IoMdNotifications /></div>
                         <div className="flex items-center"> REPORTED CASES</div>
                     </Link>
-                    <Link href={"/Logs/SelfConsultLogs"}
+                    {/* <Link href={"/Logs/SelfConsultLogs"}
                         className={`${active === "/Logs/SelfConsultLogs" ? "bg-amber-400" : ""} 
                         rounded-lg flex border border-2 border-blue-400 p-2`}>
                         <div className="grid items-start"><IoMdNotifications /></div>
@@ -35,7 +35,7 @@ const LogsLayout = ({ children }) => {
                         rounded-lg flex border border-2 border-blue-400 p-2`}>
                         <div className="grid items-start"><IoMdNotifications /></div>
                         <div className="flex items-center"> REFERRED CONSULTATION</div>
-                    </Link>
+                    </Link> */}
                 </div>
                 {children ? children : <div className="h-80"></div>}
             </div>

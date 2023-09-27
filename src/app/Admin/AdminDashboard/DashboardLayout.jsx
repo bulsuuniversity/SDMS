@@ -49,13 +49,13 @@ const DashboardLayout = ({ children }) => {
                             <div className="flex justify-center"><PiNotePencilFill size={children ? 32 : 50} /></div>
                             Reports
                         </Link>
-                        <Link href={'/Admin/AdminDashboard/Counselling'}
+                        {/* <Link href={'/Admin/AdminDashboard/Counselling'}
                             className={`hover:bg-amber-400
                             ${!children ? "p-5 text-xl" : ""}
                             ${dashboard === 'Counselling' && 'bg-amber-300'} rounded-lg grid justify-center p-1 items-center`}>
                             <div className="flex justify-center"><GiDiscussion size={children ? 32 : 50} /></div>
                             Counselling
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
 

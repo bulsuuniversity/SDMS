@@ -88,11 +88,11 @@ const Menu = ({ profile }) => {
                                         // onClick={handleToggleMenu}
                                         className={`${profileData && profileData.name ? '' : 'cursor-not-allowed'} flex gap-4 border border-transparent p-4 hover:bg-gray-300 hover:border-gray-800 items-center`}>
                                         <BiCommentError size={32} /> MAKE A REPORT</Link>
-                                    <Link
+                                    {/* <Link
                                         href={profileData && !profileData.name ? '' : '/Consult'}
                                         // onClick={handleToggleMenu}
                                         className={`${profileData && profileData.name ? '' : 'cursor-not-allowed'} flex gap-4 border border-transparent p-4 hover:bg-gray-300 hover:border-gray-800 items-center`}>
-                                        <FaUserFriends size={32} /> CONSULTATION</Link>
+                                        <FaUserFriends size={32} /> CONSULTATION</Link> */}
                                     <Link
                                         href={profileData && !profileData.name ? '' : '/Logs'}
                                         // onClick={handleToggleMenu}
