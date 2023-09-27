@@ -38,14 +38,15 @@ const DashboardLayout = ({ children }) => {
                             className={`hover:bg-amber-400
                             ${!children ? "p-7 text-2xl" : ""}
                              ${dashboard === 'StudentRecords' && 'bg-amber-300'} 
-                             rounded-lg grid justify-center p-1 items-center`}>
+                             rounded-lg grid justify-center py-1 px-2 items-center`}>
                             <div className="flex justify-center"><IoIosPeople size={children ? 32 : 50} /></div>
                             Student Records
                         </Link>
                         <Link href={'/Admin/AdminDashboard/Reports'}
                             className={`hover:bg-amber-400 
                             ${!children ? "p-5 text-xl" : ""}
-                            ${dashboard === 'Reports' && 'bg-amber-300'} rounded-lg grid justify-center p-1 items-center`}>
+                            ${dashboard === 'Reports' && 'bg-amber-300'}
+                             rounded-lg grid justify-center py-1 px-2 items-center`}>
                             <div className="flex justify-center"><PiNotePencilFill size={children ? 32 : 50} /></div>
                             Reports
                         </Link>

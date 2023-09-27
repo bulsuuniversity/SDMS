@@ -20,20 +20,26 @@ const Page = () => {
     const [seeImage, setSeeImage] = useState(false)
     const [info, setInfo] = useState()
     const [openInfo, setOpenINfo] = useState(false)
-    const [data, setData] = useState()
+    // const [data, setData] = useState()
     const [openMessage, setOpenMessage] = useState(false)
     const [sentEmail, setSentEmail] = useState()
     const [success, setSuccess] = useState(false)
     const [imageToView, setImageToView] = useState()
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { startLoading, loading, stopLoading } = useLoading()
+    const [status, setStatus] = useState(true)
+    const [filterReports, setFilterReports] = useState()
+
+    const handleChangeStatus = () => {
+        setStatus(!status)
+    }
 
     const handleUpdateApi = async () => {
         startLoading()
         try {
             const response = await axios.put(`${url}/api/studentReport/${info.id}`,
                 { headers });
-                handleGetData()
+            handleGetData()
             stopLoading()
             setSuccess(true)
         } catch (err) {
@@ -58,13 +64,16 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.get(`${url}/api/studentReport`, { headers });
-            setData(response.data)
+            setFilterReports(response.data)
             stopLoading()
         } catch (err) {
             console.log(err);
             stopLoading()
         }
     }
+
+    const data = filterReports && Object.values(filterReports).filter(report => report.status === `${status ? 'Cleared' : 'Pending'}`)
+
 
     useEffect(() => {
         handleGetData()
@@ -88,6 +97,16 @@ const Page = () => {
             <div className="m-7 flex items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Reports</p>
+            </div>
+            <div className="flex gap-10 justify-center item-center my-6">
+                <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
+                    {status && <div className="grid items-center mx-4">Pending</div>}
+                    <button onClick={handleChangeStatus} className={`rounded-full px-4 bg-amber-500 py-2 border boder-black`}>
+                        {status ? 'Cleared' : 'Pending'}</button>
+                    {!status && <div className="grid items-center mx-4">Cleared</div>}
+                </div>
+                <div className="font-bold grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
+                </div>
             </div>
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">

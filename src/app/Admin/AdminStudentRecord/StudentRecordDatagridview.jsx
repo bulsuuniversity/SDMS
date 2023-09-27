@@ -2,6 +2,7 @@ import DataTable from 'react-data-table-component';
 
 
 const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
+  
     const columns = [
         {
             name: <div className='flex text-center'>STUDENT ID</div>,
@@ -92,6 +93,7 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
             data={data}
             pagination={tableData.length > 10}
             responsive
+         
         />
 
     );

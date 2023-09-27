@@ -53,7 +53,7 @@ const AdminMenu = ({ children }) => {
 
     return (
         <AdminLayout>
-            <div className="grid grid-cols-12 h-screen bg-gray-200">
+            <div className="grid grid-cols-12 h-screen">
                 <div className="block fixed top-0 bg-gray-800 mb-6 w-screen md:hidden">
                     <button className="text-white pl-3 pt-3" onClick={() => setMenuOpen(!menuOpen)}><IoMdMenu size={32} /></button>
                 </div>
@@ -91,7 +91,7 @@ const AdminMenu = ({ children }) => {
                     </div>
 
                 </div>
-                <div className="md:col-span-9 col-span-12 pt-10 md:pt-0">
+                <div className="md:col-span-9 col-span-12 pt-10 bg-gray-200 md:pt-0">
                     {children}
                 </div>
             </div>

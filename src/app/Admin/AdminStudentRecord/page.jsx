@@ -14,18 +14,22 @@ import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
 import Link from "next/link";
 import { GrClose } from "react-icons/gr";
+import { GoSearch } from "react-icons/go";
+
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
     const [info, setInfo] = useState()
     const [openInfo, setOpenINfo] = useState(false)
-    const [data, setData] = useState()
+    const [filterData, setFilterData] = useState()
     const [imageToView, setImageToView] = useState()
     const [success, setSuccess] = useState(false)
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { startLoading, loading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
+    const [search, setSearch] = useState()
+
 
     const handleSetImage = (image) => {
         setImageToView(image)
@@ -79,13 +83,16 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.get(`${url}/api/studentAccount`, { headers });
-            setData(response.data)
+            setFilterData(response.data)
             stopLoading()
         } catch (err) {
             console.log(err);
             stopLoading()
         }
     }
+
+    const data = filterData && Object.values(filterData).filter(report => search ? report.name && (report.name).includes(search) : true)
+
 
     useEffect(() => {
         handleGetData()
@@ -130,10 +137,16 @@ const Page = () => {
                 <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Student Accounts</p>
             </div>
-            {/*<div className="flex gap-6 pl-10">
-                <p className="font-bold border border-black p-2 border-bottom">Student</p>
-                <Link href={'/Admin/AdminApproveAdmin'} className="font-bold p-2">Admin</Link>
-            </div>*/}
+            <div className="flex justify-center">
+                <div className="rounded-full flex border border-black bg-gray-200 items-center">
+                    <input
+                        className="rounded-l-full"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search" />
+                    <GoSearch className="mx-2"/>
+                </div>
+            </div>
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">
