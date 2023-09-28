@@ -84,3 +84,24 @@ export const GET = async () => {
         return NextResponse.json({ message: "GET Error", err }, { status: 500 })
     }
 }
+
+
+export const DELETE = async (request) => {
+    try {
+        const body = await request.json();
+        const { ids } = body
+        console.log(ids)
+        const deletedPost = await Promise.all(ids.map(async (id) => {
+            await prisma.studentreport.delete({
+                where: {
+                    id
+                }
+            });
+        }));
+
+        return NextResponse.json(deletedPost);
+    } catch (err) {
+        console.log(err)
+        return NextResponse.json({ message: "DELETE Error", err }, { status: 500 });
+    }
+};

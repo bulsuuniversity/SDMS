@@ -1,9 +1,47 @@
 import DataTable from 'react-data-table-component';
 import { BiTrash } from 'react-icons/bi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { IoEyeSharp } from "react-icons/io5";
+import axios from 'axios';
+import { headers, url } from '@/app/libs/api';
+import useLoading from '@/utils/Loading';
+import InformationModal from '@/utils/InformationModal';
+import useConfirmation from '@/utils/ConfirmationHook';
 
-const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
+const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, handleGetData }) => {
     const [selectedRows, setSelectedRows] = useState([]);
+    const { loading, startLoading, stopLoading } = useLoading()
+    const [success, setSuccess] = useState(false)
+    const { showConfirmation, ConfirmationDialog } = useConfirmation();
+
+    const ids = selectedRows.map((selected) => selected.ticket)
+    const handleDelete = async () => {
+        startLoading()
+        try {
+            await axios.post(`${url}/api/DeleteReport`,
+                { ids: ids },
+                { headers });
+            handleGetData()
+            setSuccess(true)
+            setSelectedRows([]);
+            stopLoading()
+        } catch (err) {
+            console.log(err);
+            stopLoading()
+        }
+    }
+
+    const handleSubmitReport = (e) => {
+        e.preventDefault();
+        showConfirmation(`Are you sure you want to delete ${selectedRows > 1 ? 'these reports' : 'this report'}?`, () => {
+            handleDelete()
+        });
+    };
+
+    useEffect(() => {
+        setSelectedRows([]);
+    }, [status])
+
 
     const rowDisabledCriteria = row => row.status === 'Pending';
 
@@ -12,7 +50,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
             name: <div className='flex text-center'>TICKET NO.</div>,
             selector: row => row.ticket,
             sortable: true,
-            cell: (row) => <div onClick={() => handleRowClick(row)} style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.ticket}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.ticket}</div>,
         },
         {
             name: <div className='flex text-center'>ACTION OF INDISCIPLINE</div>,
@@ -53,16 +91,24 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
             ],
         },
         {
+            name: <IoEyeSharp size={32} />,
+            cell: (row) => <div onClick={() => handleRowClick(row)} className='cursor-pointer'>
+                <IoEyeSharp size={20} /></div>
+            ,
+        },
+        {
             name: <BiTrash size={32} />,
             cell: (row) => (
                 <input
-                    style={{ whiteSpace: 'normal', textAlign: 'center' }}
+                    className='cursor-pointer'
                     type="checkbox"
                     checked={selectedRows.some((r) => r.id === row.id)}
                     onChange={() => handleRowSelection(row)}
                 />
+
             ),
         },
+
     ];
     const data = Object.values(tableData).map((reports, index) => ({
         id: index,
@@ -87,17 +133,29 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
         }
     };
 
-    console.log(selectedRows)
+
 
     const customStyles = {
         rows: {
             style: {
-                cursor: 'pointer',
+                display: "grid",
+                justifyContent: "center",
+                alignItems: "center"
+            },
+        },
+        columns: {
+            style: {
+                display: "grid",
+                justifyContent: "center",
+                alignItems: "center"
             },
         },
         headCells: {
             style: {
                 backgroundColor: "#99acff",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
             },
         },
     };
@@ -107,13 +165,19 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
             {selectedRows.length > 0 &&
                 <div className='bg-red-200 p-4 flex items-center justify-between gap-10'>
                     <p>{selectedRows.length} items selected</p>
-                    <button className='bg-red-500 text-white rounded-md px-4 py-2'>Delete</button>
+                    <button disabled={loading} onClick={handleSubmitReport} className='bg-red-600 text-white rounded-md px-4 py-2'>Delete</button>
                 </div>}
+            <ConfirmationDialog />
+            {success && <InformationModal>
+                <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
+                    <p>Deleted Successfully!</p>
+                    <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                </div>
+            </InformationModal>}
             <DataTable
                 fixedHeader
                 fixedHeaderScrollHeight="500px"
                 customStyles={customStyles}
-                onRowClicked={handleRowClick}
                 columns={columns}
                 data={data}
                 pagination={tableData.length > 10}

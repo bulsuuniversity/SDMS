@@ -39,18 +39,22 @@ export const PUT = async (request, { params }) => {
     }
 }
 
-export const DELETE = async (request, { params }) => {
+export const DELETE = async (request, { body }) => {
     try {
-        const { id } = params;
+        const { ids } = body;
 
-        await prisma.report.delete({
-            where: {
-                id
-            }
-        });
+        const deletedPost = await Promise.all(ids.map(async (id) => {
+            await prisma.studentreport.delete({
+                where: {
+                    id
+                }
+            });
+        }));
 
-        return NextResponse.json("Post has been deleted");
+        return NextResponse.json(deletedPost);
     } catch (err) {
+        console.log(err)
         return NextResponse.json({ message: "DELETE Error", err }, { status: 500 });
     }
 };
+

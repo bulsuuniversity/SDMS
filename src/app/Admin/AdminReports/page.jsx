@@ -98,7 +98,7 @@ const Page = () => {
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Reports</p>
             </div>
-            <div className="flex gap-10 bg-blue-300 py-2 md:mx-10 mx-1 justify-center item-center mt-6">
+            <div className="flex gap-10 bg-[#99acff] py-2 md:mx-10 mx-1 justify-center item-center mt-6">
                 <div className="flex p-2 items-center">
                     <p>Filter: </p>
                     <input
@@ -214,6 +214,8 @@ const Page = () => {
                         setOpenINfo={setOpenINfo}
                         setClickedID={setClickedID}
                         tableData={data}
+                        status={status}
+                        handleGetData={handleGetData}
                     /> : <div className="flex inset-0">No records found</div>}
             </div>
         </AdminMenu>
