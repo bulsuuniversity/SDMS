@@ -144,7 +144,7 @@ const page = () => {
                         <form className="grid md:grid-cols-2 grid-cols-1 gap-6 mx-2 md:mx-16" onSubmit={handleSubmitReport}>
                             <div className="grid gap-4">
                                 <label className="grid">
-                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p> Action of Discipline:</div>
+                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p> Act of Misconduct:</div>
                                     <select
                                         className="border-b-2"
                                         name="consultationReason"
@@ -152,11 +152,16 @@ const page = () => {
                                         required
                                     >
                                         <option value="">Select Action of Discipline</option>
-                                        <option value="Cyberbullying">Cyberbullying</option>
-                                        <option value="Misinformation">Misinformation</option>
-                                        <option value="Verbal abuse">Verbal abuse</option>
-                                        <option value="Harrassment">Harrassment</option>
-                                        <option value="Hateful behavior">Hateful behavior</option>
+                                        <option value="Cyberbullying">Littering / Disribution of unauthorized printed materials</option>
+                                        <option value="Misinformation">Vandalism / Unauthorized posting of printed materials</option>
+                                        <option value="Verbal abuse">Disturbance / Disrupt of classes or any Educational-Related-Programs</option>
+                                        <option value="Harrassment">Unauthorized solicitation of funds or selling of any ticket</option>
+                                        <option value="Hateful behavior">Smoking, gambling or being under the influence of alcohol</option>
+                                        <option value="Hateful behavior">Malicious or unfounded accusations</option>
+                                        <option value="Hateful behavior">Deception, impersonation or fraud</option>
+                                        <option value="Hateful behavior">Disrespectful behavior or refusal to comply with the directions of the university</option>
+                                        <option value="Hateful behavior">Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</option>
+                                        <option value="Hateful behavior">Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</option>
                                         <option value="Others">Others</option>
                                     </select>
                                     {customActionOption && <input

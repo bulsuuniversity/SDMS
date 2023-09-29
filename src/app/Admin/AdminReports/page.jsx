@@ -46,8 +46,6 @@ const Page = () => {
         setSelectedRange(ranges.selection);
     };
 
-    console.log(selectedRange)
-
     const filterAndSortData = () => {
         const startDate = selectedRange.startDate;
         const endDate = selectedRange.endDate;
@@ -262,7 +260,7 @@ const Page = () => {
                         tableData={data}
                         status={status}
                         handleGetData={handleGetData}
-                    /> : <div className="flex inset-0">No records found</div>}
+                    /> : <div className="flex justify-center p-10 inset-0">No records found</div>}
             </div>
         </AdminMenu>
     );
