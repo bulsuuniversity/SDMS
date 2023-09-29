@@ -92,20 +92,22 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
         },
         {
             name: <IoEyeSharp size={32} />,
-            cell: (row) => <div onClick={() => handleRowClick(row)} className='cursor-pointer'>
+            cell: (row) => <div onClick={() => handleRowClick(row)}
+                className='cursor-pointer border text-center border-black flex justify-center'>
                 <IoEyeSharp size={20} /></div>
             ,
         },
         {
             name: <BiTrash size={32} />,
             cell: (row) => (
-                <input
-                    className='cursor-pointer'
-                    type="checkbox"
-                    checked={selectedRows.some((r) => r.id === row.id)}
-                    onChange={() => handleRowSelection(row)}
-                />
-
+                <div className='flex border text-center border-black justify-center'>
+                    <input
+                        className='cursor-pointer'
+                        type="checkbox"
+                        checked={selectedRows.some((r) => r.id === row.id)}
+                        onChange={() => handleRowSelection(row)}
+                    />
+                </div>
             ),
         },
 
@@ -136,20 +138,6 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
 
 
     const customStyles = {
-        rows: {
-            style: {
-                display: "grid",
-                justifyContent: "center",
-                alignItems: "center"
-            },
-        },
-        columns: {
-            style: {
-                display: "grid",
-                justifyContent: "center",
-                alignItems: "center"
-            },
-        },
         headCells: {
             style: {
                 backgroundColor: "#99acff",

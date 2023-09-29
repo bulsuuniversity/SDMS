@@ -9,18 +9,18 @@ import { url, headers } from "@/app/libs/api";
 import axios from "axios";
 import AdminMenu from "@/components/AdminMenu";
 import { GiCheckMark } from "react-icons/gi";
-import { MdOutlineEmail } from "react-icons/md";
+import { MdOutlineEmail, MdDateRange } from "react-icons/md";
 import SendMessage from "@/components/SendMessage";
 import { ImNewspaper } from "react-icons/im";
 import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
+import { DateRangePicker } from 'react-date-range';
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
     const [info, setInfo] = useState()
     const [openInfo, setOpenINfo] = useState(false)
-    // const [data, setData] = useState()
     const [openMessage, setOpenMessage] = useState(false)
     const [sentEmail, setSentEmail] = useState()
     const [success, setSuccess] = useState(false)
@@ -29,6 +29,40 @@ const Page = () => {
     const { startLoading, loading, stopLoading } = useLoading()
     const [status, setStatus] = useState(true)
     const [filterReports, setFilterReports] = useState()
+    const [openDate, setOpenDate] = useState(false)
+    const [selectedRange, setSelectedRange] = useState(() => {
+        const currentDate = new Date();
+        const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+
+        return {
+            startDate: startOfMonth,
+            endDate: endOfMonth,
+            key: 'selection',
+        };
+    });
+
+    const handleDateRangeChange = (ranges) => {
+        setSelectedRange(ranges.selection);
+    };
+
+    console.log(selectedRange)
+
+    const filterAndSortData = () => {
+        const startDate = selectedRange.startDate;
+        const endDate = selectedRange.endDate;
+
+
+        const filteredData = filterReports && filterReports.filter(item => {
+            const itemDate = new Date(item.createdAt);
+            return itemDate >= startDate && itemDate <= endDate;
+        });
+        const sortedData = filteredData && filteredData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
+        return sortedData;
+    };
+
+    const filteredAndSortedData = filterAndSortData();
 
     const handleChangeStatus = () => {
         setStatus(!status)
@@ -72,7 +106,9 @@ const Page = () => {
         }
     }
 
-    const data = filterReports && Object.values(filterReports).filter(report => report.status === `${status ? 'Cleared' : 'Pending'}`)
+    const data = filteredAndSortedData &&
+        Object.values(filteredAndSortedData).filter(report =>
+            report.status === `${status ? 'Cleared' : 'Pending'}`)
 
 
     useEffect(() => {
@@ -99,13 +135,23 @@ const Page = () => {
                 <p className="font-bold text-xl">Reports</p>
             </div>
             <div className="flex gap-10 bg-[#99acff] py-2 md:mx-10 mx-1 justify-center item-center mt-6">
-                <div className="flex p-2 items-center">
-                    <p>Filter: </p>
-                    <input
-                        className="border-b-2"
-                        placeholder="Filter"
-                        type="date"
-                    />
+                <div className="flex p-2 items-center rounded-lg border">
+                    <p className="font-bold">Filter: </p>
+                    <button className="bg-gray-600 rounded-lg px-4 py-1 text-white flex"
+                        onClick={() => setOpenDate(!openDate)}>Select Date <MdDateRange size={24} /></button>
+                    {openDate && <InformationModal>
+                        <div className="relative">
+                            <div className="absolute -top-4 -right-4">
+                                <button
+                                    onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
+                                    <AiFillCloseCircle size={30} /></button>
+                            </div>
+                            <DateRangePicker
+                                ranges={[selectedRange]}
+                                onChange={handleDateRangeChange}
+                            />
+                        </div>
+                    </InformationModal>}
                 </div>
                 <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                     {status && <div className="grid items-center mx-4">Pending</div>}

@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AuthProvider from './contextProvider/AuthProvider';
 import Favicon from "../../public/favicon.ico"
+import 'react-date-range/dist/styles.css'; 
+import 'react-date-range/dist/theme/default.css'; 
 
 const inter = Inter({ subsets: ['latin'] })
 
