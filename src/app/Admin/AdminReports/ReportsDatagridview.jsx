@@ -93,14 +93,14 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
         {
             name: <IoEyeSharp size={32} />,
             cell: (row) => <div onClick={() => handleRowClick(row)}
-                className='cursor-pointer border text-center border-black flex justify-center'>
+                className='cursor-pointer w-full grid place-content-center'>
                 <IoEyeSharp size={20} /></div>
             ,
         },
-        {
+        status && {
             name: <BiTrash size={32} />,
             cell: (row) => (
-                <div className='flex border text-center border-black justify-center'>
+                <div className={`flex w-full justify-center `}>
                     <input
                         className='cursor-pointer'
                         type="checkbox"
@@ -110,7 +110,6 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
                 </div>
             ),
         },
-
     ];
     const data = Object.values(tableData).map((reports, index) => ({
         id: index,

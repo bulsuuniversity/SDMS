@@ -51,7 +51,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
 
     return (
         <InformationModal>
-            <div className="relative text-lg sm:w-80 w-72 md:w-96 rounded-lg grid justify-center bg-gray-300 p-6">
+            <div className="relative text-lg sm:w-80 w-72 md:w-[45rem] rounded-lg grid justify-center bg-gray-300 p-6">
                 <div className="absolute -top-4 -right-4">
                     <button
                         onClick={() => setClose(false)} className="rounded-full text-red-600 bg-white">
@@ -78,12 +78,12 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                                 className='ml-4'
                                 value={sentEmail}
                                 onChange={(e) => setSentEmail(e.target.value)}
-                                rows="4"
+                                rows="8"
                                 cols="50"
                                 placeholder="Enter your message..."
                                 required
                             ></textarea>
-                            <div className='absolute left-32 -bottom-4'>
+                            <div className='absolute w-full flex justify-center -bottom-4'>
                                 <div onClick={() => setSentEmail("")} className='cursor-pointer rounded px-2 bg-red-700 text-white'>Clear</div>
                             </div>
                         </div>
@@ -93,9 +93,9 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                             <div className='bg-gray-100 cursor-pointer rounded-lg' onClick={() => handleChoiceClick(suggestions.one)}>
                                 {suggestions.one}
                             </div>
-                            <div className='bg-gray-100 cursor-pointer rounded-lg' onClick={() => handleChoiceClick(suggestions.two)}>
+                            {/* <div className='bg-gray-100 cursor-pointer rounded-lg' onClick={() => handleChoiceClick(suggestions.two)}>
                                 {suggestions.two}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                         <div className="flex mt-4 justify-center">

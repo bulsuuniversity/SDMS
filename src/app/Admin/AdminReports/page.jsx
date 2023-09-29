@@ -9,6 +9,7 @@ import { url, headers } from "@/app/libs/api";
 import axios from "axios";
 import AdminMenu from "@/components/AdminMenu";
 import { GiCheckMark } from "react-icons/gi";
+import { GrUpdate } from "react-icons/gr";
 import { MdOutlineEmail, MdDateRange } from "react-icons/md";
 import SendMessage from "@/components/SendMessage";
 import { ImNewspaper } from "react-icons/im";
@@ -28,6 +29,7 @@ const Page = () => {
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { startLoading, loading, stopLoading } = useLoading()
     const [status, setStatus] = useState(true)
+    const [notes, setNotes] = useState()
     const [filterReports, setFilterReports] = useState()
     const [openDate, setOpenDate] = useState(false)
     const [selectedRange, setSelectedRange] = useState(() => {
@@ -117,11 +119,19 @@ const Page = () => {
     useEffect(() => {
         const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === clickedID);
         setInfo(clcikedInfo)
+        console.log(clcikedInfo)
     }, [clickedID])
-
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(now.getDate() + 1);
+    const formattedDate = tomorrow.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
     const suggestions = {
-        one: "Thank you! Proper sanctions will be made.",
-        two: "Sorry, can you provide more details for further assistance?"
+        one: `Good day! We request you to please attend the meeting on ${formattedDate} in Room 216B (9:00AM). Your attendance is a must for the proceeding of your ongoing case. Further details will be discussed on the said meeting. Thank you.`,
+        // two: "Sorry, can you provide more details for further assistance?"
     }
 
 
@@ -131,83 +141,65 @@ const Page = () => {
             <div className="m-7 flex items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Reports</p>
-            </div>
-            <div className="flex gap-10 bg-[#99acff] py-2 md:mx-10 mx-1 justify-center item-center mt-6">
-                <div className="flex p-2 items-center rounded-lg border">
-                    <p className="font-bold">Filter: </p>
-                    <button className="bg-gray-600 rounded-lg px-4 py-1 text-white flex"
-                        onClick={() => setOpenDate(!openDate)}>Select Date <MdDateRange size={24} /></button>
-                    {openDate && <InformationModal>
-                        <div className="relative">
-                            <div className="absolute -top-4 -right-4">
-                                <button
-                                    onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
-                                    <AiFillCloseCircle size={30} /></button>
+                <div className="flex gap-10 bg-[#99acff] py-2 ml-4 justify-center items-center">
+
+
+                    <div className="flex p-2 items-center rounded-lg">
+                        <p className="font-bold">Filter: </p>
+                        <button className="bg-gray-500 rounded-lg px-4 py-1 text-white flex"
+                            onClick={() => setOpenDate(!openDate)}>Select Date <MdDateRange size={24} /></button>
+                        {openDate && <InformationModal>
+                            <div className="relative">
+                                <div className="absolute -top-4 -right-4">
+                                    <button
+                                        onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
+                                        <AiFillCloseCircle size={30} /></button>
+                                </div>
+                                <DateRangePicker
+                                    ranges={[selectedRange]}
+                                    onChange={handleDateRangeChange}
+                                />
                             </div>
-                            <DateRangePicker
-                                ranges={[selectedRange]}
-                                onChange={handleDateRangeChange}
-                            />
-                        </div>
-                    </InformationModal>}
-                </div>
-                <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
-                    {status && <div className="grid items-center mx-4">Pending</div>}
-                    <button onClick={handleChangeStatus} className={`rounded-full px-4 bg-amber-500 py-2 border boder-black`}>
-                        {status ? 'Cleared' : 'Pending'}</button>
-                    {!status && <div className="grid items-center mx-4">Cleared</div>}
-                </div>
-                <div className="font-bold grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
-                </div>
-            </div>
-            {openInfo && info && <InformationModal>
-                <div className="relative p-6">
-                    <div className="absolute -top-4 -right-4">
-                        <button
-                            onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
-                            <AiFillCloseCircle size={30} /></button>
+                        </InformationModal>}
                     </div>
-                    <ConfirmationDialog />
-                    {success && <InformationModal>
-                        <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
-                            <p>Cleared Successfully!</p>
-                            <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
-                        </div>
-                    </InformationModal>}
-                    {loading && <InformationModal>
-                        <div className="grid justify-center p-6">
-                            <div>Redirecting where you left.</div>
-                            <p>Please wait...</p>
-                        </div>
-                    </InformationModal>}
-                    <div className="grid gap-4 justify-center items-center">
-                        <div className="grid gap-4 text-xs">
-                            <label className="flex gap-3 justify-center items-center">
+                    <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
+                        {status && <div className="grid items-center mx-4">Pending</div>}
+                        <button onClick={handleChangeStatus} className={`rounded-full px-4 bg-amber-500 py-2 border boder-black`}>
+                            {status ? 'Cleared' : 'Pending'}</button>
+                        {!status && <div className="grid items-center mx-4">Cleared</div>}
+                    </div>
+                    <div className="font-bold grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            {openInfo && info && <InformationModal>
+                <div className="grid relative grid-cols-2 gap-2 p-4">
+
+
+                    <div className="grid gap-2 justify-center items-center text-xs">
+                        <div className="grid px-4 py-2 border border-black gap-2">
+                            <p className="font-bold text-lg">REPORT DETAILS</p>
+                            <label className="flex gap-3 items-center border-b border-black pb-2">
                                 <p className="font-bold">Ticket No.:</p>
                                 <div className="bg-gray-300 p-2">{info.id}</div>
                             </label>
-                            <label className="flex gap-3">
-                                <p className="font-bold">Action of Indiscipline: </p>
-                                <div> {info.actionOfDiscipline}</div>
-                            </label>
-                            <div className="flex gap-4 items-start divide-x justify-center">
-                                <label className="grid gap-3">
-                                    <p className="font-bold">Offender Details: </p>
-                                    <div className="indent-6">Name: {info.offender}</div>
-                                    <div className="indent-6">College: {info.college}</div>
-                                </label>
-                                <label className="grid pl-4">
-                                    <p className="font-bold">Student Offended Details: </p>
-                                    <div className="indent-4">Email:  {info.reporter.email}</div>
-                                    <div className="indent-4">Name:  {info.reporter.name}</div>
-                                    <div className="indent-4">Contact No.: {info.reporter.phoneNumber}</div>
-                                    {/* <label onClick={() => handleSetImage(info.reporter.profile)} className="indent-4 flex">
-                                        <p>View Profile Picture: </p>
-                                        <div>{info.reporter.profile ? (info.reporter.profile).slice(-8) : "No Profile"}</div>
-                                    </label> */}
+
+                            <div className="flex gap-4 items-start border-b border-black pb-2">
+                                <label className="grid gap-1">
+                                    <div className="font-bold">Name: {info.offender}</div>
+                                    <div className="font-bold">College: {info.college}</div>
+                                    <div className="font-bold">Course, Year & Section: {info.yearLevel}</div>
                                 </label>
                             </div>
-
+                            <label className="flex gap-3">
+                                <p className="font-bold">Act of Misconduct: </p>
+                                <div> {info.actionOfDiscipline}</div>
+                            </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Date of Incident: </p>
                                 <div> {info.dateOfIncident}</div>
@@ -221,7 +213,7 @@ const Page = () => {
                                 <div> {info.rateOfOccurence}</div>
                             </label>
                             <label className="flex gap-3">
-                                <p className="font-bold">Describe the Situation: </p>
+                                <p className="font-bold">Brief Description of the Situation: </p>
                                 <div> {info.describeTheSituation}</div>
                             </label>
                             <label onClick={() => handleSetImage(info.attachment)} className="flex gap-3">
@@ -245,13 +237,99 @@ const Page = () => {
                                 </div>
                             </InformationModal>}
                         </div>
+
+                        <div className="border px-4 py-2 border-black">
+                            <label className="grid gap-1">
+                                <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
+                                <div className="font-bold">Name:  {info.reporter.name}</div>
+                                <div className="font-bold">College:  {info.reporter.college}</div>
+                                <div className="font-bold">Course, year and section: {info.reporter.yearLevel}</div>
+                                <div className="font-bold">Email:  {info.reporter.email}</div>
+                            </label>
+                        </div>
                     </div>
-                    <div className={`absolute ${info.status !== "Pending" ? 'left-36' : 'left-24'}  -bottom-10 flex justify-center gap-4`}>
-                        <button onClick={() => setOpenMessage(true)} className="bg-amber-400 rounded-full p-2"><MdOutlineEmail size={32} /></button>
-                        {info.status === "Pending" && <button onClick={handleUpdate} className="bg-green-600 rounded-full p-2"><GiCheckMark size={32} /></button>}
+
+
+
+                    <div className="absolute -top-4 -right-4">
+                        <button
+                            onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
+                            <AiFillCloseCircle size={30} />
+                        </button>
                     </div>
+
+                    <ConfirmationDialog />
+                    {success && <InformationModal>
+                        <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
+                            <p>Cleared Successfully!</p>
+                            <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                        </div>
+                    </InformationModal>}
+                    {loading && <InformationModal>
+                        <div className="grid justify-center p-6">
+                            <div>Redirecting where you left.</div>
+                            <p>Please wait...</p>
+                        </div>
+                    </InformationModal>}
+
+
+
+
+
+                    <div className="grid text-sm gap-2">
+                        <div className="border grid gap-1 border-black p-4">
+                            <p>SANCTION</p>
+                            <div className="flex gap-2">
+                                <p className="font-bold">Kind of Offense:</p>
+                                <select className="w-32">
+                                    <option>Select Kind of Offense:</option>
+                                    <option>Light Offense</option>
+                                    <option>Less Grave Offense</option>
+                                    <option>Grave Offense</option>
+                                    <option>Dishonesty on Academic Pursuit</option>
+                                </select>
+                            </div>
+                            <div className="flex mb-6 gap-2">
+                                <p className="font-bold">Degree of Offense:</p>
+                                <select className="w-32">
+                                    <option>Select Degree of Offense</option>
+                                    <option>1st Offense</option>
+                                    <option>2nd Offense</option>
+                                    <option>3rd Offense</option>
+                                    <option>4th Offense{'\n'}&#40;for applicable or special cases&#41;</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="border grid border-black p-4">
+                            <p className="font-bold">NOTES</p>
+                            <p className="italic text-xs">further details accordance to sanction.</p>
+                            <textarea
+                                value={notes}
+                                onChange={(e) => setNotes(e.target.value)}
+                                rows="6"
+                                cols="30"
+                                placeholder="Enter your notes"
+                                className="mb-8"
+                                required />
+                        </div>
+
+                        <div className="flex gap-4">
+                            <button onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><MdOutlineEmail size={20} /> Message</button>
+                            {info.status === "Pending" && <button onClick={handleUpdate} className="flex gap-2 items-center bg-green-600 px-2 py-1"><GiCheckMark size={20} /> Clear</button>}
+                            <button className="flex gap-2 items-center bg-amber-400 px-2 py-1"><GrUpdate size={20} /> Update</button>
+                        </div>
+
+                    </div>
+
+
+
                 </div>
             </InformationModal>}
+
+
+
+
             <div className="md:mx-10 mx-1 mb-14 border border-blue-400 border-2">
                 {data && data.length > 0 ?
                     <ReportsDatagridview

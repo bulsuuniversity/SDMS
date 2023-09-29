@@ -50,6 +50,11 @@ model Carousel {
 model Studentreport {
   id                   String   @id @default(auto()) @map("_id") @db.ObjectId
   reporter             Json
+  ticketNo             String?
+  kindOfOffense        String?
+  degreeOfOffense      String?
+  notes                String?
+  summary              String?
   actionOfDiscipline   String
   offender             String?
   college              String?
