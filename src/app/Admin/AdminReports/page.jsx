@@ -30,6 +30,8 @@ const Page = () => {
     const { startLoading, loading, stopLoading } = useLoading()
     const [status, setStatus] = useState(true)
     const [notes, setNotes] = useState()
+    const [degreeOfOffense, setDegreeOfOffense] = useState()
+    const [kindOfOffense, setKindOfOffense] = useState()
     const [filterReports, setFilterReports] = useState()
     const [openDate, setOpenDate] = useState(false)
     const [selectedRange, setSelectedRange] = useState(() => {
@@ -75,7 +77,7 @@ const Page = () => {
                 { headers });
             handleGetData()
             stopLoading()
-            setSuccess(true)
+            setSuccess('Cleared')
         } catch (err) {
             console.log(err);
             stopLoading()
@@ -88,6 +90,34 @@ const Page = () => {
             handleUpdateApi()
         });
     };
+
+    const handleAskUpdateReport = (e) => {
+        e.preventDefault();
+        showConfirmation('Are you sure you want to update this case?', () => {
+            handleUpdateReport()
+        });
+    };
+
+    const sanctions = {
+        degreeOfOffense,
+        kindOfOffense,
+        notes
+    }
+
+
+    const handleUpdateReport = async () => {
+        startLoading()
+        try {
+            const response = await axios.put(`${url}/api/AdminUpdateReport/${info.id}`,
+                { sanctions: sanctions }, { headers });
+            handleGetData()
+            stopLoading()
+            setSuccess('Updated')
+        } catch (err) {
+            console.log(err);
+            stopLoading()
+        }
+    }
 
     const handleSetImage = (image) => {
         setImageToView(image)
@@ -109,7 +139,6 @@ const Page = () => {
     const data = filteredAndSortedData &&
         Object.values(filteredAndSortedData).filter(report =>
             report.status === `${status ? 'Cleared' : 'Pending'}`)
-
 
     useEffect(() => {
         handleGetData()
@@ -141,9 +170,7 @@ const Page = () => {
             <div className="m-7 flex items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Reports</p>
-                <div className="flex gap-10 bg-[#99acff] py-2 ml-4 justify-center items-center">
-
-
+                <div className="flex gap-10 py-2 ml-4 px-4 justify-center items-center">
                     <div className="flex p-2 items-center rounded-lg">
                         <p className="font-bold">Filter: </p>
                         <button className="bg-gray-500 rounded-lg px-4 py-1 text-white flex"
@@ -164,7 +191,7 @@ const Page = () => {
                     </div>
                     <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                         {status && <div className="grid items-center mx-4">Pending</div>}
-                        <button onClick={handleChangeStatus} className={`rounded-full px-4 bg-amber-500 py-2 border boder-black`}>
+                        <button onClick={handleChangeStatus} className={`rounded-full px-2 bg-amber-500 border boder-black`}>
                             {status ? 'Cleared' : 'Pending'}</button>
                         {!status && <div className="grid items-center mx-4">Cleared</div>}
                     </div>
@@ -178,11 +205,11 @@ const Page = () => {
 
 
             {openInfo && info && <InformationModal>
-                <div className="grid relative grid-cols-2 gap-2 p-4">
+                <div className="grid relative grid-cols-2 gap-4 p-4">
 
 
                     <div className="grid gap-2 justify-center items-center text-xs">
-                        <div className="grid px-4 py-2 border border-black gap-2">
+                        <div className="grid px-8 py-4 border border-black gap-2">
                             <p className="font-bold text-lg">REPORT DETAILS</p>
                             <label className="flex gap-3 items-center border-b border-black pb-2">
                                 <p className="font-bold">Ticket No.:</p>
@@ -238,7 +265,7 @@ const Page = () => {
                             </InformationModal>}
                         </div>
 
-                        <div className="border px-4 py-2 border-black">
+                        <div className="border px-8 py-4 border-black">
                             <label className="grid gap-1">
                                 <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
                                 <div className="font-bold">Name:  {info.reporter.name}</div>
@@ -261,8 +288,8 @@ const Page = () => {
                     <ConfirmationDialog />
                     {success && <InformationModal>
                         <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
-                            <p>Cleared Successfully!</p>
-                            <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                            <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
+                            <button onClick={() => setSuccess('')} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>
@@ -278,26 +305,30 @@ const Page = () => {
 
                     <div className="grid text-sm gap-2">
                         <div className="border grid gap-1 border-black p-4">
-                            <p>SANCTION</p>
+                            <p className="font-bold text-lg">SANCTION</p>
                             <div className="flex gap-2">
                                 <p className="font-bold">Kind of Offense:</p>
-                                <select className="w-32">
-                                    <option>Select Kind of Offense:</option>
-                                    <option>Light Offense</option>
-                                    <option>Less Grave Offense</option>
-                                    <option>Grave Offense</option>
-                                    <option>Dishonesty on Academic Pursuit</option>
-                                </select>
+                                <div className="flex justify-end">
+                                    <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36">
+                                        <option value={''}>{kindOfOffense ? kindOfOffense : 'Select Kind of Offense'}</option>
+                                        <option value={'Light Offense'}>Light Offense</option>
+                                        <option value={'Less Grave Offense'}>Less Grave Offense</option>
+                                        <option value={'Grave Offense'}>Grave Offense</option>
+                                        <option value={'Dishonesty on Academic Pursuit'}>Dishonesty on Academic Pursuit</option>
+                                    </select>
+                                </div>
                             </div>
                             <div className="flex mb-6 gap-2">
                                 <p className="font-bold">Degree of Offense:</p>
-                                <select className="w-32">
-                                    <option>Select Degree of Offense</option>
-                                    <option>1st Offense</option>
-                                    <option>2nd Offense</option>
-                                    <option>3rd Offense</option>
-                                    <option>4th Offense{'\n'}&#40;for applicable or special cases&#41;</option>
-                                </select>
+                                <div className="flex justify-end">
+                                    <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36">
+                                        <option value={''}>{degreeOfOffense ? degreeOfOffense : "Select Degree of Offense"}</option>
+                                        <option value={'1st Offense'}>1st Offense</option>
+                                        <option value={'2nd Offense'}>2nd Offense</option>
+                                        <option value={'3rd Offense'}>3rd Offense</option>
+                                        <option value={`4th Offense(for applicable or special cases)`}>4th Offense&#40;for applicable or special cases&#41;</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -309,15 +340,15 @@ const Page = () => {
                                 onChange={(e) => setNotes(e.target.value)}
                                 rows="6"
                                 cols="30"
-                                placeholder="Enter your notes"
+                                placeholder="Enter further details"
                                 className="mb-8"
                                 required />
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex py-4 gap-4">
                             <button onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><MdOutlineEmail size={20} /> Message</button>
                             {info.status === "Pending" && <button onClick={handleUpdate} className="flex gap-2 items-center bg-green-600 px-2 py-1"><GiCheckMark size={20} /> Clear</button>}
-                            <button className="flex gap-2 items-center bg-amber-400 px-2 py-1"><GrUpdate size={20} /> Update</button>
+                            <button onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><GrUpdate size={20} /> Update</button>
                         </div>
 
                     </div>
