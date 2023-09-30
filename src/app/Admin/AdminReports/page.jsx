@@ -148,7 +148,6 @@ const Page = () => {
     useEffect(() => {
         const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === clickedID);
         setInfo(clcikedInfo)
-        console.log(clcikedInfo)
     }, [clickedID])
     const now = new Date();
     const tomorrow = new Date(now);
@@ -310,7 +309,7 @@ const Page = () => {
                                 <p className="font-bold">Kind of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36">
-                                        <option value={''}>{kindOfOffense ? kindOfOffense : 'Select Kind of Offense'}</option>
+                                        <option value={''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
                                         <option value={'Light Offense'}>Light Offense</option>
                                         <option value={'Less Grave Offense'}>Less Grave Offense</option>
                                         <option value={'Grave Offense'}>Grave Offense</option>
@@ -322,7 +321,7 @@ const Page = () => {
                                 <p className="font-bold">Degree of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36">
-                                        <option value={''}>{degreeOfOffense ? degreeOfOffense : "Select Degree of Offense"}</option>
+                                        <option value={''}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
                                         <option value={'1st Offense'}>1st Offense</option>
                                         <option value={'2nd Offense'}>2nd Offense</option>
                                         <option value={'3rd Offense'}>3rd Offense</option>
@@ -334,9 +333,9 @@ const Page = () => {
 
                         <div className="border grid border-black p-4">
                             <p className="font-bold">NOTES</p>
-                            <p className="italic text-xs">further details accordance to sanction.</p>
+                            <p className="italic text-xs">Further details accordance to sanction.</p>
                             <textarea
-                                value={notes}
+                                value={info.notes ? info.notes : notes}
                                 onChange={(e) => setNotes(e.target.value)}
                                 rows="6"
                                 cols="30"

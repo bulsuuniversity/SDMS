@@ -158,7 +158,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             {success && <InformationModal>
                 <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
                     <p>Deleted Successfully!</p>
-                    <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                    <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>{loading ? 'Deleting' : 'Okay'}</button>
                 </div>
             </InformationModal>}
             <DataTable

@@ -138,7 +138,7 @@ const Page = () => {
                 <p className="font-bold text-xl">Student Accounts</p>
             </div>
             <div className="flex justify-center">
-                <div className="rounded-full flex border border-black bg-gray-200 items-center">
+                <div className="rounded-full p-2 flex border border-black bg-gray-200 items-center">
                     <input
                         className="rounded-l-full"
                         value={search}
