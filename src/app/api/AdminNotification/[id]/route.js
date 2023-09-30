@@ -1,4 +1,3 @@
-// url: http://localhost:3000/api/studentAccount/${id}
 import prisma from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 
@@ -6,15 +5,14 @@ export const PUT = async (request, { params }) => {
     try {
         const { id } = params
         const body = await request.json();
-        const { sanctions } = body;
-        const updatePost = await prisma.studentreport.update({
+        const { title, notif } = body;
+        const updatePost = await prisma.notification.update({
             where: {
                 id
             },
             data: {
-                kindOfOffense: sanctions.kindOfOffense,
-                degreeOfOffense: sanctions.degreeOfOffense,
-                notes: sanctions.notes,
+                title,
+                notif,
             }
         })
 
@@ -27,13 +25,7 @@ export const PUT = async (request, { params }) => {
 
 export const GET = async () => {
     try {
-        const posts = await prisma.studentreport.findMany({
-            orderBy: {
-                createdAt: 'desc',
-            },
-            take: 1,
-        });
-
+        const posts = await prisma.notification.findMany();
         return NextResponse.json(posts);
     } catch (err) {
         console.log(err);

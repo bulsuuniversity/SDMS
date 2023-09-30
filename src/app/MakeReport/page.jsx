@@ -19,6 +19,7 @@ const page = () => {
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const [reportData, setReportData] = useState({
         reporter: "",
+        ticketNo: "",
         actionOfDiscipline: '',
         offender: '',
         college: "",
@@ -29,6 +30,12 @@ const page = () => {
         describeTheSituation: '',
         status: 'Pending',
     });
+
+    useEffect(async () => {
+        const response = await axios.post(`${url}/api/AdminNotification`, { headers });
+        console.log(response)
+    }, [])
+    
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -69,7 +76,7 @@ const page = () => {
     const handleSubmit = async () => {
         startLoading()
         try {
-            const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
+            await axios.post(`${url}/api/studentReport`, reportData, { headers });
             setConfirmation(true)
             setMessage("Thank you for submitting your report")
             stopLoading()

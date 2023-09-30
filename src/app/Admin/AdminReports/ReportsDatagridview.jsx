@@ -59,7 +59,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.action}</div>,
         },
         {
-            name: <div className='flex text-center'>DATE OF INCIDENT &#40;MM/DD/YYYY&#41;</div>,
+            name: <div className='flex text-center'>DATE REPORTED &#40;MM/DD/YYYY&#41;</div>,
             selector: row => row.date,
             sortable: true,
             cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.date}</div>,
@@ -111,11 +111,22 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             ),
         },
     ];
+    function formatDate(inputDate) {
+        const date = new Date(inputDate);
+      
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const year = date.getFullYear();
+      
+        return `${month}/${day}/${year}`;
+    }
+
+    
     const data = Object.values(tableData).map((reports, index) => ({
         id: index,
         ticket: reports.id,
         action: reports.actionOfDiscipline,
-        date: reports.dateOfIncident,
+        date: formatDate(reports.createdAt),
         rate: reports.rateOfOccurence,
         status: reports.status,
     }));
