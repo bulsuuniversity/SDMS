@@ -68,13 +68,13 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             name: <div className='flex text-center'>RATE OF OCCURENCE</div>,
             selector: row => row.rate,
             sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.rate}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal',width: "100%", textAlign: 'center' }}>{row.rate}</div>,
         },
         {
             name: <div className='flex text-center'>STATUS</div>,
             selector: row => row.status,
             sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.status}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal',width: "100%", textAlign: 'center' }}>{row.status}</div>,
             conditionalCellStyles: [
                 {
                     when: (row) => row.status === "Pending",
@@ -139,7 +139,8 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     const customStyles = {
         headCells: {
             style: {
-                backgroundColor: "#99acff",
+                backgroundColor: "#a11818",
+                color: "#ffff",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center"
@@ -150,8 +151,8 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     return (
         <>
             {selectedRows.length > 0 &&
-                <div className='bg-red-200 p-4 flex items-center justify-between gap-10'>
-                    <p>{selectedRows.length} items selected</p>
+                <div className='text-red-600 bg-white p-4 flex items-center justify-between gap-10'>
+                    <p className='font-bold'>{selectedRows.length} items selected</p>
                     <button disabled={loading} onClick={handleSubmitReport} className='bg-red-600 text-white rounded-md px-4 py-2'>Delete</button>
                 </div>}
             <ConfirmationDialog />

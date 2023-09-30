@@ -78,7 +78,8 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
         },
         headCells: {
             style: {
-                backgroundColor: "#99acff",
+                backgroundColor: "#a11818",
+                color: "#ffff"
             },
         },
     };

@@ -73,7 +73,7 @@ const AdminMenu = ({ children }) => {
                     </div>
                 }
                 <div className="bg-gray-800 md:block hidden col-span-3 pt-4">
-                    <div className="flex pl-4 text-lg text-purple-600 items-center gap-5">
+                    <div className="flex pl-4 text-lg text-amber-600 items-center gap-5">
                         <Image alt="design" height={50} width={50} src={Logo} /> Admin</div>
                     <ConfirmationDialog />
                     <div className="text-white grid mt-4">

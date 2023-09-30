@@ -133,18 +133,18 @@ const Page = () => {
 
     return (
         <AdminMenu>
-            <div className="m-7 flex items-center">
-                <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
+            <div className="m-7 flex text-red-800  items-center">
+                <FaPeopleLine size={50} /> <p className="border border-2 border-red-800 h-16 mx-4" />
                 <p className="font-bold text-xl">Student Accounts</p>
             </div>
             <div className="flex justify-center">
-                <div className="rounded-full p-2 flex border border-black bg-gray-200 items-center">
+                <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
-                        className="rounded-l-full"
+                        className="rounded-l-full pl-2 focus:outline-none py-2"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search" />
-                    <GoSearch className="mx-2"/>
+                    <GoSearch className="mx-2 text-white" size={25}/>
                 </div>
             </div>
             {openInfo && info && <InformationModal>
@@ -260,7 +260,7 @@ const Page = () => {
                     </div>
                 </div>
             </InformationModal >}
-            <div className="md:mx-10 mx-1 my-10 border border-blue-400 border-2">
+            <div className="md:mx-10 mx-1 my-10 border border-red-700 border-2">
                 {data && data.length > 0 ?
                     <StudentRecordDatagridview
                         setOpenINfo={setOpenINfo}

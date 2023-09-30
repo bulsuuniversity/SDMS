@@ -167,12 +167,12 @@ const Page = () => {
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
-                <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
-                <p className="font-bold text-xl">Reports</p>
+                <ImNewspaper size={50} className="text-red-800" /> <p className="border border-2 border-red-800 h-16 mx-4" />
+                <p className="font-bold text-red-800 text-xl">Reports</p>
                 <div className="flex gap-10 py-2 ml-4 px-4 justify-center items-center">
                     <div className="flex p-2 items-center rounded-lg">
-                        <p className="font-bold">Filter: </p>
-                        <button className="bg-gray-500 rounded-lg px-4 py-1 text-white flex"
+                        <p className="font-bold text-red-700">Filter: </p>
+                        <button className="bg-red-700 rounded-lg px-4 py-1 text-white flex"
                             onClick={() => setOpenDate(!openDate)}>Select Date <MdDateRange size={24} /></button>
                         {openDate && <InformationModal>
                             <div className="relative">
@@ -188,13 +188,13 @@ const Page = () => {
                             </div>
                         </InformationModal>}
                     </div>
-                    <div className={`rounded-full mr-5 p-1 text-white bg-gray-500 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
+                    <div className={`rounded-full mr-5 p-1 text-white bg-red-700 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                         {status && <div className="grid items-center mx-4">Pending</div>}
                         <button onClick={handleChangeStatus} className={`rounded-full px-2 bg-amber-500 border boder-black`}>
                             {status ? 'Cleared' : 'Pending'}</button>
                         {!status && <div className="grid items-center mx-4">Cleared</div>}
                     </div>
-                    <div className="font-bold grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
+                    <div className="font-bold text-red-700 grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
                     </div>
                 </div>
 
@@ -286,13 +286,15 @@ const Page = () => {
 
                     <ConfirmationDialog />
                     {success && <InformationModal>
-                        <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
+                        <div className='bg-white text-red-700 grid p-10 rounded-lg gap-4'>
                             <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
-                            <button onClick={() => setSuccess('')} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                            <div className="flex justify-center">
+                                <button onClick={() => setSuccess('')} className='bg-amber-600 w-32 rounded-lg py-2 px-4'>Okay</button>
+                            </div>
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>
-                        <div className="grid justify-center p-6">
+                        <div className="grid justify-center text-white bg-red-800 p-10">
                             <div>Redirecting where you left.</div>
                             <p>Please wait...</p>
                         </div>
@@ -360,7 +362,7 @@ const Page = () => {
 
 
 
-            <div className="md:mx-10 mx-1 mb-14 border border-blue-400 border-2">
+            <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
                 {data && data.length > 0 ?
                     <ReportsDatagridview
                         setOpenINfo={setOpenINfo}
