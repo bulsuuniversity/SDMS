@@ -13,6 +13,7 @@ import { IoMdMenu } from "react-icons/io";
 import { useSession } from "next-auth/react";
 import { useProfileData } from "@/app/libs/store";
 import { url } from "@/app/libs/api";
+import { IoNotificationsCircleSharp } from "react-icons/io5";
 
 
 const AdminMenu = ({ children }) => {
@@ -22,8 +23,8 @@ const AdminMenu = ({ children }) => {
     const [menuOpen, setMenuOpen] = useState(false)
     const { data: session } = useSession()
     const router = useRouter()
-    const { profileData } = useProfileData()
-
+    const [newReport, setNewReport] = useState()
+    const [newStudent, setNewStudent] = useState()
     useEffect(() => {
         setActive(currentPathname)
     }, [currentPathname])
@@ -50,6 +51,37 @@ const AdminMenu = ({ children }) => {
             signOut({ callbackUrl: `${url}/Admin/AdminLogin` })
         });
     };
+
+    const getNotifReport = async () => {
+        try {
+            const reponse = await axios.get(`${url}/api/AdminNotification/6518de8c2bd81071174f2644`, { headers });
+            setNewReport(reponse.notif)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+    const getNotifStudent = async () => {
+        try {
+            const reponse = await axios.get(`${url}/api/AdminNotification/651900d14826f8919bf936de`, { headers });
+            setNewStudent(reponse.notif)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleUpdateNotif = async (id) => {
+        try {
+            await axios.put(`${url}/api/AdminNotification/${id}`,
+                { notif: false }, { headers });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    useEffect(() => {
+        getNotifStudent()
+        getNotifReport()
+    }, [])
 
     return (
         <AdminLayout>
@@ -79,10 +111,10 @@ const AdminMenu = ({ children }) => {
                     <div className="text-white grid mt-4">
                         <Link className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminDashboard'}>Dashboard</Link>
-                        <Link className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminStudentRecord'}>Student Records</Link>
-                        <Link className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminReports'}>Reports</Link>
+                        <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")} className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminStudentRecord'}>Student Records {newStudent && <IoNotificationsCircleSharp size={20} />}</Link>
+                        <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")} className={`mx-2 flex justify-between pl-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminReports'}>Reports {newReport && <IoNotificationsCircleSharp size={20} />}</Link>
                         {/* <Link className={`mx-2 pl-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminCounseling'}>Counselling</Link> */}
                         <Link className={`mx-2 pl-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}

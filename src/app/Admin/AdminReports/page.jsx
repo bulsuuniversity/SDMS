@@ -37,7 +37,7 @@ const Page = () => {
     const [selectedRange, setSelectedRange] = useState(() => {
         const currentDate = new Date();
         const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-        const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+        const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0);
 
         return {
             startDate: startOfMonth,
@@ -65,7 +65,6 @@ const Page = () => {
     };
 
     const filteredAndSortedData = filterAndSortData();
-
 
     const handleChangeStatus = () => {
         setStatus(!status)
@@ -206,7 +205,7 @@ const Page = () => {
 
 
             {openInfo && info && <InformationModal>
-                <div className="grid bg-red-700 relative grid-cols-2 gap-4 p-4">
+                <div className="grid bg-gray-500 relative grid-cols-2 gap-4 p-4">
 
 
                     <div className="grid gap-2 justify-center items-center text-xs">
@@ -214,7 +213,7 @@ const Page = () => {
                             <p className="font-bold text-lg">REPORT DETAILS</p>
                             <label className="flex gap-3 items-center border-b border-black pb-2">
                                 <p className="font-bold">Ticket No.:</p>
-                                <div className="p-2">{info.id}</div>
+                                <div className="p-2">{info.ticketNo}</div>
                             </label>
 
                             <div className="flex gap-4 items-start border-b border-black pb-2">
@@ -360,9 +359,6 @@ const Page = () => {
 
                 </div>
             </InformationModal>}
-
-
-
 
             <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
                 {data && data.length > 0 ?

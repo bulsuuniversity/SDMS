@@ -5,13 +5,12 @@ export const PUT = async (request, { params }) => {
     try {
         const { id } = params
         const body = await request.json();
-        const { title, notif } = body;
+        const { notif } = body;
         const updatePost = await prisma.notification.update({
             where: {
                 id
             },
             data: {
-                title,
                 notif,
             }
         })
@@ -23,9 +22,14 @@ export const PUT = async (request, { params }) => {
     }
 }
 
-export const GET = async () => {
+export const GET = async ({ params }) => {
     try {
-        const posts = await prisma.notification.findMany();
+        const { id } = params
+        const posts = await prisma.notification.findMany({
+            where: {
+                id
+            }
+        });
         return NextResponse.json(posts);
     } catch (err) {
         console.log(err);

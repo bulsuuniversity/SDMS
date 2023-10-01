@@ -24,19 +24,3 @@ export const PUT = async (request, { params }) => {
         return NextResponse.json({ message: "update Error", err }, { status: 500 })
     }
 }
-
-export const GET = async () => {
-    try {
-        const posts = await prisma.studentreport.findMany({
-            orderBy: {
-                createdAt: 'desc',
-            },
-            take: 1,
-        });
-
-        return NextResponse.json(posts);
-    } catch (err) {
-        console.log(err);
-        return NextResponse.json({ message: "GET Error", err }, { status: 500 });
-    }
-}

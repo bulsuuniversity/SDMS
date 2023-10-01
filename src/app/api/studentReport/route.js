@@ -17,6 +17,7 @@ export const POST = async (request) => {
         const {
             reporter,
             actionOfDiscipline,
+            ticketNo,
             offender,
             college,
             attachment,
@@ -32,6 +33,7 @@ export const POST = async (request) => {
                 data: {
                     reporter: reporter,
                     actionOfDiscipline: actionOfDiscipline,
+                    ticketNo: ticketNo,
                     offender: offender,
                     college: college,
                     attachment: "",
@@ -53,6 +55,7 @@ export const POST = async (request) => {
                     data: {
                         reporter: reporter,
                         actionOfDiscipline: actionOfDiscipline,
+                        ticketNo: ticketNo,
                         offender: offender,
                         college: college,
                         attachment: uploadResponse.secure_url,
@@ -77,7 +80,11 @@ export const POST = async (request) => {
 
 export const GET = async () => {
     try {
-        const posts = await prisma.studentreport.findMany()
+        const posts = await prisma.studentreport.findMany({
+            orderBy: {
+                createdAt: 'desc',
+            },
+        })
         return NextResponse.json(posts);
     } catch (err) {
         console.log(err)
