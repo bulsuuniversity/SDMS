@@ -27,9 +27,7 @@ const Page = () => {
         })
 
     const reports = reportData && Object.values(reportData).filter(student => student.reporter.id === profileData.id);
-    useEffect(() => {
-        getReportData(profileData.id)
-    }, [profileData])
+
     useEffect(() => {
         if (reports) {
             const formattedData = reports.map((data) => ({
