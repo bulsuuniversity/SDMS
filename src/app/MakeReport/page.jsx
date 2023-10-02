@@ -26,6 +26,7 @@ const page = () => {
         actionOfDiscipline: '',
         offender: '',
         college: "",
+        course: "",
         attachment: 'empty',
         dateOfIncident: '',
         platformOfIncident: '',
@@ -57,8 +58,6 @@ const page = () => {
     useEffect(() => {
         getLatestTicket()
     }, [])
-
-    console.log(reportData.ticketNo);
 
 
     useEffect(() => {
@@ -122,6 +121,7 @@ const page = () => {
                 actionOfDiscipline: '',
                 offender: '',
                 college: "",
+                course: "",
                 attachment: '',
                 dateOfIncident: '',
                 platformOfIncident: '',
@@ -178,9 +178,9 @@ const page = () => {
     return (
         <Layout>
             <PrivateRoute>
-                <div className="py-4 relative px-4 md:px-28">
+                <div className="py-4 relative mb-8 px-4 md:px-28">
 
-                    <div className="border grid justify-center border-black border-2 mb-14 md:mb-7 rounded-lg px-2 md:px-6 py-4">
+                    <div className="border grid gap-4 justify-center border-black border-2 mb-14 lg:mx-52 rounded-lg px-2 md:px-6 py-4">
                         {/* <button className="bg-blue px-4 py-2" onClick={handleMakeNotif}>Make notif</button> */}
 
                         <h2 className="text-4xl text-center">Report Form</h2>
@@ -188,76 +188,53 @@ const page = () => {
                             Please fill the necessary details denoted by &#40;&#42;&#41;.
                             Other information may be optional, but still providing its details might hasten the process.
                         </h3>
-                        <p className="indent-6 flex">Ticket No.:
-                            <div className="underline underline-offset-4">
-                                {reportData.ticketNo && reportData.ticketNo}
-                            </div>
-                        </p>
+
                         {openSelectAct &&
-                            <>
-                                <div className="p-6 grid text-start absolute border border-2 bg-white inset-0 m-12">
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("")} >Select Action of Discipline</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / Unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disturbance / Disrupt of classes or any Educational-Related-Programs")} >Disturbance / Disrupt of classes or any Educational-Related-Programs</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Unauthorized solicitation of funds or selling of any ticket")} >Unauthorized solicitation of funds or selling of any ticket</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Smoking, gambling or being under the influence of alcohol")} >Smoking, gambling or being under the influence of alcohol</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Malicious or unfounded accusations")} >Malicious or unfounded accusations</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Deception, impersonation or fraud")} >Deception, impersonation or fraud</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disrespectful behavior or refusal to comply with the directions of the university")} >Disrespectful behavior or refusal to comply with the directions of the university</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours")} >Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university")} >Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
+                                <>
+                                    <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
+                                        <button className="hover:bg-gray-400 font-bold" type="button" onClick={() => handleAction("")} >Select Action of Discipline</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / Unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disturbance / Disrupt of classes or any Educational-Related-Programs")} >Disturbance / Disrupt of classes or any Educational-Related-Programs</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Unauthorized solicitation of funds or selling of any ticket")} >Unauthorized solicitation of funds or selling of any ticket</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Smoking, gambling or being under the influence of alcohol")} >Smoking, gambling or being under the influence of alcohol</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Malicious or unfounded accusations")} >Malicious or unfounded accusations</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Deception, impersonation or fraud")} >Deception, impersonation or fraud</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disrespectful behavior or refusal to comply with the directions of the university")} >Disrespectful behavior or refusal to comply with the directions of the university</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours")} >Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university")} >Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</button>
+                                        <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
+                                    </div>
+                                </>}
+                        <form className="grid relative pb-8 mx-2 md:mx-16" onSubmit={handleSubmitReport}>
+                            <p className="font-bold flex gap-2">Ticket No.:
+                                <div className="underline underline-offset-4">
+                                    {reportData.ticketNo && reportData.ticketNo}
                                 </div>
-                            </>}
-                        <form className="grid md:grid-cols-2 grid-cols-1 gap-6 mx-2 md:mx-16" onSubmit={handleSubmitReport}>
-                            <div className="grid gap-4">
-                                <label className="grid">
-                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p> Act of Misconduct:</div>
-                                    <div
-                                        className={`${require && "border border-red-600"} px-2 border-b-2 flex justify-between w-full`}
-                                        onClick={() => setOpenSelectAct(true)}
-                                    >{reportData.actionOfDiscipline ? reportData.actionOfDiscipline : 'Select'}
-                                        <SlArrowDown className="text-black" size={10} />
-                                    </div>
+                            </p>
+                            <p className="font-bold">Student-of-Concerns Details:</p>
+                            <div className="grid indent-6 gap-1">
 
 
-                                    {customActionOption && <input
-                                        className="border-b-2"
-                                        placeholder="Action of Discipline"
-                                        type="text"
-                                        value={reportData.actionOfDiscipline}
-                                        onChange={(e) => handleInputChange('actionOfDiscipline', e.target.value)}
-                                    />}
-                                </label>
-                                {confirmation && <ConfirmationModal>
-                                    <div className="grid gap-2 m-10">
-                                        <div>{message}</div>
-                                        <div className="flex mt-6 justify-center">
-                                            <button className="bg-amber-100 py-2 px-4 w-16 rounded-lg" onClick={() => setConfirmation(false)}>Okay</button>
-                                        </div>
-                                    </div>
-                                </ConfirmationModal>}
-                                <ConfirmationDialog />
-                                <label className="grid">
-                                    <p className="font-bold text-md">Offender:</p>
+                                <label className="flex justify-between">
+                                    <p className="font-bold text-md flex"><p className="text-red-600">&#42;</p>Name:</p>
                                     <input
-                                        className="border-b-2"
-                                        placeholder="Offender name"
+                                        className="border w-52"
+                                        placeholder="Name"
                                         type="text"
                                         value={reportData.offender}
                                         onChange={(e) => handleInputChange('offender', e.target.value)}
                                         required
                                     />
                                 </label>
-                                <label className="grid">
-                                    <p className="font-bold text-md"> College:</p>
+                                <label className="flex justify-between">
+                                    <p className="font-bold text-md flex"><p className="text-red-600">&#42;</p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
-                                        className="border w-full"
+                                        className="border w-52"
                                         required
                                     >
-                                        <option value="">Select offender College</option>
+                                        <option value="">Select College</option>
                                         <option value="CBA">CBA</option>
                                         <option value="CIT">CIT</option>
                                         <option value="COED">COED</option>
@@ -266,82 +243,131 @@ const page = () => {
                                         <option value="Others">Others</option>
                                     </select>
                                     {customOption && <input
-                                        className="border-b-2"
+                                        className="border"
                                         placeholder=""
                                         type="text"
                                         value={reportData.college}
                                         onChange={(e) => handleInputChange('college', e.target.value)}
                                     />}
                                 </label>
-                                <label className="grid">
-                                    <p className="font-bold text-md"> Attachment:</p>
+                                <label className="flex justify-between">
+                                    <p className="font-bold text-md flex"><p className="text-red-600">&#42;</p>Course, year & section:</p>
                                     <input
-                                        className="border-b-2"
-                                        placeholder=""
-                                        type="file"
-                                        accept="image/jpeg, image/png"
-                                        onChange={handlePictureChange}
-                                    />
-                                    <p className="text-xs italic"> Note: Picture of handwritten narrative report.</p>
-                                </label>
-                            </div>
-                            <div className="grid gap-4">
-                                <label className="grid">
-                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p> Date of Incident:</div>
-                                    <input
-                                        className="border-b-2"
-                                        placeholder=""
-                                        type="date"
-                                        value={reverseFormatDate(reportData.dateOfIncident)}
-                                        onChange={(e) => {
-                                            const formattedDate = formatDate(e.target.value);
-                                            handleInputChange('dateOfIncident', formattedDate);
-                                        }}
-                                        required
-                                    />
-                                </label>
-                                <label className="grid">
-                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p> Place/Platform of Incident:</div>
-                                    <input
-                                        className="border-b-2"
-                                        placeholder="Place or platform used"
+                                        className="border w-52"
+                                        placeholder="Course, year and Section"
                                         type="text"
-                                        value={reportData.platformOfIncident}
-                                        onChange={(e) => handleInputChange('platformOfIncident', e.target.value)}
+                                        value={reportData.course}
+                                        onChange={(e) => handleInputChange('course', e.target.value)}
                                         required
                                     />
                                 </label>
-                                <label className="grid">
-                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p> Rate of Occurrence:</div>
-                                    <select
-                                        value={reportData.rateOfOccurrence}
-                                        onChange={(e) => handleInputChange('rateOfOccurrence', e.target.value)}
-                                        required
-                                    >
-                                        <option value="">Select rate of Occurrence</option>
-                                        <option className="text-center" value="1">1</option>
-                                        <option className="text-center" value="2">2</option>
-                                        <option className="text-center" value="3">3</option>
-                                        <option className="text-center" value="4">4</option>
-                                        <option className="text-center" value="5">5</option>
-                                    </select>
 
-                                </label>
-                                <label className="grid">
-                                    <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>  Describe the Situation:</div>
-                                    <textarea
-                                        className="border"
-                                        placeholder="Please descride the details"
-                                        value={reportData.describeTheSituation}
-                                        onChange={(e) => handleInputChange('describeTheSituation', e.target.value)}
-                                        required
-                                    />
-                                </label>
                             </div>
-                            <div className="relative bg-red-600">
+                           
+                            {confirmation && <ConfirmationModal>
+                                <div className="grid gap-2 m-10">
+                                    <div>{message}</div>
+                                    <div className="flex mt-6 justify-center">
+                                        <button className="bg-amber-100 py-2 px-4 w-16 rounded-lg" onClick={() => setConfirmation(false)}>Okay</button>
+                                    </div>
+                                </div>
+                            </ConfirmationModal>}
+                            <ConfirmationDialog />
+
+                            <div className="grid gap-4 ">
+                                <p className="font-bold">Misconduct Details:</p>
+                                <div className="indent-6 grid gap-1">
+                                    <label className="flex justify-between">
+                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Act of Misconduct:</div>
+                                        <div
+                                            className={`${require && "border border-red-600"} pr-2 border flex items-center justify-between w-52`}
+                                            onClick={() => setOpenSelectAct(true)}
+                                        >{reportData.actionOfDiscipline ? reportData.actionOfDiscipline : 'Select'}
+                                            <SlArrowDown className="text-black" size={9} />
+                                        </div>
+                                        {customActionOption && <input
+                                            className="border-b-2"
+                                            placeholder="Action of Discipline"
+                                            type="text"
+                                            value={reportData.actionOfDiscipline}
+                                            onChange={(e) => handleInputChange('actionOfDiscipline', e.target.value)}
+                                        />}
+                                    </label>
+                                    <label className="flex justify-between">
+                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Date of Incident:</div>
+                                        <input
+                                            className="border w-52"
+                                            placeholder=""
+                                            type="date"
+                                            value={reverseFormatDate(reportData.dateOfIncident)}
+                                            onChange={(e) => {
+                                                const formattedDate = formatDate(e.target.value);
+                                                handleInputChange('dateOfIncident', formattedDate);
+                                            }}
+                                            required
+                                        />
+                                    </label>
+                                    <label className="flex justify-between">
+                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Place or Platform of Incident:</div>
+                                        <input
+                                            className="border w-52"
+                                            placeholder="Place or platform used"
+                                            type="text"
+                                            value={reportData.platformOfIncident}
+                                            onChange={(e) => handleInputChange('platformOfIncident', e.target.value)}
+                                            required
+                                        />
+                                    </label>
+                                    <label className="flex justify-between">
+                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Rate of Occurrence:</div>
+                                        <select
+                                            value={reportData.rateOfOccurrence}
+                                            onChange={(e) => handleInputChange('rateOfOccurrence', e.target.value)}
+                                            required
+                                            className="border w-52"
+                                        >
+                                            <option value="">Select rate of Occurrence</option>
+                                            <option className="text-center" value="1">1</option>
+                                            <option className="text-center" value="2">2</option>
+                                            <option className="text-center" value="3">3</option>
+                                            <option className="text-center" value="4">4</option>
+                                            <option className="text-center" value="5">5</option>
+                                        </select>
+
+                                    </label>
+                                    <label className="flex justify-between">
+                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Brief Description of the Situation:</div>
+                                        <textarea
+                                            className="border"
+                                            placeholder="Please describe the details"
+                                            rows="3"
+                                            cols="20"
+                                            value={reportData.describeTheSituation}
+                                            onChange={(e) => handleInputChange('describeTheSituation', e.target.value)}
+                                            required
+                                        />
+                                    </label>
+                                    <label className="grid">
+                                        <div className="flex justify-between">
+                                            <p className="font-bold text-md"> Attachment:</p>
+                                            <input
+                                                className="border w-52"
+                                                placeholder=""
+                                                type="file"
+                                                accept="image/jpeg, image/png"
+                                                onChange={handlePictureChange}
+                                            />
+                                        </div>
+                                        <p className="text-xs italic"> Note: Picture of handwritten narrative report.</p>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div className="w-full absolute md:-bottom-12 -bottom-16 flex justify-center">
                                 <button
                                     disabled={loading}
-                                    className={`${loading ? "bg-gray-500" : "bg-amber-400"} absolute md:-bottom-12 -bottom-16 right-24 md:-right-96 border border-black rounded-[1.5rem] p-4`}
+                                    className={`${loading ? "bg-gray-500" : "bg-amber-400"} border border-black rounded-[1.5rem] p-4`}
                                     type="submit">
                                     {loading ? "Submitting" : "Submit Report"}</button>
                             </div>

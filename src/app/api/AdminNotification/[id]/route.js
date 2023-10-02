@@ -22,9 +22,9 @@ export const PUT = async (request, { params }) => {
     }
 }
 
-export const GET = async ({ params }) => {
+export const GET = async (request, { params }) => {
     try {
-        const { id } = params
+        const { id } = params;
         const posts = await prisma.notification.findMany({
             where: {
                 id

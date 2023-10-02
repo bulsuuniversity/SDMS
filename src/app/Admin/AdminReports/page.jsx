@@ -16,6 +16,7 @@ import { ImNewspaper } from "react-icons/im";
 import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
 import { DateRangePicker } from 'react-date-range';
+import Link from "next/link";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -223,7 +224,7 @@ const Page = () => {
                                     <div className="font-bold">Course, Year & Section: {info.yearLevel}</div>
                                 </label>
                             </div>
-                            <label className="flex gap-3">
+                            <label className="flex gap-3 w-72">
                                 <p className="font-bold">Act of Misconduct: </p>
                                 <div> {info.actionOfDiscipline}</div>
                             </label>
@@ -250,11 +251,11 @@ const Page = () => {
                             {openMessage && info && <SendMessage suggestions={suggestions} sentEmail={sentEmail} setSentEmail={setSentEmail} email={info.reporter.email} setClose={setOpenMessage} />}
                             {seeImage && info.attachment !== "" && <InformationModal>
                                 <div className="relative p-6">
-                                    <div className="h-96">
+                                    <Link href={imageToView} target="blank" className="h-96">
                                         <Image width={400} height={200}
                                             className="object-fill h-96 w-96"
                                             src={imageToView} alt="attachment" />
-                                    </div>
+                                    </Link>
                                     <div className="absolute -top-4 -right-4">
                                         <button
                                             onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">

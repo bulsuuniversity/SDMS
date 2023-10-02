@@ -58,6 +58,7 @@ model Studentreport {
   actionOfDiscipline   String
   offender             String?
   college              String?
+  course               String?
   attachment           String?
   dateOfIncident       String
   platformOfIncident   String

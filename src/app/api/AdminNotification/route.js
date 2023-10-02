@@ -8,7 +8,7 @@ export const POST = async (request) => {
 
         const newPost = await prisma.notification.create({
             data: {
-                title: "student",
+                title: "report",
                 notif: true,
             },
         })

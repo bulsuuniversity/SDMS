@@ -91,14 +91,14 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             ],
         },
         {
-            name: View,
+            name: <div className='flex text-center'>VIEW</div>,
             cell: (row) => <div onClick={() => handleRowClick(row)}
                 className='cursor-pointer w-full grid place-content-center'>
                 <IoEyeSharp size={20} /></div>
             ,
         },
         status && {
-            name: Delete,
+            name: <div className='flex text-center'>DELETE</div>,
             cell: (row) => (
                 <div className={`flex w-full justify-center `}>
                     <input
@@ -123,7 +123,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
 
     
     const data = Object.values(tableData).map((reports, index) => ({
-        id: index,
+        id: reports.id,
         ticket: reports.ticketNo,
         action: reports.actionOfDiscipline,
         date: formatDate(reports.createdAt),
@@ -132,7 +132,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     }));
 
     const handleRowClick = (row) => {
-        setClickedID(row.ticket)
+        setClickedID(row.id)
         setOpenINfo(true)
     };
 
