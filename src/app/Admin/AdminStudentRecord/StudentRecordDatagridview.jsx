@@ -1,7 +1,7 @@
 import DataTable from 'react-data-table-component';
 import SendMessage from '@/components/SendMessage';
 import { AiOutlineMail } from 'react-icons/ai';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
 
@@ -74,7 +74,7 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
             ],
         },
         {
-            name: <div className='flex text-center'>Message</div>,
+            name: <div className='flex text-center'>MESSAGE</div>,
             sortable: true,
             cell: (row) => <div className='flex justify-center w-full' onClick={() => handleSendMessage(row)}><AiOutlineMail size={20} /></div>,
         },
@@ -96,8 +96,14 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
 
     const handleSendMessage = (row) => {
         setStudentEmail(row.email)
-        studentEmail && setOpenMessage(true)
+        setOpenMessage(true)
     };
+
+    // useEffect(() => {
+    //     if (studentEmail) {
+    //         setOpenMessage(true)
+    //     }
+    // }, [studentEmail])
 
     const customStyles = {
         rows: {

@@ -95,8 +95,12 @@ const Page = () => {
         }
     }
 
-    const data = filterData && Object.values(filterData).filter(report => search ? report.name && (report.name).includes(search) : true)
-
+    const data = filterData && Object.values(filterData).filter(report => 
+        search ? 
+          report.name && (report.name.toLowerCase()).includes(search.toLowerCase()) : 
+          true
+      );
+      
 
     useEffect(() => {
         handleGetData()
@@ -150,7 +154,7 @@ const Page = () => {
                         className="rounded-l-full pl-2 focus:outline-none py-2"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Search" />
+                        placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
                 </div>
             </div>

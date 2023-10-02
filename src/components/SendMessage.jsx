@@ -3,9 +3,10 @@ import axios from 'axios';
 import InformationModal from '@/utils/InformationModal';
 import useLoading from '@/utils/Loading';
 import useConfirmation from '@/utils/ConfirmationHook';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCloseCircle, AiOutlineCheckCircle } from 'react-icons/ai';
 import { MdOutlineEmail } from 'react-icons/md';
 import { url, headers } from '@/app/libs/api';
+import { FcAbout } from 'react-icons/fc';
 
 
 function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) {
@@ -40,9 +41,9 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
     const handleSendEmail = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAbout size={32}/>Send Message</div>
-         <p className='text-xl p-6'>Are you sure you want to send message</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAbout size={32} />Send Message</div>
+            <p className='text-xl p-6'>Are you sure you want to send message</p>
+        </div>, () => {
             handleSubmitReport()
         });
     };
@@ -54,7 +55,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
 
     return (
         <InformationModal>
-            <div className="relative text-lg sm:w-80 w-72 md:w-[45rem] rounded-lg grid justify-center bg-gray-300 p-6">
+            <div className={`relative text-lg rounded-lg grid justify-center bg-white ${success ? "w-max" : "sm:w-80 w-72 md:w-[45rem]"} p-6`}>
                 <div className="absolute -top-4 -right-4">
                     <button
                         onClick={() => setClose(false)} className="rounded-full text-red-600 bg-white">
@@ -62,16 +63,21 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                 </div>
                 <ConfirmationDialog />
                 {loading && <InformationModal>
-                        <div className="grid justify-center p-6">
-                            <div>Sending Message.</div>
-                            <p>Please wait...</p>
-                        </div>
-                    </InformationModal>}
+                    <div className="grid justify-center p-6">
+                        <div>Sending Message.</div>
+                        <p>Please wait...</p>
+                    </div>
+                </InformationModal>}
                 {success ?
                     <>
-                        <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
+                        <div className='grid justify-center gap-7'>
+                            <div className='flex justify-center'>
+                                <AiOutlineCheckCircle className='rounded-full bg-green-400' size={32} />
+                            </div>
                             <p>Sent Successfully!</p>
-                            <button onClick={handleClose} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                            <div className='flex justify-center'>
+                                <button onClick={handleClose} className='bg-green-600 w-max text-white rounded-lg py-2 px-4'>Okay</button>
+                            </div>
                         </div>
                     </> :
                     <form onSubmit={handleSendEmail}><div className='grid bg-gray-100 p-3 rounded-lg'>

@@ -39,7 +39,7 @@ const Page = () => {
     const reports = filterReports && Object.values(filterReports).filter(report => report.status === `${status ? 'Cleared' : 'Pending'}`)
 
 
-    const Cyberbullying = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Cyberbullying")).length : 1
+    const Cyberbullying = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Deception"))).length : 1
     const Misinformation = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Misinformation")).length : 1
     const Verbal = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Verbal abuse")).length : 1
     const Harrassment = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Harrassment")).length : 1

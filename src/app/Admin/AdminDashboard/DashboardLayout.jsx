@@ -35,7 +35,7 @@ const DashboardLayout = ({ children }) => {
                     <div className="text-md font-bold">Dashboard</div>
                     <div className={`flex ml-12 bg-gray-400 text-xs rounded-lg `}>
                         <Link href={'/Admin/AdminDashboard/StudentRecords'}
-                            className={`hover:bg-amber-400
+                            className={`hover:bg-amber-400 w-44
                             ${!children ? "p-7 text-2xl" : ""}
                              ${dashboard === 'StudentRecords' && 'bg-amber-300'} 
                              rounded-lg grid justify-center py-1 px-2 items-center`}>
@@ -43,7 +43,7 @@ const DashboardLayout = ({ children }) => {
                             Student Records
                         </Link>
                         <Link href={'/Admin/AdminDashboard/Reports'}
-                            className={`hover:bg-amber-400 
+                            className={`hover:bg-amber-400 w-44
                             ${!children ? "p-5 text-xl" : ""}
                             ${dashboard === 'Reports' && 'bg-amber-300'}
                              rounded-lg grid justify-center py-1 px-2 items-center`}>
