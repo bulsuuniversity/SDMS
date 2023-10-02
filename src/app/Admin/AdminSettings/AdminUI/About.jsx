@@ -56,7 +56,7 @@ const About = ({ setOpen }) => {
                             Successfully updated!
                         </div>
                         <div className="flex justify-center">
-                            <button onClick={() => setMessage(false)} className="bg-amber-100 py-2 w-16 px-4 rounded-lg">Okay</button>
+                            <button onClick={() => setMessage(false)} className="bg-green-500 text-white py-2 w-max px-4 rounded-lg">Okay</button>
                         </div>
                     </div></InformationModal>}
                 <form className="grid gap-2 text-lg md:mx-32 mx-2 md:my-16 my-max" onSubmit={handleSubmit}>

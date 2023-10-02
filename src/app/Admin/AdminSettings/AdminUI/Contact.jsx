@@ -91,12 +91,12 @@ const Contact = ({ setOpen }) => {
                         <AiFillCloseCircle size={30} /></button>
                 </div>
                 {message && <InformationModal>
-                    <div className="p-10 grid gap-3">
+                    <div className="p-10 border border-black grid gap-3">
                         <div className="text-2xl text-center">
                             Successfully updated!
                         </div>
                         <div className="flex justify-center">
-                            <button onClick={() => setMessage(false)} className="bg-amber-100 py-2 w-16 px-4 rounded-lg">Okay</button>
+                            <button onClick={() => setMessage(false)} className="bg-green-500 text-white w-max py-2 px-4 rounded-lg">Okay</button>
                         </div>
                     </div></InformationModal>}
                 <form className="grid gap-2 text-2xl" onSubmit={handleSubmit}>

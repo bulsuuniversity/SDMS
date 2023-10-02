@@ -62,10 +62,12 @@ const Page = () => {
                     {error !== "" &&
                         <ConfirmationModal>
                             <div className="p-10 grid justify-center gap-4 items-center">
-                                <div>
+                                <div className='flex justify-center'>
                                     {error}
                                 </div>
-                                <button onClick={() => setError("")} className="bg-amber-300 px-4 py-2 rounded-lg">Okay</button>
+                                <div className='flex justify-center'>
+                                    <button onClick={() => setError("")} className='bg-green-600 w-max text-white rounded-lg py-2 px-4'>Okay</button>
+                                </div>
                             </div>
                         </ConfirmationModal>
                     }

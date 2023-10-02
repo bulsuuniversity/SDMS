@@ -117,7 +117,7 @@ const Register = ({ setActive, setData }) => {
                     <div className="p-6 grid justify-center gap-4">
                         <div>Email already exist!</div>
                         <div className="flex justify-center">
-                            <button onClick={() => setInfo(false)} className="bg-amber-600 rounded-lg w-16 py-2 px-4">Okay</button>
+                            <button onClick={() => setInfo(false)} className="bg-green-500 rounded-lg w-16 py-2 px-4">Okay</button>
                         </div>
                     </div>
                 </InformationModal>}

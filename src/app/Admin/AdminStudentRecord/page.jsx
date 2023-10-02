@@ -168,9 +168,9 @@ const Page = () => {
                     </div>
                     <ConfirmationDialog />
                     {success && <InformationModal>
-                        <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
+                        <div className='bg-amber-200 grid p-10 border border-black rounded-lg gap-4'>
                             <p>{message}</p>
-                            <button onClick={handleClose} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                            <button onClick={handleClose} className='bg-green-500 text-white w-max rounded-lg py-2 px-4'>Okay</button>
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>

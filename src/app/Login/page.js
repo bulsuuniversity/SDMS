@@ -97,7 +97,7 @@ const Login = () => {
                     <p className="text-center w-48">{errorMess}</p>
                     <div className="flex justify-center">
                       <button onClick={() => setError(false)}
-                        className="px-4 bg-amber-200 rounded-lg py-2 w-16">Okay</button>
+                        className="px-4 bg-green-500 text-white rounded-lg py-2 w-max">Okay</button>
                     </div>
                   </div>
                 </InformationModal>}

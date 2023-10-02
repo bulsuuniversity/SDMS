@@ -119,11 +119,11 @@ const Carousel = ({ setOpen }) => {
         <InformationModal>
             <div className="relative bg-gray-400 rounded-lg m-10 p-10">
                 {message && <InformationModal>
-                    <div className="p-10 w-60 grid">
+                    <div className="p-10 border border-black w-60 grid">
                         <div className="text-2xl text-center">
                             {response}
                         </div>
-                        <button onClick={() => setMessage(false)} className="bg-amber-100 py-2 px-4 rounded-lg">Okay</button>
+                        <button onClick={() => setMessage(false)} className="bg-green w-max py-2 px-4 rounded-lg">Okay</button>
                     </div></InformationModal>}
                 {loading && <InformationModal>
                     <div className="p-10 w-60 grid">

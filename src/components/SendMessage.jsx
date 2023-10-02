@@ -70,7 +70,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                 </InformationModal>}
                 {success ?
                     <>
-                        <div className='grid justify-center gap-7'>
+                        <div className='grid border border-black justify-center gap-7'>
                             <div className='flex justify-center'>
                                 <AiOutlineCheckCircle className='rounded-full bg-green-400' size={32} />
                             </div>

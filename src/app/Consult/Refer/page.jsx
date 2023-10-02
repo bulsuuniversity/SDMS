@@ -129,10 +129,10 @@ const Page = () => {
                                 <option value="others">Others</option>
                             </select>
                             {message && <ConfirmationModal>
-                                <div className="p-6 grid gap-4">
+                                <div className="p-6 grid border border-black gap-4">
                                     <div>{responseData}</div>
                                     <div className="flex justify-center">
-                                        <button onClick={() => setMessage(false)} className="bg-amber-300 py-2 px-4 rounded-lg">Okay</button>
+                                        <button onClick={() => setMessage(false)} className="bg-green-500 text-white w-max py-2 px-4 rounded-lg">Okay</button>
                                     </div>
                                 </div>
                             </ConfirmationModal>}

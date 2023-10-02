@@ -61,11 +61,11 @@ const Page = () => {
                 <div className="grid justify-center items-center py-6 bg-white px-10">
                     {error !== "" &&
                         <ConfirmationModal>
-                            <div className="p-10 grid justify-center gap-4 items-center">
+                            <div className="p-10 grid border border-black justify-center gap-4 items-center">
                                 <div>
                                     {error}
                                 </div>
-                                <button onClick={() => setError("")} className="bg-amber-300 px-4 py-2 rounded-lg">Okay</button>
+                                <button onClick={() => setError("")} className="bg-green-500 text-white px-4 py-2 rounded-lg">Okay</button>
                             </div>
                         </ConfirmationModal>
                     }

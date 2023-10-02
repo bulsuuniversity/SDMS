@@ -109,10 +109,10 @@ const Page = () => {
                     </label>
                     {message &&
                         <ConfirmationModal>
-                            <div className="grid gap-4 p-4 justify-center items-center">
+                            <div className="grid gap-4 p-4 border border-black justify-center items-center">
                                 <div className="text-2xl w-full sm:w-72 text-center whitespace-normal font-bold">{responseData}</div>
                                 <div className="flex justify-center">
-                                    <button onClick={() => setMessage(false)} className="p-2 w-14 bg-amber-200 rounded-lg">Okay</button>
+                                    <button onClick={() => setMessage(false)} className="px-4 py-2 bg-green-500 text-white w-max rounded-lg">Okay</button>
                                 </div>
                             </div>
                         </ConfirmationModal>

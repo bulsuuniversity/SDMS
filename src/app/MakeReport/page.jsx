@@ -12,6 +12,7 @@ import { formatDate, reverseFormatDate } from "@/utils/formatDate";
 import { PrivateRoute } from "@/components/auth";
 import { SlArrowDown } from "react-icons/sl";
 import { FcAddDatabase } from "react-icons/fc";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const page = () => {
     const { profileData } = useProfileData()
@@ -49,7 +50,6 @@ const page = () => {
     const getLatestTicket = async () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
-            console.log(response)
             handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
         } catch (err) {
             console.log(err);
@@ -111,7 +111,7 @@ const page = () => {
         try {
             const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
             setConfirmation(true)
-            setMessage("Thank you for submitting your report")
+            setMessage("Submitted successfully!")
             stopLoading()
             handleNotif()
             setReportData({
@@ -188,12 +188,12 @@ const page = () => {
                         <h2 className="text-4xl text-center">Report Form</h2>
                         <h3 className="text-xs italic px-20 pb-4 grid justify-center">
                             Please fill the necessary details denoted by &#40;&#42;&#41;.
-                            Other information may be optional, but still providing its details might hasten the process.
+                            Providing its details will hasten the process.
                         </h3>
 
                         {openSelectAct &&
                             <>
-                                <div className="p-6 text-xs grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
+                                <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
                                     <button className="hover:bg-gray-400 font-bold" type="button" onClick={() => handleAction("")} >Select Action of Discipline</button>
                                     <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
                                     <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
@@ -274,10 +274,10 @@ const page = () => {
                             </div>
 
                             {confirmation && <ConfirmationModal>
-                                <div className="grid gap-2 border border-black m-10">
+                                <div className='grid justify-center gap-4 p-10'>
                                     <div>{message}</div>
                                     <div className="flex mt-6 justify-center">
-                                        <button className="bg-amber-100 py-2 px-4 w-16 rounded-lg" onClick={() => setConfirmation(false)}>Okay</button>
+                                        <button className="bg-green-600 text-white py-2 px-4 w-max rounded-lg" onClick={() => setConfirmation(false)}>Okay</button>
                                     </div>
                                 </div>
                             </ConfirmationModal>}

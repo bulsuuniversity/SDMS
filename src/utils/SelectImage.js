@@ -65,10 +65,10 @@ const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
                 <ConfirmationDialog />
                 {message && <ConfirmationModal>
                     <div className="p-10 grid">
-                        <div className="text-2xl text-center">
+                        <div className="text-2xl border border-black text-center">
                             {response}
                         </div>
-                        <button onClick={handleCLick()} className="bg-amber-100 py-2 px-4 rounded-lg">Okay</button>
+                        <button onClick={handleCLick()} className="bg-green-500 text-white w-max py-2 px-4 rounded-lg">Okay</button>
                     </div>  </ConfirmationModal>}
                 <div className="relative p-7 bg-gray-300 rounded-lg">
                     <div className="absolute -top-1 -right-1">

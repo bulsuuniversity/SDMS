@@ -92,11 +92,11 @@ const Page = () => {
 
                     {responseData === "failed" && <ConfirmationModal>
                         <div>
-                            <div className="flex flex-col justify-center p-7 justify-center">
+                            <div className="flex border border-black flex-col justify-center p-7 justify-center">
                                 <div className="text-2xl font-bold whitespace-normal text-center ">
                                     PASSWORD CHANGE FAILED!
                                 </div>
-                                <button onClick={() => setResponseData("")} className="bg-amber-300 py-2 px-4 rounded-lg">Okay</button>
+                                <button onClick={() => setResponseData("")} className="bg-green-500 text-white w-max py-2 px-4 rounded-lg">Okay</button>
                             </div>
                         </div>
                     </ConfirmationModal>}

@@ -94,7 +94,7 @@ const EnterCode = ({ registerData, sentCode }) => {
                     <div className="text-xl font-bold whitespace-normal text-center ">
                         Wrong code entered!
                         <div className="italic text-xs">Please open your gmail account for the code sent.</div>
-                        <button onClick={() => setXCode(false)} className="p-2 m-4 text-md rounded-lg bg-amber-400">Okay</button>
+                        <button onClick={() => setXCode(false)} className="p-2 m-4 text-md rounded-lg w-max bg-green-500">Okay</button>
                     </div>
                 </ConfirmationModal>
             }
