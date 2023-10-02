@@ -33,6 +33,8 @@ githubPassword = tdmeuqdbihzfii9nprz9_anql0w
 7. Build the program to have production build
 
 
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
