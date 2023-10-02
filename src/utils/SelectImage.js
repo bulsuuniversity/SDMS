@@ -50,7 +50,10 @@ const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to save profile image?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddImage size={32}/>Save Profile</div>
+        <p className='text-xl p-6'>Are you sure you want to save profile image?</p>
+        </div>, () => {
             handleChangeProfile()
         });
     };

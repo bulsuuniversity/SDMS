@@ -8,6 +8,7 @@ import { url, headers } from "@/app/libs/api";
 import { useEffect, useState } from "react";
 import useLoading from "@/utils/Loading";
 import useConfirmation from "@/utils/ConfirmationHook";
+import { FcAddDatabase, FcAddImage, FcDeleteDatabase } from "react-icons/fc";
 
 const Carousel = ({ setOpen }) => {
     const [file, setFile] = useState(null)
@@ -91,7 +92,10 @@ const Carousel = ({ setOpen }) => {
 
     const handleUpdate = () => {
         if (file) {
-            showConfirmation('Are you sure you want to add image?', () => {
+            showConfirmation(<div className='grid justify-center gap-4'>
+            <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddImage size={32}/>Add Image</div>
+            <p className='text-xl p-6'>Are you sure you want to add this image?</p>
+            </div>, () => {
                 handleAddImage()
             });
             setMessage(true)
@@ -103,7 +107,10 @@ const Carousel = ({ setOpen }) => {
     };
 
     const handleDeleteImage = (id, publicId) => {
-        showConfirmation('Are you sure you want to delete image?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDeleteDatabase size={32}/>Delete Image</div>
+         <p className='text-xl p-6'>Are you sure you want to delete this image?</p>
+         </div>, () => {
             handleDelete(id, publicId)
         });
     };

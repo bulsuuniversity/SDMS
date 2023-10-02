@@ -10,6 +10,7 @@ import axios from "axios";
 import { url, headers } from "@/app/libs/api";
 import { formatDate, reverseFormatDate } from "@/utils/formatDate";
 import useConfirmation from "@/utils/ConfirmationHook";
+import { FcAddDatabase } from "react-icons/fc";
 
 
 const Page = () => {
@@ -67,7 +68,10 @@ const Page = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to submit report?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddDatabase size={32}/>Submit Account</div>
+         <p className='text-xl p-6'>Are you sure you want to submit this account?</p>
+         </div>, () => {
             handleSubmitReport()
         });
     };

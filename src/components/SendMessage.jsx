@@ -39,7 +39,10 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
 
     const handleSendEmail = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to send message?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAbout size={32}/>Send Message</div>
+         <p className='text-xl p-6'>Are you sure you want to send message</p>
+         </div>, () => {
             handleSubmitReport()
         });
     };

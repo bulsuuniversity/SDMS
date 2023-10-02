@@ -15,6 +15,7 @@ import useLoading from "@/utils/Loading";
 import Link from "next/link";
 import { GrClose } from "react-icons/gr";
 import { GoSearch } from "react-icons/go";
+import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
 
 
 const Page = () => {
@@ -74,7 +75,10 @@ const Page = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to approve this account?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcApprove size={32}/>Approve Account</div>
+        <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
+        </div>, () => {
             handleUpdateApi()
         });
     };
@@ -121,7 +125,10 @@ const Page = () => {
 
     const handleRemoveAcc = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to Remove this account?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDeleteDatabase size={32}/>Remove Account</div>
+         <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
+         </div>, () => {
             handleRemoveAccApi()
         });
     };

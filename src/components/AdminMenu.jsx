@@ -15,6 +15,7 @@ import { useProfileData } from "@/app/libs/store";
 import { IoNotificationsCircleSharp } from "react-icons/io5";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api";
+import { FcDataProtection } from "react-icons/fc";
 
 const AdminMenu = ({ children }) => {
     const currentPathname = usePathname()
@@ -46,7 +47,10 @@ const AdminMenu = ({ children }) => {
 
     const handleSignOut = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to Log out?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataProtection size={32}/>Logout Account</div>
+         <p className='text-xl p-6'>Are you sure you want to logout this account?</p>
+         </div>, () => {
             router.push("/Admin/AdminLogin")
             signOut({ callbackUrl: `${url}/Admin/AdminLogin` })
         });
@@ -56,7 +60,6 @@ const AdminMenu = ({ children }) => {
         try {
             const reponse = await axios.get(`${url}/api/AdminNotification/6518de8c2bd81071174f2644`, { headers });
             setNewReport(reponse.data[0].notif)
-            console.log(reponse.data[0].notif)
         } catch (error) {
             console.error('Error:', error);
         }
@@ -65,7 +68,6 @@ const AdminMenu = ({ children }) => {
         try {
             const reponse = await axios.get(`${url}/api/AdminNotification/651900d14826f8919bf936de`, { headers });
             setNewStudent(reponse.data[0].notif)
-            console.log(reponse.data[0].notif)
         } catch (error) {
             console.error('Error:', error);
         }
@@ -82,11 +84,11 @@ const AdminMenu = ({ children }) => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-          getNotifStudent();
-          getNotifReport();
+            getNotifStudent();
+            getNotifReport();
         }, 3000);
         return () => clearInterval(intervalId);
-      }, []);
+    }, []);
 
     const handleGetNotif = () => {
         getNotifStudent();
@@ -137,6 +139,18 @@ const AdminMenu = ({ children }) => {
 
                 </div>
                 <div className="md:col-span-9 col-span-12 pt-10 bg-gray-200 md:pt-0">
+                    <div className="fixed top-2 grid right-2">
+                        {newStudent && <div className="flex justify-end">
+                            <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
+                                className={`mx-2 flex gap-2 items-center`}
+                                href={'/Admin/AdminStudentRecord'}>New Student <IoNotificationsCircleSharp size={35} /></Link>
+                        </div>}
+                        {newReport && <div className="flex justify-end">
+                            <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
+                                className={`mx-2 flex gap-2 items-center`}
+                                href={'/Admin/AdminReports'}>New Report{newStudent && <IoNotificationsCircleSharp size={35} />}</Link>
+                        </div>}
+                    </div>
                     {children}
                 </div>
             </div>

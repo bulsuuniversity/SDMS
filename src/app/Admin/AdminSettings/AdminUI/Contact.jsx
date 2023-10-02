@@ -5,6 +5,7 @@ import axios from "axios";
 import { url, headers } from "@/app/libs/api";
 import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
+import { FcDataConfiguration } from "react-icons/fc";
 
 const Contact = ({ setOpen }) => {
     const { loading, startLoading, stopLoading } = useLoading()
@@ -69,7 +70,10 @@ const Contact = ({ setOpen }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to update contacts?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataConfiguration size={32}/>Update data</div>
+         <p className='text-xl p-6'>Are you sure you want to change this?</p>
+         </div>, () => {
             handleUpdate()
         });
     };

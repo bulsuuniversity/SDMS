@@ -7,6 +7,7 @@ import { url, headers } from "@/app/libs/api";
 import useLoading from "@/utils/Loading";
 import useConfirmation from "@/utils/ConfirmationHook";
 import { useProfileData } from "@/app/libs/store";
+import { FcAddDatabase } from "react-icons/fc";
 
 const PersonalInformation = () => {
     const [edit, setEdit] = useState(true);
@@ -54,7 +55,10 @@ const PersonalInformation = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to save changes?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddDatabase size={32}/>Save chnages</div>
+         <p className='text-xl p-6'>Are you sure you want to save changes?</p>
+         </div>, () => {
             handleSubmit()
         });
     };

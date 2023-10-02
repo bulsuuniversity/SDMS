@@ -14,6 +14,7 @@ import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
 import { GrClose } from "react-icons/gr";
 import Link from "next/link";
+import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -83,14 +84,20 @@ const Page = () => {
 
     const handleRemoveAcc = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to Remove this account?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDeleteDatabase size={32}/>Remove Account</div>
+         <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
+         </div>, () => {
             handleRemoveAccApi()
         });
     };
-
+    
     const handleUpdate = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to approve this account?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcApprove size={32}/>Approve Account</div>
+        <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
+        </div>, () => {
             handleUpdateApi()
         });
     };

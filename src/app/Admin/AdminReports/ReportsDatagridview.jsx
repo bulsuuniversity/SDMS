@@ -1,5 +1,6 @@
 import DataTable from 'react-data-table-component';
 import { BiTrash } from 'react-icons/bi';
+import { FcDeleteDatabase } from 'react-icons/fc';
 import { useEffect, useState } from 'react';
 import { IoEyeSharp } from "react-icons/io5";
 import axios from 'axios';
@@ -7,6 +8,7 @@ import { headers, url } from '@/app/libs/api';
 import useLoading from '@/utils/Loading';
 import InformationModal from '@/utils/InformationModal';
 import useConfirmation from '@/utils/ConfirmationHook';
+import { GiDivingDagger } from 'react-icons/gi';
 
 const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, handleGetData }) => {
     const [selectedRows, setSelectedRows] = useState([]);
@@ -14,7 +16,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     const [success, setSuccess] = useState(false)
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
 
-    const ids = selectedRows.map((selected) => selected.ticket)
+    const ids = selectedRows.map((selected) => selected.id)
     const handleDelete = async () => {
         startLoading()
         try {
@@ -33,7 +35,10 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
 
     const handleSubmitReport = (e) => {
         e.preventDefault();
-        showConfirmation(`Are you sure you want to delete ${selectedRows > 1 ? 'these reports' : 'this report'}?`, () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+            <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDeleteDatabase size={32}/>Delete Report</div>
+             <p className='text-xl p-6'>Are you sure you want to delete {selectedRows > 1 ? 'these reports' : 'this report'}?</p>
+             </div>, () => {
             handleDelete()
         });
     };
@@ -53,10 +58,10 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.ticket}</div>,
         },
         {
-            name: <div className='flex text-center'>ACTION OF INDISCIPLINE</div>,
+            name: <div className='flex text-center'>ACT OF MISCONDUCT</div>,
             selector: row => row.action,
             sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.action}</div>,
+            cell: (row) => <div className='line-clamp-3 whitespace-normal text-center'>{row.action}</div>,
         },
         {
             name: <div className='flex text-center'>DATE REPORTED &#40;MM/DD/YYYY&#41;</div>,
@@ -164,13 +169,13 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             {selectedRows.length > 0 &&
                 <div className='text-red-600 bg-white p-4 flex items-center justify-between gap-10'>
                     <p className='font-bold'>{selectedRows.length} items selected</p>
-                    <button disabled={loading} onClick={handleSubmitReport} className='bg-red-600 text-white rounded-md px-4 py-2'>Delete</button>
+                    <button disabled={loading} onClick={handleSubmitReport} className='bg-red-600 text-white rounded-md px-4 py-2'>{loading ? 'Deleting' : 'Delete'}</button>
                 </div>}
             <ConfirmationDialog />
             {success && <InformationModal>
                 <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
                     <p>Deleted Successfully!</p>
-                    <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>{loading ? 'Deleting' : 'Okay'}</button>
+                    <button onClick={() => setSuccess(false)} className='bg-green-600 rounded-lg py-2 px-4'>Okay</button>
                 </div>
             </InformationModal>}
             <DataTable

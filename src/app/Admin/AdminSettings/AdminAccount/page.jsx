@@ -8,6 +8,7 @@ import InformationModal from "@/utils/InformationModal";
 import { useProfileData } from "@/app/libs/store";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api"
+import { FcDataProtection } from "react-icons/fc";
 
 const Page = () => {
     const { profileData } = useProfileData()
@@ -49,7 +50,10 @@ const Page = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want change password?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataProtection size={32}/>Change Password</div>
+         <p className='text-xl p-6'>Are you sure you want to change password?</p>
+         </div>, () => {
             handleChangePass()
         });
     };

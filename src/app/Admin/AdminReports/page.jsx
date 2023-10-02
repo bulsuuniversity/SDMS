@@ -17,6 +17,7 @@ import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
 import { DateRangePicker } from 'react-date-range';
 import Link from "next/link";
+import { FcApprove } from "react-icons/fc";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -87,14 +88,20 @@ const Page = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to clear this case?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcApprove size={32}/>Clear Case</div>
+         <p className='text-xl p-6'>Are you sure you want to clear this case?</p>
+         </div>, () => {
             handleUpdateApi()
         });
     };
 
     const handleAskUpdateReport = (e) => {
         e.preventDefault();
-        showConfirmation('Are you sure you want to update this case?', () => {
+        showConfirmation(<div className='grid justify-center gap-4'>
+        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcApprove size={32}/>Update Case</div>
+         <p className='text-xl p-6'>Are you sure you want to update this case?</p>
+         </div>, () => {
             handleUpdateReport()
         });
     };
