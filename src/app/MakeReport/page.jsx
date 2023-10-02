@@ -51,7 +51,6 @@ const page = () => {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             console.log(response)
             handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
-
         } catch (err) {
             console.log(err);
         }
@@ -112,11 +111,9 @@ const page = () => {
         try {
             const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
             setConfirmation(true)
-            console.log(response)
             setMessage("Thank you for submitting your report")
             stopLoading()
             handleNotif()
-            getLatestTicket()
             setReportData({
                 reporter: "",
                 actionOfDiscipline: '',
@@ -130,6 +127,7 @@ const page = () => {
                 describeTheSituation: '',
                 status: 'Pending',
             });
+            getLatestTicket()
         } catch (error) {
             console.error('Error:', error);
             stopLoading()
@@ -276,7 +274,7 @@ const page = () => {
                             </div>
 
                             {confirmation && <ConfirmationModal>
-                                <div className="grid gap-2 m-10">
+                                <div className="grid gap-2 border border-black m-10">
                                     <div>{message}</div>
                                     <div className="flex mt-6 justify-center">
                                         <button className="bg-amber-100 py-2 px-4 w-16 rounded-lg" onClick={() => setConfirmation(false)}>Okay</button>
