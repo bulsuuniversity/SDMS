@@ -6,52 +6,43 @@ const RegsiteredLegends = ({ data }) => {
         <div className="bg-white rounded-lg p-4 grid">
             <div className="grid justify-start">
                 <label className="flex items-center gap-4">
-                    <div><BsCircle size={20} className="bg-yellow-300 rounded-full" /></div>
-                    <p>Cyberbullying</p>
+                    <div><BsCircle size={20} className="bg-red-500 rounded-full" /></div>
+                    <p>LIGHT OFFENSES</p>
                 </label>
                 <div className="flex justify-center">
-                    <p>Count: {data && data.Cyberbullying}</p>
+                    <p>Count: {data && data.lightOffenses}</p>
                 </div>
             </div>
             <div className="grid justify-start">
                 <label className="flex items-center gap-4">
-                    <div><BsCircle size={20} className="bg-amber-700 rounded-full" /></div>
-                    <p>Misinformation</p>
+                    <div><BsCircle size={20} className="bg-green-500 rounded-full" /></div>
+                    <p>LESS GRAVE OFFENSES</p>
                 </label>
                 <div className="flex justify-center">
-                    <p>Count:  {data && data.Misinformation}</p>
+                    <p>Count:  {data && data.lessGraveOffenses}</p>
                 </div>
             </div>
             <div className="grid justify-start">
                 <label className="flex items-center gap-4">
-                    <div><BsCircle size={20} className="bg-green-600 rounded-full" /></div>
-                    <p>Verbal abuse</p>
+                    <div><BsCircle size={20} className="bg-blue-500 rounded-full" /></div>
+                    <p>GRAVE OFFENSES</p>
                 </label>
                 <div className="flex justify-center">
-                    <p>Count:  {data && data.Verbal}</p>
+                    <p>Count:  {data && data.graveOffenses}</p>
                 </div>
             </div>
             <div className="grid justify-start">
                 <label className="flex items-center gap-4">
-                    <div><BsCircle size={20} className="bg-blue-600 rounded-full" /></div>
-                    <p>Harrassment</p>
+                    <div><BsCircle size={20} className="bg-orange-500 rounded-full" /></div>
+                    <p>DISHONESTY ON ACADEMIC PURSUITS</p>
                 </label>
                 <div className="flex justify-center">
-                    <p>Count:  {data && data.Harrassment}</p>
+                    <p>Count:  {data && data.dishonesty}</p>
                 </div>
             </div>
             <div className="grid justify-start">
                 <label className="flex items-center gap-4">
-                    <div><BsCircle size={20} className="bg-gray-400 rounded-full" /></div>
-                    <p>Hateful Behavior</p>
-                </label>
-                <div className="flex justify-center">
-                    <p>Count:  {data && data.Hateful}</p>
-                </div>
-            </div>
-            <div className="grid justify-start">
-                <label className="flex items-center gap-4">
-                    <div><BsCircle size={20} className="bg-violet-700 rounded-full" /></div>
+                    <div><BsCircle size={20} className="bg-gray-500 rounded-full" /></div>
                     <p>Others</p>
                 </label>
                 <div className="flex justify-center">

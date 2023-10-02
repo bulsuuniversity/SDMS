@@ -21,7 +21,7 @@ const Contact = ({ data }, ref) => {
                         1
                     </div>
                     <div className="mx-2">
-                        <FcDocument size={100} />
+                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step1.png"} alt="step 1" />
                     </div>
                     <div className="grid  pb-4 pt-10 gap-1">
                         <p className="font-bold text-lg">Login your account / Register an account</p>
@@ -33,7 +33,7 @@ const Contact = ({ data }, ref) => {
                         2
                     </div>
                     <div className="mx-2">
-                        <FcList size={100} />
+                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step2.png"} alt="step2" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">Go To Navigation Bar & Click Submit Report</p>
@@ -48,7 +48,7 @@ const Contact = ({ data }, ref) => {
                         3
                     </div>
                     <div className="mx-2">
-                        <FcQuestions size={100} />
+                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step3.png"} alt="step3" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">Fill-Out the Necessary Details</p>
@@ -64,7 +64,7 @@ const Contact = ({ data }, ref) => {
                         4
                     </div>
                     <div className="mx-2">
-                        <FcCameraIdentification size={100} />
+                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step4.png"} alt="step4" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">For Review & Evaluation</p>
@@ -79,7 +79,7 @@ const Contact = ({ data }, ref) => {
                         5
                     </div>
                     <div className="mx-2">
-                        <FcAssistant size={100} />
+                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step5.png"} alt="step5" />
                     </div>
                     <div className="grid gap-4 pt-4 pb-10 gap-1">
                         <p className="font-bold text-lg">Keep in Touch</p>

@@ -10,6 +10,10 @@ import useLoading from "@/utils/Loading";
 import ReportedCasesLegends from "./ReportedCasesLegends";
 import ReportedStudentsLegends from "./ReportedStudentsLegends";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import Dishonesty from "./Dishonesty";
+import GraveOffenses from "./GraveOffenses";
+import LessGraveOffenses from "./LessGraveOffenses";
+import LightOffenses from "./LightOffenses";
 
 Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
@@ -36,17 +40,38 @@ const Page = () => {
     }
 
 
-    const reports = filterReports && Object.values(filterReports).filter(report => report.status === `${status ? 'Cleared' : 'Pending'}`)
+    const reports = filterReports && Object.values(filterReports).filter(report => report.status === `${!status ? 'Cleared' : 'Pending'}`)
+
+    const lightOffenses = reports ? (Object.values(reports).filter(report =>
+        (report.actionOfDiscipline).includes("Littering") ||
+        (report.actionOfDiscipline).includes("Unauthorized") ||
+        (report.actionOfDiscipline).includes("Vandalism") ||
+        (report.actionOfDiscipline).includes("Disturbance")
+    ).length) : 1;
+    const lessGraveOffenses = reports ? (Object.values(reports).filter(report =>
+        (report.actionOfDiscipline).includes("Smoking") ||
+        (report.actionOfDiscipline).includes("Malicious") ||
+        (report.actionOfDiscipline).includes("Deception") ||
+        (report.actionOfDiscipline).includes("Damage") ||
+        (report.actionOfDiscipline).includes("Disrespectful")
+    ).length) : 1;
+    const graveOffenses = reports ? (Object.values(reports).filter(report =>
+        (report.actionOfDiscipline).includes("Theft") ||
+        (report.actionOfDiscipline).includes("Indecency") ||
+        (report.actionOfDiscipline).includes("Physical") ||
+        (report.actionOfDiscipline).includes("Carrying") ||
+        (report.actionOfDiscipline).includes("Possession")
+    ).length) : 1;
+    const dishonesty = reports ? (Object.values(reports).filter(report =>
+        (report.actionOfDiscipline).includes("Cheating") ||
+        (report.actionOfDiscipline).includes("Plagiarism") ||
+        (report.actionOfDiscipline).includes("Falsification")
+    ).length) : 1;
+    const Others = reports ? reports.length - (lightOffenses + lessGraveOffenses + graveOffenses + dishonesty) : 1
+
+    const reportedAction = { lightOffenses, lessGraveOffenses, graveOffenses, dishonesty, Others }
 
 
-    const Cyberbullying = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Deception"))).length : 1
-    const Misinformation = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Misinformation")).length : 1
-    const Verbal = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Verbal abuse")).length : 1
-    const Harrassment = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Harrassment")).length : 1
-    const Hateful = reports ? (Object.values(reports).filter(report => report.actionOfDiscipline === "Hateful behavior")).length : 1
-    const Others = reports ? reports.length - (Cyberbullying + Misinformation + Verbal + Harrassment + Hateful) : 1
-
-    const reportedAction = { Cyberbullying, Misinformation, Verbal, Harrassment, Hateful, Others }
 
     const CBA = reports ? (Object.values(reports).filter(reportedStudent => reportedStudent.college === "CBA")).length : 1
     const CIT = reports ? (Object.values(reports).filter(reportedStudent => reportedStudent.college === "CIT")).length : 1
@@ -103,28 +128,26 @@ const Page = () => {
     };
 
     const pieData = {
-        labels: ["Cyberbullying",
-            "Misinformation",
-            "Verbal abuse",
-            "Harrassment",
-            "Hateful behavior",
-            "Others",],
+        labels: ["LIGHT OFFENSES",
+            "LESS GRAVE ...",
+            "GRAVE OFFENSES",
+            "DISHONESTY ON ...",
+            "Others"
+        ],
         datasets: [
             {
-                label: 'Reported Actions',
-                data: [Cyberbullying,
-                    Misinformation,
-                    Verbal,
-                    Harrassment,
-                    Hateful,
+                label: 'Reported Indiscipline',
+                data: [lightOffenses,
+                    lessGraveOffenses,
+                    graveOffenses,
+                    dishonesty,
                     Others],
                 backgroundColor: [
-                    'rgb(253, 224, 71)',
-                    'rgb(180, 83, 9)',
-                    'rgb(22, 163, 74)',
-                    'rgb(37, 99, 235)',
-                    'rgb(156, 163, 175)',
-                    'rgb(109, 40, 217)'
+                    'rgb(239, 68, 68)',
+                    'rgb(34, 197, 94)',
+                    'rgb(59, 130, 246)',
+                    'rgb(249, 115, 22)',
+                    'rgb(132, 145, 166)',
                 ],
                 borderWidth: 1,
             },
@@ -156,7 +179,6 @@ const Page = () => {
         ],
     };
 
-    console.log(reports && reports.length < 0)
 
     return (
         <DashboardLayout>
@@ -171,10 +193,15 @@ const Page = () => {
                                     {!status ? 'Cleared' : 'Pending'}</button>
                                 {status && <div className="grid items-center mx-4">Cleared</div>}
                             </div>
-                            <div className="font-bold grid items-center"> Number of {status ? 'Pending' : 'Cleared'} reports: {reports && reports.length}
-                            </div>
+                            <div className="font-bold grid items-center"> Number of {status ? 'Pending' : 'Cleared'} reports: {reports && reports.length}</div>
                         </div>
                         <div className="overflow-y-auto grid bg-blue-100 justify-center gap-10 max-h-96 pb-6">
+                          
+                            <LightOffenses reports={reports} status={status} />
+                            <LessGraveOffenses reports={reports} status={status} />
+                            <GraveOffenses reports={reports} status={status} />
+                            <Dishonesty reports={reports} status={status} />
+
                             <h2 className="font-bold flex py-4 justify-center">
                                 REPORTED ACTIONS&#40;{status ? 'Pending' : 'Cleared'}&#41;
                             </h2>

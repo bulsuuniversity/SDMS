@@ -148,7 +148,7 @@ const AdminMenu = ({ children }) => {
                         {newReport && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
                                 className={`mx-2 flex gap-2 items-center`}
-                                href={'/Admin/AdminReports'}>New Report{newStudent && <IoNotificationsCircleSharp size={35} />}</Link>
+                                href={'/Admin/AdminReports'}>New Report <IoNotificationsCircleSharp size={35} /></Link>
                         </div>}
                     </div>
                     {children}
