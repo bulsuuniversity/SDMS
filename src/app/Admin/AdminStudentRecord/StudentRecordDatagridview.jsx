@@ -1,8 +1,27 @@
 import DataTable from 'react-data-table-component';
-
+import SendMessage from '@/components/SendMessage';
+import { AiOutlineMail } from 'react-icons/ai';
+import { useState } from 'react';
 
 const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
-  
+
+    const [openMessage, setOpenMessage] = useState(false)
+    const [sentEmail, setSentEmail] = useState()
+    const [studentEmail, setStudentEmail] = useState()
+
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(now.getDate() + 1);
+    const formattedDate = tomorrow.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
+    const suggestions = {
+        one: `Good day! We request you to please attend the meeting on ${formattedDate} in Room 216B (9:00AM). Your attendance is a must for the proceeding of your ongoing case. Further details will be discussed on the said meeting. Thank you.`,
+    }
+
+
     const columns = [
         {
             name: <div className='flex text-center'>STUDENT ID</div>,
@@ -54,6 +73,11 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
                 },
             ],
         },
+        {
+            name: <div className='flex text-center'>Message</div>,
+            sortable: true,
+            cell: (row) => <div className='flex justify-center w-full' onClick={() => handleSendMessage(row)}><AiOutlineMail size={20}/></div>,
+        },
     ];
     const data = Object.values(tableData).map((account, index) => ({
         id: account.id,
@@ -68,6 +92,12 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
     const handleRowClick = (row) => {
         setClickedID(row.id)
         setOpenINfo(true)
+    };
+
+    const handleSendMessage = (row) => {
+        setStudentEmail(row.email)
+        // studentEmail && setOpenMessage(true)
+        console.log(row.email)
     };
 
     const customStyles = {
@@ -85,17 +115,26 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
     };
 
     return (
-        <DataTable
-            fixedHeader
-            fixedHeaderScrollHeight="500px"
-            customStyles={customStyles}
-            onRowClicked={handleRowClick}
-            columns={columns}
-            data={data}
-            pagination={tableData.length > 10}
-            responsive
-         
-        />
+        <>
+            {openMessage &&
+                <SendMessage suggestions={suggestions}
+                    sentEmail={sentEmail}
+                    setSentEmail={setSentEmail}
+                    email={studentEmail}
+                    setClose={setOpenMessage} />}
+            <DataTable
+                fixedHeader
+                fixedHeaderScrollHeight="500px"
+                customStyles={customStyles}
+                onRowClicked={handleRowClick}
+                columns={columns}
+                data={data}
+                pagination={tableData.length > 10}
+                responsive
+
+            />
+        </>
+
 
     );
 }

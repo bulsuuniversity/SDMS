@@ -89,9 +89,9 @@ const Page = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32}/>Clear Report</div>
-         <p className='text-xl p-6'>Are you sure you want to clear this report?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Clear Report</div>
+            <p className='text-xl p-6'>Are you sure you want to clear this report?</p>
+        </div>, () => {
             handleUpdateApi()
         });
     };
@@ -99,9 +99,9 @@ const Page = () => {
     const handleAskUpdateReport = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32}/>Update Case</div>
-         <p className='text-xl p-6'>Are you sure you want to update this case?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Update Case</div>
+            <p className='text-xl p-6'>Are you sure you want to update this case?</p>
+        </div>, () => {
             handleUpdateReport()
         });
     };
@@ -255,7 +255,13 @@ const Page = () => {
                                 <p className="font-bold">Attachment: </p>
                                 <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
                             </label>
-                            {openMessage && info && <SendMessage suggestions={suggestions} sentEmail={sentEmail} setSentEmail={setSentEmail} email={info.reporter.email} setClose={setOpenMessage} />}
+                            {openMessage && info &&
+                                <SendMessage
+                                    suggestions={suggestions}
+                                    sentEmail={sentEmail}
+                                    setSentEmail={setSentEmail}
+                                    email={info.reporter.email}
+                                    setClose={setOpenMessage} />}
                             {seeImage && info.attachment !== "" && <InformationModal>
                                 <div className="relative p-6">
                                     <Link href={imageToView} target="blank" className="h-96">

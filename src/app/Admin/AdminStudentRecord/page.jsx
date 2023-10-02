@@ -16,7 +16,7 @@ import Link from "next/link";
 import { GrClose } from "react-icons/gr";
 import { GoSearch } from "react-icons/go";
 import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
-
+import SendMessage from "@/components/SendMessage";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -76,8 +76,8 @@ const Page = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32}/>Approve Account</div>
-        <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
         </div>, () => {
             handleUpdateApi()
         });
@@ -126,9 +126,9 @@ const Page = () => {
     const handleRemoveAcc = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32}/>Remove Account</div>
-         <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
+            <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
+        </div>, () => {
             handleRemoveAccApi()
         });
     };
@@ -151,9 +151,10 @@ const Page = () => {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search" />
-                    <GoSearch className="mx-2 text-white" size={25}/>
+                    <GoSearch className="mx-2 text-white" size={25} />
                 </div>
             </div>
+        
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">

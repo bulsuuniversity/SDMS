@@ -21,12 +21,12 @@ const Page = () => {
                     <p className="font-bold">Edit user home page details:</p>
                     <div className="grid gap-3 indent-9">
                         <div className="flex items-center justify-end gap-4">
-                            <p className="font-bold">Contact Us:</p>
-                            <button onClick={() => setOpen("contact")} className="bg-red-800 text-white py-1 px-6">Manage</button>
+                            <p className="font-bold">About:</p>
+                            <button onClick={() => setOpen("about")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                         </div>
                         <div className="flex items-center justify-end gap-4">
-                            <p className="font-bold">About Us:</p>
-                            <button onClick={() => setOpen("about")} className="bg-red-800 text-white py-1 px-6">Manage</button>
+                            <p className="font-bold">Footer:</p>
+                            <button onClick={() => setOpen("contact")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                         </div>
                     </div>
                 </div>

@@ -2,28 +2,95 @@ import { SiGooglemaps } from "react-icons/si";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { ImMail4 } from "react-icons/im";
 import { forwardRef } from "react";
+import Image from "next/image";
+import { FcAssistant, FcCameraIdentification, FcDocument, FcList, FcQuestions } from "react-icons/fc";
 
 const Contact = ({ data }, ref) => {
     return (
-        <div ref={ref} className=" w-full  bg-white text-black py-24 h-max">
+        <div ref={ref} className=" w-full grid bg-white text-black h-max">
             <div className="h-10"></div>
-            <div className="text-center grid md:mx-32 mx-2 md:mb-16 my-max p-4 md:p-10">
-                <div className="text-lg">
-                    {data ? data.about : 'The purpose of this initiative is to appropriately implement policies within the university by giving appropriate punishment to students who violate university policies, to teach students how to follow university regulations and to educate them on the consequences of violating them, all are accordance with the student handbook. These disciplinary procedures aim to nurture the non-academic character of the students which preserves the students’ rights and responsibilities. Through this goal of the discipline committee, the university can achieve its desire to produce highly competent, ethical and service-oriented professionals that contribute to the sustainable socioeconomic growth and development of the nation.'}
+            <div className="w-full relative">
+                <div className="absolute w-full h-full items-center text-xl flex justify-center text-white">
+                    <p>GUIDE ON HOW TO REPORT MISCONDUCT</p>
                 </div>
-                <div className="grid justify-center items-center md:p-12 p-4 gap-2">
-                    <div className="text-center text-red-700 text-xl font-bold">
-                        {!data ? "BULACAN STATE UNIVERSITY" : data.email}
+                <Image width={1500} className="w-full" layout="responsive" height={200} src={"/HEADER.png"} alt="header" />
+            </div>
+            <div className="grid justify-center mx-36 ">
+                <div className="flex gap-2 h-full items-center">
+                    <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
+                        1
                     </div>
-                    <div className="text-center italic">
-                        {!data ? "Bustos Campus, Bustos, Bulacan" : data.address}
+                    <div className="mx-2">
+                        <FcDocument size={100} />
                     </div>
-                    <div className="text-center text-sm">
-                        {!data ? "2023" : data.phoneNumber}
+                    <div className="grid  pb-4 pt-10 gap-1">
+                        <p className="font-bold text-lg">Login your account / Register an account</p>
+                        <p className="pl-8">To submit a report, you need to be logged in your account. If you don't have one,you can freely register with the system.</p>
+                    </div>
+                </div>
+                <div className="flex gap-2 h-full items-center">
+                    <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
+                        2
+                    </div>
+                    <div className="mx-2">
+                        <FcList size={100} />
+                    </div>
+                    <div className="grid py-2 gap-1">
+                        <p className="font-bold text-lg">Go To Navigation Bar & Click Submit Report</p>
+                        <p className="pl-8">At the navigation bar, click the drop-down arrow on your profile picture. The menu will
+                            show several options and you will see there the "Submit Report" button. Click it to
+                            redirect you to report form.
+                        </p>
+                    </div>
+                </div>
+                <div className="flex gap-2 h-full items-center">
+                    <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
+                        3
+                    </div>
+                    <div className="mx-2">
+                        <FcQuestions size={100} />
+                    </div>
+                    <div className="grid py-2 gap-1">
+                        <p className="font-bold text-lg">Fill-Out the Necessary Details</p>
+                        <p className="pl-8">On the form, all details are required to be filled. On the attachment part of the form,
+                            a narrative report should be uploaded for your report to be evaluated. Make sure to
+                            check your inserted information carefully.
+                        </p>
+                        <p className="pl-8"> The format of a narrative report can be seen on the top of this page.</p>
+                    </div>
+                </div>
+                <div className="flex gap-2 h-full items-center">
+                    <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
+                        4
+                    </div>
+                    <div className="mx-2">
+                        <FcCameraIdentification size={100} />
+                    </div>
+                    <div className="grid py-2 gap-1">
+                        <p className="font-bold text-lg">For Review & Evaluation</p>
+                        <p className="pl-8">After submitting your report, you can check its summary on "Report Logs" button that
+                            can also be found at the menu on the navigation bar. This means that you have
+                            successfully submitted your report.
+                        </p>
+                    </div>
+                </div>
+                <div className="flex gap-2 h-full items-center">
+                    <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
+                        5
+                    </div>
+                    <div className="mx-2">
+                        <FcAssistant size={100} />
+                    </div>
+                    <div className="grid gap-4 pt-4 pb-10 gap-1">
+                        <p className="font-bold text-lg">Keep in Touch</p>
+                        <p className="pl-8">Some misconducts are needed to be discussed personally in order to have resolution.
+                            Thus, wait for further notice by the admin of the system that will be sent to your email
+                            regarding the assessment of the report.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
