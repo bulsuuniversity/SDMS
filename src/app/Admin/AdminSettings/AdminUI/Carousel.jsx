@@ -93,7 +93,7 @@ const Carousel = ({ setOpen }) => {
     const handleUpdate = () => {
         if (file) {
             showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddImage size={32}/>Add Image</div>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddImage size={32}/>Add Image</div>
             <p className='text-xl p-6'>Are you sure you want to add this image?</p>
             </div>, () => {
                 handleAddImage()
@@ -108,7 +108,7 @@ const Carousel = ({ setOpen }) => {
 
     const handleDeleteImage = (id, publicId) => {
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDeleteDatabase size={32}/>Delete Image</div>
+        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32}/>Delete Image</div>
          <p className='text-xl p-6'>Are you sure you want to delete this image?</p>
          </div>, () => {
             handleDelete(id, publicId)

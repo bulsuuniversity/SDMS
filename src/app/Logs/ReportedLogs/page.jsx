@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useProfileData } from "@/app/libs/store";
 
 const Page = () => {
-    const { reportData } = useReportData()
+    const { reportData, getReportData } = useReportData()
     const { profileData } = useProfileData()
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
@@ -27,7 +27,9 @@ const Page = () => {
         })
 
     const reports = reportData && Object.values(reportData).filter(student => student.reporter.id === profileData.id);
-
+    useEffect(() => {
+        getReportData(profileData.id)
+    }, [profileData])
     useEffect(() => {
         if (reports) {
             const formattedData = reports.map((data) => ({
@@ -40,7 +42,7 @@ const Page = () => {
             }));
             setData(formattedData)
         }
-    }, [])
+    }, [reports])
 
     const headerData = [
         "DATE OF INCIDENT",
@@ -73,13 +75,15 @@ const Page = () => {
                                 <div className="bg-gray-300 p-2">{info.id}</div>
                             </label>
                             <label className="flex gap-3">
-                                <p className="font-bold">Action of Discipline: </p>
-                                <div> {info.actionOfDiscipline}</div>
+                                <p className="font-bold">Act of Indiscipline: </p>
+                                <div className="w-52"> {info.actionOfDiscipline}</div>
                             </label>
                             <label className="grid">
                                 <p className="font-bold">Offender Details: </p>
                                 <div className="indent-5">Name: {info.offender}</div>
                                 <div className="indent-5">College: {info.college}</div>
+                                <div className="indent-5">Course, year & section: {info.course}</div>
+
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Date of Incident: </p>

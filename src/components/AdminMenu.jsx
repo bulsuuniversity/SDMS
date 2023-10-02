@@ -48,7 +48,7 @@ const AdminMenu = ({ children }) => {
     const handleSignOut = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataProtection size={32}/>Logout Account</div>
+        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataProtection size={32}/>Logout Account</div>
          <p className='text-xl p-6'>Are you sure you want to logout this account?</p>
          </div>, () => {
             router.push("/Admin/AdminLogin")

@@ -6,6 +6,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import ConfirmationModal from "./ConfirmationModal";
 import useLoading from "./Loading";
 import useConfirmation from "./ConfirmationHook";
+import { FcAddImage } from "react-icons/fc";
 
 const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
     const [file, setFile] = useState(null)
@@ -51,8 +52,8 @@ const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddImage size={32}/>Save Profile</div>
-        <p className='text-xl p-6'>Are you sure you want to save profile image?</p>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddImage size={32} />Save Profile</div>
+            <p className='text-xl p-6'>Are you sure you want to save profile image?</p>
         </div>, () => {
             handleChangeProfile()
         });
@@ -62,14 +63,15 @@ const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
         <div>
             <ConfirmationModal>
                 <ConfirmationDialog />
-                {message && <div className="p-10 grid">
-                    <div className="text-2xl text-center">
-                        {response}
-                    </div>
-                    <button onClick={handleCLick()} className="bg-amber-100 py-2 px-4 rounded-lg">Okay</button>
-                </div>}
-                <div className="relative p-7">
-                    <div className="absolute top-0 right-0">
+                {message && <ConfirmationModal>
+                    <div className="p-10 grid">
+                        <div className="text-2xl text-center">
+                            {response}
+                        </div>
+                        <button onClick={handleCLick()} className="bg-amber-100 py-2 px-4 rounded-lg">Okay</button>
+                    </div>  </ConfirmationModal>}
+                <div className="relative p-7 bg-gray-300 rounded-lg">
+                    <div className="absolute -top-1 -right-1">
                         <button className="bg-white rounded-full" onClick={() => handleCLick()}> <IoMdCloseCircle size={28} style={{ color: 'red' }} /></button>
                     </div>
                     <form onSubmit={handleUpdate} className="grid md:grid-cols-2 grid-cols-1 justify-center">

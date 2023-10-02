@@ -13,6 +13,7 @@ import useConfirmation from './ConfirmationHook';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { url } from '@/app/libs/api';
+import { FcDataProtection } from 'react-icons/fc';
 
 const Menu = ({ profile }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -50,8 +51,8 @@ const Menu = ({ profile }) => {
     const handleSignOut = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataProtection size={32}/>Logout Account</div>
-         <p className='text-xl p-6'>Are you sure you want to logout this account?</p>
+        <div className='bg-red-700 flex items-center text-white rounded-t-lg gap-4 w-full'><FcDataProtection size={32}/>Logout Account</div>
+         <p className='text-xl text-black p-6'>Are you sure you want to logout this account?</p>
          </div>, () => {
             handleSignOutna()
         });

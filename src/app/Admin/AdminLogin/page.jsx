@@ -132,9 +132,9 @@ const Login = () => {
 
                 {success && (
                     <ConfirmationModal>
-                        <div className="flex flex-col justify-center p-7 justify-center">
-                            <div className="text-2xl font-bold whitespace-normal text-center ">
-                                {session && 'SUCCESSFULL'}
+                        <div className="flex flex-col rounded-lg justify-center bg-red-700 text-white p-7 justify-center">
+                            <div className="text-2xl mb-4 font-bold whitespace-normal text-center ">
+                                {session && 'SUCCESSFULL!'}
                             </div>
                             <div className="text-center italic text-sm">Redirecting you now to the home page.</div>
                             <span className="loader" />

@@ -89,8 +89,8 @@ const Page = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcApprove size={32}/>Clear Case</div>
-         <p className='text-xl p-6'>Are you sure you want to clear this case?</p>
+        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32}/>Clear Report</div>
+         <p className='text-xl p-6'>Are you sure you want to clear this report?</p>
          </div>, () => {
             handleUpdateApi()
         });
@@ -99,7 +99,7 @@ const Page = () => {
     const handleAskUpdateReport = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcApprove size={32}/>Update Case</div>
+        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32}/>Update Case</div>
          <p className='text-xl p-6'>Are you sure you want to update this case?</p>
          </div>, () => {
             handleUpdateReport()

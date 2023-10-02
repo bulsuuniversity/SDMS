@@ -141,7 +141,7 @@ const page = () => {
         e.preventDefault();
         if (reportData.actionOfDiscipline) {
             showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcAddDatabase size={32}/>Submit Report</div>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddDatabase size={32}/>Submit Report</div>
              <p className='text-xl p-6'>Are you sure you want to submit this report?</p>
              </div>, () => {
                 handleSubmit()

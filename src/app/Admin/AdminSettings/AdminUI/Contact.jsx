@@ -71,7 +71,7 @@ const Contact = ({ setOpen }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataConfiguration size={32}/>Update data</div>
+        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataConfiguration size={32}/>Update data</div>
          <p className='text-xl p-6'>Are you sure you want to change this?</p>
          </div>, () => {
             handleUpdate()

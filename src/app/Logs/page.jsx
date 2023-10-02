@@ -23,9 +23,7 @@ const Page = () => {
         getReferConsultData(profileData.id)
     }, [profileData])
 
-    useEffect(() => {
-        getReportData(profileData.id)
-    }, [profileData])
+
 
     useEffect(() => {
         if (profileData && !profileData.id) {

@@ -51,7 +51,7 @@ const Page = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDataProtection size={32}/>Change Password</div>
+        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataProtection size={32}/>Change Password</div>
          <p className='text-xl p-6'>Are you sure you want to change password?</p>
          </div>, () => {
             handleChangePass()

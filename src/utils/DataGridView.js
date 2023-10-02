@@ -24,7 +24,7 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
             name: <div className='flex text-center'>{headerData[3]}</div>,
             selector: row => row.three,
             sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.three}</div>,
+            cell: (row) => <div className='line-clamp-3 whitespace-normal'>{row.three}</div>,
         },
         {
             name: <div className='flex text-center'>{headerData[4]}</div>,

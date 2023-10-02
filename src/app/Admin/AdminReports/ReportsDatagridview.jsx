@@ -36,7 +36,7 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     const handleSubmitReport = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 w-full'><FcDeleteDatabase size={32}/>Delete Report</div>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32}/>Delete Report</div>
              <p className='text-xl p-6'>Are you sure you want to delete {selectedRows > 1 ? 'these reports' : 'this report'}?</p>
              </div>, () => {
             handleDelete()

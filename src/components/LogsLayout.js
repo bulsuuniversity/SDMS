@@ -21,7 +21,6 @@ const LogsLayout = ({ children }) => {
                     <Link href={"/Logs/ReportedLogs"}
                         className={`${active === "/Logs/ReportedLogs" ? "bg-amber-400" : ""} 
                         rounded-lg flex border border-2 border-blue-400 p-2`}>
-                        <div className="grid items-start"><IoMdNotifications /></div>
                         <div className="flex items-center"> REPORTED CASES</div>
                     </Link>
                     {/* <Link href={"/Logs/SelfConsultLogs"}
