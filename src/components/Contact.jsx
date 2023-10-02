@@ -15,13 +15,14 @@ const Contact = ({ data }, ref) => {
                 </div>
                 <Image width={1500} className="w-full" layout="responsive" height={200} src={"/HEADER.png"} alt="header" />
             </div>
-            <div className="grid justify-center mx-36 ">
+            <div className="grid justify-center lg:mx-36 md:mx-28 ">
                 <div className="flex gap-2 h-full items-center">
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         1
                     </div>
-                    <div className="mx-2">
-                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step1.png"} alt="step 1" />
+                    <div className="mx-2 ">
+                        <Image  className="object-cover" width={100} height={100}
+                             src={"/Step 1.png"} alt="step 1" />
                     </div>
                     <div className="grid  pb-4 pt-10 gap-1">
                         <p className="font-bold text-lg">Login your account / Register an account</p>
@@ -32,8 +33,9 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         2
                     </div>
-                    <div className="mx-2">
-                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step2.png"} alt="step2" />
+                    <div className="mx-2 ">
+                        <Image  className="object-cover" width={150} height={150}
+                             src={"/Step 2.png"} alt="step2" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">Go To Navigation Bar & Click Submit Report</p>
@@ -47,8 +49,9 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         3
                     </div>
-                    <div className="mx-2">
-                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step3.png"} alt="step3" />
+                    <div className="mx-2 ">
+                        <Image  className="object-cover" width={200} height={200}
+                             src={"/Step 3.png"} alt="step3" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">Fill-Out the Necessary Details</p>
@@ -63,8 +66,9 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         4
                     </div>
-                    <div className="mx-2">
-                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step4.png"} alt="step4" />
+                    <div className="mx-2 ">
+                        <Image  className="object-cover" width={200} height={200}
+                             src={"/Step 4.png"} alt="step4" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">For Review & Evaluation</p>
@@ -78,8 +82,9 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         5
                     </div>
-                    <div className="mx-2">
-                        <Image width={200} className="w-full" layout="responsive" height={200} src={"/Step5.png"} alt="step5" />
+                    <div className="mx-2 ">
+                        <Image  className="object-cover" width={200} height={200}
+                             src={"/Step 5.png"} alt="step5" />
                     </div>
                     <div className="grid gap-4 pt-4 pb-10 gap-1">
                         <p className="font-bold text-lg">Keep in Touch</p>

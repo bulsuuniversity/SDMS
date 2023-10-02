@@ -26,7 +26,7 @@ const useConfirmation = () => {
         return (
             isVisible && (
                 <ConfirmationModal>
-                    <div className='grid bg-white gap-4 rounded-lg justify-center items-center'>
+                    <div className='grid border border-black bg-white gap-4 rounded-lg justify-center items-center'>
                         <div>{message}</div>
                         <div className='flex gap-4 p-6 justify-end'>
                             <button className='bg-green-600 text-white rounded-lg py-2 px-6' onClick={handleConfirm}>Yes</button>
