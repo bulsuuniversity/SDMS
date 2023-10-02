@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useProfileData } from "@/app/libs/store";
 
 const Page = () => {
-    const { reportData, getReportData } = useReportData()
+    const { reportData } = useReportData()
     const { profileData } = useProfileData()
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
@@ -42,7 +42,7 @@ const Page = () => {
             }));
             setData(formattedData)
         }
-    }, [reports])
+    }, [])
 
     const headerData = [
         "DATE OF INCIDENT",
