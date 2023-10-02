@@ -5,27 +5,21 @@ import { forwardRef } from "react";
 
 const Contact = ({ data }, ref) => {
     return (
-        <div ref={ref} className="bg-gray-600 w-full py-24 h-max">
+        <div ref={ref} className=" w-full  bg-white text-black py-24 h-max">
             <div className="h-10"></div>
-            <div className="text-white text-3xl flex justify-center p-6 font-serif font-cambria">
-                CONTACT US
-            </div>
-            <div className="flex justify-center items-center">
-                <div className="flex md:p-12 p-4 bg-white flex-col gap-10">
-                    <div className="flex items-center gap-4">
-                        <SiGooglemaps size={50} className="text-red-800" />
-                        <a href={`https://www.google.com/maps?q=<%=${data && data.address}%>`} target="_blank">
-                            {!data ? "Guinhawa, City of Malolos, Bulacan" : data.address}</a>
+            <div className="text-center grid md:mx-32 mx-2 md:mb-16 my-max p-4 md:p-10">
+                <div className="text-lg">
+                    {data ? data.about : 'The purpose of this initiative is to appropriately implement policies within the university by giving appropriate punishment to students who violate university policies, to teach students how to follow university regulations and to educate them on the consequences of violating them, all are accordance with the student handbook. These disciplinary procedures aim to nurture the non-academic character of the students which preserves the students’ rights and responsibilities. Through this goal of the discipline committee, the university can achieve its desire to produce highly competent, ethical and service-oriented professionals that contribute to the sustainable socioeconomic growth and development of the nation.'}
+                </div>
+                <div className="grid justify-center items-center md:p-12 p-4 gap-2">
+                    <div className="text-center text-red-700 text-xl font-bold">
+                        {!data ? "BULACAN STATE UNIVERSITY" : data.email}
                     </div>
-                    <div className="flex items-center gap-4">
-                        <PiPhoneCallFill size={50} className="text-red-800" />
-                        <a href={`tel:${data && data.phoneNumber}`}>{!data ? "919-7800" : data.phoneNumber}</a>
+                    <div className="text-center italic">
+                        {!data ? "Bustos Campus, Bustos, Bulacan" : data.address}
                     </div>
-                    <div className="flex items-center gap-4">
-                        <ImMail4 size={50} className="text-red-800" />
-                        <a href={`mailto:${data && data.phoneNumber}`}>
-                            {!data ? "officeofthepresident@bulsu.edu.ph" : data.email}
-                        </a>
+                    <div className="text-center text-sm">
+                        {!data ? "2023" : data.phoneNumber}
                     </div>
                 </div>
             </div>

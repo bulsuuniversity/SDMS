@@ -81,8 +81,8 @@ const Home = () => {
           </ConfirmationModal>
         }
         <Blog ref={refs.blogRef} images={images} />
-        <Contact data={data} ref={refs.contactRef} />
         <About data={data} ref={refs.aboutRef} />
+        <Contact data={data} ref={refs.contactRef} />
       </Layout>
     </main>
   );

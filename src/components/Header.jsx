@@ -25,7 +25,7 @@ const Header = ({ setViewPort }) => {
 
     const currentPath = usePathname();
 
-     useEffect(() => {
+    useEffect(() => {
         if (currentPath === "/Login") {
             setActive('button1');
             setHeader(false);
@@ -46,36 +46,12 @@ const Header = ({ setViewPort }) => {
     }, [session])
 
 
-    // const handleDeleteFile = async () => {
-    //     try {
-    //         const response = await axios.delete(`${url}/api/removeFile`, {
-    //             data: {
-    //                 fileName: ['file3.jsx'],
-    //                 // fileDir: 'fileToDelete',
-    //                 fileDir: 'src/components',
-    //             },
-    //         });
-    //         console.log(response.data.message);
-    //     } catch (error) {
-    //         console.error('Error deleting file:', error);
-    //     }
-
-    // };
-
-    // const tenMinutes = 3 * 60 * 1000;
-    // useEffect(() => {
-    //     const time = setTimeout(handleDeleteFile, tenMinutes);
-    //     return () => clearTimeout(time);
-    // }, []);
-
-
     return (
         <div className="fixed top-0 w-screen bg-red-900 overflow-hidden h-16 flex font-serif justify-between z-50">
             <div className="flex justify-start items-center">
                 <div className="w-16 flex p-3 overflow h-full">
                     <Image width={400} height={300} className="object-cover" src={Logo} alt="Logo" />
                 </div>
-                {/* font-romanesco */}
                 <span className=" text-white md:flex hidden text-2xl items-center">Bulacan State University</span>
             </div>
             {header ?

@@ -71,9 +71,9 @@ const Contact = ({ setOpen }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataConfiguration size={32}/>Update data</div>
-         <p className='text-xl p-6'>Are you sure you want to change this?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataConfiguration size={32} />Update data</div>
+            <p className='text-xl p-6'>Are you sure you want to change this?</p>
+        </div>, () => {
             handleUpdate()
         });
     };
@@ -100,6 +100,14 @@ const Contact = ({ setOpen }) => {
                         </div>
                     </div></InformationModal>}
                 <form className="grid gap-2 text-2xl" onSubmit={handleSubmit}>
+                    <label className="font-bold">School Name:</label>
+                    <input
+                        className="ml-8 rounded-md bg-gray-300"
+                        value={formData.email}
+                        onChange={(e) => handleChange("email", e.target.value)}
+                        type="text"
+                        placeholder="School Name"
+                        required />
                     <label className="font-bold">Location:</label>
                     <input
                         className="ml-8 rounded-md bg-gray-300"
@@ -108,24 +116,15 @@ const Contact = ({ setOpen }) => {
                         type="text"
                         placeholder="Location"
                         required />
-                    <label className="font-bold">Phone Number:</label>
+                    <label className="font-bold">School year:</label>
                     <input
                         className="ml-8 rounded-md bg-gray-300"
                         value={formData.phoneNumber}
                         onChange={(e) => handleChange("phoneNumber", e.target.value)}
-                        type="tel"
-                        placeholder="Phone Number"
+                        type="text"
+                        placeholder="School year"
                         maxLength={14}
                         required />
-                    <label className="font-bold">Email:</label>
-                    <input
-                        className="ml-8 rounded-md bg-gray-300"
-                        value={formData.email}
-                        onChange={(e) => handleChange("email", e.target.value)}
-                        type="email"
-                        placeholder="Email"
-                        required />
-
                     <div className="flex justify-center mt-6">
                         <button disabled={loading} type="submit" className="py-1 px-8 bg-red-800 text-white">{loading ? "Saving" : "Save"}</button>
                     </div>
