@@ -371,7 +371,7 @@ const page = () => {
                                     disabled={loading}
                                     className={`${loading ? "bg-gray-500" : "bg-red-950"} text-white border border-black py-2 px-6`}
                                     type="submit">
-                                    {loading ? "Submitting" : "Submit Report"}</button>
+                                    {loading ? "Submitting" : "Submit"}</button>
                             </div>
                         </form>
                     </div>
