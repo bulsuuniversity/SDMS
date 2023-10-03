@@ -179,18 +179,12 @@ const page = () => {
 
     return (
         <Layout>
-            <PrivateRoute>
-                <div className="py-4 relative mb-8 px-4 md:px-28">
+            {/* <PrivateRoute> */}
+            <div className="py-6 mb-10">
+                <div className="lg:mx-[24rem] border-red-950 border-8 ">
 
-                    <div className="border grid gap-4 justify-center border-black border-2 mb-14 lg:mx-52 rounded-lg px-2 md:px-6 py-4">
-                        {/* <button className="bg-blue px-4 py-2" onClick={handleMakeNotif}>Make notif</button> */}
-
-                        <h2 className="text-4xl text-center">Report Form</h2>
-                        <h3 className="text-xs italic px-20 pb-4 grid justify-center">
-                            Please fill the necessary details denoted by &#40;&#42;&#41;.
-                            Providing its details will hasten the process.
-                        </h3>
-
+                    <h2 className="text-2xl flex text-white bg-red-950 justify-center">Report Form</h2>
+                    <div className="border grid relative gap-4 justify-center ">
                         {openSelectAct &&
                             <>
                                 <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
@@ -215,18 +209,18 @@ const page = () => {
                                     <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                                 </div>
                             </>}
-                        <form className="grid relative pb-8 mx-2 md:mx-16" onSubmit={handleSubmitReport}>
-                            <p className="font-bold flex gap-2">Ticket No.:
-                                <div className="underline underline-offset-4">
-                                    {reportData.ticketNo && reportData.ticketNo}
-                                </div>
-                            </p>
+                        <p className="font-bold pt-4 pb-6 flex gap-2">Ticket No.:
+                            <div className="underline underline-offset-4">
+                                {reportData.ticketNo && reportData.ticketNo}
+                            </div>
+                        </p>
+                        <form className="grid relative pb-8" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
                             <div className="grid indent-6 gap-1">
 
 
                                 <label className="flex justify-between">
-                                    <p className="font-bold text-md flex"><p className="text-red-600">&#42;</p>Name:</p>
+                                    <p>Name:</p>
                                     <input
                                         className="border w-52"
                                         placeholder="Name"
@@ -237,7 +231,7 @@ const page = () => {
                                     />
                                 </label>
                                 <label className="flex justify-between">
-                                    <p className="font-bold text-md flex"><p className="text-red-600">&#42;</p>College:</p>
+                                    <p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
                                         className="border w-52"
@@ -260,7 +254,7 @@ const page = () => {
                                     />}
                                 </label>
                                 <label className="flex justify-between">
-                                    <p className="font-bold text-md flex"><p className="text-red-600">&#42;</p>Course, year & section:</p>
+                                    <p>Course, year & section:</p>
                                     <input
                                         className="border w-52"
                                         placeholder="Course, year and Section"
@@ -287,7 +281,7 @@ const page = () => {
                                 <p className="font-bold">Misconduct Details:</p>
                                 <div className="indent-6 grid gap-1">
                                     <label className="flex justify-between">
-                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Act of Misconduct:</div>
+                                        <div>Act of Misconduct:</div>
                                         <div
                                             className={`${require && "border border-red-600"} pr-2 border flex items-center justify-between w-52`}
                                             onClick={() => setOpenSelectAct(true)}
@@ -303,7 +297,7 @@ const page = () => {
                                         />}
                                     </label>
                                     <label className="flex justify-between">
-                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Date of Incident:</div>
+                                        <div>Date of Incident:</div>
                                         <input
                                             className="border w-52"
                                             placeholder=""
@@ -317,7 +311,7 @@ const page = () => {
                                         />
                                     </label>
                                     <label className="flex justify-between">
-                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Place or Platform of Incident:</div>
+                                        <div>Place or Platform of Incident:</div>
                                         <input
                                             className="border w-52"
                                             placeholder="Place or platform used"
@@ -328,7 +322,7 @@ const page = () => {
                                         />
                                     </label>
                                     <label className="flex justify-between">
-                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Rate of Occurrence:</div>
+                                        <div>Rate of Occurrence:</div>
                                         <select
                                             value={reportData.rateOfOccurrence}
                                             onChange={(e) => handleInputChange('rateOfOccurrence', e.target.value)}
@@ -344,46 +338,46 @@ const page = () => {
                                         </select>
 
                                     </label>
-                                    <label className="flex justify-between">
-                                        <div className="flex font-bold text-md"><p className="text-red-600">&#42;</p>Brief Description of the Situation:</div>
+                                    <label className="grid">
+                                        <div>Brief Description of the Situation:</div>
                                         <textarea
-                                            className="border"
+                                            className="border ml-14"
                                             placeholder="Please describe the details"
-                                            rows="3"
-                                            cols="20"
+                                          
                                             value={reportData.describeTheSituation}
                                             onChange={(e) => handleInputChange('describeTheSituation', e.target.value)}
                                             required
                                         />
                                     </label>
                                     <label className="grid">
-                                        <div className="flex justify-between">
+                                        <div className="flex gap-2">
                                             <p className="font-bold text-md"> Attachment:</p>
                                             <input
-                                                className="border w-52"
+                                                className="border py-2 w-52"
                                                 placeholder=""
                                                 type="file"
                                                 accept="image/jpeg, image/png"
                                                 onChange={handlePictureChange}
                                             />
                                         </div>
-                                        <p className="text-xs italic"> Note: Picture of handwritten narrative report.</p>
+                                        <p className="text-xs italic pb-10"> Note: Picture of handwritten narrative report.</p>
                                     </label>
                                 </div>
                             </div>
 
 
-                            <div className="w-full absolute md:-bottom-12 -bottom-16 flex justify-center">
+                            <div className="w-full absolute -bottom-6 flex justify-center">
                                 <button
                                     disabled={loading}
-                                    className={`${loading ? "bg-gray-500" : "bg-amber-400"} border border-black rounded-[1.5rem] p-4`}
+                                    className={`${loading ? "bg-gray-500" : "bg-red-950"} text-white border border-black py-2 px-6`}
                                     type="submit">
                                     {loading ? "Submitting" : "Submit Report"}</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </PrivateRoute>
+                {/* </PrivateRoute> */}
+            </div>
         </Layout>
     );
 }
