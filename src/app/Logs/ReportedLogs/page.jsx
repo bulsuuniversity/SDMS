@@ -18,6 +18,7 @@ const Page = () => {
     const [openInfo, setOpenINfo] = useState(false)
     const [data, setData] = useState(
         {
+            id: "",
             zero: "",
             one: "",
             two: "",
@@ -31,6 +32,7 @@ const Page = () => {
     useEffect(() => {
         if (reports) {
             const formattedData = reports.map((data) => ({
+                id: data.id,
                 zero: data.dateOfIncident,
                 one: data.ticketNo,
                 two: data.offender,

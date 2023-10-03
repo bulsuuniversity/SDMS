@@ -48,7 +48,7 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
         },
     ];
     const data = Object.values(tableData).map((tableData, index) => ({
-        id: index,
+        id: tableData.id,
         zero: tableData.zero,
         one: tableData.one,
         two: tableData.two,
