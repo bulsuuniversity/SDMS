@@ -70,7 +70,7 @@ const Page = () => {
                         <div className="grid gap-4 text-xs">
                             <label className="flex gap-3 justify-center items-center">
                                 <p className="font-bold">Ticket No.:</p>
-                                <div className="bg-gray-300 p-2">{info.id}</div>
+                                <div className="bg-gray-300 p-2">{info.ticketNo}</div>
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Act of Indiscipline: </p>
