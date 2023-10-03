@@ -9,6 +9,7 @@ import { useProfileData } from "@/app/libs/store";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api"
 import { FcDataProtection } from "react-icons/fc";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const Page = () => {
     const { profileData } = useProfileData()
@@ -69,10 +70,13 @@ const Page = () => {
         <Layout>
             <ConfirmationDialog />
             {success && <InformationModal>
-                <div className="grid p-6 justify-center gap-4 w-48">
-                    <div className="py-2">Successfully changed password!</div>
+                <div className="grid p-10 justify-center gap-4">
                     <div className="flex justify-center">
-                        <button onClick={() => setSuccess(false)} className="bg-amber-600 w-24 px-4 py-2 rounded-lg">Okay</button>
+                        <AiOutlineCheckCircle size={32}/>
+                    </div>
+                    <div className="py-2 text-center">Successfully changed password!</div>
+                    <div className="flex justify-center">
+                        <button onClick={() => setSuccess(false)} className="bg-green-500 text-white w-max px-4 py-2 rounded-lg">Okay</button>
                     </div>
                 </div>
             </InformationModal>

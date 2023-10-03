@@ -4,7 +4,7 @@ import DataGridView from "./Datagridview";
 import Layout from "../Layout";
 import { useEffect, useState } from "react";
 import InformationModal from "@/utils/InformationModal";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import Image from "next/image";
 import { url, headers } from "@/app/libs/api";
 import axios from "axios";
@@ -31,7 +31,7 @@ const Page = () => {
         try {
             const response = await axios.put(`${url}/api/consultReferral/${info.id}`,
                 { headers });
-                handleGetData()
+            handleGetData()
             setSuccess(true)
             stopLoading()
         } catch (err) {
@@ -86,14 +86,17 @@ const Page = () => {
                     <ConfirmationDialog />
                     {success && <InformationModal>
                         <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
-                            <p>Cleared Successfully!</p>
-                            <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                            <div className="flex justify-center">
+                                <AiOutlineCheckCircle size={32} />
+                            </div>
+                            <p className="text-center">Cleared Successfully!</p>
+                            <button onClick={() => setSuccess(false)} className='bg-green-600 text-white rounded-lg w-max py-2 px-4'>Okay</button>
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>
-                        <div className="grid justify-center p-6">
-                            <div>Redirecting where you left.</div>
-                            <p>Please wait...</p>
+                        <div className="grid bg-red-700 text-white justify-center p-10">
+                            <div className="text-center">Redirecting where you left.</div>
+                            <p className="text-center">Please wait...</p>
                         </div>
                     </InformationModal>}
                     <div className="grid gap-4 justify-center items-center">
@@ -162,7 +165,7 @@ const Page = () => {
                         setOpenINfo={setOpenINfo}
                         setClickedID={setClickedID}
                         tableData={data}
-                    />: <div className="inset-0">No Record found</div>}
+                    /> : <div className="inset-0">No Record found</div>}
             </div>
         </Layout>
     );

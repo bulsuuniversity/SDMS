@@ -32,10 +32,9 @@ const Page = () => {
         if (reports) {
             const formattedData = reports.map((data) => ({
                 zero: data.dateOfIncident,
-                one: data.id,
+                one: data.ticketNo,
                 two: data.offender,
                 three: data.actionOfDiscipline,
-                four: data.sentMessage,
                 five: data.status,
             }));
             setData(formattedData)
@@ -47,7 +46,6 @@ const Page = () => {
         "TICKET NO.",
         "OFFENDER",
         "INCIDENT",
-        "MESSAGE",
         "STATUS",
     ]
 

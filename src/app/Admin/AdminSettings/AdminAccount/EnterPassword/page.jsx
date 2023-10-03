@@ -10,6 +10,7 @@ import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
 import AdminAccountModal from "@/utils/AdminAccountModal";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const Page = () => {
     const [password, setPassword] = useState()
@@ -80,7 +81,10 @@ const Page = () => {
                 <div className="grid bg-white py-5 px-12">
                     {responseData === "success" && <ConfirmationModal>
                         <div>
-                            <div className="flex flex-col justify-center p-7 justify-center">
+                            <div className="flex flex-col justify-center p-10 justify-center">
+                                <div className="flex justify-center">
+                                    <AiOutlineCheckCircle size={32} />
+                                </div>
                                 <div className="text-2xl font-bold whitespace-normal text-center ">
                                     SUCCESSFULLY CHANGED PASSWORD!
                                 </div>

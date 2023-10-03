@@ -27,12 +27,6 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
             cell: (row) => <div className='line-clamp-3 whitespace-normal'>{row.three}</div>,
         },
         {
-            name: <div className='flex text-center'>{headerData[4]}</div>,
-            selector: row => row.four,
-            sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.four}</div>,
-        },
-        {
             name: <div className='flex text-center'>{headerData[5]}</div>,
             selector: row => row.five,
             sortable: true,
@@ -59,7 +53,6 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
         one: tableData.one,
         two: tableData.two,
         three: tableData.three,
-        four: tableData.four,
         five: tableData.five,
     }))
 

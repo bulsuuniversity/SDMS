@@ -10,6 +10,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 const Page = () => {
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
@@ -18,7 +19,7 @@ const Page = () => {
     const [responseData, setResponseData] = useState()
     const route = useRouter()
     const [notPassword, setNotPassword] = useState(false)
-    const {data: session} = useSession()
+    const { data: session } = useSession()
 
     const searchParams = useSearchParams()
     const emailParams = searchParams.get('email')
@@ -81,6 +82,9 @@ const Page = () => {
                     {message && <ConfirmationModal>
                         <div>
                             <div className="flex flex-col justify-center p-7 justify-center">
+                                <div className="flex justify-center">
+                                    <AiOutlineCheckCircle size={32} />
+                                </div>
                                 <div className="text-2xl font-bold whitespace-normal text-center ">
                                     SUCCESSFULLY CHANGED PASSWORD!
                                 </div>
