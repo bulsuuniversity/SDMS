@@ -181,7 +181,7 @@ const page = () => {
         <Layout>
             {/* <PrivateRoute> */}
             <div className="py-6 mb-10">
-                <div className="lg:mx-[24rem] md:mx-10 border-red-950 border-8 ">
+                <div className="xl:mx-[24rem] lg:mx-[18rem] md:mx-10 border-red-950 border-8 ">
 
                     <h2 className="text-2xl flex text-white bg-red-950 justify-center">Report Form</h2>
                     <div className="border grid relative gap-4 justify-center ">
