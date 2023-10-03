@@ -63,14 +63,14 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                 </div>
                 <ConfirmationDialog />
                 {loading && <InformationModal>
-                    <div className="grid justify-center p-6">
-                        <div>Sending Message.</div>
-                        <p>Please wait...</p>
+                    <div className="grid justify-center gap-4 bg-red-700 text-white p-10">
+                        <div className='text-center'>Sending Message.</div>
+                        <p className='text-center'>Please wait...</p>
                     </div>
                 </InformationModal>}
                 {success ?
                     <>
-                        <div className='grid border border-black justify-center gap-7'>
+                        <div className='grid justify-center gap-7'>
                             <div className='flex justify-center'>
                                 <AiOutlineCheckCircle className='rounded-full bg-green-400' size={32} />
                             </div>

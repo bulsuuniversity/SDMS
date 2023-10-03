@@ -1,6 +1,6 @@
 import InformationModal from "@/utils/InformationModal";
 import { useEffect, useState } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api";
 import useConfirmation from "@/utils/ConfirmationHook";
@@ -92,6 +92,9 @@ const Contact = ({ setOpen }) => {
                 </div>
                 {message && <InformationModal>
                     <div className="p-10 border border-black grid gap-3">
+                        <div className="flex justify-center">
+                            <AiOutlineCheckCircle size={32} />
+                        </div>
                         <div className="text-2xl text-center">
                             Successfully updated!
                         </div>

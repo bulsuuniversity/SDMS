@@ -1,5 +1,5 @@
 import InformationModal from "@/utils/InformationModal";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api";
@@ -52,6 +52,9 @@ const About = ({ setOpen }) => {
                 </div>
                 {message && <InformationModal>
                     <div className="p-10 grid gap-3">
+                        <div className="flex justify-center">
+                            <AiOutlineCheckCircle size={32} />
+                        </div>
                         <div className="text-2xl text-center">
                             Successfully updated!
                         </div>

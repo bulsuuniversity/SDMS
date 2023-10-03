@@ -95,12 +95,12 @@ const Page = () => {
         }
     }
 
-    const data = filterData && Object.values(filterData).filter(report => 
-        search ? 
-          report.name && (report.name.toLowerCase()).includes(search.toLowerCase()) : 
-          true
-      );
-      
+    const data = filterData && Object.values(filterData).filter(report =>
+        search ?
+            report.name && (report.name.toLowerCase()).includes(search.toLowerCase()) :
+            true
+    );
+
 
     useEffect(() => {
         handleGetData()
@@ -158,7 +158,7 @@ const Page = () => {
                     <GoSearch className="mx-2 text-white" size={25} />
                 </div>
             </div>
-        
+
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">
@@ -168,9 +168,11 @@ const Page = () => {
                     </div>
                     <ConfirmationDialog />
                     {success && <InformationModal>
-                        <div className='bg-amber-200 grid p-10 border border-black rounded-lg gap-4'>
+                        <div className='grid p-10 border border-black rounded-lg gap-7'>
                             <p>{message}</p>
-                            <button onClick={handleClose} className='bg-green-500 text-white w-max rounded-lg py-2 px-4'>Okay</button>
+                            <div className="flex justify-center">
+                                <button onClick={handleClose} className='bg-green-500 text-white w-max rounded-lg py-2 px-4'>Okay</button>
+                            </div>
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>

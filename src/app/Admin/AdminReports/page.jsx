@@ -3,7 +3,7 @@
 import ReportsDatagridview from "./ReportsDatagridview";
 import { useEffect, useState } from "react";
 import InformationModal from "@/utils/InformationModal";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import Image from "next/image";
 import { url, headers } from "@/app/libs/api";
 import axios from "axios";
@@ -302,9 +302,12 @@ const Page = () => {
                     <ConfirmationDialog />
                     {success && <InformationModal>
                         <div className='bg-white text-red-700 grid p-10 rounded-lg gap-4'>
+                            <div className="flex justify-center">
+                                <AiOutlineCheckCircle size={32} />
+                            </div>
                             <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
                             <div className="flex justify-center">
-                                <button onClick={() => setSuccess('')} className='bg-amber-600 w-32 rounded-lg py-2 px-4'>Okay</button>
+                                <button onClick={() => setSuccess('')} className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
                             </div>
                         </div>
                     </InformationModal>}
