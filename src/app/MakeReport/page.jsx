@@ -209,7 +209,7 @@ const page = () => {
                                     <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                                 </div>
                             </>}
-                        <p className="font-bold pt-4 pb-6 flex gap-2">Ticket No.:
+                        <p className="font-bold py-4 flex gap-2">Ticket No.:
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
                             </div>
