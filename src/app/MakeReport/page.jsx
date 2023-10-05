@@ -181,34 +181,33 @@ const page = () => {
         <Layout>
             {/* <PrivateRoute> */}
             <div className="py-6 mb-10">
+                {openSelectAct &&
+                    <>
+                        <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
+                            <button className="hover:bg-gray-400 font-bold" type="button" onClick={() => handleAction("")} >Select Action of Discipline</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disturbance / Disrupt of classes or any Educational-Related-Programs")} >Disturbance / Disrupt of classes or any Educational-Related-Programs</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Unauthorized solicitation of funds or selling of any ticket")} >Unauthorized solicitation of funds or selling of any ticket</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Smoking, gambling or being under the influence of alcohol")} >Smoking, gambling or being under the influence of alcohol</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Malicious or unfounded accusations")} >Malicious or unfounded accusations</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Deception, impersonation or fraud")} >Deception, impersonation or fraud</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disrespectful behavior or refusal to comply with the directions of the university")} >Disrespectful behavior or refusal to comply with the directions of the university</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours")} >Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university")} >Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Indecency in Any Form of Obscene or Lewd Behavior")} >Indecency in Any Form of Obscene or Lewd Behavior</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Physical / Verbal / Sexual / Mental / Emotional Abuse, Threat, Cyberbullying, Hazing, Coercion")} >Smoking, gambling or being under the influence of alcohol</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises")} >Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Carrying of Firearms and Other Weapons")} >Carrying of Firearms and Other Weapons</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Cheating")} >Cheating</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Plagiarism")} >Plagiarism</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Falsification or Forging of Academic Records and Official Documents")} >Falsification or Forging of Academic Records and Official Documents</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
+                        </div>
+                    </>}
                 <div className="xl:mx-[24rem] lg:mx-[18rem] md:mx-10 border-red-950 border-8 ">
-
                     <h2 className="text-2xl flex text-white bg-red-950 justify-center">Report Form</h2>
                     <div className="border grid relative gap-4 justify-center ">
-                        {openSelectAct &&
-                            <>
-                                <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
-                                    <button className="hover:bg-gray-400 font-bold" type="button" onClick={() => handleAction("")} >Select Action of Discipline</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disturbance / Disrupt of classes or any Educational-Related-Programs")} >Disturbance / Disrupt of classes or any Educational-Related-Programs</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Unauthorized solicitation of funds or selling of any ticket")} >Unauthorized solicitation of funds or selling of any ticket</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Smoking, gambling or being under the influence of alcohol")} >Smoking, gambling or being under the influence of alcohol</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Malicious or unfounded accusations")} >Malicious or unfounded accusations</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Deception, impersonation or fraud")} >Deception, impersonation or fraud</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disrespectful behavior or refusal to comply with the directions of the university")} >Disrespectful behavior or refusal to comply with the directions of the university</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours")} >Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university")} >Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Indecency in Any Form of Obscene or Lewd Behavior")} >Indecency in Any Form of Obscene or Lewd Behavior</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Physical / Verbal / Sexual / Mental / Emotional Abuse, Threat, Cyberbullying, Hazing, Coercion")} >Smoking, gambling or being under the influence of alcohol</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises")} >Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Carrying of Firearms and Other Weapons")} >Carrying of Firearms and Other Weapons</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Cheating")} >Cheating</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Plagiarism")} >Plagiarism</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Falsification or Forging of Academic Records and Official Documents")} >Falsification or Forging of Academic Records and Official Documents</button>
-                                    <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
-                                </div>
-                            </>}
                         <p className="font-bold py-4 flex gap-2">Ticket No.:
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
@@ -343,7 +342,7 @@ const page = () => {
                                         <textarea
                                             className="border ml-14"
                                             placeholder="Please describe the details"
-                                          
+
                                             value={reportData.describeTheSituation}
                                             onChange={(e) => handleInputChange('describeTheSituation', e.target.value)}
                                             required
