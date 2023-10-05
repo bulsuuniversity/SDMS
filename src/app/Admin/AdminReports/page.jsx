@@ -77,7 +77,6 @@ const Page = () => {
         try {
             const response = await axios.put(`${url}/api/studentReport/${info.id}`,
                 { headers });
-            setNotes("")
             handleGetData()
             stopLoading()
             setSuccess('Cleared')
@@ -93,6 +92,7 @@ const Page = () => {
             <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Clear Report</div>
             <p className='text-xl p-6'>Are you sure you want to clear this report?</p>
         </div>, () => {
+            handleUpdateReport()
             handleUpdateApi()
         });
     };
@@ -119,7 +119,6 @@ const Page = () => {
         try {
             const response = await axios.put(`${url}/api/AdminUpdateReport/${info.id}`,
                 { sanctions: sanctions }, { headers });
-            setNotes("")
             handleGetData()
             stopLoading()
             setSuccess('Updated')
@@ -160,6 +159,17 @@ const Page = () => {
         const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === clickedID);
         setInfo(clcikedInfo)
     }, [clickedID])
+
+    useEffect(() => {
+        if (info && info.notes) {
+            setNotes(info.notes)
+        } else {
+            setNotes("")
+        }
+    }, [info])
+
+
+
     const now = new Date();
     const tomorrow = new Date(now);
     tomorrow.setDate(now.getDate() + 1);
@@ -168,6 +178,7 @@ const Page = () => {
         day: 'numeric',
         year: 'numeric',
     });
+
     const suggestions = {
         one: `Good day! We request you to please attend the meeting on ${formattedDate} in Room 216B (9:00AM). Your attendance is a must for the proceeding of your ongoing case. Further details will be discussed on the said meeting. Thank you.`,
         // two: "Sorry, can you provide more details for further assistance?"
@@ -331,7 +342,7 @@ const Page = () => {
                                 <p className="font-bold">Kind of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36" required>
-                                        <option value={''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
+                                        <option value={info.kindOfOffense ? info.kindOfOffense : ''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
                                         <option value={'Light Offense'}>Light Offense</option>
                                         <option value={'Less Grave Offense'}>Less Grave Offense</option>
                                         <option value={'Grave Offense'}>Grave Offense</option>
@@ -343,7 +354,7 @@ const Page = () => {
                                 <p className="font-bold">Degree of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36" required>
-                                        <option value={''}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
+                                        <option value={info.degreeOfOffense ? info.degreeOfOffense : ""}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
                                         <option value={'1st Offense'}>1st Offense</option>
                                         <option value={'2nd Offense'}>2nd Offense</option>
                                         <option value={'3rd Offense'}>3rd Offense</option>
@@ -357,7 +368,7 @@ const Page = () => {
                             <p className="font-bold">NOTES</p>
                             <p className="italic text-xs">Further details in accordance with the sanction.</p>
                             <textarea
-                                value={info.notes ? info.notes : notes}
+                                value={notes}
                                 onChange={(e) => setNotes(e.target.value)}
                                 rows="6"
                                 cols="30"
