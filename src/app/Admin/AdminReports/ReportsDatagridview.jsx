@@ -9,6 +9,7 @@ import useLoading from '@/utils/Loading';
 import InformationModal from '@/utils/InformationModal';
 import useConfirmation from '@/utils/ConfirmationHook';
 import { GiDivingDagger } from 'react-icons/gi';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, handleGetData }) => {
     const [selectedRows, setSelectedRows] = useState([]);
@@ -36,9 +37,9 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     const handleSubmitReport = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32}/>Delete Report</div>
-             <p className='text-xl p-6'>Are you sure you want to delete {selectedRows > 1 ? 'these reports' : 'this report'}?</p>
-             </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Delete Report</div>
+            <p className='text-xl p-6'>Are you sure you want to delete {selectedRows > 1 ? 'these reports' : 'this report'}?</p>
+        </div>, () => {
             handleDelete()
         });
     };
@@ -73,13 +74,13 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
             name: <div className='flex text-center'>RATE OF OCCURENCE</div>,
             selector: row => row.rate,
             sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal',width: "100%", textAlign: 'center' }}>{row.rate}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal', width: "100%", textAlign: 'center' }}>{row.rate}</div>,
         },
         {
             name: <div className='flex text-center'>STATUS</div>,
             selector: row => row.status,
             sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal',width: "100%", textAlign: 'center' }}>{row.status}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal', width: "100%", textAlign: 'center' }}>{row.status}</div>,
             conditionalCellStyles: [
                 {
                     when: (row) => row.status === "Pending",
@@ -118,15 +119,15 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
     ];
     function formatDate(inputDate) {
         const date = new Date(inputDate);
-      
+
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         const year = date.getFullYear();
-      
+
         return `${month}/${day}/${year}`;
     }
 
-    
+
     const data = Object.values(tableData).map((reports, index) => ({
         id: reports.id,
         ticket: reports.ticketNo,
@@ -173,9 +174,14 @@ const ReportsDatagridview = ({ tableData, setClickedID, setOpenINfo, status, han
                 </div>}
             <ConfirmationDialog />
             {success && <InformationModal>
-                <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
-                    <p>Deleted Successfully!</p>
-                    <button onClick={() => setSuccess(false)} className='bg-green-600 rounded-lg py-2 px-4'>Okay</button>
+                <div className='bg-white grid p-12 rounded-lg gap-4'>
+                    <div className='flex justify-center'>
+                        <AiOutlineCheckCircle size={28} />
+                    </div>
+                    <p className='text-center text-xl'>Deleted Successfully!</p>
+                    <div className='flex justify-center'>
+                        <button onClick={() => setSuccess(false)} className='bg-green-600 rounded-lg w-max py-2 px-4'>Okay</button>
+                    </div>
                 </div>
             </InformationModal>}
             <DataTable

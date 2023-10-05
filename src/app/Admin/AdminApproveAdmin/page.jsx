@@ -73,7 +73,7 @@ const Page = () => {
             const response = await axios.put(`${url}/api/RemoveAccount/${info.id}`,
                 { headers });
             setData(response.data)
-            // sendEmail()
+            handleGetData()
             stopLoading()
             setSuccess(true)
         } catch (err) {
@@ -85,18 +85,18 @@ const Page = () => {
     const handleRemoveAcc = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32}/>Remove Account</div>
-         <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
+            <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
+        </div>, () => {
             handleRemoveAccApi()
         });
     };
-    
+
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32}/>Approve Account</div>
-        <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
         </div>, () => {
             handleUpdateApi()
         });

@@ -30,7 +30,7 @@ const Page = () => {
     const [imageToView, setImageToView] = useState()
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { startLoading, loading, stopLoading } = useLoading()
-    const [status, setStatus] = useState(true)
+    const [status, setStatus] = useState(false)
     const [notes, setNotes] = useState()
     const [degreeOfOffense, setDegreeOfOffense] = useState()
     const [kindOfOffense, setKindOfOffense] = useState()
@@ -77,6 +77,7 @@ const Page = () => {
         try {
             const response = await axios.put(`${url}/api/studentReport/${info.id}`,
                 { headers });
+            setNotes("")
             handleGetData()
             stopLoading()
             setSuccess('Cleared')
@@ -118,6 +119,7 @@ const Page = () => {
         try {
             const response = await axios.put(`${url}/api/AdminUpdateReport/${info.id}`,
                 { sanctions: sanctions }, { headers });
+            setNotes("")
             handleGetData()
             stopLoading()
             setSuccess('Updated')
@@ -213,7 +215,7 @@ const Page = () => {
 
 
             {openInfo && info && <InformationModal>
-                <div className="grid bg-gray-500 relative grid-cols-2 gap-4 p-4">
+                <form onSubmit={(e) => handleUpdate(e)} className="grid bg-gray-500 relative grid-cols-2 gap-4 p-4">
 
 
                     <div className="grid gap-2 justify-center items-center text-xs">
@@ -301,7 +303,7 @@ const Page = () => {
 
                     <ConfirmationDialog />
                     {success && <InformationModal>
-                        <div className='bg-white text-red-700 grid p-10 rounded-lg gap-4'>
+                        <div className='bg-white grid p-10 rounded-lg gap-4'>
                             <div className="flex justify-center">
                                 <AiOutlineCheckCircle size={32} />
                             </div>
@@ -328,7 +330,7 @@ const Page = () => {
                             <div className="flex gap-2">
                                 <p className="font-bold">Kind of Offense:</p>
                                 <div className="flex justify-end">
-                                    <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36">
+                                    <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36" required>
                                         <option value={''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
                                         <option value={'Light Offense'}>Light Offense</option>
                                         <option value={'Less Grave Offense'}>Less Grave Offense</option>
@@ -340,7 +342,7 @@ const Page = () => {
                             <div className="flex mb-6 gap-2">
                                 <p className="font-bold">Degree of Offense:</p>
                                 <div className="flex justify-end">
-                                    <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36">
+                                    <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36" required>
                                         <option value={''}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
                                         <option value={'1st Offense'}>1st Offense</option>
                                         <option value={'2nd Offense'}>2nd Offense</option>
@@ -353,7 +355,7 @@ const Page = () => {
 
                         <div className="border bg-red-200 grid border-black p-4">
                             <p className="font-bold">NOTES</p>
-                            <p className="italic text-xs">Further details accordance to sanction.</p>
+                            <p className="italic text-xs">Further details in accordance with the sanction.</p>
                             <textarea
                                 value={info.notes ? info.notes : notes}
                                 onChange={(e) => setNotes(e.target.value)}
@@ -365,16 +367,16 @@ const Page = () => {
                         </div>
 
                         <div className="flex py-4 gap-4">
-                            <button onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><MdOutlineEmail size={20} /> Message</button>
-                            {info.status === "Pending" && <button onClick={handleUpdate} className="flex gap-2 items-center bg-green-600 px-2 py-1"><GiCheckMark size={20} /> Clear</button>}
-                            <button onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><GrUpdate size={20} /> Update</button>
+                            <button type="button" onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><MdOutlineEmail size={20} /> Message</button>
+                            <button type="button" onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><GrUpdate size={20} /> Update</button>
+                            {info.status === "Pending" && <button type="submit" className="flex gap-2 items-center bg-green-600 px-2 py-1"><GiCheckMark size={20} /> Clear</button>}
                         </div>
 
                     </div>
 
 
 
-                </div>
+                </form>
             </InformationModal>}
 
             <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">

@@ -51,7 +51,7 @@ const About = ({ setOpen }) => {
                         <AiFillCloseCircle size={30} /></button>
                 </div>
                 {message && <InformationModal>
-                    <div className="p-10 grid gap-3">
+                    <div className="p-12 grid gap-4">
                         <div className="flex justify-center">
                             <AiOutlineCheckCircle size={32} />
                         </div>

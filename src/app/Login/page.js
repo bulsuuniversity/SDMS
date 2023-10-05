@@ -93,8 +93,8 @@ const Login = () => {
               </div>
               {erroring &&
                 <InformationModal>
-                  <div className="grid p-6 justify-center gap-2">
-                    <p className="text-center w-48">{errorMess}</p>
+                  <div className="grid p-12 justify-center gap-4">
+                    <p className="text-center w-52">{errorMess}</p>
                     <div className="flex justify-center">
                       <button onClick={() => setError(false)}
                         className="px-4 bg-green-500 text-white rounded-lg py-2 w-max">Okay</button>

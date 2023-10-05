@@ -91,7 +91,7 @@ const Contact = ({ setOpen }) => {
                         <AiFillCloseCircle size={30} /></button>
                 </div>
                 {message && <InformationModal>
-                    <div className="p-10 border border-black grid gap-3">
+                    <div className="p-12 border border-black grid gap-3">
                         <div className="flex justify-center">
                             <AiOutlineCheckCircle size={32} />
                         </div>
