@@ -52,9 +52,9 @@ const Page = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataProtection size={32}/>Change Password</div>
-         <p className='text-xl p-6'>Are you sure you want to change password?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataProtection size={32} />Change Password</div>
+            <p className='text-xl p-6'>Are you sure you want to change password?</p>
+        </div>, () => {
             handleChangePass()
         });
     };
@@ -72,7 +72,7 @@ const Page = () => {
             {success && <InformationModal>
                 <div className="grid p-10 justify-center gap-4">
                     <div className="flex justify-center">
-                        <AiOutlineCheckCircle size={32}/>
+                        <AiOutlineCheckCircle size={32} />
                     </div>
                     <div className="py-2 text-center">Successfully changed password!</div>
                     <div className="flex justify-center">
@@ -97,7 +97,6 @@ const Page = () => {
             </InformationModal>
             }
             <form onSubmit={handleUpdate} className="grid gap-2 pt-2 pl-6">
-                <p>Admin ID: </p>
                 <div className="ml-6 grid">
                     <p>change password:</p>
                     <div className="bg-gray-400 grid w-3/4 justify-end gap-3 p-6">
