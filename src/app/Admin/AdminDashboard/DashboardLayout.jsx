@@ -28,26 +28,28 @@ const DashboardLayout = ({ children }) => {
     return (
         <AdminMenu>
             <div className="w-full h-full">
-                <div className="w-full p-5 text-md font-bold">
+                {/* <div className="w-full p-5 text-md font-bold">
                     Welcome Back! {session && session.email}
                 </div>
-                <div className={`${!children ? "grid gap-16" : "flex gap-4 "} justify-center items-center`}>
+                ${!children ? "p-7 text-2xl" : ""}
+                ${!children ? "grid gap-16" : "flex gap-4 "} */}
+                <div className={`flex gap-4 ml-10 mt-8 items-center`}>
                     <div className="text-md font-bold">Dashboard</div>
-                    <div className={`flex ml-12 bg-gray-400 text-xs rounded-lg `}>
+                    <div className={`flex bg-gray-400 text-xs rounded-lg `}>
                         <Link href={'/Admin/AdminDashboard/StudentRecords'}
-                            className={`hover:bg-amber-400 w-44 text-center
-                            ${!children ? "p-7 text-2xl" : ""}
+                            className={`hover:bg-amber-400 w-28 text-center
+                          
                              ${dashboard === 'StudentRecords' && 'bg-amber-300'} 
                              rounded-lg grid justify-center py-1 px-2 items-center`}>
-                            <div className="flex justify-center"><IoIosPeople size={children ? 32 : 50} /></div>
+                            <div className="flex text-2xl justify-center"><IoIosPeople size={32} /></div>
                             Student Records
                         </Link>
                         <Link href={'/Admin/AdminDashboard/Reports'}
-                            className={`hover:bg-amber-400 w-44 text-center
-                            ${!children ? "p-5 text-xl" : ""}
+                            className={`hover:bg-amber-400 w-28 text-center
+                           
                             ${dashboard === 'Reports' && 'bg-amber-300'}
                              rounded-lg grid justify-center py-1 px-2 items-center`}>
-                            <div className="flex justify-center"><PiNotePencilFill size={children ? 32 : 50} /></div>
+                            <div className="flex justify-center"><PiNotePencilFill size={32} /></div>
                             Reports
                         </Link>
                         {/* <Link href={'/Admin/AdminDashboard/Counselling'}
@@ -60,7 +62,7 @@ const DashboardLayout = ({ children }) => {
                     </div>
                 </div>
 
-                <div className="grid justify-center items-center">
+                <div className="grid justify-center mt-4 items-center">
                     {children}
                 </div>
             </div>

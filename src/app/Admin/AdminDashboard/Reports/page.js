@@ -195,7 +195,7 @@ const Page = () => {
                             </div>
                             <div className="font-bold grid items-center"> Number of {status ? 'Pending' : 'Cleared'} reports: {reports && reports.length}</div>
                         </div>
-                        <div className="overflow-y-auto grid bg-blue-100 justify-center gap-10 max-h-96 pb-6">
+                        <div className="overflow-y-auto grid bg-blue-100 justify-center gap-10 max-h-96 py-6">
                           
                             <LightOffenses reports={reports} status={status} />
                             <LessGraveOffenses reports={reports} status={status} />

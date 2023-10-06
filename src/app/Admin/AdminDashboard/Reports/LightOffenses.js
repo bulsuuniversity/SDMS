@@ -65,7 +65,7 @@ const LightOffenses = ({ reports, status }) => {
 
     return (
         <div className="grid gap-4">
-            <div className="font-bold grid text-center items-center">
+            <div className="font-bold grid pt-6 text-center items-center">
                 NUMBER OF {status ? 'Pending' : 'Cleared'} LIGHT OFFENSES:
                 {total && total.length}
             </div>

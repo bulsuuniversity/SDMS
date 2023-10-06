@@ -7,11 +7,11 @@ Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 
 const LessGraveOffenses = ({ reports, status }) => {
-    const smoking = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Cheating")).length) : 1;
-    const malicious = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Plagiarism")).length) : 1;
-    const deception = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Falsification")).length) : 1;
-    const disrespectful = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Plagiarism")).length) : 1;
-    const damage = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Falsification")).length) : 1;
+    const smoking = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Smoking")).length) : 1;
+    const malicious = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Malicious")).length) : 1;
+    const deception = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Deception")).length) : 1;
+    const disrespectful = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Disrespectful")).length) : 1;
+    const damage = reports ? (Object.values(reports).filter(report => (report.actionOfDiscipline).includes("Damage")).length) : 1;
 
     const legends = { smoking, malicious, deception, disrespectful, damage }
     const total = smoking + malicious + deception + disrespectful + damage

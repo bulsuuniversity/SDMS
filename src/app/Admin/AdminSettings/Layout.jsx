@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
             <div className="grid">
                 <div className="m-7 flex items-center">
                     <GrUserSettings size={70} /> <p className="border border-2 border-black h-16 mx-4" />
-                    <p className="font-bold text-xl">Setings</p>
+                    <p className="font-bold text-xl">Settings</p>
                 </div>
                 <div className="flex justify-center">
                     <div className="rounded-full md:bg-gray-400 grid gap-2 md:gap-0 sm:flex">
