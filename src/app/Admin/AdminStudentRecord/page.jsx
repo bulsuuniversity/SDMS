@@ -144,7 +144,7 @@ const Page = () => {
 
     return (
         <AdminMenu>
-            <div className="m-7 flex text-red-800  items-center">
+            <div className="m-7 flex items-center">
                 <FaPeopleLine size={50} /> <p className="border border-2 border-red-800 h-16 mx-4" />
                 <p className="font-bold text-xl">Student Accounts</p>
             </div>
