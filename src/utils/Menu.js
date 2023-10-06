@@ -101,7 +101,7 @@ const Menu = ({ profile }) => {
                                         href={profileData && !profileData.name ? '' : '/Logs'}
                                         // onClick={handleToggleMenu}
                                         className={`${profileData && profileData.name ? '' : 'cursor-not-allowed'} flex gap-4 border border-transparent p-4 hover:bg-gray-300 hover:border-gray-800 items-center`}>
-                                        <ImNewspaper size={32} /> REPORT LOGS</Link>
+                                        <ImNewspaper size={32} /> MY LOGS</Link>
                                 </div>
                                 <div className="bg-white flex flex-col">
                                     <Link

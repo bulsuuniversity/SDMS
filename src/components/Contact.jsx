@@ -10,21 +10,24 @@ const Contact = ({ data }, ref) => {
         <div ref={ref} className=" w-full grid bg-white text-black h-max">
             <div className="h-10"></div>
             <div className="w-full relative">
-                <div className="absolute w-full h-full items-center text-xl flex justify-center text-white">
+                <div className="absolute w-full h-full items-center text-2xl flex justify-center text-white">
                     <p>GUIDE ON HOW TO REPORT MISCONDUCT</p>
                 </div>
                 <Image width={1500} className="w-full" layout="responsive" height={200} src={"/HEADER.png"} alt="header" />
             </div>
             <div className="grid justify-center lg:mx-36 md:mx-28 ">
+                <div className="w-24 px-10 h-full bg-amber-400">
+                    <p className="text-amber-400 py-3">spacing</p>
+                </div>
                 <div className="flex gap-2 h-full items-center">
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         1
                     </div>
                     <div className="mx-2 ">
-                        <Image  className="object-cover" width={100} height={100}
-                             src={"/Step 1.png"} alt="step 1" />
+                        <Image className="object-cover" width={100} height={100}
+                            src={"/Step 1.png"} alt="step 1" />
                     </div>
-                    <div className="grid  pb-4 pt-10 gap-1">
+                    <div className="grid pb-4 gap-1">
                         <p className="font-bold text-lg">Login your account / Register an account</p>
                         <p className="pl-8">To submit a report, you need to be logged in your account. If you don't have one,you can freely register with the system.</p>
                     </div>
@@ -34,8 +37,8 @@ const Contact = ({ data }, ref) => {
                         2
                     </div>
                     <div className="mx-2 ">
-                        <Image  className="object-cover" width={150} height={150}
-                             src={"/Step 2.png"} alt="step2" />
+                        <Image className="object-cover" width={150} height={150}
+                            src={"/Step 2.png"} alt="step2" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">Go To Navigation Bar & Click Submit Report</p>
@@ -50,8 +53,8 @@ const Contact = ({ data }, ref) => {
                         3
                     </div>
                     <div className="mx-2 ">
-                        <Image  className="object-cover" width={200} height={200}
-                             src={"/Step 3.png"} alt="step3" />
+                        <Image className="object-cover" width={200} height={200}
+                            src={"/Step 3.png"} alt="step3" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">Fill-Out the Necessary Details</p>
@@ -67,8 +70,8 @@ const Contact = ({ data }, ref) => {
                         4
                     </div>
                     <div className="mx-2 ">
-                        <Image  className="object-cover" width={200} height={200}
-                             src={"/Step 4.png"} alt="step4" />
+                        <Image className="object-cover" width={200} height={200}
+                            src={"/Step 4.png"} alt="step4" />
                     </div>
                     <div className="grid py-2 gap-1">
                         <p className="font-bold text-lg">For Review & Evaluation</p>
@@ -83,16 +86,19 @@ const Contact = ({ data }, ref) => {
                         5
                     </div>
                     <div className="mx-2 ">
-                        <Image  className="object-cover" width={200} height={200}
-                             src={"/Step 5.png"} alt="step5" />
+                        <Image className="object-cover" width={200} height={200}
+                            src={"/Step 5.png"} alt="step5" />
                     </div>
-                    <div className="grid gap-4 pt-4 pb-10 gap-1">
+                    <div className="grid gap-4 pt-4 gap-1">
                         <p className="font-bold text-lg">Keep in Touch</p>
                         <p className="pl-8">Some misconducts are needed to be discussed personally in order to have resolution.
                             Thus, wait for further notice by the admin of the system that will be sent to your email
                             regarding the assessment of the report.
                         </p>
                     </div>
+                </div>
+                <div className="w-24 px-10 flex h-full justify-center bg-amber-400">
+                    <p className="text-amber-400 py-3">spacing</p>
                 </div>
             </div>
         </div >

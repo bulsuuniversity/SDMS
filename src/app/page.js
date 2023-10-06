@@ -13,13 +13,20 @@ import ConfirmationModal from "@/utils/ConfirmationModal";
 import axios from "axios";
 import { url, headers } from "./libs/api";
 import { useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Home = () => {
   const [viewPort, setViewPort] = useState(null);
   const [setUp, setSetup] = useState(false)
   const { profileData } = useProfileData()
   const [data, setData] = useState()
+  const { data: session } = useSession()
 
+  useEffect(() => {
+    if (session) {
+      setSetup(true)
+    }
+  }, [session])
 
   const getDetails = async () => {
     try {
@@ -75,7 +82,7 @@ const Home = () => {
               </div>
               <div className="text-center italic text-sm">Personal information are needed to be filled out first before doing any proccess.</div>
               <div className="flex justify-center mt-4">
-                <button className="bg-white w-max rounded-md px-5 py-1" onClick={() => setSetup(false)}>Okay</button>
+                <button className="bg-green-500 text-white rounded-md w-max px-5 py-1" onClick={() => setSetup(false)}>Okay</button>
               </div>
             </div>
           </ConfirmationModal>

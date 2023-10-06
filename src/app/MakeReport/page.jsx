@@ -208,21 +208,21 @@ const page = () => {
                     </>}
                 <div className="xl:mx-[24rem] lg:mx-[18rem] md:mx-10 border-red-950 border-8 ">
                     <h2 className="text-2xl flex text-white bg-red-950 justify-center">Report Form</h2>
-                    <div className="border grid relative gap-4 justify-center ">
+                    <div className="border grid relative gap-4 justify-center">
                         <p className="font-bold py-4 flex gap-2">Ticket No.:
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
                             </div>
                         </p>
-                        <form className="grid relative pb-8" onSubmit={handleSubmitReport}>
+                        <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
-                            <div className="grid indent-6 gap-1">
+                            <div className="grid indent-6 gap-4">
 
 
                                 <label className="flex justify-between">
                                     <p>Name:</p>
                                     <input
-                                        className="border w-52"
+                                        className="border w-52 mr-10"
                                         placeholder="Name"
                                         type="text"
                                         value={reportData.offender}
@@ -234,7 +234,7 @@ const page = () => {
                                     <p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
-                                        className="border w-52"
+                                        className="border w-52 mr-10"
                                         required
                                     >
                                         <option value="">Select College</option>
@@ -243,7 +243,7 @@ const page = () => {
                                         <option value="COED">COED</option>
                                         <option value="CICS">CICS</option>
                                         <option value="COE">COE</option>
-                                        <option value="Others">Others</option>
+                                        {/* <option value="Others">Others</option> */}
                                     </select>
                                     {customOption && <input
                                         className="border"
@@ -256,7 +256,7 @@ const page = () => {
                                 <label className="flex justify-between">
                                     <p>Course, year & section:</p>
                                     <input
-                                        className="border w-52"
+                                        className="border w-52 mr-10"
                                         placeholder="Course, year and Section"
                                         type="text"
                                         value={reportData.course}
@@ -279,11 +279,11 @@ const page = () => {
 
                             <div className="grid gap-4 ">
                                 <p className="font-bold">Misconduct Details:</p>
-                                <div className="indent-6 grid gap-1">
+                                <div className="indent-6 grid gap-4">
                                     <label className="flex justify-between">
                                         <div>Act of Misconduct:</div>
                                         <div
-                                            className={`${require && "border border-red-600"} pr-2 border flex items-center justify-between w-52`}
+                                            className={`${require && "border border-red-600"} ml-6 pr-2 border flex items-center justify-between w-52`}
                                             onClick={() => setOpenSelectAct(true)}
                                         >{reportData.actionOfDiscipline ? reportData.actionOfDiscipline : 'Select'}
                                             <SlArrowDown className="text-black" size={9} />
@@ -299,7 +299,7 @@ const page = () => {
                                     <label className="flex justify-between">
                                         <div>Date of Incident:</div>
                                         <input
-                                            className="border w-52"
+                                            className="border ml-6 w-52"
                                             placeholder=""
                                             type="date"
                                             value={reverseFormatDate(reportData.dateOfIncident)}
@@ -313,7 +313,7 @@ const page = () => {
                                     <label className="flex justify-between">
                                         <div>Place or Platform of Incident:</div>
                                         <input
-                                            className="border w-52"
+                                            className="border ml-6 w-52"
                                             placeholder="Place or platform used"
                                             type="text"
                                             value={reportData.platformOfIncident}
@@ -327,7 +327,7 @@ const page = () => {
                                             value={reportData.rateOfOccurrence}
                                             onChange={(e) => handleInputChange('rateOfOccurrence', e.target.value)}
                                             required
-                                            className="border w-52"
+                                            className="border ml-6 w-52"
                                         >
                                             <option value="">Select rate of Occurrence</option>
                                             <option className="text-center" value="1">1</option>
@@ -350,17 +350,17 @@ const page = () => {
                                         />
                                     </label>
                                     <label className="grid">
-                                        <div className="flex gap-2">
+                                        <div className="flex gap-4">
                                             <p className="font-bold text-md"> Attachment:</p>
                                             <input
-                                                className="border py-2 w-52"
+                                                className="border w-56"
                                                 placeholder=""
                                                 type="file"
                                                 accept="image/jpeg, image/png"
                                                 onChange={handlePictureChange}
                                             />
                                         </div>
-                                        <p className="text-xs italic pb-10"> Note: Picture of handwritten narrative report.</p>
+                                        <p className="text-xs italic pb-10"> Note: The attachment should be in .jpg file containing narrative report.</p>
                                     </label>
                                 </div>
                             </div>
@@ -371,7 +371,7 @@ const page = () => {
                                     disabled={loading}
                                     className={`${loading ? "bg-gray-500" : "bg-red-950"} text-white border border-black py-2 px-6`}
                                     type="submit">
-                                    {loading ? "Submitting" : "Submit"}</button>
+                                    {loading ? "SUBMITTING" : "SUBMIT"}</button>
                             </div>
                         </form>
                     </div>

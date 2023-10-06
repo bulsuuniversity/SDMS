@@ -14,7 +14,7 @@ const router = useRouter()
         <div
             onClick={handleClick}
             className={`flex items-center`}>
-            <span className="mr-4">About</span>
+            <span className="mr-4">About us</span>
         </div>
     );
 }
