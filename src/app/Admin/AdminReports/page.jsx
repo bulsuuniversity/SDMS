@@ -189,7 +189,7 @@ const Page = () => {
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
-                <ImNewspaper size={50} /> <p className="border border-2 h-16 mx-4" />
+                <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Reports</p>
                 <div className="flex gap-10 py-2 ml-4 px-4 justify-center items-center">
                     <div className="flex p-2 items-center rounded-lg">
