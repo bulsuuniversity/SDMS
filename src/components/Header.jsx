@@ -47,7 +47,7 @@ const Header = ({ setViewPort }) => {
 
 
     return (
-        <div className="fixed top-0 w-screen bg-red-900 overflow-hidden h-16 flex font-serif justify-between z-50">
+        <div className="fixed top-0 w-screen bg-red-900 overflow-hidden h-16 flex justify-between z-50">
             <div className="flex justify-start items-center">
                 <div className="w-16 flex p-3 overflow h-full">
                     <Image width={400} height={300} className="object-cover" src={Logo} alt="Logo" />

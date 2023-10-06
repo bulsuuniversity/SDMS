@@ -16,6 +16,10 @@ import { IoNotificationsCircleSharp } from "react-icons/io5";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api";
 import { FcDataProtection } from "react-icons/fc";
+import { MdLogout, MdOutlineDashboardCustomize, MdSettingsSuggest } from "react-icons/md";
+import { ImNewspaper } from "react-icons/im";
+import { GrUserSettings } from "react-icons/gr";
+import { FaPeopleLine } from "react-icons/fa6";
 
 const AdminMenu = ({ children }) => {
     const currentPathname = usePathname()
@@ -48,9 +52,9 @@ const AdminMenu = ({ children }) => {
     const handleSignOut = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataProtection size={32}/>Logout Account</div>
-         <p className='text-xl p-6'>Are you sure you want to logout this account?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDataProtection size={32} />Logout Account</div>
+            <p className='text-xl p-6'>Are you sure you want to logout this account?</p>
+        </div>, () => {
             router.push("/Admin/AdminLogin")
             signOut({ callbackUrl: `${url}/Admin/AdminLogin` })
         });
@@ -122,19 +126,26 @@ const AdminMenu = ({ children }) => {
                     {/* <button onClick={handleGetNotif} className="flex pl-4 text-lg text-amber-400 items-center gap-5">GetNotif</button> */}
                     <ConfirmationDialog />
                     <div className="text-white grid mt-4">
-                        <Link className={`mx-2 px-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminDashboard'}>Dashboard</Link>
+                        <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminDashboard'}>
+                            <div className="pr-3"><MdOutlineDashboardCustomize size={24} /></div> Dashboard</Link>
                         <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
-                            className={`mx-2 flex justify-between px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminStudentRecord'}>Student Records {newStudent && <IoNotificationsCircleSharp size={20} />}</Link>
+                            className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminStudentRecord'}>
+                            <div className="pr-3"><FaPeopleLine size={24} /></div>Student Records {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
-                            className={`mx-2 flex justify-between px-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminReports'}>Reports {newReport && <IoNotificationsCircleSharp size={20} />}</Link>
-                        {/* <Link className={`mx-2 px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminReports'}>
+                            <div className="pr-3"><ImNewspaper size={24} /></div>Reports {newReport &&
+                                <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
+                        {/* <Link className={`mx-2 flex items-center px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminCounseling'}>Counselling</Link> */}
-                        <Link className={`mx-2 px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminSettings'}>Settings</Link>
-                        <Link className="mx-2 px-8 py-2 hover:bg-gray-600 hover:rounded-lg" href={'/Admin/AdminSettings'} onClick={handleSignOut}>Logout</Link >
+                        <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminSettings'}>
+                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Settings</Link>
+                        <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
+                            href={'/Admin/AdminSettings'} onClick={handleSignOut}><div className="pr-3">
+                                <MdLogout size={24} /></div>Logout</Link >
                     </div>
 
                 </div>

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import AdminMenu from "../../../components/AdminMenu";
 import { useSession } from "next-auth/react";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 const DashboardLayout = ({ children }) => {
     const [dashboard, setDashboard] = useState('')
@@ -33,8 +34,12 @@ const DashboardLayout = ({ children }) => {
                 </div>
                 ${!children ? "p-7 text-2xl" : ""}
                 ${!children ? "grid gap-16" : "flex gap-4 "} */}
+
                 <div className={`flex gap-4 ml-10 mt-8 items-center`}>
-                    <div className="text-md font-bold">Dashboard</div>
+                    <div className="m-7 flex items-center">
+                        <MdOutlineDashboardCustomize size={70} /> <p className="border border-2 border-black h-16 mx-4" />
+                        <p className="font-bold text-xl">Dashboard</p>
+                    </div>
                     <div className={`flex bg-gray-400 text-xs rounded-lg `}>
                         <Link href={'/Admin/AdminDashboard/StudentRecords'}
                             className={`hover:bg-amber-400 w-28 text-center

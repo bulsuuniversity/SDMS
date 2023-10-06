@@ -22,7 +22,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      romanesco: ['Romanesco', 'sans-serif']
+      'serif': ['Times New Roman'],
     },
   },
   plugins: [],
