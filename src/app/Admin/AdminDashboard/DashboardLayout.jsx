@@ -35,7 +35,7 @@ const DashboardLayout = ({ children }) => {
                 ${!children ? "p-7 text-2xl" : ""}
                 ${!children ? "grid gap-16" : "flex gap-4 "} */}
 
-                <div className={`flex gap-4 ml-10 mt-8 items-center`}>
+                <div className={`flex gap-4 items-center`}>
                     <div className="m-7 flex items-center">
                         <MdOutlineDashboardCustomize size={70} /> <p className="border border-2 border-black h-16 mx-4" />
                         <p className="font-bold text-xl">Dashboard</p>
