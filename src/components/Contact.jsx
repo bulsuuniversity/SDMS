@@ -10,7 +10,7 @@ const Contact = ({ data }, ref) => {
         <div ref={ref} className=" w-full grid bg-white text-black h-max">
             <div className="h-10"></div>
             <div className="w-full relative">
-                <div className="absolute w-full h-full items-center text-2xl flex justify-center text-white">
+                <div className="absolute font-bold w-full h-full items-center text-2xl flex justify-center text-white">
                     <p>GUIDE ON HOW TO REPORT MISCONDUCT</p>
                 </div>
                 <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
