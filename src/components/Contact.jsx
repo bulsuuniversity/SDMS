@@ -13,7 +13,7 @@ const Contact = ({ data }, ref) => {
                 <div className="absolute w-full h-full items-center text-2xl flex justify-center text-white">
                     <p>GUIDE ON HOW TO REPORT MISCONDUCT</p>
                 </div>
-                <Image width={1500} className="w-full" layout="responsive" height={200} src={"/HEADER.png"} alt="header" />
+                <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
             </div>
             <div className="grid justify-center lg:mx-36 md:mx-28 ">
                 <div className="w-24 px-10 h-full bg-amber-400">
@@ -23,8 +23,8 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         1
                     </div>
-                    <div className="mx-2 ">
-                        <Image className="object-cover" width={100} height={100}
+                    <div className="mx-2 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20">
+                        <Image className="object-cover w-max" width={80} height={80}
                             src={"/Step 1.png"} alt="step 1" />
                     </div>
                     <div className="grid pb-6 gap-1">
@@ -36,8 +36,8 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         2
                     </div>
-                    <div className="mx-2 ">
-                        <Image className="object-cover" width={150} height={150}
+                    <div className="mx-2 h-20 w-20">
+                        <Image className="object-cover w-max" width={150} height={150}
                             src={"/Step 2.png"} alt="step2" />
                     </div>
                     <div className="grid py-6 gap-1">
@@ -52,8 +52,8 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         3
                     </div>
-                    <div className="mx-2 ">
-                        <Image className="object-cover" width={200} height={200}
+                    <div className="mx-2 h-24 w-24">
+                        <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 3.png"} alt="step3" />
                     </div>
                     <div className="grid py-6 gap-1">
@@ -69,8 +69,8 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         4
                     </div>
-                    <div className="mx-2 ">
-                        <Image className="object-cover" width={200} height={200}
+                    <div className="mx-2 h-24 w-24">
+                        <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 4.png"} alt="step4" />
                     </div>
                     <div className="grid py-6 gap-1">
@@ -85,8 +85,8 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         5
                     </div>
-                    <div className="mx-2 ">
-                        <Image className="object-cover" width={200} height={200}
+                    <div className="mx-2 h-24 w-24">
+                        <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 5.png"} alt="step5" />
                     </div>
                     <div className="grid gap-4 pt-4 gap-1">
