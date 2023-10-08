@@ -15,7 +15,7 @@ const About = ({ data }, ref) => {
                     {data ? data.about : 'The purpose of this initiative is to appropriately implement policies within the university by giving appropriate punishment to students who violate university policies, to teach students how to follow university regulations and to educate them on the consequences of violating them, all are accordance with the student handbook. These disciplinary procedures aim to nurture the non-academic character of the students which preserves the students’ rights and responsibilities. Through this goal of the discipline committee, the university can achieve its desire to produce highly competent, ethical and service-oriented professionals that contribute to the sustainable socioeconomic growth and development of the nation.'}
                 </div>
             </div>
-            <div className="grid gap-1 py-1 text-white justify-center items-center w-full bg-red-900">
+            <div className="grid gap-1 py-3 text-white justify-center items-center w-full bg-red-900">
                 <div className="text-center text-xs font-bold">
                     {!data ? "BULACAN STATE UNIVERSITY" : data.email}
                 </div>
