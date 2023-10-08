@@ -23,7 +23,7 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         1
                     </div>
-                    <div className="mx-2 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20">
+                    <div className="mx-2 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16">
                         <Image className="object-cover w-max" width={80} height={80}
                             src={"/Step 1.png"} alt="step 1" />
                     </div>
