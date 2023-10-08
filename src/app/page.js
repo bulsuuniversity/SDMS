@@ -74,7 +74,7 @@ const Home = () => {
   return (
     <main>
       <Layout setViewPort={setViewPort}>
-        {profileData && !profileData.name && setUp &&
+        {profileData && !profileData.name && profileData.role === "user" && setUp &&
           <ConfirmationModal>
             <div className="flex flex-col w-96 justify-center p-4 justify-center">
               <div className="text-2xl font-bold whitespace-normal text-center ">
