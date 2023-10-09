@@ -82,7 +82,7 @@ const Page = () => {
         <PrivateRoute>
             <Layout>
                 <div className="grid justify-center items-center">
-                    <h2 className="text-center text-xl py-4 font-bold">MY LOGS</h2>
+                    <h2 className="text-center text-xl font-serifg py-4 font-bold">MY LOGS</h2>
                     {openInfo && info && <InformationModal>
                         <div className="relative p-6">
                             <div className="absolute -top-4 -right-4">

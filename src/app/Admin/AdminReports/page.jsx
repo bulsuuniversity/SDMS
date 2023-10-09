@@ -101,7 +101,7 @@ const Page = () => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
             <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Update Case</div>
-            <p className='text-xl p-6'>Are you sure you want to update this case?</p>
+            <p className='text-lg p-6'>Are you sure you want to update this case?</p>
         </div>, () => {
             handleUpdateReport()
         });
@@ -190,7 +190,7 @@ const Page = () => {
         <AdminMenu>
             <div className="m-7 flex items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
-                <p className="font-bold text-xl">Reports</p>
+                <p className="font-bold text-lg">Reports</p>
                 <div className="flex gap-10 py-2 ml-4 px-4 justify-center items-center">
                     <div className="flex p-2 items-center rounded-lg">
                         <p className="font-bold text-red-700">Filter: </p>
@@ -236,40 +236,40 @@ const Page = () => {
                 <form onSubmit={(e) => handleUpdate(e)} className="grid bg-gray-500 relative grid-cols-2 gap-4 p-4">
                     <div className="grid gap-2 justify-center items-center text-xs">
                         <div className="grid px-8 py-4 bg-white border border-black gap-2">
-                            <p className="font-bold text-xl">REPORT DETAILS</p>
-                            <label className="flex gap-3 text-lg items-center border-b border-black pb-2">
-                                <p className="font-bold text-lg">Ticket No.:</p>
+                            <p className="font-bold text-lg">REPORT DETAILS</p>
+                            <label className="flex gap-3 text-sm items-center border-b border-black pb-2">
+                                <p className="font-bold text-sm">Ticket No.:</p>
                                 <div className="p-2">{info.ticketNo}</div>
                             </label>
 
                             <div className="flex gap-4 items-start border-b border-black pb-2">
-                                <label className="grid gap-1 text-lg">
+                                <label className="grid gap-1 text-sm">
                                     <div className="font-bold">Name: {info.offender}</div>
                                     <div className="font-bold">College: {info.college}</div>
                                     <div className="font-bold">Course, Year & Section: {info.yearLevel}</div>
                                 </label>
                             </div>
-                            <label className="flex gap-3 text-lg w-72">
+                            <label className="flex gap-3 text-sm w-72">
                                 <p className="font-bold">Act of Misconduct: </p>
                                 <div> {info.actionOfDiscipline}</div>
                             </label>
-                            <label className="flex gap-3 text-lg">
+                            <label className="flex gap-3 text-sm">
                                 <p className="font-bold">Date of Incident: </p>
                                 <div> {info.dateOfIncident}</div>
                             </label>
-                            <label className="flex gap-3 text-lg">
+                            <label className="flex gap-3 text-sm">
                                 <p className="font-bold">Place/Platform of Incident: </p>
                                 <div> {info.platformOfIncident}</div>
                             </label>
-                            <label className="flex gap-3 text-lg">
+                            <label className="flex gap-3 text-sm">
                                 <p className="font-bold">Rate of Occurence: </p>
                                 <div> {info.rateOfOccurence}</div>
                             </label>
-                            <label className="flex gap-3 text-lg">
+                            <label className="flex gap-3 text-sm">
                                 <p className="font-bold">Brief Description of the Situation: </p>
                                 <div> {info.describeTheSituation}</div>
                             </label>
-                            <label onClick={() => handleSetImage(info.attachment)} className="flex gap-3 text-lg">
+                            <label onClick={() => handleSetImage(info.attachment)} className="flex gap-3 text-sm">
                                 <p className="font-bold">Attachment: </p>
                                 <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
                             </label>
@@ -291,8 +291,8 @@ const Page = () => {
                         </div>
 
                         <div className="border px-8 bg-white py-4 border-black">
-                            <label className="grid gap-1 text-lg">
-                                <p className="font-bold pb-1 text-xl">REPORT HOLDER DETAILS </p>
+                            <label className="grid gap-1 text-sm">
+                                <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
                                 <div className="font-bold">Name:  {info.reporter.name}</div>
                                 <div className="font-bold">College:  {info.reporter.college}</div>
                                 <div className="font-bold">Course, year and section: {info.reporter.yearLevel}</div>
@@ -335,9 +335,9 @@ const Page = () => {
 
                     <div className="grid text-sm gap-2">
                         <div className="border bg-white grid gap-1 border-black p-4">
-                            <p className="font-bold text-xl">SANCTION</p>
+                            <p className="font-bold text-lg">SANCTION</p>
                             <div className="flex gap-2">
-                                <p className="font-bold text-lg">Kind of Offense:</p>
+                                <p className="font-bold text-sm">Kind of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36" required>
                                         <option value={info.kindOfOffense ? info.kindOfOffense : ''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
@@ -349,7 +349,7 @@ const Page = () => {
                                 </div>
                             </div>
                             <div className="flex mb-6 gap-2">
-                                <p className="font-bold text-lg">Degree of Offense:</p>
+                                <p className="font-bold text-sm">Degree of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36" required>
                                         <option value={info.degreeOfOffense ? info.degreeOfOffense : ""}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
@@ -363,7 +363,7 @@ const Page = () => {
                         </div>
 
                         <div className="border bg-white grid border-black p-4">
-                            <p className="font-bold text-xl">NOTES</p>
+                            <p className="font-bold text-lg">NOTES</p>
                             <p className="italic text-xs">Further details in accordance with the sanction.</p>
                             <textarea
                                 value={notes}
