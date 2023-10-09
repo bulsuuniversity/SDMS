@@ -39,29 +39,16 @@ const page = () => {
         status: 'Pending',
     });
 
-    // const handleMakeNotif = async () => {
-    //     try {
-    //         const response = await axios.post(`${url}/api/AdminNotification`, { headers });
-    //         console.log(response)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-
-    // }
-
     const getLatestTicket = async () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
-            console.log(reportData.ticketNo)
         } catch (err) {
             console.log(err);
         }
     }
-    useEffect(() => {
-        getLatestTicket()
-    }, [])
-
+    console.log(reportData.ticketNo)
+    getLatestTicket()
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -141,7 +128,6 @@ const page = () => {
     const handleOkay = () => {
         setConfirmation(true)
         route.push('/')
-
     }
 
     const handleSubmitReport = (e) => {

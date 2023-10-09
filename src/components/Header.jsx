@@ -88,7 +88,7 @@ const Header = ({ setViewPort }) => {
                         }
 
                     </div>
-                    <div className="md:flex hidden cursor-pointer text-white text-2xl items-center justify-end">
+                    <div className="md:flex gap-3 hidden cursor-pointer text-white text-2xl items-center justify-end">
                         {session && session.role === "user" ?
                             <>
                                 <Homebutton setViewPort={setViewPort} />
