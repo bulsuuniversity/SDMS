@@ -38,22 +38,26 @@ const page = () => {
         describeTheSituation: '',
         status: 'Pending',
     });
+    const [latestTicket, setlatestTicket] = useState()
 
 
     const getLatestTicket = async () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
-            handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
+            setlatestTicket(response.data[0].ticketNo)
+
         } catch (err) {
             console.log(err);
         }
     }
 
     useEffect(() => {
+        handleInputChange("ticketNo", String((Number(latestTicket))).padStart(6, '0'))
+    }, [latestTicket])
+
+    useEffect(() => {
         getLatestTicket()
-    }, [])
-
-
+    })
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -105,7 +109,6 @@ const page = () => {
         startLoading()
         try {
             const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
-            handleInputChange('ticketNo', reportData.ticketNo + 1);
             setConfirmation(true)
             setMessage("Submitted successfully!")
             stopLoading()
@@ -114,6 +117,7 @@ const page = () => {
                 reporter: "",
                 actionOfDiscipline: '',
                 offender: '',
+                ticketNo: '',
                 college: "",
                 course: "",
                 attachment: '',
@@ -134,7 +138,6 @@ const page = () => {
     const handleOkay = () => {
         setConfirmation(true)
         route.push('/')
-
     }
 
     const handleSubmitReport = (e) => {

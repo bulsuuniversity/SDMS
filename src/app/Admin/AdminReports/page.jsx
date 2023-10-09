@@ -18,6 +18,7 @@ import useLoading from "@/utils/Loading";
 import { DateRangePicker } from 'react-date-range';
 import Link from "next/link";
 import { FcApprove } from "react-icons/fc";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -47,6 +48,18 @@ const Page = () => {
             key: 'selection',
         };
     });
+
+
+    const searchParams = useSearchParams()
+    const newReport = searchParams.get('new')
+    const router = useRouter()
+
+    useEffect(() => {
+        if ("newReport" === newReport) {
+            handleGetData()
+            router.push("/Admin/AdminReports")
+        }
+    }, [newReport])
 
     const handleDateRangeChange = (ranges) => {
         setSelectedRange(ranges.selection);
@@ -234,8 +247,13 @@ const Page = () => {
                             setSentEmail={setSentEmail}
                             email={info.reporter.email}
                             setClose={setOpenMessage} />}
-                    <div className="h-screen">
-                        <form onSubmit={(e) => handleUpdate(e)} className="grid overflow-auto h-10/12 bg-gray-500 relative grid-cols-2 gap-4 p-4">
+                    <div className="h-screen w-screen grid p-16 justify-center items-center">
+                        <form onSubmit={(e) => handleUpdate(e)} className="grid overflow-y-auto h-full bg-gray-500 relative grid-cols-2 gap-4 p-6">
+                            <div className="absolute -top-4 -right-4">
+                                <button
+                                    onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
+                                    <AiFillCloseCircle size={30} /></button>
+                            </div>
                             <div className="grid gap-2 justify-center items-center text-xs">
                                 <div className="grid px-8 py-4 bg-white border border-black gap-2">
                                     <p className="font-bold text-lg">REPORT DETAILS</p>
@@ -282,12 +300,6 @@ const Page = () => {
                                                     className="object-fill h-96 w-96"
                                                     src={imageToView} alt="attachment" />
                                             </Link>
-                                            <div className="absolute -top-4 -right-4">
-                                                <button
-                                                    onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
-                                                    <AiFillCloseCircle size={30} /></button>
-                                            </div>
-
                                         </div>
                                     </InformationModal>}
                                 </div>

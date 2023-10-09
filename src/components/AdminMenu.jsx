@@ -135,7 +135,7 @@ const AdminMenu = ({ children }) => {
                             <div className="pr-3"><FaPeopleLine size={24} /></div>Student Records {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
                             className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminReports'}>
+                            href={'/Admin/AdminReports/?new=newReport'}>
                             <div className="pr-3"><ImNewspaper size={24} /></div>Reports {newReport &&
                                 <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         {/* <Link className={`mx-2 flex items-center px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
@@ -159,7 +159,7 @@ const AdminMenu = ({ children }) => {
                         {newReport && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
                                 className={`mx-2 flex gap-2 items-center`}
-                                href={'/Admin/AdminReports'}>New Report <IoNotificationsCircleSharp size={35} /></Link>
+                                href={'/Admin/AdminReports/?new=newReport'}>New Report <IoNotificationsCircleSharp size={35} /></Link>
                         </div>}
                     </div>
                     {children}
