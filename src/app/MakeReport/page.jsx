@@ -13,11 +13,13 @@ import { PrivateRoute } from "@/components/auth";
 import { SlArrowDown } from "react-icons/sl";
 import { FcAddDatabase } from "react-icons/fc";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 const page = () => {
     const { profileData } = useProfileData()
     const { loading, startLoading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
+    const route = useRouter()
     const [confirmation, setConfirmation] = useState(false)
     const [openSelectAct, setOpenSelectAct] = useState(false)
     const [require, setRequire] = useState()
@@ -128,7 +130,6 @@ const page = () => {
                 describeTheSituation: '',
                 status: 'Pending',
             });
-            getLatestTicket()
         } catch (error) {
             console.error('Error:', error);
             stopLoading()
@@ -136,6 +137,12 @@ const page = () => {
             setMessage("Something went wrong.")
         }
     };
+
+    const handleOkay = () => {
+        setConfirmation(true)
+        route.push('/')
+
+    }
 
     const handleSubmitReport = (e) => {
         e.preventDefault();
@@ -271,7 +278,7 @@ const page = () => {
                                 <div className='grid justify-center gap-4 p-10'>
                                     <div>{message}</div>
                                     <div className="flex mt-6 justify-center">
-                                        <button className="bg-green-600 text-white py-2 px-4 w-max rounded-lg" onClick={() => setConfirmation(false)}>Okay</button>
+                                        <button className="bg-green-600 text-white py-2 px-4 w-max rounded-lg" onClick={handleOkay}>Okay</button>
                                     </div>
                                 </div>
                             </ConfirmationModal>}

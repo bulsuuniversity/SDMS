@@ -226,9 +226,14 @@ const Page = () => {
 
 
             {openInfo && info && <InformationModal>
+                {openMessage && info &&
+                    <SendMessage
+                        suggestions={suggestions}
+                        sentEmail={sentEmail}
+                        setSentEmail={setSentEmail}
+                        email={info.reporter.email}
+                        setClose={setOpenMessage} />}
                 <form onSubmit={(e) => handleUpdate(e)} className="grid bg-gray-500 relative grid-cols-2 gap-4 p-4">
-
-
                     <div className="grid gap-2 justify-center items-center text-xs">
                         <div className="grid px-8 py-4 bg-red-200 border border-black gap-2">
                             <p className="font-bold text-lg">REPORT DETAILS</p>
@@ -268,13 +273,6 @@ const Page = () => {
                                 <p className="font-bold">Attachment: </p>
                                 <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
                             </label>
-                            {openMessage && info &&
-                                <SendMessage
-                                    suggestions={suggestions}
-                                    sentEmail={sentEmail}
-                                    setSentEmail={setSentEmail}
-                                    email={info.reporter.email}
-                                    setClose={setOpenMessage} />}
                             {seeImage && info.attachment !== "" && <InformationModal>
                                 <div className="relative p-6">
                                     <Link href={imageToView} target="blank" className="h-96">

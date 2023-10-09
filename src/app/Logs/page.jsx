@@ -63,7 +63,7 @@ const Page = () => {
             }));
             setData(formattedData)
         }
-    }, [])
+    }, [reportData])
 
     const headerData = [
         "DATE OF INCIDENT",
