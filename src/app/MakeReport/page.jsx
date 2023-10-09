@@ -52,7 +52,7 @@ const page = () => {
     }
 
     useEffect(() => {
-        handleInputChange("ticketNo", String((Number(latestTicket))).padStart(6, '0'))
+        handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
     }, [latestTicket])
 
     useEffect(() => {
