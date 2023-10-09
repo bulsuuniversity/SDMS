@@ -55,6 +55,16 @@ const page = () => {
 
 
     useEffect(() => {
+        const fetchData = async () => {
+            await getLatestTicket();
+        };
+
+        fetchData();
+    }, [reportData]);
+
+
+
+    useEffect(() => {
         if (profileData && profileData.id) {
             handleInputChange('reporter', profileData);
             handleInputChange('college', profileData.college);
