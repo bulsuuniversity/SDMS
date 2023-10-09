@@ -140,6 +140,7 @@ const page = () => {
 
     const handleSubmitReport = (e) => {
         e.preventDefault();
+        getLatestTicket()
         if (reportData.actionOfDiscipline) {
             showConfirmation(<div className='grid justify-center gap-4'>
                 <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddDatabase size={32} />Submit Report</div>

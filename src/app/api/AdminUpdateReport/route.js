@@ -6,7 +6,7 @@ export const GET = async () => {
     try {
         const posts = await prisma.studentreport.findMany({
             orderBy: {
-                createdAt: 'desc',
+                ticketNo: 'asc',
             },
             take: 1,
         });
