@@ -23,11 +23,12 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         1
                     </div>
-                    <div className="mx-2 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16">
-                        <Image className="object-cover w-max" width={80} height={80}
+                      <div className="mx-2 h-24 w-24">
+                        <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 1.png"} alt="step 1" />
+                        {/* <FcAssistant size={70} /> */}
                     </div>
-                    <div className="grid pb-6 gap-1">
+                    <div className="grid py-6 gap-1 w-full">
                         <p className="font-bold text-xl">Login your account / Register an account</p>
                         <p className="pl-8">To submit a report, you need to be logged in your account. If you don't have one,you can freely register with the system.</p>
                     </div>
@@ -36,11 +37,12 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         2
                     </div>
-                    <div className="mx-2 h-20 w-20">
-                        <Image className="object-cover w-max" width={150} height={150}
+                      <div className="mx-2 h-24 w-24">
+                        <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 2.png"} alt="step2" />
+                        {/* <FcCameraIdentification size={70} /> */}
                     </div>
-                    <div className="grid py-6 gap-1">
+                    <div className="grid py-6 gap-1 w-full">
                         <p className="font-bold text-xl">Go To Navigation Bar & Click Submit Report</p>
                         <p className="pl-8">At the navigation bar, click the drop-down arrow on your profile picture. The menu will
                             show several options and you will see there the "Submit Report" button. Click it to
@@ -55,8 +57,9 @@ const Contact = ({ data }, ref) => {
                     <div className="mx-2 h-24 w-24">
                         <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 3.png"} alt="step3" />
+                        {/* <FcDocument size={70} /> */}
                     </div>
-                    <div className="grid py-6 gap-1">
+                    <div className="grid py-6 gap-1 w-full">
                         <p className="font-bold text-xl">Fill-Out the Necessary Details</p>
                         <p className="pl-8">On the form, all details are required to be filled. On the attachment part of the form,
                             a narrative report should be uploaded for your report to be evaluated. Make sure to
@@ -72,8 +75,9 @@ const Contact = ({ data }, ref) => {
                     <div className="mx-2 h-24 w-24">
                         <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 4.png"} alt="step4" />
+                        {/* <FcList size={70} /> */}
                     </div>
-                    <div className="grid py-6 gap-1">
+                    <div className="grid py-6 gap-1 w-full">
                         <p className="font-bold text-xl">For Review & Evaluation</p>
                         <p className="pl-8">After submitting your report, you can check its summary on "Report Logs" button that
                             can also be found at the menu on the navigation bar. This means that you have
@@ -88,8 +92,9 @@ const Contact = ({ data }, ref) => {
                     <div className="mx-2 h-24 w-24">
                         <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 5.png"} alt="step5" />
+                        {/* <FcQuestions size={70} /> */}
                     </div>
-                    <div className="grid gap-4 pt-4 gap-1">
+                    <div className="grid py-6 gap-1 w-full">
                         <p className="font-bold text-xl">Keep in Touch</p>
                         <p className="pl-8">Some misconducts are needed to be discussed personally in order to have resolution.
                             Thus, wait for further notice by the admin of the system that will be sent to your email

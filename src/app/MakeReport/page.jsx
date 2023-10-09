@@ -54,15 +54,6 @@ const page = () => {
     }, [])
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            await getLatestTicket();
-        };
-
-        fetchData();
-    }, [reportData]);
-
-
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -114,7 +105,7 @@ const page = () => {
         startLoading()
         try {
             const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
-            getLatestTicket()
+            handleInputChange('ticketNo', reportData.ticketNo + 1);
             setConfirmation(true)
             setMessage("Submitted successfully!")
             stopLoading()
