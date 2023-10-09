@@ -3,7 +3,7 @@ import Link from "next/link";
 const LoginButton = ({ active }) => {
     return (
         <Link href={'/Login'}
-            className={`flex items-center ${active === "button1" ? 'bg-[#650000] text-black' : 'bg-red-900'}`}>
+            className={`flex items-center ${active === "button1" ? 'bg-[#650000] text-white' : 'bg-red-900'}`}>
             <div className="overflow-hidden flex relative items-center h-16">
                 <div className={`h-0 w-0 
             border-y-[4rem] border-y-red-900 
