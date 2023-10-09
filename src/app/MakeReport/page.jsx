@@ -45,16 +45,17 @@ const page = () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             setlatestTicket(response.data[0].ticketNo)
-
         } catch (err) {
             console.log(err);
         }
     }
 
     useEffect(() => {
-        handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
+        console.log(latestTicket)
+        handleInputChange("ticketNo", String((Number(latestTicket + 1))).padStart(6, '0'))
+      
     }, [latestTicket])
-
+  console.log(reportData.ticketNo)
     useEffect(() => {
         getLatestTicket()
     })

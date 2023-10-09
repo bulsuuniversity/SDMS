@@ -249,11 +249,12 @@ const Page = () => {
                             setClose={setOpenMessage} />}
                     <div className="h-screen w-screen grid p-16 justify-center items-center">
                         <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full bg-white">
-                            <div className="bg-gray-500 p-10 relative grid-cols-2 grid gap-4">
-                                <div className="absolute top-0 right-0">
-                                    <button type="button"
-                                        onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
-                                        <AiFillCloseCircle size={30} /></button>
+                            <div className="bg-gray-500 p-4 m-4 relative grid-cols-2 grid gap-4">
+                                <div className="absolute -top-4 -right-4">
+                                    <button
+                                        onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
+                                        <AiFillCloseCircle size={30} />
+                                    </button>
                                 </div>
                                 <div className="grid gap-2 justify-center items-center text-xs">
                                     <div className="grid px-8 py-4 bg-white border border-black gap-2">
@@ -295,6 +296,11 @@ const Page = () => {
                                             <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
                                         </label>
                                         {seeImage && info.attachment !== "" && <InformationModal>
+                                            <div className="absolute top-1 right-1">
+                                                <button type="button"
+                                                    onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
+                                                    <AiFillCloseCircle size={30} /></button>
+                                            </div>
                                             <div className="relative p-6">
                                                 <Link href={imageToView} target="blank" className="h-96">
                                                     <Image width={400} height={200}
@@ -303,6 +309,7 @@ const Page = () => {
                                                 </Link>
                                             </div>
                                         </InformationModal>}
+
                                     </div>
 
                                     <div className="border px-8 bg-white py-4 border-black">
@@ -318,12 +325,7 @@ const Page = () => {
 
 
 
-                                {/* <div className="absolute -top-4 -right-4">
-                                <button
-                                    onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
-                                    <AiFillCloseCircle size={30} />
-                                </button>
-                            </div> */}
+
 
                                 <ConfirmationDialog />
                                 {success && <InformationModal>
