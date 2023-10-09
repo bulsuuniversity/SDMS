@@ -57,8 +57,8 @@ const Header = ({ setViewPort }) => {
             {header ?
                 <div className="flex italic text-white pr-4 text-2xl items-center justify-end">
                     <div className="overflow-hidden flex relative items-center h-16">
-                        <div className={`h-0 w-0 border-y-[4rem] border-y-red-900 border-r-[6rem] ${active === "button1" ? 'border-[#ebac85]' : 'border-orange-300'}`}></div>
-                        <div className={`h-0 w-0 absolute left-11 z-10 border-y-[4rem] border-y-transparent border-r-[6rem] ${active === "button1" ? 'border-r-[#ebac85]' : 'border-r-red-900'}`}></div>
+                        <div className={`h-0 w-0 border-y-[4rem] border-y-red-900 border-r-[6rem] ${active === "button1" ? 'border-[#650000]' : 'border-orange-300'}`}></div>
+                        <div className={`h-0 w-0 absolute left-11 z-10 border-y-[4rem] border-y-transparent border-r-[6rem] ${active === "button1" ? 'border-r-[#650000]' : 'border-r-red-900'}`}></div>
                     </div>
                     <div>Discipline Committee
                     </div>
