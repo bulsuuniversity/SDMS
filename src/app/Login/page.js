@@ -89,7 +89,7 @@ const Login = () => {
             <div className="mx-4">
               <div className="flex flex-col text-xs justify-center">
                 <h2 className="text-2xl text-center font-semibold">Login</h2>
-                <h4 className="italic py-4 text-center">Please enter the needed information below</h4>
+                <h4 className="italic py-4 text-center">Please enter the needed information below.</h4>
               </div>
               {erroring &&
                 <InformationModal>
@@ -109,7 +109,7 @@ const Login = () => {
                     className="w-full text-xs px-3 py-2 border border-black"
                     value={email}
                     onChange={handleEmailChange}
-                    placeholder="EMAIL"
+                    placeholder="Email"
                     required
                   />
                 </div>
@@ -119,7 +119,7 @@ const Login = () => {
                     className="w-full text-xs px-3 py-2 border border-black"
                     value={password}
                     onChange={handlePasswordChange}
-                    placeholder="PASSWORD"
+                    placeholder="Password"
                     required
                   />
                   <Link href={"/ChangePassword"} className="text-blue-500 text-xs cursor-pointer text-end">Forgot your password? Click here.</Link>

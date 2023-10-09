@@ -89,7 +89,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                                 onChange={(e) => setSentEmail(e.target.value)}
                                 rows="8"
                                 cols="50"
-                                placeholder="Enter your message..."
+                                placeholder="Message"
                                 required
                             ></textarea>
                             <div className='absolute w-full flex justify-center -bottom-4'>

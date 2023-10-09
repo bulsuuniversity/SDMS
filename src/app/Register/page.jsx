@@ -137,7 +137,7 @@ const Register = ({ setActive, setData }) => {
                                             className="w-full text-xs px-3 py-2 border border-black"
                                             value={email}
                                             onChange={handleEmailChange}
-                                            placeholder="EMAIL"
+                                            placeholder="Email"
                                             required
                                         />
                                     </div>
@@ -147,7 +147,7 @@ const Register = ({ setActive, setData }) => {
                                             className="w-full text-xs px-3 py-2 border border-black"
                                             value={phoneNumber}
                                             onChange={handlePhoneNumberChange}
-                                            placeholder="PHONE NUMBER"
+                                            placeholder="Phone Number."
                                             maxLength={13}
                                             required
                                         />
@@ -158,7 +158,7 @@ const Register = ({ setActive, setData }) => {
                                             value={idNum}
                                             className="w-full text-xs px-3 py-2 border border-black"
                                             onChange={handleIdNUmChange}
-                                            placeholder="ID Number"
+                                            placeholder="ID Number."
                                             required
                                         />
                                     </div>
@@ -168,7 +168,7 @@ const Register = ({ setActive, setData }) => {
                                             className="w-full text-xs px-3 py-2 border border-black"
                                             value={password}
                                             onChange={handlePasswordChange}
-                                            placeholder="PASSWORD"
+                                            placeholder="Password"
                                             required
                                         />
                                     </div>
@@ -178,7 +178,7 @@ const Register = ({ setActive, setData }) => {
                                             className={`border ${notPassword ? "border-red-500 border-2" : "border-black"} w-full text-xs px-3 py-2`}
                                             value={confirmPassword}
                                             onChange={handleConfirmPasswordChange}
-                                            placeholder="CONFIRM PASSWORD"
+                                            placeholder="Confirm Password."
                                             required
                                         />
                                     </div>
@@ -187,7 +187,7 @@ const Register = ({ setActive, setData }) => {
 
                                     <div className="mb-4 text-sm">
                                         <div>Please upload your school credentials.</div>
-                                        <div className="italic mt-4">Make sure the file is in *jpg/*png file format</div>
+                                        <div className="italic mt-4">Make sure the file is in *jpg/*png file format.</div>
                                         <input
                                             id="credentials"
                                             type="file"

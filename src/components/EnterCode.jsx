@@ -62,7 +62,7 @@ const EnterCode = ({ registerData, sentCode }) => {
                 <div className="mx-1 w-3/4">
                     <div className="flex flex-col text-xs justify-center">
                         <h2 className="text-2xl text-center font-semibold">Login</h2>
-                        <h4 className="italic text-xs text-center">Please verify if it's you</h4>
+                        <h4 className="italic text-xs text-center">Please verify if it's you.</h4>
                         <div className="bg-green-300 rounded-full text-center whitespace-normal mt-4 p-4">
                             Enter the verification code sent to your email.
                         </div>
@@ -75,7 +75,7 @@ const EnterCode = ({ registerData, sentCode }) => {
                                 className="w-full text-xs px-3 py-2 border border-black"
                                 value={code}
                                 onChange={handleChange}
-                                placeholder="code"
+                                placeholder="Code"
                                 required
                             />
                         </div>
@@ -106,7 +106,7 @@ const EnterCode = ({ registerData, sentCode }) => {
                     <div className="text-center">
                         Please wait for the admin to review and approve you account.
                     </div>
-                    <div className="text-center italic text-xs">Redirecting you now to login page</div>
+                    <div className="text-center italic text-xs">Redirecting you now to login page.</div>
                     <span className="loader" />
                 </div>
             </ConfirmationModal>}

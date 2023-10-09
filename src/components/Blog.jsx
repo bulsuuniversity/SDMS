@@ -73,7 +73,7 @@ const Blog = ({ images }, ref) => {
                         {carousel ?
                             carousel.map((image, index) => (
                                 <div key={index} className="grid items-center justify-center">
-                                    <div className="m-auto 2xl:h-[40rem] 2xl:w-[48rem] md:h-[29rem] h-52 md:h-96 object-fit w-60 md:w-[32rem]">
+                                    <div className="m-auto lg:h-[40rem] lg:w-[48rem] md:h-[29rem] h-52 md:h-96 object-fit w-60 md:w-[32rem]">
                                         <Image src={image.image} width={900} height={700} className="md:pt-24 pt-10 object-contain" alt={index} />
                                     </div>
                                 </div>

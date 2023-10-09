@@ -42,7 +42,7 @@ function PrivateRoute({ children }) {
                         <ImNotification size={100} className='bg-red-600 text-white rounded-full' />
                     </div>
                     <div className='text-center'>Please Login to access this page!</div>
-                    <Link className='italic text-center' href={"/Login"}>Click to Login</Link>
+                    <Link className='italic text-center' href={"/Login"}>Click to Login.</Link>
                 </div>
             </>
         )
@@ -56,8 +56,8 @@ function PrivateRoute({ children }) {
                     <div className='flex justify-center'>
                         <ImNotification size={100} className='bg-red-600 text-white rounded-full' />
                     </div>
-                    <a className='text-blue-400 text-center italic' href="mailto:bulsubulacanUniversity@gmail.com?subject=Request%20for%20Approval&body=This%20is%20..your%20name%20...%20">Click to email the Admin using emailing app</a>
-                    <a className='text-blue-400 text-center italic' href="https://mail.google.com/mail/?view=cm&fs=1&to=bulsubulacanUniversity@gmail.com&su=Request%20for%20account%20approval&body=Hello%20SDMS%20admin,%0D%0A%0D%0APlease%20approve%20my%20account.%20My%20name%20is%20______%20and%20School%20ID%20Number%20is%20______" target="_blank">Click to email Admin using browser</a>
+                    <a className='text-blue-400 text-center italic' href="mailto:bulsubulacanUniversity@gmail.com?subject=Request%20for%20Approval&body=This%20is%20..your%20name%20...%20">Click to email the Admin using emailing app.</a>
+                    <a className='text-blue-400 text-center italic' href="https://mail.google.com/mail/?view=cm&fs=1&to=bulsubulacanUniversity@gmail.com&su=Request%20for%20account%20approval&body=Hello%20SDMS%20admin,%0D%0A%0D%0APlease%20approve%20my%20account.%20My%20name%20is%20______%20and%20School%20ID%20Number%20is%20______" target="_blank">Click to email Admin using browser.</a>
                     <div className="flex justify-center">
                         <button className='bg-red-800 text-white w-28 px-4 py-2' onClick={handleLogout}>Log out</button>
                     </div>
@@ -91,7 +91,7 @@ function PrivateRouteAdmin({ children }) {
                         <ImNotification size={100} className='bg-red-600 text-white rounded-full' />
                     </div>
                     <div className='text-center'>Please Login to access this page!</div>
-                    <Link className='italic text-center' href={"/Admin/AdminLogin"}>Click to Login Admin Account</Link>
+                    <Link className='italic text-center' href={"/Admin/AdminLogin"}>Click to Login Admin Account.</Link>
                 </div>
             </>
         )
@@ -105,8 +105,8 @@ function PrivateRouteAdmin({ children }) {
                     <div className='flex justify-center'>
                         <ImNotification size={100} className='bg-red-600 text-white rounded-full' />
                     </div>
-                    <a className='text-blue-400 text-center italic' href="mailto:bulsubulacanUniversity@gmail.com?subject=Request%20for%20Approval&body=This%20is%20..your%20name%20...%20">Click to email the Admin using emailing app</a>
-                    <a className='text-blue-400 text-center italic' href="https://mail.google.com/mail/?view=cm&fs=1&to=bulsubulacanUniversity@gmail.com&su=Request%20for%20account%20approval&body=Hello%20SDMS%20admin,%0D%0A%0D%0APlease%20approve%20my%20account.%20My%20name%20is%20______%20and%20your%20message%20to%20Admin%20______" target="_blank">Click to email admin using browser</a>
+                    <a className='text-blue-400 text-center italic' href="mailto:bulsubulacanUniversity@gmail.com?subject=Request%20for%20Approval&body=This%20is%20..your%20name%20...%20">Click to email the Admin using emailing app.</a>
+                    <a className='text-blue-400 text-center italic' href="https://mail.google.com/mail/?view=cm&fs=1&to=bulsubulacanUniversity@gmail.com&su=Request%20for%20account%20approval&body=Hello%20SDMS%20admin,%0D%0A%0D%0APlease%20approve%20my%20account.%20My%20name%20is%20______%20and%20your%20message%20to%20Admin%20______" target="_blank">Click to email admin using browser.</a>
                     <div className="flex justify-center">
                         <button className='bg-red-800 text-white w-28 px-4 py-2' onClick={handleLogout}>Log out</button>
                     </div>
@@ -119,12 +119,12 @@ function PrivateRouteAdmin({ children }) {
                 <Header />
                 <div className='grid justify-center items-center gap-4 my-20'>
                     <h2 className='text-center font-bold text-2xl font-red-600'>Unauthorized</h2>
-                    <p className='text-centerfont-bold text-lg'>Please wait for the Admin to approve your account</p>
+                    <p className='text-centerfont-bold text-lg'>Please wait for the Admin to approve your account.</p>
                     <div className='flex justify-center'>
                         <ImNotification size={100} className='bg-red-600 text-white rounded-full' />
                     </div>
-                    <a className='text-blue-400 text-center italic' href="mailto:bulsubulacanUniversity@gmail.com?subject=Request%20for%20Approval&body=This%20is%20..your%20name%20...%20">Click to email the Admin using emailing app</a>
-                    <a className='text-blue-400 text-center italic' href="https://mail.google.com/mail/?view=cm&fs=1&to=bulsubulacanUniversity@gmail.com&su=Request%20for%20account%20approval&body=Hello%20SDMS%20admin,%0D%0A%0D%0APlease%20approve%20my%20account.%20My%20name%20is%20______%20and%20your%20message%20to%20admin%20______" target="_blank">Click to email admin using browser</a>
+                    <a className='text-blue-400 text-center italic' href="mailto:bulsubulacanUniversity@gmail.com?subject=Request%20for%20Approval&body=This%20is%20..your%20name%20...%20">Click to email the Admin using emailing app.</a>
+                    <a className='text-blue-400 text-center italic' href="https://mail.google.com/mail/?view=cm&fs=1&to=bulsubulacanUniversity@gmail.com&su=Request%20for%20account%20approval&body=Hello%20SDMS%20admin,%0D%0A%0D%0APlease%20approve%20my%20account.%20My%20name%20is%20______%20and%20your%20message%20to%20admin%20______" target="_blank">Click to email admin using browser.</a>
                     <div className="flex justify-center">
                         <button className='bg-red-800 text-white w-28 px-4 py-2' onClick={handleLogout}>Log out</button>
                     </div>

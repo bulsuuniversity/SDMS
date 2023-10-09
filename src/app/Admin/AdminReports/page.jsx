@@ -235,7 +235,7 @@ const Page = () => {
                         setClose={setOpenMessage} />}
                 <form onSubmit={(e) => handleUpdate(e)} className="grid bg-gray-500 relative grid-cols-2 gap-4 p-4">
                     <div className="grid gap-2 justify-center items-center text-xs">
-                        <div className="grid px-8 py-4 border border-black gap-2">
+                        <div className="grid px-8 py-4 bg-white border border-black gap-2">
                             <p className="font-bold text-lg">REPORT DETAILS</p>
                             <label className="flex gap-3 items-center border-b border-black pb-2">
                                 <p className="font-bold">Ticket No.:</p>
@@ -290,7 +290,7 @@ const Page = () => {
                             </InformationModal>}
                         </div>
 
-                        <div className="border px-8 py-4 border-black">
+                        <div className="border px-8 bg-white py-4 border-black">
                             <label className="grid gap-1">
                                 <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
                                 <div className="font-bold">Name:  {info.reporter.name}</div>
@@ -334,7 +334,7 @@ const Page = () => {
 
 
                     <div className="grid text-sm gap-2">
-                        <div className="border grid gap-1 border-black p-4">
+                        <div className="border bg-white grid gap-1 border-black p-4">
                             <p className="font-bold text-lg">SANCTION</p>
                             <div className="flex gap-2">
                                 <p className="font-bold">Kind of Offense:</p>
@@ -362,7 +362,7 @@ const Page = () => {
                             </div>
                         </div>
 
-                        <div className="border grid border-black p-4">
+                        <div className="border bg-white grid border-black p-4">
                             <p className="font-bold">NOTES</p>
                             <p className="italic text-xs">Further details in accordance with the sanction.</p>
                             <textarea
@@ -370,7 +370,7 @@ const Page = () => {
                                 onChange={(e) => setNotes(e.target.value)}
                                 rows="6"
                                 cols="30"
-                                placeholder="Enter further details"
+                                placeholder="Further Details"
                                 className="mb-8 bg-gray-200"
                                 required />
                         </div>

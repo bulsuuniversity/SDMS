@@ -45,10 +45,12 @@ const page = () => {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
             console.log(reportData.ticketNo)
+            console.log(response)
         } catch (err) {
             console.log(err);
         }
     }
+
     useEffect(() => {
         getLatestTicket()
     }, [])
@@ -180,7 +182,7 @@ const page = () => {
     return (
         <Layout>
             {/* <PrivateRoute> */}
-            <div className="py-6 mb-10">
+            <div className="py-6 w-full grid justify-center mb-10">
                 {openSelectAct &&
                     <>
                         <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
@@ -205,9 +207,10 @@ const page = () => {
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                         </div>
                     </>}
-                <div className="xl:mx-[24rem] lg:mx-[18rem] md:mx-10 border-red-950 border-8 ">
-                    <h2 className="text-2xl flex text-white bg-red-950 justify-center">Report Form</h2>
-                    <div className="border grid relative gap-4 justify-center">
+                <h2 className="text-2xl flex text-white w-80 sm:w-[38rem] bg-red-950 w-full justify-center">Report Form</h2>
+                <div className="border-red-950 border-8 w-80 sm:w-[38rem] grid justify-center">
+
+                    <div className="w-full grid gap-4 md:px-6 justify-center">
                         <p className="font-bold py-4 flex gap-2">Ticket No.:
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
@@ -218,7 +221,7 @@ const page = () => {
                             <div className="grid indent-6 gap-4">
 
 
-                                <label className="flex justify-between">
+                                <label className="md:flex grid md:justify-between">
                                     <p>Name:</p>
                                     <input
                                         className="border w-52 mr-10"
@@ -229,7 +232,7 @@ const page = () => {
                                         required
                                     />
                                 </label>
-                                <label className="flex justify-between">
+                                <label className="md:flex grid md:justify-between">
                                     <p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
@@ -246,17 +249,16 @@ const page = () => {
                                     </select>
                                     {customOption && <input
                                         className="border"
-                                        placeholder=""
                                         type="text"
                                         value={reportData.college}
                                         onChange={(e) => handleInputChange('college', e.target.value)}
                                     />}
                                 </label>
-                                <label className="flex justify-between">
+                                <label className="md:flex grid md:justify-between">
                                     <p>Course, year & section:</p>
                                     <input
                                         className="border w-52 mr-10"
-                                        placeholder="Course, year and Section"
+                                        placeholder="Course, Year & Section"
                                         type="text"
                                         value={reportData.course}
                                         onChange={(e) => handleInputChange('course', e.target.value)}
@@ -279,7 +281,7 @@ const page = () => {
                             <div className="grid gap-4 ">
                                 <p className="font-bold">Misconduct Details:</p>
                                 <div className="indent-6 grid gap-4">
-                                    <label className="flex justify-between">
+                                    <label className="md:flex grid md:justify-between">
                                         <div>Act of Misconduct:</div>
                                         <div
                                             className={`${require && "border border-red-600"} ml-6 pr-2 border flex items-center justify-between w-52`}
@@ -289,17 +291,16 @@ const page = () => {
                                         </div>
                                         {customActionOption && <input
                                             className="border-b-2"
-                                            placeholder="Action of Discipline"
+                                            placeholder="Act of Misconduct."
                                             type="text"
                                             value={reportData.actionOfDiscipline}
                                             onChange={(e) => handleInputChange('actionOfDiscipline', e.target.value)}
                                         />}
                                     </label>
-                                    <label className="flex justify-between">
+                                    <label className="md:flex grid md:justify-between">
                                         <div>Date of Incident:</div>
                                         <input
                                             className="border ml-6 w-52"
-                                            placeholder=""
                                             type="date"
                                             value={reverseFormatDate(reportData.dateOfIncident)}
                                             onChange={(e) => {
@@ -309,18 +310,18 @@ const page = () => {
                                             required
                                         />
                                     </label>
-                                    <label className="flex justify-between">
+                                    <label className="md:flex grid md:justify-between">
                                         <div>Place or Platform of Incident:</div>
                                         <input
                                             className="border ml-6 w-52"
-                                            placeholder="Place or platform used"
+                                            placeholder="Place or Platform Used"
                                             type="text"
                                             value={reportData.platformOfIncident}
                                             onChange={(e) => handleInputChange('platformOfIncident', e.target.value)}
                                             required
                                         />
                                     </label>
-                                    <label className="flex justify-between">
+                                    <label className="md:flex grid md:justify-between">
                                         <div>Rate of Occurrence:</div>
                                         <select
                                             value={reportData.rateOfOccurrence}
@@ -340,9 +341,9 @@ const page = () => {
                                     <label className="grid">
                                         <div>Brief Description of the Situation:</div>
                                         <textarea
-                                            className="border bg-gray-200 ml-14"
-                                            placeholder="Please describe the details"
-
+                                            className="border my-2 bg-gray-200 md:ml-14"
+                                            placeholder="Details"
+                                            rows="4"
                                             value={reportData.describeTheSituation}
                                             onChange={(e) => handleInputChange('describeTheSituation', e.target.value)}
                                             required
@@ -353,7 +354,6 @@ const page = () => {
                                             <p className="font-bold text-md"> Attachment:</p>
                                             <input
                                                 className="border w-56"
-                                                placeholder=""
                                                 type="file"
                                                 accept="image/jpeg, image/png"
                                                 onChange={handlePictureChange}

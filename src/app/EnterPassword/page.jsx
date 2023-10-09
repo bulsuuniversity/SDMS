@@ -106,15 +106,15 @@ const Page = () => {
                     </ConfirmationModal>}
 
                     <div className="text-2xl text-center font-bold">New Password</div>
-                    <div className="text-sm text-center italic">Change your password</div>
+                    <div className="text-sm text-center italic">Change your password.</div>
                     <form className="grid my-4 gap-5" onSubmit={handlePassword}>
                         <input type="password"
                             className="border p-2 text-sm border-2"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="password" required />
+                            placeholder="New Password" required />
                         <input type="password"
-                            placeholder="confirm password"
+                            placeholder="Confirm Password"
                             className={`border ${notPassword && "border-red-600"} p-2 text-sm border-2`}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}

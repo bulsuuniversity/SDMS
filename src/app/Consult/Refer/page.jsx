@@ -97,7 +97,7 @@ const Page = () => {
                 </div>
                 <form className="md:col-span-2 col-span-1 grid gap-4 border border-black border-2 mx-0 md:mx-24 px-4 md:px-12 py-4 bg-white rounded-lg" onSubmit={handleSubmit}>
                     <h2 className="text-2xl whitespace-normal text-center font-bold">REFERRAL CONSULTATION FORM</h2>
-                    <p className="text-xs whitespace-normal text-center italic">Please provide the details for the referral</p>
+                    <p className="text-xs whitespace-normal text-center italic">Please provide the details for the referral.</p>
 
 
 

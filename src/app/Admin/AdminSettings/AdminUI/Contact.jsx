@@ -125,7 +125,7 @@ const Contact = ({ setOpen }) => {
                         value={formData.phoneNumber}
                         onChange={(e) => handleChange("phoneNumber", e.target.value)}
                         type="text"
-                        placeholder="School year"
+                        placeholder="School Year"
                         maxLength={14}
                         required />
                     <div className="flex justify-center mt-6">

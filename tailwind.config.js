@@ -22,7 +22,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      'serif': ['Times New Roman'],
+      'serift': ['Times New Roman'],
+      'serifg': ['Georgia'],
     },
   },
   plugins: [],
