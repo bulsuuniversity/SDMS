@@ -44,8 +44,6 @@ const page = () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
-            console.log(reportData.ticketNo)
-            console.log(response)
         } catch (err) {
             console.log(err);
         }

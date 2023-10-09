@@ -15,7 +15,7 @@ const Homebutton = ({ setViewPort }) => {
         <div
             onClick={handleClick}
             className={`flex items-center`}>
-            <span className="mr-4 font-bold">Home</span>
+            <span className="mr-4 font-serifg">Home</span>
         </div>
     );
 }

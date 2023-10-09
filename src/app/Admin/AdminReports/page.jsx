@@ -336,7 +336,7 @@ const Page = () => {
                     <div className="grid text-sm gap-2">
                         <div className="border bg-white grid gap-1 border-black p-4">
                             <p className="font-bold text-lg">SANCTION</p>
-                            <div className="flex gap-2">
+                            <div className="flex items-center gap-2">
                                 <p className="font-bold text-sm">Kind of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36" required>
@@ -348,7 +348,7 @@ const Page = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className="flex mb-6 gap-2">
+                            <div className="flex items-center mb-6 gap-2">
                                 <p className="font-bold text-sm">Degree of Offense:</p>
                                 <div className="flex justify-end">
                                     <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36" required>

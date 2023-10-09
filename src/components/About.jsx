@@ -5,7 +5,7 @@ const About = ({ data }, ref) => {
     return (
         <div ref={ref} className="h-max">
             <div className="w-full relative">
-                <div className="absolute font-bold w-full h-full items-center text-2xl flex justify-center text-white">
+                <div className="absolute font-bold w-full h-full items-center text-xs md:text-2xl flex justify-center text-white">
                     <p>ABOUT DISCIPLINE COMMITTEE</p>
                 </div>
                 <Image width={1500} className="w-full" layout="responsive" height={200} src={"/HEADER.png"} alt="header" />
