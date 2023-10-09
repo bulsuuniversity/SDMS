@@ -64,7 +64,7 @@ const About = ({ setOpen }) => {
                     </div></InformationModal>}
                 <form className="grid gap-2 text-lg md:mx-32 mx-2 md:my-16 my-max" onSubmit={handleSubmit}>
                     <textarea
-                        className="h-[20rem] md:w-[60rem] sm:w-[40rem] w-[30rem] text-center p-5 whitespace-normal rounded-md bg-gray-300"
+                        className="h-[20rem] md:w-[60rem] sm:w-[40rem] w-[30rem] text-center p-5 whitespace-normal rounded-md bg-gray-200"
                         value={formData}
                         onChange={(e) => setFormData(e.target.value)}
                         type="text"

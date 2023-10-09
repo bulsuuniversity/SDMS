@@ -39,16 +39,20 @@ const page = () => {
         status: 'Pending',
     });
 
+
     const getLatestTicket = async () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             handleInputChange("ticketNo", String((Number(response.data[0].ticketNo) + 1)).padStart(6, '0'))
+            console.log(reportData.ticketNo)
         } catch (err) {
             console.log(err);
         }
     }
-    console.log(reportData.ticketNo)
-    getLatestTicket()
+    useEffect(() => {
+        getLatestTicket()
+    }, [])
+
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -100,6 +104,7 @@ const page = () => {
         startLoading()
         try {
             const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
+            getLatestTicket()
             setConfirmation(true)
             setMessage("Submitted successfully!")
             stopLoading()
@@ -128,6 +133,7 @@ const page = () => {
     const handleOkay = () => {
         setConfirmation(true)
         route.push('/')
+
     }
 
     const handleSubmitReport = (e) => {
@@ -334,7 +340,7 @@ const page = () => {
                                     <label className="grid">
                                         <div>Brief Description of the Situation:</div>
                                         <textarea
-                                            className="border ml-14"
+                                            className="border bg-gray-200 ml-14"
                                             placeholder="Please describe the details"
 
                                             value={reportData.describeTheSituation}

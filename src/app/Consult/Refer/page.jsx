@@ -184,7 +184,7 @@ const Page = () => {
                     <label className="grid">
                         <p className="text-sm font-bold">Describe the Situation:</p>
                         <textarea
-                            className="border border-2"
+                            className="border bg-gray-200 border-2"
                             name="describeSituation"
                             value={formData.describeSituation}
                             onChange={(e) => handleInputChange('describeSituation', e.target.value)}

@@ -42,7 +42,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
             <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAbout size={32} />Send Message</div>
-            <p className='text-xl p-6'>Are you sure you want to send message</p>
+            <p className='text-xl p-6'>Are you sure you want to send message?</p>
         </div>, () => {
             handleSubmitReport()
         });
@@ -84,7 +84,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
                         <div className='relative grid mb-4'>
                             <label>Message:  </label>
                             <textarea
-                                className='ml-4'
+                                className='ml-4 bg-gray-200'
                                 value={sentEmail}
                                 onChange={(e) => setSentEmail(e.target.value)}
                                 rows="8"
