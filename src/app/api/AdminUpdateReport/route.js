@@ -4,12 +4,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
     try {
-        const posts = await prisma.studentreport.findMany({
-            orderBy: {
-                ticketNo: 'desc',
-            },
-          
-        });
+        const posts = await prisma.studentreport.findMany()
 
         return NextResponse.json(posts);
     } catch (err) {
