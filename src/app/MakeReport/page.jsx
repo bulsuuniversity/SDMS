@@ -41,28 +41,6 @@ const page = () => {
     const [latestTicket, setlatestTicket] = useState()
 
 
-    const getLatestTicket = async () => {
-        try {
-            const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
-            console.log(response)
-            const lastitem = (response.data).pop()
-            setlatestTicket(lastitem.ticketNo)
-            console.log(lastitem)
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    useEffect(() => {
-        console.log("useEffect", latestTicket)
-        handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
-
-    }, [latestTicket])
-    console.log("ticketNo", reportData.ticketNo)
-
-    useEffect(() => {
-        getLatestTicket()
-    }, [])
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -186,6 +164,28 @@ const page = () => {
         setOpenSelectAct(false)
     }
 
+    const getLatestTicket = async () => {
+        try {
+            const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
+            console.log(response)
+            const lastitem = (response.data).pop()
+            setlatestTicket(lastitem.ticketNo)
+            console.log(lastitem)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        console.log("useEffect", latestTicket)
+        handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
+
+    }, [latestTicket])
+    console.log("ticketNo", reportData.ticketNo)
+
+    useEffect(() => {
+        getLatestTicket()
+    }, [])
 
     return (
         <Layout>
