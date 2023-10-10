@@ -168,7 +168,7 @@ const page = () => {
         try {
             const response = await axios.get(`${url}/api/studentReport`, { headers });
             console.log(response)
-            const lastitem = (response.data).pop()
+            const lastitem = response.data[0]
             setlatestTicket(lastitem.ticketNo)
             console.log(lastitem)
         } catch (err) {
