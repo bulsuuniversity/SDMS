@@ -166,7 +166,7 @@ const page = () => {
 
     const getLatestTicket = async () => {
         try {
-            const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
+            const response = await axios.get(`${url}/api/studentReport`, { headers });
             console.log(response)
             const lastitem = (response.data).pop()
             setlatestTicket(lastitem.ticketNo)
@@ -186,6 +186,8 @@ const page = () => {
     useEffect(() => {
         getLatestTicket()
     }, [])
+
+
 
     return (
         <Layout>
