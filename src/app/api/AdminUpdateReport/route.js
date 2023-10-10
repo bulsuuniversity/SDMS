@@ -1,6 +1,6 @@
 import prisma from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
-  
+
 
 export const GET = async () => {
     try {
@@ -8,7 +8,7 @@ export const GET = async () => {
             orderBy: {
                 ticketNo: 'desc',
             },
-            take: 2,
+          
         });
 
         return NextResponse.json(posts);
