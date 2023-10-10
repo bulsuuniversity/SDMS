@@ -115,7 +115,7 @@ const LessGraveOffenses = ({ reports, status }) => {
                     <div className="grid justify-start">
                         <label className="flex items-center gap-4">
                             <div><BsCircle size={20} className="bg-gray-500 rounded-full" /></div>
-                            <p className={`hover:line-clamp-none line-clamp-1`}>Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</p>
+                            <p className={`hover:line-clamp-none line-clamp-1`}>Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operating hours</p>
                         </label>
                         <div className="flex justify-center">
                             <p>Count:  {legends && legends.damage}</p>

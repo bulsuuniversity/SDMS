@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-    images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'res.cloudinary.com',
-        },
-      ],
-    },
-  }
+  concurrentFeatures: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+    ],
+  },
+}

@@ -45,20 +45,22 @@ const page = () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
             setlatestTicket(response.data[0].ticketNo)
+            console.log(response)
         } catch (err) {
             console.log(err);
         }
     }
 
     useEffect(() => {
-        console.log(latestTicket)
-        handleInputChange("ticketNo", String((Number(latestTicket + 1))).padStart(6, '0'))
-      
+        console.log("useEffect", latestTicket)
+        handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
+
     }, [latestTicket])
-  console.log(reportData.ticketNo)
+    console.log("ticketNo", reportData.ticketNo)
+
     useEffect(() => {
         getLatestTicket()
-    })
+    }, [])
 
     useEffect(() => {
         if (profileData && profileData.id) {
@@ -199,7 +201,7 @@ const page = () => {
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Malicious or unfounded accusations")} >Malicious or unfounded accusations</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Deception, impersonation or fraud")} >Deception, impersonation or fraud</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Disrespectful behavior or refusal to comply with the directions of the university")} >Disrespectful behavior or refusal to comply with the directions of the university</button>
-                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours")} >Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</button>
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operating hours")} >Damage or unauthorized presence in or use of university premises, facilities or property, in violation of posted signage, when closed or after normal operatimg hours</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university")} >Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Indecency in Any Form of Obscene or Lewd Behavior")} >Indecency in Any Form of Obscene or Lewd Behavior</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Physical / Verbal / Sexual / Mental / Emotional Abuse, Threat, Cyberbullying, Hazing, Coercion")} >Smoking, gambling or being under the influence of alcohol</button>
