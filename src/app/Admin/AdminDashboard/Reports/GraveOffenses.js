@@ -96,7 +96,7 @@ const GraveOffenses = ({ reports, status }) => {
                     </div>
                     <div className="grid justify-start">
                         <label className="flex items-center gap-4">
-                            <div><BsCircle size={20} className="bg-green-500 rounded-full" /></div>
+                            <div><BsCircle size={20} className="bg-blue-500 rounded-full" /></div>
                             <p className={`hover:line-clamp-none line-clamp-1`}>Physical / Verbal / Sexual / Mental / Emotional Abuse, Threat, Cyberbullying, Hazing, Coercion</p>
                         </label>
                         <div className="flex justify-center">
@@ -105,7 +105,7 @@ const GraveOffenses = ({ reports, status }) => {
                     </div>
                     <div className="grid justify-start">
                         <label className="flex items-center gap-4">
-                            <div><BsCircle size={20} className="bg-blue-500 rounded-full" /></div>
+                            <div><BsCircle size={20} className="bg-orange-500 rounded-full" /></div>
                             <p className={`hover:line-clamp-none line-clamp-1`}>Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises</p>
                         </label>
                         <div className="flex justify-center">
@@ -114,7 +114,7 @@ const GraveOffenses = ({ reports, status }) => {
                     </div>
                     <div className="grid justify-start">
                         <label className="flex items-center gap-4">
-                            <div><BsCircle size={20} className="bg-orange-500 rounded-full" /></div>
+                            <div><BsCircle size={20} className="bg-gray-500 rounded-full" /></div>
                             <p className={`hover:line-clamp-none line-clamp-1`}>Carrying of Firearms and Other Weapons</p>
                         </label>
                         <div className="flex justify-center">
