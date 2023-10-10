@@ -8,7 +8,7 @@ export const GET = async () => {
             orderBy: {
                 ticketNo: 'desc',
             },
-            take: 1,
+            take: 2,
         });
 
         return NextResponse.json(posts);

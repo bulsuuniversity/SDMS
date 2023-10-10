@@ -278,7 +278,7 @@ const page = () => {
                                 <div className='grid justify-center gap-4 p-10'>
                                     <div>{message}</div>
                                     <div className="flex mt-6 justify-center">
-                                        <button className="bg-green-600 text-white py-2 px-4 w-max rounded-lg" onClick={handleOkay}>Okay</button>
+                                        <button type="button" className="bg-green-600 text-white py-2 px-4 w-max rounded-lg" onClick={handleOkay}>Okay</button>
                                     </div>
                                 </div>
                             </ConfirmationModal>}
