@@ -44,9 +44,9 @@ const page = () => {
     const getLatestTicket = async () => {
         try {
             const response = await axios.get(`${url}/api/AdminUpdateReport`, { headers });
-            const lastitem = response.data.length - 1
+            const lastitem = (response.data).pop()
             setlatestTicket(lastitem.ticketNo)
-            console.log(response)
+            console.log(lastitem)
         } catch (err) {
             console.log(err);
         }
