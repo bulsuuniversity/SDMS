@@ -3,6 +3,7 @@
 import StudentRecordDatagridview from "./StudentRecordDatagridview";
 import { useEffect, useState } from "react";
 import InformationModal from "@/utils/InformationModal";
+import Modal from "@/utils/Modal";
 import { AiFillCloseCircle } from "react-icons/ai";
 import Image from "next/image";
 import { url, headers } from "@/app/libs/api";
@@ -243,7 +244,7 @@ const Page = () => {
                             </label>
                         </div>
                     </div>
-                    {seeImage && info.attachment !== "" && <InformationModal>
+                    {seeImage && info.attachment !== "" && <Modal>
                         <div className="relative p-10 h-screen w-screen grid justify-center items-center">
                             <Link href={imageToView} target="blank">
                                 <div className="m-10 overflow-auto">
@@ -259,7 +260,7 @@ const Page = () => {
                             </div>
 
                         </div>
-                    </InformationModal>}
+                    </Modal>}
                     {/* <div className={`absolute left-24 -bottom-8`}> */}
                     <div className="flex justify-center pt-4">
                         {info.status !== "Registered" ?
