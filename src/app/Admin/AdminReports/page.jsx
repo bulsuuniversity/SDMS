@@ -248,7 +248,7 @@ const Page = () => {
                             email={info.reporter.email}
                             setClose={setOpenMessage} />}
                     <div className="h-screen w-screen grid p-16 justify-center items-center">
-                        <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full bg-white">
+                        <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full  bg-opacity-50 bg-gray-200">
                             <div className="bg-gray-500 p-4 m-4 relative grid-cols-2 grid gap-4">
                                 <div className="absolute -top-4 -right-4">
                                     <button
