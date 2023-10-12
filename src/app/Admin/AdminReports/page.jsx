@@ -3,6 +3,7 @@
 import ReportsDatagridview from "./ReportsDatagridview";
 import { useEffect, useState } from "react";
 import InformationModal from "@/utils/InformationModal";
+import Modal from "@/utils/Modal";
 import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import Image from "next/image";
 import { url, headers } from "@/app/libs/api";
@@ -239,7 +240,7 @@ const Page = () => {
 
 
             {openInfo && info &&
-                <InformationModal>
+                <Modal>
                     {openMessage && info &&
                         <SendMessage
                             suggestions={suggestions}
@@ -401,7 +402,7 @@ const Page = () => {
                             </div>
                         </form>
                     </div>
-                </InformationModal>}
+                </Modal>}
 
             <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
                 {data && data.length > 0 ?
