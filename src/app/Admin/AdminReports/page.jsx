@@ -269,7 +269,7 @@ const Page = () => {
                                             <label className="grid gap-1 text-sm">
                                                 <div className="font-bold">Name: {info.offender}</div>
                                                 <div className="font-bold">College: {info.college}</div>
-                                                <div className="font-bold">Course, Year & Section: {info.yearLevel}</div>
+                                                <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
                                         </div>
                                         <label className="flex gap-3 text-sm w-72">
