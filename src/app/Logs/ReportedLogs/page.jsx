@@ -89,7 +89,7 @@ const Page = () => {
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Place/Platform of Incident: </p>
-                                <div> {info.platformOfIncident}</div>
+                                <div className="w-52"> {info.platformOfIncident}</div>
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Rate of Occurence: </p>
@@ -97,7 +97,7 @@ const Page = () => {
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Describe the Situation: </p>
-                                <div> {info.describeTheSituation}</div>
+                                <div className="w-52"> {info.describeTheSituation}</div>
                             </label>
                             <label onClick={() => setSeeImage(true)} className="flex gap-3">
                                 <p className="font-bold">View Attachment: </p>
