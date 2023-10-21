@@ -364,6 +364,7 @@ const page = () => {
                                                 type="file"
                                                 accept="image/jpeg, image/png"
                                                 onChange={handlePictureChange}
+                                                required
                                             />
                                         </div>
                                         <p className="text-xs italic pb-10"> Note: The attachment should be in .jpg file containing narrative report.</p>
