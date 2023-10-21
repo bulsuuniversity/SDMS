@@ -3,7 +3,6 @@
 import ReportsDatagridview from "./ReportsDatagridview";
 import { useEffect, useState } from "react";
 import InformationModal from "@/utils/InformationModal";
-import Modal from "@/utils/Modal";
 import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import Image from "next/image";
 import { url, headers } from "@/app/libs/api";
@@ -240,7 +239,7 @@ const Page = () => {
 
 
             {openInfo && info &&
-                <Modal>
+                <InformationModal>
                     {openMessage && info &&
                         <SendMessage
                             suggestions={suggestions}
@@ -248,8 +247,8 @@ const Page = () => {
                             setSentEmail={setSentEmail}
                             email={info.reporter.email}
                             setClose={setOpenMessage} />}
-                    <div className="h-screen w-screen  bg-opacity-50 bg-gray-200 grid p-16 justify-center items-center">
-                        <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full ">
+                    <div className="h-screen w-screen grid p-16 justify-center items-center">
+                        <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full bg-opacity-50 bg-gray-200">
                             <div className="bg-gray-500 p-4 m-4 relative grid-cols-2 grid gap-4">
                                 <div className="absolute -top-4 -right-4">
                                     <button
@@ -272,7 +271,7 @@ const Page = () => {
                                                 <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
                                         </div>
-                                        <label className="flex gap-3 text-sm w-72">
+                                        <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Act of Misconduct: </p>
                                             <div> {info.actionOfDiscipline}</div>
                                         </label>
@@ -288,7 +287,7 @@ const Page = () => {
                                             <p className="font-bold">Rate of Occurence: </p>
                                             <div> {info.rateOfOccurence}</div>
                                         </label>
-                                        <label className="flex gap-3 text-sm">
+                                        <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Brief Description of the Situation: </p>
                                             <div> {info.describeTheSituation}</div>
                                         </label>
@@ -393,16 +392,16 @@ const Page = () => {
                                             required />
                                     </div>
 
-                                    <div className="flex py-4 gap-4">
-                                        <button type="button" onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><MdOutlineEmail size={20} /> Message</button>
-                                        <button type="button" onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 px-2 py-1"><GrUpdate size={20} /> Update</button>
-                                        {info.status === "Pending" && <button type="submit" className="flex gap-2 items-center bg-green-600 px-2 py-1"><GiCheckMark size={20} /> Clear</button>}
+                                    <div className="flex justify-center items-center h-max my-auto gap-4">
+                                        <button type="button" onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 p-4"><MdOutlineEmail size={20} /> Message</button>
+                                        <button type="button" onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 p-4"><GrUpdate size={20} /> Update</button>
+                                        {info.status === "Pending" && <button type="submit" className="flex gap-2 items-center bg-green-600 p-4"><GiCheckMark size={20} /> Clear</button>}
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
-                </Modal>}
+                </InformationModal>}
 
             <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
                 {data && data.length > 0 ?
