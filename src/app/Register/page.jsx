@@ -198,7 +198,7 @@ const Register = ({ setActive, setData }) => {
                                             required
                                         />
                                     </div>
-                                    {notPassword ? <div className="text-white p-2 bg-red-800 w-full h-max flex text-center">Password do not match</div> :
+                                    {notPassword ? <div className="text-white p-2 bg-red-800 w-full h-max flex justify-center">Password do not match</div> :
                                      <button
                                         type="submit"
                                         className={`w-full py-1 my-1 px-4 ${uploading ? "bg-gray-600" : 'bg-fuchsia-950 hover:bg-blue-600'}  text-white `}
