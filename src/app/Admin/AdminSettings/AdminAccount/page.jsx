@@ -98,7 +98,7 @@ const Page = () => {
             }
             <form onSubmit={handleUpdate} className="grid gap-2 pt-2 pl-6">
                 <div className="ml-6 grid">
-                    <p>change password:</p>
+                    <p className="font-bold p-1">Change Password:</p>
                     <div className="bg-gray-400 grid w-3/4 justify-end gap-3 p-6">
                         <div className="flex justify-end  gap-4">
                             <p>Current Password:</p>
