@@ -15,7 +15,7 @@ const Page = () => {
             <div className="grid p-6 w-8/12">
                 <div className="flex gap-4">
                     <p className="font-bold">Manage home page Images:</p>
-                    <div className="flex items-center justify-center indent-9 ml-8">
+                    <div className="flex items-center justify-center indent-9 ml-20">
                         <button onClick={() => setOpen("carousel")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                     </div>
                 </div>
