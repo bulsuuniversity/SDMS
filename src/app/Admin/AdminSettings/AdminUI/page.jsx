@@ -13,18 +13,20 @@ const Page = () => {
     return (
         <Layout>
             <div className="grid p-6 w-8/12">
-                <div className="flex gap-4  justify-between">
+                <div className="flex">
                     <p className="font-bold">Manage home page Images:</p>
-                    <button onClick={() => setOpen("carousel")} className="bg-red-800 text-white py-1 px-6">Manage</button>
+                    <div className="flex items-center justify-center gap-4">
+                        <button onClick={() => setOpen("carousel")} className="bg-red-800 text-white py-1 px-6">Manage</button>
+                    </div>
                 </div>
                 <div className="grid gap-4 ">
                     <p className="font-bold">Edit user home page details:</p>
                     <div className="grid gap-3 indent-9">
-                        <div className="flex items-center justify-end gap-4">
+                        <div className="flex items-center justify-center gap-4">
                             <p className="font-bold">About:</p>
                             <button onClick={() => setOpen("about")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                         </div>
-                        <div className="flex items-center justify-end gap-4">
+                        <div className="flex items-center justify-center gap-4">
                             <p className="font-bold">Footer:</p>
                             <button onClick={() => setOpen("contact")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                         </div>
