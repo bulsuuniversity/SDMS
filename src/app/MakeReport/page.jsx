@@ -189,7 +189,7 @@ const page = () => {
     return (
         <Layout>
             {/* <PrivateRoute> */}
-            <div style={{ backgroundImage: 'URL("/studentbg.jpg")' }}  className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
+            <div style={{ backgroundImage: 'URL("/studentbg.png")' }}  className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
                 {openSelectAct &&
                     <>
                         <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
