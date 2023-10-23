@@ -178,7 +178,7 @@ const page = () => {
         handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
 
     }, [latestTicket])
-    console.log("ticketNo", reportData.ticketNo)
+   
 
     useEffect(() => {
         getLatestTicket()
@@ -189,7 +189,7 @@ const page = () => {
     return (
         <Layout>
             {/* <PrivateRoute> */}
-            <div className="py-6 w-full grid justify-center mb-10">
+            <div style={{ backgroundImage: 'URL("/studentbg.jpg")' }}  className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
                 {openSelectAct &&
                     <>
                         <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
@@ -215,7 +215,7 @@ const page = () => {
                         </div>
                     </>}
                 <h2 className="text-2xl flex text-white w-80 sm:w-[38rem] bg-red-950 w-full justify-center">Report Form</h2>
-                <div className="border-red-950 border-8 w-80 sm:w-[38rem] grid justify-center">
+                <div className="border-red-950 bg-white border-8 w-80 sm:w-[38rem] grid justify-center">
 
                     <div className="w-full grid gap-4 md:px-6 justify-center">
                         <p className="font-bold py-4 flex gap-2">Ticket No.:

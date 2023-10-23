@@ -59,7 +59,7 @@ const Page = () => {
     return (
         <LogsLayout>
             {openInfo && info && <InformationModal>
-                <div className="relative p-6">
+                <div style={{ backgroundImage: 'URL("/studentbg.jpg")' }} className="bg-no-repeat w-full h-full bg-cover relative p-6">
                     <div className="absolute -top-4 -right-4">
                         <button
                             onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
