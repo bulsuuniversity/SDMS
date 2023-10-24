@@ -6,7 +6,7 @@ import axios from "axios";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import EnterCode from "@/components/EnterCode";
-import { url, headers } from "../libs/api"
+import { url, headers } from "@/app/libs/api";
 import InformationModal from "@/utils/InformationModal";
 import { PublicRoute } from "@/components/auth";
 
