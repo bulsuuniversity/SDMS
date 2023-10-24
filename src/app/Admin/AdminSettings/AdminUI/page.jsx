@@ -12,7 +12,7 @@ const Page = () => {
     const [open, setOpen] = useState("")
     return (
         <Layout>
-            <div className="flex justify between p-6 w-1/2">
+            <div className="flex ml-12 justify-between p-6 w-1/2">
                 <div className="grid gap-4">
                     <p className="font-bold">Manage home page Images:</p>
                     <p className="font-bold">Edit user home page details:</p>
