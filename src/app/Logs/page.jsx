@@ -81,7 +81,7 @@ const Page = () => {
     return (
         <PrivateRoute>
             <Layout>
-                <div className="flex justify-center">
+                <div className="flex w-full fixed top-0 justify-center">
                     <h2 className="text-center text-xl font-serifg py-4 font-bold">MY LOGS</h2>
                 </div>
                 <div style={{ backgroundImage: 'URL("/studentbg.png")' }}
