@@ -27,7 +27,7 @@ export const POST = async (request) => {
                     email: email,
                     phoneNumber: phoneNumber,
                     idNumber: idNumber,
-                    credentials: uploadResponse.secure_url,
+                    // credentials: uploadResponse.secure_url,
                     password: hashedPassword,
                     role: role,
                     status: 'Unregistered'

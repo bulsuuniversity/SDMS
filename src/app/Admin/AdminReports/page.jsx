@@ -133,8 +133,8 @@ const Page = () => {
         try {
             const response = await axios.put(`${url}/api/AdminUpdateReport/${info.id}`,
                 { sanctions: sanctions }, { headers });
-            handleGetData()
             stopLoading()
+            handleGetData()
             setSuccess('Updated')
         } catch (err) {
             console.log(err);

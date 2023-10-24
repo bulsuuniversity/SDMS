@@ -57,7 +57,6 @@ const Register = ({ setActive, setData }) => {
         role: 'admin'
     };
 
-
     const emailData = {
         email: data.email,
         subject: "Key for SDMS Admin Registration",
@@ -87,7 +86,7 @@ const Register = ({ setActive, setData }) => {
 
     return (
         <Layout>
-            <AccountModal closeModal={closeModal}>
+            <InformationModal closeModal={closeModal}>
                 {info && <InformationModal>
                     <div className="p-6 grid justify-center gap-4">
                         <div>Email already exist!</div>
@@ -170,7 +169,7 @@ const Register = ({ setActive, setData }) => {
                             </form>
                         </div>
                     </div>}
-            </AccountModal>
+            </InformationModal>
         </Layout>
     );
 }
