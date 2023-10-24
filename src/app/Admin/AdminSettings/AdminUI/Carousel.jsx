@@ -93,8 +93,8 @@ const Carousel = ({ setOpen }) => {
     const handleUpdate = () => {
         if (file) {
             showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddImage size={32}/>Add Image</div>
-            <p className='text-xl p-6'>Are you sure you want to add this image?</p>
+                <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddImage size={32} />Add Image</div>
+                <p className='text-xl p-6'>Are you sure you want to add this image?</p>
             </div>, () => {
                 handleAddImage()
             });
@@ -108,9 +108,9 @@ const Carousel = ({ setOpen }) => {
 
     const handleDeleteImage = (id, publicId) => {
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32}/>Delete Image</div>
-         <p className='text-xl p-6'>Are you sure you want to delete this image?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Delete Image</div>
+            <p className='text-xl p-6'>Are you sure you want to delete this image?</p>
+        </div>, () => {
             handleDelete(id, publicId)
         });
     };
@@ -123,7 +123,9 @@ const Carousel = ({ setOpen }) => {
                         <div className="text-2xl text-center">
                             {response}
                         </div>
-                        <button onClick={() => setMessage(false)} className="bg-green-500 text-white w-max py-2 px-4 rounded-lg">Okay</button>
+                        <div className="flex w-full justify-center">
+                            <button onClick={() => setMessage(false)} className="bg-green-500 text-white w-max py-2 px-4 rounded-lg">Okay</button>
+                        </div>
                     </div></InformationModal>}
                 {loading && <InformationModal>
                     <div className="p-10 w-60 grid">
