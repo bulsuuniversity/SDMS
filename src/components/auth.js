@@ -79,7 +79,7 @@ function PrivateRouteAdmin({ children }) {
     const router = useRouter()
     const handleLogout = (e) => {
         e.preventDefault();
-        signOut({ callbackUrl: url })
+        signOut({ callbackUrl: `${url}/Admin/AdminLogin` })
     };
     if (!session) {
         return (

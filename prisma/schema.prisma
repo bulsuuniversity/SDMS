@@ -14,9 +14,9 @@ model Student {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
   name            String?
   email           String
-  phoneNumber     String
+  phoneNumber     String?
   address         String?
-  idNumber        String
+  idNumber        String?
   credentials     String?
   college         String?
   yearLevel       String?

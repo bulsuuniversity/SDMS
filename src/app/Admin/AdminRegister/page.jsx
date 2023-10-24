@@ -75,9 +75,9 @@ const Register = ({ setActive, setData }) => {
 
     const data = {
         email: email,
-        idNumber: idNum,
-        phoneNumber: phoneNumber,
-        credentials: credentials,
+        // idNumber: idNum,
+        // phoneNumber: phoneNumber,
+        // credentials: credentials,
         password: confirmPassword,
         role: 'admin'
     };
@@ -141,7 +141,7 @@ const Register = ({ setActive, setData }) => {
                                             required
                                         />
                                     </div>
-                                    <div className="mb-4 text-sm">
+                                    {/* <div className="mb-4 text-sm">
                                         <input
                                             type="tel"
                                             className="w-full text-xs px-3 py-2 border border-black"
@@ -161,7 +161,7 @@ const Register = ({ setActive, setData }) => {
                                             placeholder="ID Number."
                                             required
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="mb-4 text-sm">
                                         <input
                                             type="password"
@@ -185,7 +185,7 @@ const Register = ({ setActive, setData }) => {
                                 </div>
                                 <div className="grid">
 
-                                    <div className="mb-4 text-sm">
+                                    {/* <div className="mb-4 text-sm">
                                         <div>Please upload Admin credentials.</div>
                                         <div className="italic mt-4">Make sure the file is in *jpg/*png file format.</div>
                                         <input
@@ -197,7 +197,7 @@ const Register = ({ setActive, setData }) => {
                                             title="Credentials"
                                             required
                                         />
-                                    </div>
+                                    </div> */}
                                     {notPassword ? <div className="text-white p-2 bg-red-800 w-full h-max flex justify-center">Password do not match</div> :
                                      <button
                                         type="submit"
