@@ -55,13 +55,13 @@ const EnterCode = ({ registerData, sentCode }) => {
             setUploading(false)
         }
     };
-    console.log(registerData)
+ 
     return (
         <>
             <div className="bg-white p-6 shadow-lg flex justify-center z-10">
                 <div className="mx-1 w-3/4">
                     <div className="flex flex-col text-xs justify-center">
-                        <h2 className="text-2xl text-center font-semibold">Login</h2>
+                        <h2 className="text-2xl text-center font-semibold">Enter Code</h2>
                         <h4 className="italic text-xs text-center">Please verify if it's you.</h4>
                         <div className="bg-green-300 rounded-full text-center whitespace-normal mt-4 p-4">
                             Enter the verification code sent to your email.
@@ -91,7 +91,7 @@ const EnterCode = ({ registerData, sentCode }) => {
             </div>
             {xCode &&
                 <ConfirmationModal>
-                    <div className="text-xl font-bold whitespace-normal text-center ">
+                    <div className="text-xl p-10 font-bold whitespace-normal text-center ">
                         Wrong code entered!
                         <div className="italic text-xs">Please open your gmail account for the code sent.</div>
                         <button onClick={() => setXCode(false)} className="p-2 m-4 text-md rounded-lg w-max bg-green-500">Okay</button>

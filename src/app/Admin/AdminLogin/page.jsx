@@ -123,9 +123,9 @@ const Login = () => {
                             >
                                 Log In
                             </button>
-                            <Link href="/Admin/AdminRegister" className="text-blue-500 cursor-pointer text-xs text-end">
+                            {/* <Link href="/Admin/AdminRegister" className="text-blue-500 cursor-pointer text-xs text-end">
                                 Don't have an admin account? Register here.
-                            </Link>
+                            </Link> */}
                         </form>
                     </div>
                 </div>

@@ -20,17 +20,16 @@ export const POST = async (request) => {
 
         const saltRounds = 10
 
-        if (credentials === null) {
+        if (!credentials) {
             const hashedPassword = await bcrypt.hash(password, saltRounds);
             const newPost = await prisma.student.create({
                 data: {
                     email: email,
-                    phoneNumber: phoneNumber,
-                    idNumber: idNumber,
-                    // credentials: uploadResponse.secure_url,
+                    phoneNumber: "N/A",
+                    idNumber: "N/A",
+                    credentials: "N/A",
                     password: hashedPassword,
-                    role: role,
-                    status: 'Unregistered'
+                    role: role
                 },
             })
             return NextResponse.json({ message: "Registered", newPost })
