@@ -48,7 +48,7 @@ export const POST = async (request) => {
                         idNumber: idNumber,
                         credentials: uploadResponse.secure_url,
                         password: hashedPassword,
-                        role: 'user'
+                        role: role
                     },
                 })
                 return NextResponse.json({ message: "Registered", newPost })

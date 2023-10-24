@@ -24,7 +24,7 @@ const EnterCode = ({ registerData, sentCode }) => {
         }, 1500);
         return () => {
             if (currentPathName === "/Register") {
-                    router.push("/Login")
+                router.push("/Login")
             } else {
                 router.push("/Admin/AdminLogin")
             }
@@ -55,7 +55,7 @@ const EnterCode = ({ registerData, sentCode }) => {
             setUploading(false)
         }
     };
-
+    console.log(registerData)
     return (
         <>
             <div className="bg-white p-6 shadow-lg flex justify-center z-10">
