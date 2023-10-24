@@ -81,7 +81,7 @@ const Page = () => {
     return (
         <PrivateRoute>
             <Layout>
-                <div className="flex w-full fixed top-0 justify-center">
+                <div className="flex w-full fixed top-12 justify-center">
                     <h2 className="text-center text-xl font-serifg py-4 font-bold">MY LOGS</h2>
                 </div>
                 <div style={{ backgroundImage: 'URL("/studentbg.png")' }}
@@ -150,16 +150,18 @@ const Page = () => {
                             </div>
                         </div>
                     </InformationModal>}
-                    <div className="mx-10 my-6 border border-blue-400 border-2">
-                        {data && data.length > 0 ? <DataGridView
-                            setOpenINfo={setOpenINfo}
-                            setClickedID={setClickedID}
-                            headerData={headerData}
-                            tableData={data} /> : <div>No Logs Found</div>}
+                    <div className="pt-16">
+                        <div className="mx-10 my-6 border border-blue-400 border-2">
+                            {data && data.length > 0 ? <DataGridView
+                                setOpenINfo={setOpenINfo}
+                                setClickedID={setClickedID}
+                                headerData={headerData}
+                                tableData={data} /> : <div>No Logs Found</div>}
+                        </div>
                     </div>
                 </div>
             </Layout>
-        </PrivateRoute>
+        </PrivateRoute >
     );
 }
 
