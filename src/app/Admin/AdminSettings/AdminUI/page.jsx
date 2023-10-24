@@ -13,11 +13,11 @@ const Page = () => {
     return (
         <Layout>
             <div className="flex ml-12 justify-between p-6 w-1/2">
-                <div className="grid gap-4 h-max">
+                <div className="grid pt-2 gap-4 h-max">
                     <p className="font-bold">Manage home page Images:</p>
                     <p className="font-bold">Edit user home page details:</p>
                 </div>
-                <div className="grid gap-8">
+                <div className="grid gap-12">
                     <div className="flex justify-end">
                         <button onClick={() => setOpen("carousel")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                     </div>
