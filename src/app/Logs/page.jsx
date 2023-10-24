@@ -82,7 +82,7 @@ const Page = () => {
         <PrivateRoute>
             <Layout>
                 <div style={{ backgroundImage: 'URL("/studentbg.png")' }}
-                    className="bg-no-repeat w-full h-screen bg-cover grid justify-center items-center">
+                    className="bg-no-repeat w-full h-screen bg-cover grid justify-center items-start">
                     <h2 className="text-center text-xl font-serifg py-4 font-bold">MY LOGS</h2>
                     {openInfo && info && <InformationModal>
                         <div className="relative p-6">

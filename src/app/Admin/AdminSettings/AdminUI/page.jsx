@@ -12,16 +12,16 @@ const Page = () => {
     const [open, setOpen] = useState("")
     return (
         <Layout>
-            <div className="grid p-6 w-8/12">
-                <div className="flex gap-4">
-                    <p className="font-bold mr-1">Manage home page Images:</p>
-                    <div className="flex items-center justify-center indent-9 ml-28">
+            <div className="flex justify between p-6 w-1/2">
+                <div className="grid gap-4">
+                    <p className="font-bold">Manage home page Images:</p>
+                    <p className="font-bold">Edit user home page details:</p>
+                </div>
+                <div className="grid gap-4">
+                    <div className="flex items-center justify-center">
                         <button onClick={() => setOpen("carousel")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                     </div>
-                </div>
-                <div className="grid gap-4 ">
-                    <p className="font-bold">Edit user home page details:</p>
-                    <div className="grid gap-3 ml-16 indent-9">
+                    <div className="grid gap-3">
                         <div className="flex items-center justify-center gap-4">
                             <p className="font-bold">About:</p>
                             <button onClick={() => setOpen("about")} className="bg-red-800 text-white py-1 px-6">Manage</button>
