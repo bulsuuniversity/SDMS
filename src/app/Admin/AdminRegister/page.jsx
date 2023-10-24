@@ -186,7 +186,7 @@ const Register = ({ setActive, setData }) => {
                                 <div className="grid">
 
                                     <div className="mb-4 text-sm">
-                                        <div>Please upload your school credentials.</div>
+                                        <div>Please upload Admin credentials.</div>
                                         <div className="italic mt-4">Make sure the file is in *jpg/*png file format.</div>
                                         <input
                                             id="credentials"
