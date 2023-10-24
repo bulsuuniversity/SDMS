@@ -81,9 +81,11 @@ const Page = () => {
     return (
         <PrivateRoute>
             <Layout>
+                <div className="flex justify-center">
+                    <h2 className="text-center text-xl font-serifg py-4 font-bold">MY LOGS</h2>
+                </div>
                 <div style={{ backgroundImage: 'URL("/studentbg.png")' }}
                     className="bg-no-repeat w-full h-screen bg-cover grid justify-center items-start">
-                    <h2 className="text-center text-xl font-serifg py-4 font-bold">MY LOGS</h2>
                     {openInfo && info && <InformationModal>
                         <div className="relative p-6">
                             <div className="absolute -top-4 -right-4">
