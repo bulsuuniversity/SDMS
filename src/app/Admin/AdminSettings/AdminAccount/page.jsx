@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../Layout";
 import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
@@ -67,7 +67,7 @@ const Page = () => {
         }));
     };
 
-       useEffect(() => {
+    useEffect(() => {
         if (password !== confirmPassword) {
             setNotPassword(true)
         }
@@ -146,7 +146,9 @@ const Page = () => {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <button type="submit" className="bg-red-800 text-white py-2 px-4">Save Changes</button>
+                    <button type="submit"
+                        disabled={notPassword}
+                        className="bg-red-800 text-white py-2 px-4">Save Changes</button>
                 </div>
             </form>
         </Layout>
