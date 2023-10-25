@@ -68,13 +68,13 @@ const Page = () => {
     };
 
     useEffect(() => {
-        if (password !== confirmPassword) {
+        if (formData.new !== formData.confirm) {
             setNotPassword(true)
         }
-        if (password === confirmPassword) {
+        if (formData.new === formData.confirm) {
             setNotPassword(false)
         }
-    }, [confirmPassword, password])
+    }, [formData.new, formData.confirm])
 
     return (
         <Layout>
