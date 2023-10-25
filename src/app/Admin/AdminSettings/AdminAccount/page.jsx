@@ -22,6 +22,7 @@ const Page = () => {
     const [failed, setFailed] = useState(false)
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { loading, startLoading, stopLoading } = useLoading()
+    const [notPassword, setNotPassword] = useState(false)
 
     const data = {
         current: formData.current,
@@ -65,6 +66,15 @@ const Page = () => {
             [field]: value,
         }));
     };
+
+       useEffect(() => {
+        if (password !== confirmPassword) {
+            setNotPassword(true)
+        }
+        if (password === confirmPassword) {
+            setNotPassword(false)
+        }
+    }, [confirmPassword, password])
 
     return (
         <Layout>
@@ -129,7 +139,7 @@ const Page = () => {
                                 onChange={(e) => handleChange("confirm", e.target.value)}
                                 type="password"
                                 placeholder="Confirm Password"
-                                className="border bg-white"
+                                className={`${notPassword ? "border-red-500 border-2" : "border"} border bg-white`}
                                 required
                             />
                         </div>
