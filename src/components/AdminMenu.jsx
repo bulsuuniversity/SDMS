@@ -120,7 +120,7 @@ const AdminMenu = ({ children }) => {
     }
 
     useEffect(() => {
-        newAdmin.length > 0 && phoneNumbers && handleSendSMS()
+        newAdmin && newAdmin.length > 0 && phoneNumbers && handleSendSMS()
     }, [newAdmin])
 
 

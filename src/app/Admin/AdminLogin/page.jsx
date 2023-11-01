@@ -42,7 +42,7 @@ const Login = () => {
         e.preventDefault();
         setLoading(true)
         const emailCheck = await axios.get(`${url}/api/findByEmail/${email}`, { headers });
-        console.log(emailCheck)
+        // console.log(emailCheck)
         if (Array.isArray(emailCheck.data)
             && emailCheck.data.length > 0
             && emailCheck.data[0].role === "admin") {
