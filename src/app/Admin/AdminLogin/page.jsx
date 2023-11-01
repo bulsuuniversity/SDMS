@@ -29,13 +29,24 @@ const Login = () => {
         setPassword(e.target.value);
     };
 
+    const handleUpdateStatus = async (id) => {
+        try {
+            const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
+            {status: "Registered Active"},  { headers });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
         const emailCheck = await axios.get(`${url}/api/findByEmail/${email}`, { headers });
+        console.log(emailCheck)
         if (Array.isArray(emailCheck.data)
             && emailCheck.data.length > 0
             && emailCheck.data[0].role === "admin") {
+            handleUpdateStatus(emailCheck.data[0]._id)
             const response = await signIn('credentials', {
                 email: email,
                 password: password,

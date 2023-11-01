@@ -15,6 +15,7 @@ import useLoading from "@/utils/Loading";
 import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -56,7 +57,7 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-                { headers });
+              {status: "Registered"},  { headers });
             sendEmail()
             stopLoading()
             handleGetData()
@@ -128,13 +129,13 @@ const Page = () => {
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
-                <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
+                <MdAdminPanelSettings size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Admin Accounts</p>
             </div>
-            <div className="flex gap-6 pl-10">
+            {/* <div className="flex gap-6 pl-10">
                 <Link href={'/Admin/AdminStudentRecord'} className="font-bold p-2">Student</Link>
                 <p className="font-bold border border-black p-2 border-bottom">Admin</p>
-            </div>
+            </div> */}
 
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">
@@ -178,19 +179,22 @@ const Page = () => {
                         </div>
                         <div className="grid gap-2 text-xs">
                             <label className="flex gap-3 items-center">
-                                <p className="font-bold">Student ID:</p>
+                                <p className="font-bold">Account type:</p>
                                 <div className="bg-gray-300 p-2">{info.idNumber}</div>
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Email: </p>
                                 <div> {info.email}</div>
                             </label>
-
                             <label className="flex gap-3">
                                 <p className="font-bold">Name: </p>
                                 <div> {info.name}</div>
                             </label>
-                            <label className="flex gap-6">
+                            <label className="flex gap-3">
+                                <p className="font-bold">Status: </p>
+                                <div> {info.status}</div>
+                            </label>
+                            {/* <label className="flex gap-6">
                                 <label className="flex gap-3">
                                     <p className="font-bold">College: </p>
                                     <div> {info.college}</div>
@@ -199,22 +203,22 @@ const Page = () => {
                                     <p className="font-bold">Year Level: </p>
                                     <div> {info.yearLevel}</div>
                                 </label>
-                            </label>
-                            <label className="flex gap-3">
+                            </label> */}
+                            {/* <label className="flex gap-3">
                                 <p className="font-bold">Address: </p>
                                 <div> {info.address}</div>
-                            </label>
+                            </label> */}
                             <label className="flex gap-3">
                                 <p className="font-bold">Contact No.: </p>
                                 <div> {info.phoneNumber}</div>
                             </label>
-                            <label onClick={() => handleSetImage(info.credentials)} className="flex gap-3">
+                            {/* <label onClick={() => handleSetImage(info.credentials)} className="flex gap-3">
                                 <p className="font-bold">Attachment: </p>
                                 <div>{info.credentials ? (info.credentials).slice(-8) : "No attachments"}</div>
-                            </label>
+                            </label> */}
                         </div>
                     </div>
-                    {seeImage && info.attachment !== "" && <InformationModal>
+                    {/* {seeImage && info.attachment !== "" && <InformationModal>
                         <div className="relative p-6">
                             <div className="h-96">
                                 <Image width={400} height={200}
@@ -228,7 +232,7 @@ const Page = () => {
                             </div>
 
                         </div>
-                    </InformationModal>}
+                    </InformationModal>} */}
                     {/* <div className={`absolute left-24 -bottom-8`}> */}
                     {info.email !== "bulsubulacanstateuniversity@gmail.com" &&
                         <div className="flex justify-center pt-4">
@@ -237,7 +241,7 @@ const Page = () => {
                                     className="bg-green-600 rounded-full p-2">
                                     <div><GiCheckMark size={32} /></div>
                                 </button> :
-                                <button onClick={handleRemoveAcc}
+                                info.idNumber !== "master" && <button onClick={handleRemoveAcc}
                                     className="bg-red-600 rounded-full p-2">
                                     <div><GrClose size={32} /></div>
                                 </button>}

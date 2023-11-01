@@ -16,7 +16,7 @@ import { IoNotificationsCircleSharp } from "react-icons/io5";
 import axios from "axios";
 import { url, headers } from "@/app/libs/api";
 import { FcDataProtection } from "react-icons/fc";
-import { MdLogout, MdOutlineDashboardCustomize, MdSettingsSuggest } from "react-icons/md";
+import { MdLogout, MdOutlineDashboardCustomize, MdSettingsSuggest, MdAdminPanelSettings } from "react-icons/md";
 import { ImNewspaper } from "react-icons/im";
 import { GrUserSettings } from "react-icons/gr";
 import { FaPeopleLine } from "react-icons/fa6";
@@ -30,6 +30,7 @@ const AdminMenu = ({ children }) => {
     const router = useRouter()
     const [newReport, setNewReport] = useState()
     const [newStudent, setNewStudent] = useState()
+    const [newAdmin, setNewAdmin] = useState()
     useEffect(() => {
         setActive(currentPathname)
     }, [currentPathname])
@@ -49,6 +50,15 @@ const AdminMenu = ({ children }) => {
         }
     }, [])
 
+    const handleUpdateStatus = async (id) => {
+        try {
+            const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
+                { status: "Registered Inactive" }, { headers });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     const handleSignOut = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
@@ -56,6 +66,7 @@ const AdminMenu = ({ children }) => {
             <p className='text-xl p-6'>Are you sure you want to logout this account?</p>
         </div>, () => {
             router.push("/Admin/AdminLogin")
+            handleUpdateStatus()
             signOut({ callbackUrl: `${url}/Admin/AdminLogin` })
         });
     };
@@ -78,8 +89,8 @@ const AdminMenu = ({ children }) => {
     };
     const getNotifAdmin = async () => {
         try {
-            const reponse = await axios.get(`${url}/api/AdminNotification/651900d14826f8919bf936de`, { headers });
-            setNewStudent(reponse.data[0].notif)
+            const reponse = await axios.get(`${url}/api/AdminNotification/654220a68db45807d25ac36a`, { headers });
+            setNewAdmin(reponse.data[0].notif)
         } catch (error) {
             console.error('Error:', error);
         }
@@ -108,14 +119,42 @@ const AdminMenu = ({ children }) => {
         getNotifReport();
     }
 
+    useEffect(() => {
+        handleSendSMS()
+    }, [newAdmin])
+
     const handleSendSMS = async (id) => {
         try {
-            await axios.post(`${url}/api/sendSms`,
-                { phoneNumber: "09273420007", message: "Hello po" }, { headers });
+            const response = await axios.post(`${url}/api/sendSms`,
+                { phoneNumbers: phoneNumbers, message: "Hello po" }, { headers });
+            console.log(response)
         } catch (error) {
             console.error('Error:', error);
         }
     }
+
+    const [adminaccounts, setAdminaccounts] = useState()
+
+    const handleGetData = async () => {
+        try {
+            const response = await axios.get(`${url}/api/studentAccount`, { headers });
+            setAdminaccounts(response.data)
+
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
+
+    const phoneNumbers = adminaccounts && adminaccounts
+        .filter(account => account.status.includes("Active"))
+        .map(activeAccount => activeAccount.phoneNumber);
+
+
+    useEffect(() => {
+        handleGetData()
+    }, [])
+
 
 
     return (
@@ -150,18 +189,21 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminDashboard'}>
                             <div className="pr-3"><MdOutlineDashboardCustomize size={24} /></div> Dashboard</Link>
-                        {session && session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
+                        {session && session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("654220a68db45807d25ac36a")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminApproveAdmin") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminApproveAdmin'}>
-                            <div className="pr-3"><FaPeopleLine size={24} /></div>Admin Accounts {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
+                            <div className="pr-3"><MdAdminPanelSettings size={24} /></div>Admin Accounts
+                            {newAdmin && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
                         <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminStudentRecord'}>
-                            <div className="pr-3"><FaPeopleLine size={24} /></div>Student Accounts {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
+                            <div className="pr-3"><FaPeopleLine size={24} /></div>Student Accounts
+                            {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
                             className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports/?new=newReport'}>
-                            <div className="pr-3"><ImNewspaper size={24} /></div>Reports {newReport &&
+                            <div className="pr-3"><ImNewspaper size={24} /></div>Reports
+                            {newReport &&
                                 <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         {/* <Link className={`mx-2 flex items-center px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminCounseling'}>Counselling</Link> */}

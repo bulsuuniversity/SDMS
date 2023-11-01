@@ -23,13 +23,14 @@ export const GET = async (request, { params }) => {
 
 export const PUT = async (request, { params }) => {
     try {
-        const { id } = params
+        const { id } = params;
+        const status = await request.json();
         const updatePost = await prisma.student.update({
             where: {
                 id
             },
             data: {
-                status: "Registered"
+                status: status
             }
         })
 

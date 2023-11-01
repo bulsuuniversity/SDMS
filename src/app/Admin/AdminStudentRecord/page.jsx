@@ -62,7 +62,7 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-                { headers });
+            {status: "Registered"},  { headers });
             sendEmail()
             stopLoading()
             setMessage("Account approved successfully!")

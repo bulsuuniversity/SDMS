@@ -75,8 +75,8 @@ const Register = ({ setActive, setData }) => {
 
     const data = {
         email: email,
-        idNumber: "idNum",
-        phoneNumber: "phoneNumber",
+        idNumber: "admin",
+        phoneNumber: phoneNumber,
         // credentials: credentials,
         password: confirmPassword,
         role: 'admin',
@@ -141,7 +141,7 @@ const Register = ({ setActive, setData }) => {
                                             required
                                         />
                                     </div>
-                                    {/* <div className="mb-4 text-sm">
+                                    <div className="mb-4 text-sm">
                                         <input
                                             type="tel"
                                             className="w-full text-xs px-3 py-2 border border-black"
@@ -152,7 +152,7 @@ const Register = ({ setActive, setData }) => {
                                             required
                                         />
                                     </div>
-                                    <div className="mb-4 text-sm">
+                                    {/* <div className="mb-4 text-sm">
                                         <input
                                             type="text"
                                             value={idNum}

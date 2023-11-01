@@ -113,7 +113,7 @@ function PrivateRouteAdmin({ children }) {
                 </div>
             </>
         )
-    } else if (session && session.role === "admin" && session.status !== "Registered") {
+    } else if (session && session.role === "admin" && !session.status.includes("Registered")) {
         return (
             <>
                 <Header />
