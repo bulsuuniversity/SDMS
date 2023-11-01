@@ -134,11 +134,11 @@ const AdminMenu = ({ children }) => {
                         {session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminApproveAdmin") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminApproveAdmin'}>
-                            <div className="pr-3"><FaPeopleLine size={24} /></div>Admin Records {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
+                            <div className="pr-3"><FaPeopleLine size={24} /></div>Admin Accounts {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
                         <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminStudentRecord'}>
-                            <div className="pr-3"><FaPeopleLine size={24} /></div>Student Records {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
+                            <div className="pr-3"><FaPeopleLine size={24} /></div>Student Accounts {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
                             className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminReports") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports/?new=newReport'}>

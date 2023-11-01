@@ -87,6 +87,15 @@ const page = () => {
         }
     };
 
+    const handlemakeNotif = async () => {
+        try {
+            await axios.post(`${url}/api/AdminNotification`,
+                { title: 'admin', notif: true }, { headers });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
 
     const handleSubmit = async () => {
         startLoading()
@@ -178,7 +187,7 @@ const page = () => {
         handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
 
     }, [latestTicket])
-   
+
 
     useEffect(() => {
         getLatestTicket()
@@ -189,7 +198,7 @@ const page = () => {
     return (
         <Layout>
             {/* <PrivateRoute> */}
-            <div style={{ backgroundImage: 'URL("/studentbg.png")' }}  className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
+            <div style={{ backgroundImage: 'URL("/studentbg.png")' }} className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
                 {openSelectAct &&
                     <>
                         <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
@@ -222,6 +231,7 @@ const page = () => {
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
                             </div>
+                            <button className="bg-blue-600 p-10 border" onClick={handlemakeNotif}>Make Notification</button>
                         </p>
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
