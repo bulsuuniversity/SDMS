@@ -38,6 +38,15 @@ const EnterCode = ({ registerData, sentCode }) => {
         'Accept': 'application/json',
     };
 
+    const handleNotif = async () => {
+        try {
+            await axios.put(`${url}/api/AdminNotification/651900d14826f8919bf936de`,
+                { notif: true }, { headers });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUploading(true)
@@ -46,6 +55,7 @@ const EnterCode = ({ registerData, sentCode }) => {
                 const response = await axios.post(`${url}/api/studentAccount`, registerData, { headers });
                 setUploading(false)
                 setSubmitted(true)
+                handleNotif()
             } catch (error) {
                 console.error('Error:', error);
                 setUploading(false)

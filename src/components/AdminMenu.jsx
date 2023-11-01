@@ -110,7 +110,9 @@ const AdminMenu = ({ children }) => {
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminDashboard" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminDashboard'}>Dashboard</Link>
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminStudentRecord" ? "bg-gray-600" : "hover:bg-gray-600"}`}
-                            href={'/Admin/AdminStudentRecord'}>Student Records</Link>
+                            href={'/Admin/AdminStudentRecord'}>Student Accounts</Link>
+                        {session.idNumber === "master" && <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminStudentRecord" ? "bg-gray-600" : "hover:bg-gray-600"}`}
+                            href={'/Admin/AdminApproveAdmin'}>Admin Accounts</Link>}
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminReports" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports'}>Reports</Link>
                         {/* <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminCounseling" ? "bg-gray-600" : "hover:bg-gray-600"}`}
@@ -129,6 +131,10 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminDashboard'}>
                             <div className="pr-3"><MdOutlineDashboardCustomize size={24} /></div> Dashboard</Link>
+                        {session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
+                            className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminApproveAdmin") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminApproveAdmin'}>
+                            <div className="pr-3"><FaPeopleLine size={24} /></div>Admin Records {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
                         <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminStudentRecord'}>

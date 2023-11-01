@@ -79,7 +79,7 @@ const Register = ({ setActive, setData }) => {
         phoneNumber: "phoneNumber",
         // credentials: credentials,
         password: confirmPassword,
-        role: 'admin'
+        role: 'admin',
     };
 
 

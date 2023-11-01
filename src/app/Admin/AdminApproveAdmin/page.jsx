@@ -35,8 +35,8 @@ const Page = () => {
     const emailData = {
         email: info && info.email,
         subject: "SDMS Admin",
-        message: "This is to inform you that your registration account in SDMS is approved by the Admin.",
-        html: `<p>This is to inform you that your registration account in SDMS is approved by the Admin.</p>`
+        message: "This is to inform you that your admin registration account in SDMS is approved by the Admin.",
+        html: `<p>This is to inform you that your admin registration account in SDMS is approved by the Admin.</p>`
     }
 
     const sendEmail = async () => {
