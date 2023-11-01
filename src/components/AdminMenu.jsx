@@ -120,7 +120,7 @@ const AdminMenu = ({ children }) => {
     }
 
     useEffect(() => {
-        handleSendSMS()
+        newAdmin && handleSendSMS()
     }, [newAdmin])
 
     const handleSendSMS = async (id) => {

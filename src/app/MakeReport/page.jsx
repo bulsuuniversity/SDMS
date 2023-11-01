@@ -231,7 +231,7 @@ const page = () => {
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
                             </div>
-                            <button className="bg-blue-600 p-10 border" onClick={handlemakeNotif}>Make Notification</button>
+                            {/* <button className="bg-blue-600 p-10 border" onClick={handlemakeNotif}>Make Notification</button> */}
                         </p>
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>

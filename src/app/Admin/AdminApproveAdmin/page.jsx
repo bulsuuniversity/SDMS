@@ -186,10 +186,10 @@ const Page = () => {
                                 <p className="font-bold">Email: </p>
                                 <div> {info.email}</div>
                             </label>
-                            <label className="flex gap-3">
+                            {/* <label className="flex gap-3">
                                 <p className="font-bold">Name: </p>
                                 <div> {info.name}</div>
-                            </label>
+                            </label> */}
                             <label className="flex gap-3">
                                 <p className="font-bold">Status: </p>
                                 <div> {info.status}</div>
