@@ -120,18 +120,10 @@ const AdminMenu = ({ children }) => {
     }
 
     useEffect(() => {
-        newAdmin && handleSendSMS()
+        newAdmin.length > 0 && phoneNumbers && handleSendSMS()
     }, [newAdmin])
 
-    const handleSendSMS = async (id) => {
-        try {
-            const response = await axios.post(`${url}/api/sendSms`,
-                { phoneNumbers: phoneNumbers, message: "Hello po" }, { headers });
-            console.log(response)
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
+
 
     const [adminaccounts, setAdminaccounts] = useState()
 
@@ -150,12 +142,21 @@ const AdminMenu = ({ children }) => {
         .filter(account => account.status.includes("Active"))
         .map(activeAccount => activeAccount.phoneNumber);
 
+    console.log(phoneNumbers)
 
     useEffect(() => {
         handleGetData()
     }, [])
 
-
+    const handleSendSMS = async (id) => {
+        try {
+            const response = await axios.post(`${url}/api/sendSms`,
+                { phoneNumbers: phoneNumbers, message: "Hello po" }, { headers });
+            console.log(response)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
 
     return (
         <AdminLayout>
