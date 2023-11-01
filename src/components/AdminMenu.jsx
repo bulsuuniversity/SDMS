@@ -76,6 +76,14 @@ const AdminMenu = ({ children }) => {
             console.error('Error:', error);
         }
     };
+    const getNotifAdmin = async () => {
+        try {
+            const reponse = await axios.get(`${url}/api/AdminNotification/651900d14826f8919bf936de`, { headers });
+            setNewStudent(reponse.data[0].notif)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     const handleUpdateNotif = async (id) => {
         try {
@@ -90,6 +98,7 @@ const AdminMenu = ({ children }) => {
         const intervalId = setInterval(() => {
             getNotifStudent();
             getNotifReport();
+            getNotifAdmin();
         }, 3000);
         return () => clearInterval(intervalId);
     }, []);
@@ -111,7 +120,7 @@ const AdminMenu = ({ children }) => {
                             href={'/Admin/AdminDashboard'}>Dashboard</Link>
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminStudentRecord" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminStudentRecord'}>Student Accounts</Link>
-                        {session.idNumber === "master" && <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminStudentRecord" ? "bg-gray-600" : "hover:bg-gray-600"}`}
+                        {session && session.idNumber === "master" && <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminStudentRecord" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminApproveAdmin'}>Admin Accounts</Link>}
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminReports" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports'}>Reports</Link>
@@ -131,7 +140,7 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminDashboard'}>
                             <div className="pr-3"><MdOutlineDashboardCustomize size={24} /></div> Dashboard</Link>
-                        {session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
+                        {session && session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminApproveAdmin") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminApproveAdmin'}>
                             <div className="pr-3"><FaPeopleLine size={24} /></div>Admin Accounts {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
