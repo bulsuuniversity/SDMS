@@ -108,6 +108,16 @@ const AdminMenu = ({ children }) => {
         getNotifReport();
     }
 
+    const handleSendSMS = async (id) => {
+        try {
+            await axios.put(`${url}/api/sendSms`,
+                { phoneNumber: "09273420007", message: "Hello po" }, { headers });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    console.log(session)
+
     return (
         <AdminLayout>
             <div className="grid grid-cols-12 h-screen">
@@ -158,6 +168,9 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Settings</Link>
+                        <button onClick={handleSendSMS} className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                        >
+                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button>
                         <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
                             href={'/Admin/AdminSettings'} onClick={handleSignOut}><div className="pr-3">
                                 <MdLogout size={24} /></div>Logout</Link >
