@@ -131,7 +131,7 @@ const AdminMenu = ({ children }) => {
         try {
             const response = await axios.get(`${url}/api/studentAccount`, { headers });
             setAdminaccounts(response.data)
-
+            console.log(response)
         } catch (err) {
             console.log(err);
 
@@ -142,7 +142,7 @@ const AdminMenu = ({ children }) => {
         .filter(account => account.status.includes("Active"))
         .map(activeAccount => activeAccount.phoneNumber);
 
-    console.log(phoneNumbers)
+  
 
     useEffect(() => {
         handleGetData()

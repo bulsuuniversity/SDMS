@@ -46,7 +46,7 @@ const Login = () => {
         if (Array.isArray(emailCheck.data)
             && emailCheck.data.length > 0
             && emailCheck.data[0].role === "admin") {
-            handleUpdateStatus(emailCheck.data[0]._id)
+            handleUpdateStatus(emailCheck.data[0].id)
             const response = await signIn('credentials', {
                 email: email,
                 password: password,
