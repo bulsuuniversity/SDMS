@@ -110,13 +110,13 @@ const AdminMenu = ({ children }) => {
 
     const handleSendSMS = async (id) => {
         try {
-            await axios.put(`${url}/api/sendSms`,
+            await axios.post(`${url}/api/sendSms`,
                 { phoneNumber: "09273420007", message: "Hello po" }, { headers });
         } catch (error) {
             console.error('Error:', error);
         }
     }
-    console.log(session)
+
 
     return (
         <AdminLayout>
