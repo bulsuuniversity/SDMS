@@ -29,10 +29,12 @@ const Login = () => {
         setPassword(e.target.value);
     };
 
+    const status = "Registered Active"
+
     const handleUpdateStatus = async (id) => {
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${id}`,
-            {status: "Registered Active"},  { headers });
+                status, { headers });
         } catch (err) {
             console.log(err);
         }

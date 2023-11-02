@@ -27,10 +27,10 @@ export const PUT = async (request, { params }) => {
         const status = await request.json();
         const updatePost = await prisma.student.update({
             where: {
-                id
+                id: id
             },
             data: {
-                status: status
+                status
             }
         })
 

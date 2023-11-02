@@ -53,12 +53,13 @@ const Page = () => {
         }
     };
 
+    const status = "Registered"
 
     const handleUpdateApi = async () => {
         startLoading()
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-              {status: "Registered"},  { headers });
+                status, { headers });
             sendEmail()
             stopLoading()
             handleGetData()
@@ -138,15 +139,6 @@ const Page = () => {
     }, [newAdmin])
 
 
-    const handleUpdateStatus = async (id) => {
-        try {
-            const response = await axios.put(`${url}/api/AdminApproveAccount/${id}`,
-            {status: "Registered Active"},  { headers });
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
@@ -166,7 +158,7 @@ const Page = () => {
                             <AiFillCloseCircle size={30} /></button>
                     </div>
                     <ConfirmationDialog />
-                    {success && <InformationModal>
+                    {success && success !== "" && <InformationModal>
                         <div className='grid p-10 rounded-lg gap-4'>
                             <p>{success}</p>
                             <button onClick={() => setSuccess("")} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
@@ -197,9 +189,6 @@ const Page = () => {
                                         required
                                     />}
                             </div>
-                            <button 
-                            className="bg-red-600 p-10 border" 
-                            onClick={handleUpdateStatus(info.id)}>Update Status</button>
                         </div>
                         <div className="grid gap-2 text-xs">
                             <label className="flex gap-3 items-center">

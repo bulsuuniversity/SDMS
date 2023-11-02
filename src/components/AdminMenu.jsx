@@ -50,10 +50,12 @@ const AdminMenu = ({ children }) => {
         }
     }, [])
 
+    const status = "Registered Inactive"
+
     const handleUpdateStatus = async (id) => {
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-                { status: "Registered Inactive" }, { headers });
+                status, { headers });
         } catch (err) {
             console.log(err);
         }
@@ -141,7 +143,7 @@ const AdminMenu = ({ children }) => {
         .filter(account => account.status.includes("Active"))
         .map(activeAccount => activeAccount.phoneNumber);
 
-  console.log(phoneNumbers)
+    console.log(phoneNumbers)
 
     useEffect(() => {
         handleGetData()
