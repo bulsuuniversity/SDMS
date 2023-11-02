@@ -137,7 +137,7 @@ const Page = () => {
             router.push("/Admin/AdminApproveAdmin")
         }
     }, [newAdmin])
-   
+
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">

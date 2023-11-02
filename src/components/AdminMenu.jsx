@@ -52,9 +52,9 @@ const AdminMenu = ({ children }) => {
 
     const status = "Registered Inactive"
 
-    const handleUpdateStatus = async (id) => {
+    const handleUpdateStatus = async () => {
         try {
-            const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
+            const response = await axios.put(`${url}/api/AdminApproveAccount/${session.id}`,
                 status, { headers });
         } catch (err) {
             console.log(err);
@@ -151,7 +151,7 @@ const AdminMenu = ({ children }) => {
         try {
             const response = await axios.post(`${url}/api/sendSms`,
                 { phoneNumbers: phoneNumbers, message: message }, { headers });
-            setSent(true)
+            setSmsSent(true)
             console.log(response)
         } catch (error) {
             console.error('Error:', error);
