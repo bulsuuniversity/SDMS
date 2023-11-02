@@ -192,12 +192,12 @@ const AdminMenu = ({ children }) => {
                             <div className="pr-3"><MdOutlineDashboardCustomize size={24} /></div> Dashboard</Link>
                         {session && session.idNumber === "master" && <Link onClick={() => handleUpdateNotif("654220a68db45807d25ac36a")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminApproveAdmin") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminApproveAdmin'}>
+                            href={'/Admin/AdminApproveAdmin/?new=newAdmin'}>
                             <div className="pr-3"><MdAdminPanelSettings size={24} /></div>Admin Accounts
                             {newAdmin && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>}
                         <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                             className={`mx-2 flex items-center md:whitespace-nowrap px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminStudentRecord'}>
+                            href={'/Admin/AdminStudentRecord/?new=newStudent'}>
                             <div className="pr-3"><FaPeopleLine size={24} /></div>Student Accounts
                             {newStudent && <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
@@ -211,9 +211,9 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Settings</Link>
-                        {/* <button onClick={handleSendSMS} className={`mx-2 flex items-center px-8 py-2 `}
+                        <button onClick={handleSendSMS("Hello Aaron")} className={`mx-2 flex items-center px-8 py-2 `}
                         >
-                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button> */}
+                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button>
                         <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
                             href={'/Admin/AdminSettings'} onClick={handleSignOut}><div className="pr-3">
                                 <MdLogout size={24} /></div>Logout</Link >
