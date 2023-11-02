@@ -137,6 +137,16 @@ const Page = () => {
         }
     }, [newAdmin])
 
+
+    const handleUpdateStatus = async (id) => {
+        try {
+            const response = await axios.put(`${url}/api/AdminApproveAccount/${id}`,
+            {status: "Registered Active"},  { headers });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
@@ -187,6 +197,9 @@ const Page = () => {
                                         required
                                     />}
                             </div>
+                            <button 
+                            className="bg-red-600 p-10 border" 
+                            onClick={handleUpdateStatus(info.id)}>Update Status</button>
                         </div>
                         <div className="grid gap-2 text-xs">
                             <label className="flex gap-3 items-center">
