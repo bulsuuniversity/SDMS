@@ -25,7 +25,7 @@ const Page = () => {
     const [openInfo, setOpenINfo] = useState(false)
     const [data, setData] = useState()
     const [imageToView, setImageToView] = useState()
-    const [success, setSuccess] = useState(false)
+    const [success, setSuccess] = useState("")
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { startLoading, loading, stopLoading } = useLoading()
 
@@ -62,7 +62,7 @@ const Page = () => {
             sendEmail()
             stopLoading()
             handleGetData()
-            setSuccess(true)
+            setSuccess("Approved Successfully!")
         } catch (err) {
             console.log(err);
             stopLoading()
@@ -77,7 +77,7 @@ const Page = () => {
             setData(response.data)
             handleGetData()
             stopLoading()
-            setSuccess(true)
+            setSuccess("Removed Successfully!")
         } catch (err) {
             console.log(err);
             stopLoading()
@@ -157,9 +157,9 @@ const Page = () => {
                     </div>
                     <ConfirmationDialog />
                     {success && <InformationModal>
-                        <div className='bg-amber-200 grid p-10 rounded-lg gap-4'>
-                            <p>Approved Successfully!</p>
-                            <button onClick={() => setSuccess(false)} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
+                        <div className='grid p-10 rounded-lg gap-4'>
+                            <p>{success}</p>
+                            <button onClick={() => setSuccess("")} className='bg-amber-600 rounded-lg py-2 px-4'>Okay</button>
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>
