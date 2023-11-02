@@ -121,7 +121,7 @@ const AdminMenu = ({ children }) => {
     useEffect(() => {
         if (newReport && !smsSent) {
             handleSendSMS("Hello there Admin!. There is a new reported case.");
-            setSmsSent(true);
+            // setSmsSent(true);
         } else if (!newReport && smsSent) {
             setSmsSent(false);
         }
