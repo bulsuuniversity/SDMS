@@ -66,7 +66,7 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
                     },
                 },
                 {
-                    when: (row) => row.status === "Registered",
+                    when: (row) => row.status.includes("Registered"),
                     style: {
                         color: 'green',
                     },

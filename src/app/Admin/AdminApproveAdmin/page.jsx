@@ -137,8 +137,7 @@ const Page = () => {
             router.push("/Admin/AdminApproveAdmin")
         }
     }, [newAdmin])
-
-
+   
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
@@ -149,7 +148,6 @@ const Page = () => {
                 <Link href={'/Admin/AdminStudentRecord'} className="font-bold p-2">Student</Link>
                 <p className="font-bold border border-black p-2 border-bottom">Admin</p>
             </div> */}
-
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">

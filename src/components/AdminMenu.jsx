@@ -116,16 +116,10 @@ const AdminMenu = ({ children }) => {
         return () => clearInterval(intervalId);
     }, []);
 
-    const handleGetNotif = () => {
-        getNotifStudent();
-        getNotifReport();
-    }
 
     useEffect(() => {
-        newAdmin && newAdmin.length > 0 && phoneNumbers && handleSendSMS()
+        newReport && phoneNumbers && handleSendSMS("Hello there Admin!. There is a new reported case.")
     }, [newAdmin])
-
-
 
     const [adminaccounts, setAdminaccounts] = useState()
 
@@ -133,7 +127,6 @@ const AdminMenu = ({ children }) => {
         try {
             const response = await axios.get(`${url}/api/AdminAccount`, { headers });
             setAdminaccounts(response.data)
-            // console.log(response.data)
         } catch (err) {
             console.log(err);
         }
@@ -149,10 +142,10 @@ const AdminMenu = ({ children }) => {
         handleGetData()
     }, [])
 
-    const handleSendSMS = async (id) => {
+    const handleSendSMS = async (message) => {
         try {
             const response = await axios.post(`${url}/api/sendSms`,
-                { phoneNumbers: phoneNumbers, message: "Hello po" }, { headers });
+                { phoneNumbers: phoneNumbers, message: message }, { headers });
             console.log(response)
         } catch (error) {
             console.error('Error:', error);
@@ -212,9 +205,9 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Settings</Link>
-                        <button onClick={handleSendSMS} className={`mx-2 flex items-center px-8 py-2 `}
+                        {/* <button onClick={handleSendSMS} className={`mx-2 flex items-center px-8 py-2 `}
                         >
-                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button>
+                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button> */}
                         <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
                             href={'/Admin/AdminSettings'} onClick={handleSignOut}><div className="pr-3">
                                 <MdLogout size={24} /></div>Logout</Link >
