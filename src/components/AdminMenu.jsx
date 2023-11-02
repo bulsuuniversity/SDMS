@@ -131,7 +131,7 @@ const AdminMenu = ({ children }) => {
         try {
             const response = await axios.get(`${url}/api/AdminAccount`, { headers });
             setAdminaccounts(response.data)
-            console.log(response.data)
+            // console.log(response.data)
         } catch (err) {
             console.log(err);
         }
@@ -141,7 +141,7 @@ const AdminMenu = ({ children }) => {
         .filter(account => account.status.includes("Active"))
         .map(activeAccount => activeAccount.phoneNumber);
 
-  
+  console.log(phoneNumbers)
 
     useEffect(() => {
         handleGetData()
@@ -224,12 +224,12 @@ const AdminMenu = ({ children }) => {
                         {newStudent && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("651900d14826f8919bf936de")}
                                 className={`mx-2 flex gap-2 items-center`}
-                                href={'/Admin/AdminStudentRecord'}>New Student <IoNotificationsCircleSharp size={35} /></Link>
+                                href={'/Admin/AdminStudentRecord/?new=newStudent'}>New Student <IoNotificationsCircleSharp size={35} /></Link>
                         </div>}
                         {newAdmin && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("654220a68db45807d25ac36a")}
                                 className={`mx-2 flex gap-2 items-center`}
-                                href={'/Admin/AdminStudentRecord'}>New Admin <IoNotificationsCircleSharp size={35} /></Link>
+                                href={'/Admin/AdminApproveAdmin/?new=newAdmin'}>New Admin <IoNotificationsCircleSharp size={35} /></Link>
                         </div>}
                         {newReport && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}

@@ -16,6 +16,7 @@ import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -125,6 +126,16 @@ const Page = () => {
     }, [clickedID])
 
 
+    const searchParams = useSearchParams()
+    const newAdmin = searchParams.get('new')
+    const router = useRouter()
+
+    useEffect(() => {
+        if ("newAdmin" === newAdmin) {
+            handleGetData()
+            router.push("/Admin/AdminApproveAdmin")
+        }
+    }, [newAdmin])
 
     return (
         <AdminMenu>
