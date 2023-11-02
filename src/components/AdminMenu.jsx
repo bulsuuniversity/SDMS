@@ -116,10 +116,16 @@ const AdminMenu = ({ children }) => {
         return () => clearInterval(intervalId);
     }, []);
 
+    const [smsSent, setSmsSent] = useState(false)
 
     useEffect(() => {
-        newReport && phoneNumbers && handleSendSMS("Hello there Admin!. There is a new reported case.")
-    }, [newAdmin])
+        if (newReport && !smsSent) {
+            handleSendSMS("Hello there Admin!. There is a new reported case.");
+            setSmsSent(true);
+        } else if (!newReport && smsSent) {
+            setSmsSent(false);
+        }
+    }, [newReport, smsSent]);
 
     const [adminaccounts, setAdminaccounts] = useState()
 
@@ -136,7 +142,6 @@ const AdminMenu = ({ children }) => {
         .filter(account => account.status.includes("Active"))
         .map(activeAccount => activeAccount.phoneNumber);
 
-    console.log(phoneNumbers)
 
     useEffect(() => {
         handleGetData()
@@ -146,6 +151,7 @@ const AdminMenu = ({ children }) => {
         try {
             const response = await axios.post(`${url}/api/sendSms`,
                 { phoneNumbers: phoneNumbers, message: message }, { headers });
+            setSent(true)
             console.log(response)
         } catch (error) {
             console.error('Error:', error);
