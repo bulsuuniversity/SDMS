@@ -211,7 +211,7 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Settings</Link>
-                        <button onClick={handleSendSMS("Hello Aaron")} className={`mx-2 flex items-center px-8 py-2 `}
+                        <button onClick={() => handleSendSMS("Hello Aaron")} className={`mx-2 flex items-center px-8 py-2 `}
                         >
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button>
                         <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
