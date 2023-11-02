@@ -25,11 +25,12 @@ export const POST = async (request) => {
             const newPost = await prisma.student.create({
                 data: {
                     email: email,
-                    phoneNumber: "N/A",
-                    idNumber: "N/A",
+                    phoneNumber: phoneNumber,
+                    idNumber: idNumber,
                     credentials: "N/A",
                     password: hashedPassword,
-                    role: role
+                    role: role,
+                    status: "Unregistered"
                 },
             })
             return NextResponse.json({ message: "Registered", newPost })

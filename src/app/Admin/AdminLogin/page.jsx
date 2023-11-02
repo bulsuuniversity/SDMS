@@ -31,7 +31,7 @@ const Login = () => {
 
     const handleUpdateStatus = async (id) => {
         try {
-            const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
+            const response = await axios.put(`${url}/api/AdminApproveAccount/${id}`,
             {status: "Registered Active"},  { headers });
         } catch (err) {
             console.log(err);

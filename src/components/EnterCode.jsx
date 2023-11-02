@@ -49,7 +49,7 @@ const EnterCode = ({ registerData, sentCode }) => {
 
     const handleNotifAdmin = async () => {
         try {
-            await axios.put(`${url}/api/AdminNotification/651900d14826f8919bf936de`,
+            await axios.put(`${url}/api/AdminNotification/654220a68db45807d25ac36a`,
                 { notif: true }, { headers });
         } catch (error) {
             console.error('Error:', error);
