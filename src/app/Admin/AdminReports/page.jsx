@@ -170,7 +170,7 @@ const Page = () => {
     const data = filteredAndSortedData &&
         Object.values(filteredAndSortedData).filter(report => {
             const statusCondition = report && report.status === (status ? 'Cleared' : 'Pending');
-            const searchCondition = report && report.offender && (report.offender.toLowerCase()).includes(search.toLowerCase())
+            const searchCondition = report && report.offender && (search ? report.offender.toLowerCase().includes(search.toLowerCase()) : true)
             const yearLevelCondition = !yearLevel || report && report.course && report.course.includes(yearLevel);
             const collegeCondition = !college || report && report.college === college;
             return statusCondition && collegeCondition && yearLevelCondition && searchCondition;
