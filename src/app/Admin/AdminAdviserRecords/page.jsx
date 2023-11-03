@@ -31,20 +31,20 @@ const Page = () => {
     }
 
     const data = filterData && Object.values(filterData)
-    .filter((adviser, index, self) =>
-      adviser.adviserEmail && 
-      (search ? adviser.adviserName && (adviser.adviserName.toLowerCase()).includes(search.toLowerCase()) : true) &&
-     
-      index === self.findIndex((a) => a.adviserEmail === adviser.adviserEmail)
-    );
-  
+        .filter((adviser, index, self) =>
+            adviser.adviserEmail &&
+            (search ? adviser.adviserName && (adviser.adviserName.toLowerCase()).includes(search.toLowerCase()) : true) &&
+
+            index === self.findIndex((a) => a.adviserEmail === adviser.adviserEmail)
+        );
+
 
 
     useEffect(() => {
         handleGetData()
     }, [])
 
-   
+
 
 
 
@@ -79,8 +79,6 @@ const Page = () => {
             <div className="md:mx-10 mx-1 mb-20 mt-10 border border-red-700 border-2">
                 {data && data.length > 0 ?
                     <AdviserRecordDatagridview
-                        setOpenINfo={setOpenINfo}
-                        setClickedID={setClickedID}
                         tableData={data}
                     /> : <div className="inset-0">No records found</div>}
             </div>
