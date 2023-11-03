@@ -25,6 +25,7 @@ import PrintableComponent from "@/components/PrintableComponent";
 const Page = () => {
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
+    const [openFilter, setOpenFilter] = useState(false)
     const [info, setInfo] = useState()
     const [openInfo, setOpenINfo] = useState(false)
     const [filterData, setFilterData] = useState()
