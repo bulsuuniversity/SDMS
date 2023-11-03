@@ -290,7 +290,7 @@ const Page = () => {
                     </div>
                 </div>
             </InformationModal >}
-            <div className="md:mx-10 mx-1 my-10 border border-red-700 border-2">
+            <div className="md:mx-10 mx-1 mb-20 mt-10 border border-red-700 border-2">
                 {data && data.length > 0 ?
                     <StudentRecordDatagridview
                         setOpenINfo={setOpenINfo}
