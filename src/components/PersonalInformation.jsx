@@ -20,6 +20,8 @@ const PersonalInformation = () => {
         address: "",
         yearLevel: "",
         college: "",
+        adviserName: "",
+        adviserEmail: "",
     });
 
     useEffect(() => {
@@ -29,6 +31,8 @@ const PersonalInformation = () => {
             address: profileData.address,
             yearLevel: profileData.yearLevel,
             college: profileData.college,
+            adviserName: profileData.adviserName,
+            adviserEmail: profileData.adviserEmail,
         })
     }, [profileData])
 
@@ -56,9 +60,9 @@ const PersonalInformation = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-        <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddDatabase size={32}/>Save chnages</div>
-         <p className='text-xl p-6'>Are you sure you want to save changes?</p>
-         </div>, () => {
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddDatabase size={32} />Save chnages</div>
+            <p className='text-xl p-6'>Are you sure you want to save changes?</p>
+        </div>, () => {
             handleSubmit()
         });
     };
@@ -138,6 +142,33 @@ const PersonalInformation = () => {
                         className="border"
                         required
                     />
+                </div>
+                <div className="grid">
+                    <p className="font-semibold">Adviser Information</p>
+                    <div className="ml-4 flex gap-5">
+                        <div>
+                            <label htmlFor="name">Adviser Email: </label>
+                            <label htmlFor="college">Adviser Name: </label>
+                        </div>
+                        <div>
+                            <input
+                                value={editedValues.adviserEmail === null ? "" : editedValues.adviserEmail}
+                                type="text"
+                                readOnly={edit}
+                                onChange={(e) => handleInputChange("adviserEmail", e.target.value)}
+                                className="border"
+                                required
+                            />
+                            <input
+                                value={editedValues.adviserName === null ? "" : editedValues.adviserName}
+                                type="text"
+                                readOnly={edit}
+                                onChange={(e) => handleInputChange("adviserName", e.target.value)}
+                                className="border"
+                                required
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div className="flex items-center justify-center">
                     {!edit && (

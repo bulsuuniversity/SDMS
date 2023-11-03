@@ -20,6 +20,7 @@ import { MdLogout, MdOutlineDashboardCustomize, MdSettingsSuggest, MdAdminPanelS
 import { ImNewspaper } from "react-icons/im";
 import { GrUserSettings } from "react-icons/gr";
 import { FaPeopleLine } from "react-icons/fa6";
+import { GiTeacher } from "react-icons/gi";
 
 const AdminMenu = ({ children }) => {
     const currentPathname = usePathname()
@@ -206,6 +207,11 @@ const AdminMenu = ({ children }) => {
                             <div className="pr-3"><ImNewspaper size={24} /></div>Reports
                             {newReport &&
                                 <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
+                        <Link
+                            className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminStudentRecord?new=newAdviser'}>
+                            <div className="pr-3"><GiTeacher size={24} /></div>Advisers
+                        </Link>
                         {/* <Link className={`mx-2 flex items-center px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminCounseling'}>Counselling</Link> */}
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}

@@ -25,6 +25,8 @@ model Student {
   password        String
   status          String?
   role            String
+  adviserEmail    String?
+  adviserName     String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }

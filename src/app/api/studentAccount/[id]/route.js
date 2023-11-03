@@ -36,6 +36,8 @@ export const PUT = async (request, { params }) => {
                 address: editedValues.address,
                 yearLevel: editedValues.yearLevel,
                 college: editedValues.college,
+                adviserEmail: editedValues.adviserEmail,
+                adviserName: editedValues.adviserName,
             }
         })
 
