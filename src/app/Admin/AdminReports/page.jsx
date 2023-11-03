@@ -165,14 +165,20 @@ const Page = () => {
 
     const [yearLevel, setYearLevel] = useState()
     const [college, setCollege] = useState()
+    const [search, setSearch] = useState()
 
     const data = filteredAndSortedData &&
         Object.values(filteredAndSortedData).filter(report => {
-            const statusCondition = report.status === (status ? 'Cleared' : 'Pending');
-            const yearLevelCondition = !yearLevel || report && report.yearLevel.includes(yearLevel);
+            const statusCondition = report && report.status === (status ? 'Cleared' : 'Pending');
+            const searchCondition = report && report.offender && (report.offender.toLowerCase()).includes(search.toLowerCase())
+            const yearLevelCondition = !yearLevel || report && report.course && report.course.includes(yearLevel);
             const collegeCondition = !college || report && report.college === college;
-            return statusCondition && collegeCondition && yearLevelCondition;
+            return statusCondition && collegeCondition && yearLevelCondition && searchCondition;
         });
+
+    // useEffect(() => {
+
+    // }, [yearLevel, search, college,])
 
 
     useEffect(() => {
@@ -206,7 +212,6 @@ const Page = () => {
 
     const suggestions = {
         one: `Good day! We request you to please attend the meeting on ${formattedDate} in Room 216B (9:00AM). Your attendance is a must for the proceeding of your ongoing case. Further details will be discussed on the said meeting. Thank you.`,
-        // two: "Sorry, can you provide more details for further assistance?"
     }
 
     const handleClearFilter = () => {
@@ -239,7 +244,7 @@ const Page = () => {
                                     <div className="relative">
                                         <div className="absolute -top-4 -right-4">
                                             <button
-                                                onClick={()=> setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
+                                                onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
                                                 <AiFillCloseCircle size={30} /></button>
                                         </div>
                                         <DateRangePicker
@@ -298,195 +303,195 @@ const Page = () => {
             </div>
 
 
-            <div className="flex justify-center">
+            <div className="flex my-6 justify-center">
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
                         className="rounded-l-full pl-2 focus:outline-none py-2"
-                        // value={search}
-                        // onChange={(e) => setSearch(e.target.value)}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
                 </div>
             </div>
 
             {
-        openInfo && info &&
-        <InformationModal>
-            {openMessage && info &&
-                <SendMessage
-                    suggestions={suggestions}
-                    sentEmail={sentEmail}
-                    setSentEmail={setSentEmail}
-                    email={info.reporter.email}
-                    setClose={setOpenMessage} />}
-            <div style={{ backgroundImage: 'URL("/adminbg.png")' }} className="bg-no-repeat bg-cover h-screen w-screen grid p-16 justify-center items-center">
-                <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full bg-opacity-50 bg-gray-200">
-                    <div className="bg-gray-500 p-4 m-4 relative grid-cols-2 grid gap-4">
-                        <div className="absolute -top-4 -right-4">
-                            <button
-                                onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
-                                <AiFillCloseCircle size={30} />
-                            </button>
-                        </div>
-                        <div className="grid gap-2 justify-center items-center text-xs">
-                            <div className="grid px-8 py-4 bg-white border border-black gap-2">
-                                <p className="font-bold text-lg">REPORT DETAILS</p>
-                                <label className="flex gap-3 text-sm items-center border-b border-black pb-2">
-                                    <p className="font-bold text-sm">Ticket No.:</p>
-                                    <div className="p-2">{info.ticketNo}</div>
-                                </label>
-
-                                <div className="flex gap-4 items-start border-b border-black pb-2">
-                                    <label className="grid gap-1 text-sm">
-                                        <div className="font-bold">Name: {info.offender}</div>
-                                        <div className="font-bold">College: {info.college}</div>
-                                        <div className="font-bold">Course, Year & Section: {info.course}</div>
-                                    </label>
+                openInfo && info &&
+                <InformationModal>
+                    {openMessage && info &&
+                        <SendMessage
+                            suggestions={suggestions}
+                            sentEmail={sentEmail}
+                            setSentEmail={setSentEmail}
+                            email={info.reporter.email}
+                            setClose={setOpenMessage} />}
+                    <div style={{ backgroundImage: 'URL("/adminbg.png")' }} className="bg-no-repeat bg-cover h-screen w-screen grid p-16 justify-center items-center">
+                        <form onSubmit={(e) => handleUpdate(e)} className="overflow-y-auto h-full bg-opacity-50 bg-gray-200">
+                            <div className="bg-gray-500 p-4 m-4 relative grid-cols-2 grid gap-4">
+                                <div className="absolute -top-4 -right-4">
+                                    <button
+                                        onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
+                                        <AiFillCloseCircle size={30} />
+                                    </button>
                                 </div>
-                                <label className="flex gap-3 text-sm w-full lg:w-96">
-                                    <p className="font-bold">Act of Misconduct: </p>
-                                    <div> {info.actionOfDiscipline}</div>
-                                </label>
-                                <label className="flex gap-3 text-sm">
-                                    <p className="font-bold">Date of Incident: </p>
-                                    <div> {info.dateOfIncident}</div>
-                                </label>
-                                <label className="flex gap-3 text-sm">
-                                    <p className="font-bold">Place/Platform of Incident: </p>
-                                    <div> {info.platformOfIncident}</div>
-                                </label>
-                                <label className="flex gap-3 text-sm">
-                                    <p className="font-bold">Rate of Occurence: </p>
-                                    <div> {info.rateOfOccurence}</div>
-                                </label>
-                                <label className="flex gap-3 text-sm w-full lg:w-96">
-                                    <p className="font-bold">Brief Description of the Situation: </p>
-                                    <div> {info.describeTheSituation}</div>
-                                </label>
-                                <label onClick={() => handleSetImage(info.attachment)} className="flex gap-3 text-sm">
-                                    <p className="font-bold">Attachment: </p>
-                                    <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
-                                </label>
-                                {seeImage && info.attachment !== "" && <InformationModal>
-                                    <div className="absolute top-1 right-1">
-                                        <button type="button"
-                                            onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
-                                            <AiFillCloseCircle size={30} /></button>
+                                <div className="grid gap-2 justify-center items-center text-xs">
+                                    <div className="grid px-8 py-4 bg-white border border-black gap-2">
+                                        <p className="font-bold text-lg">REPORT DETAILS</p>
+                                        <label className="flex gap-3 text-sm items-center border-b border-black pb-2">
+                                            <p className="font-bold text-sm">Ticket No.:</p>
+                                            <div className="p-2">{info.ticketNo}</div>
+                                        </label>
+
+                                        <div className="flex gap-4 items-start border-b border-black pb-2">
+                                            <label className="grid gap-1 text-sm">
+                                                <div className="font-bold">Name: {info.offender}</div>
+                                                <div className="font-bold">College: {info.college}</div>
+                                                <div className="font-bold">Course, Year & Section: {info.course}</div>
+                                            </label>
+                                        </div>
+                                        <label className="flex gap-3 text-sm w-full lg:w-96">
+                                            <p className="font-bold">Act of Misconduct: </p>
+                                            <div> {info.actionOfDiscipline}</div>
+                                        </label>
+                                        <label className="flex gap-3 text-sm">
+                                            <p className="font-bold">Date of Incident: </p>
+                                            <div> {info.dateOfIncident}</div>
+                                        </label>
+                                        <label className="flex gap-3 text-sm">
+                                            <p className="font-bold">Place/Platform of Incident: </p>
+                                            <div> {info.platformOfIncident}</div>
+                                        </label>
+                                        <label className="flex gap-3 text-sm">
+                                            <p className="font-bold">Rate of Occurence: </p>
+                                            <div> {info.rateOfOccurence}</div>
+                                        </label>
+                                        <label className="flex gap-3 text-sm w-full lg:w-96">
+                                            <p className="font-bold">Brief Description of the Situation: </p>
+                                            <div> {info.describeTheSituation}</div>
+                                        </label>
+                                        <label onClick={() => handleSetImage(info.attachment)} className="flex gap-3 text-sm">
+                                            <p className="font-bold">Attachment: </p>
+                                            <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
+                                        </label>
+                                        {seeImage && info.attachment !== "" && <InformationModal>
+                                            <div className="absolute top-1 right-1">
+                                                <button type="button"
+                                                    onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
+                                                    <AiFillCloseCircle size={30} /></button>
+                                            </div>
+                                            <div className="relative p-6">
+                                                <Link href={imageToView} target="blank" className="h-96">
+                                                    <Image width={400} height={200}
+                                                        className="object-fill h-96 w-96"
+                                                        src={imageToView} alt="attachment" />
+                                                </Link>
+                                            </div>
+                                        </InformationModal>}
+
                                     </div>
-                                    <div className="relative p-6">
-                                        <Link href={imageToView} target="blank" className="h-96">
-                                            <Image width={400} height={200}
-                                                className="object-fill h-96 w-96"
-                                                src={imageToView} alt="attachment" />
-                                        </Link>
+
+                                    <div className="border px-8 bg-white py-4 border-black">
+                                        <label className="grid gap-1 text-sm">
+                                            <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
+                                            <div className="font-bold">Name:  {info.reporter.name}</div>
+                                            <div className="font-bold">College:  {info.reporter.college}</div>
+                                            <div className="font-bold">Course, year and section: {info.reporter.yearLevel}</div>
+                                            <div className="font-bold">Email:  {info.reporter.email}</div>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <ConfirmationDialog />
+                                {success && <InformationModal>
+                                    <div className='bg-white grid p-10 rounded-lg gap-4'>
+                                        <div className="flex justify-center">
+                                            <AiOutlineCheckCircle size={32} />
+                                        </div>
+                                        <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
+                                        <div className="flex justify-center">
+                                            <button onClick={() => setSuccess('')} className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
+                                        </div>
+                                    </div>
+                                </InformationModal>}
+                                {loading && <InformationModal>
+                                    <div className="grid justify-center text-white bg-red-800 p-10">
+                                        <div>Redirecting where you left.</div>
+                                        <p className="text-center">Please wait...</p>
                                     </div>
                                 </InformationModal>}
 
-                            </div>
-
-                            <div className="border px-8 bg-white py-4 border-black">
-                                <label className="grid gap-1 text-sm">
-                                    <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
-                                    <div className="font-bold">Name:  {info.reporter.name}</div>
-                                    <div className="font-bold">College:  {info.reporter.college}</div>
-                                    <div className="font-bold">Course, year and section: {info.reporter.yearLevel}</div>
-                                    <div className="font-bold">Email:  {info.reporter.email}</div>
-                                </label>
-                            </div>
-                        </div>
 
 
 
 
-
-                        <ConfirmationDialog />
-                        {success && <InformationModal>
-                            <div className='bg-white grid p-10 rounded-lg gap-4'>
-                                <div className="flex justify-center">
-                                    <AiOutlineCheckCircle size={32} />
-                                </div>
-                                <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
-                                <div className="flex justify-center">
-                                    <button onClick={() => setSuccess('')} className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
-                                </div>
-                            </div>
-                        </InformationModal>}
-                        {loading && <InformationModal>
-                            <div className="grid justify-center text-white bg-red-800 p-10">
-                                <div>Redirecting where you left.</div>
-                                <p className="text-center">Please wait...</p>
-                            </div>
-                        </InformationModal>}
-
-
-
-
-
-                        <div className="grid text-sm gap-2">
-                            <div className="border bg-white grid gap-1 border-black p-4">
-                                <p className="font-bold text-lg">SANCTION</p>
-                                <div className="flex items-center gap-2">
-                                    <p className="font-bold text-sm">Kind of Offense:</p>
-                                    <div className="flex justify-end">
-                                        <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36" required>
-                                            <option value={info.kindOfOffense ? info.kindOfOffense : ''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
-                                            <option value={'Light Offense'}>Light Offense</option>
-                                            <option value={'Less Grave Offense'}>Less Grave Offense</option>
-                                            <option value={'Grave Offense'}>Grave Offense</option>
-                                            <option value={'Dishonesty on Academic Pursuit'}>Dishonesty on Academic Pursuit</option>
-                                        </select>
+                                <div className="grid text-sm gap-2">
+                                    <div className="border bg-white grid gap-1 border-black p-4">
+                                        <p className="font-bold text-lg">SANCTION</p>
+                                        <div className="flex items-center gap-2">
+                                            <p className="font-bold text-sm">Kind of Offense:</p>
+                                            <div className="flex justify-end">
+                                                <select onChange={(e) => setKindOfOffense(e.target.value)} className="w-36" required>
+                                                    <option value={info.kindOfOffense ? info.kindOfOffense : ''}>{info.kindOfOffense ? info.kindOfOffense : 'Select Kind of Offense'}</option>
+                                                    <option value={'Light Offense'}>Light Offense</option>
+                                                    <option value={'Less Grave Offense'}>Less Grave Offense</option>
+                                                    <option value={'Grave Offense'}>Grave Offense</option>
+                                                    <option value={'Dishonesty on Academic Pursuit'}>Dishonesty on Academic Pursuit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center mb-6 gap-2">
+                                            <p className="font-bold text-sm">Degree of Offense:</p>
+                                            <div className="flex justify-end">
+                                                <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36" required>
+                                                    <option value={info.degreeOfOffense ? info.degreeOfOffense : ""}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
+                                                    <option value={'1st Offense'}>1st Offense</option>
+                                                    <option value={'2nd Offense'}>2nd Offense</option>
+                                                    <option value={'3rd Offense'}>3rd Offense</option>
+                                                    <option value={`4th Offense(for applicable or special cases)`}>4th Offense&#40;for applicable or special cases&#41;</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex items-center mb-6 gap-2">
-                                    <p className="font-bold text-sm">Degree of Offense:</p>
-                                    <div className="flex justify-end">
-                                        <select onChange={(e) => setDegreeOfOffense(e.target.value)} className="w-36" required>
-                                            <option value={info.degreeOfOffense ? info.degreeOfOffense : ""}>{info.degreeOfOffense ? info.degreeOfOffense : "Select Degree of Offense"}</option>
-                                            <option value={'1st Offense'}>1st Offense</option>
-                                            <option value={'2nd Offense'}>2nd Offense</option>
-                                            <option value={'3rd Offense'}>3rd Offense</option>
-                                            <option value={`4th Offense(for applicable or special cases)`}>4th Offense&#40;for applicable or special cases&#41;</option>
-                                        </select>
+
+                                    <div className="border bg-white grid border-black p-4">
+                                        <p className="font-bold text-lg">NOTES</p>
+                                        <p className="italic text-xs">Further details in accordance with the sanction.</p>
+                                        <textarea
+                                            value={notes}
+                                            onChange={(e) => setNotes(e.target.value)}
+                                            rows="6"
+                                            cols="30"
+                                            placeholder="Further Details"
+                                            className="mb-8 bg-gray-200"
+                                            required />
+                                        <DownloadButton />
+                                    </div>
+
+                                    <div className="flex justify-center items-center h-max my-auto gap-4">
+                                        <button type="button" onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 p-4"><MdOutlineEmail size={20} /> Message</button>
+                                        <button type="button" onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 p-4"><GrUpdate size={20} /> Update</button>
+                                        {info.status === "Pending" && <button type="submit" className="flex gap-2 items-center bg-green-600 p-4"><GiCheckMark size={20} /> Clear</button>}
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="border bg-white grid border-black p-4">
-                                <p className="font-bold text-lg">NOTES</p>
-                                <p className="italic text-xs">Further details in accordance with the sanction.</p>
-                                <textarea
-                                    value={notes}
-                                    onChange={(e) => setNotes(e.target.value)}
-                                    rows="6"
-                                    cols="30"
-                                    placeholder="Further Details"
-                                    className="mb-8 bg-gray-200"
-                                    required />
-                                <DownloadButton />
-                            </div>
-
-                            <div className="flex justify-center items-center h-max my-auto gap-4">
-                                <button type="button" onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 p-4"><MdOutlineEmail size={20} /> Message</button>
-                                <button type="button" onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 p-4"><GrUpdate size={20} /> Update</button>
-                                {info.status === "Pending" && <button type="submit" className="flex gap-2 items-center bg-green-600 p-4"><GiCheckMark size={20} /> Clear</button>}
-                            </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </InformationModal>
-    }
+                </InformationModal>
+            }
 
-    <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
-        {data && data.length > 0 ?
-            <ReportsDatagridview
-                setOpenINfo={setOpenINfo}
-                setClickedID={setClickedID}
-                tableData={data}
-                status={status}
-                handleGetData={handleGetData}
-            /> : <div className="flex justify-center p-10 inset-0">No records found</div>}
-    </div>
+            <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
+                {data && data.length > 0 ?
+                    <ReportsDatagridview
+                        setOpenINfo={setOpenINfo}
+                        setClickedID={setClickedID}
+                        tableData={data}
+                        status={status}
+                        handleGetData={handleGetData}
+                    /> : <div className="flex justify-center p-10 inset-0">No records found</div>}
+            </div>
         </AdminMenu >
     );
 }
