@@ -208,8 +208,8 @@ const AdminMenu = ({ children }) => {
                             {newReport &&
                                 <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
                         <Link
-                            className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminStudentRecord") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
-                            href={'/Admin/AdminStudentRecord?new=newAdviser'}>
+                            className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminAdviserRecords") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
+                            href={'/Admin/AdminAdviserRecords?new=newAdviser'}>
                             <div className="pr-3"><GiTeacher size={24} /></div>Advisers
                         </Link>
                         {/* <Link className={`mx-2 flex items-center px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}

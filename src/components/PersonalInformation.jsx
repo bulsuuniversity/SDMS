@@ -142,31 +142,31 @@ const PersonalInformation = () => {
                         className="border"
                         required
                     />
-                </div>
-                <div className="grid">
-                    <p className="font-semibold">Adviser Information</p>
-                    <div className="ml-4 flex gap-5">
-                        <div>
-                            <label htmlFor="name">Adviser Email: </label>
-                            <label htmlFor="college">Adviser Name: </label>
-                        </div>
-                        <div>
-                            <input
-                                value={editedValues.adviserEmail === null ? "" : editedValues.adviserEmail}
-                                type="text"
-                                readOnly={edit}
-                                onChange={(e) => handleInputChange("adviserEmail", e.target.value)}
-                                className="border"
-                                required
-                            />
-                            <input
-                                value={editedValues.adviserName === null ? "" : editedValues.adviserName}
-                                type="text"
-                                readOnly={edit}
-                                onChange={(e) => handleInputChange("adviserName", e.target.value)}
-                                className="border"
-                                required
-                            />
+                    <div className="grid">
+                        <p className="font-semibold">Adviser Information</p>
+                        <div className="ml-4 flex gap-5">
+                            <div>
+                                <label htmlFor="name">Adviser Email: </label>
+                                <label htmlFor="college">Adviser Name: </label>
+                            </div>
+                            <div>
+                                <input
+                                    value={editedValues.adviserEmail === null ? "" : editedValues.adviserEmail}
+                                    type="text"
+                                    readOnly={edit}
+                                    onChange={(e) => handleInputChange("adviserEmail", e.target.value)}
+                                    className="border"
+                                    required
+                                />
+                                <input
+                                    value={editedValues.adviserName === null ? "" : editedValues.adviserName}
+                                    type="text"
+                                    readOnly={edit}
+                                    onChange={(e) => handleInputChange("adviserName", e.target.value)}
+                                    className="border"
+                                    required
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

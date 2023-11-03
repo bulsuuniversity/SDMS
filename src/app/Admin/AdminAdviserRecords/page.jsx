@@ -44,10 +44,7 @@ const Page = () => {
         handleGetData()
     }, [])
 
-    useEffect(() => {
-        const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === clickedID);
-        setInfo(clcikedInfo)
-    }, [clickedID])
+   
 
 
 
