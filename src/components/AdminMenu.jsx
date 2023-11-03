@@ -116,47 +116,47 @@ const AdminMenu = ({ children }) => {
         return () => clearInterval(intervalId);
     }, []);
 
-    const [smsSent, setSmsSent] = useState(false)
+    // const [smsSent, setSmsSent] = useState(false)
 
-    useEffect(() => {
-        if (newReport && !smsSent) {
-            handleSendSMS("Hello there Admin!. There is a new reported case.");
-            // setSmsSent(true);
-        } else if (!newReport && smsSent) {
-            setSmsSent(false);
-        }
-    }, [newReport, smsSent]);
+    // useEffect(() => {
+    //     if (newReport && !smsSent) {
+    //         handleSendSMS("Hello there Admin!. There is a new reported case.");
+    //         // setSmsSent(true);
+    //     } else if (!newReport && smsSent) {
+    //         setSmsSent(false);
+    //     }
+    // }, [newReport]);
 
-    const [adminaccounts, setAdminaccounts] = useState()
+    // const [adminaccounts, setAdminaccounts] = useState()
 
-    const handleGetData = async () => {
-        try {
-            const response = await axios.get(`${url}/api/AdminAccount`, { headers });
-            setAdminaccounts(response.data)
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    // const handleGetData = async () => {
+    //     try {
+    //         const response = await axios.get(`${url}/api/AdminAccount`, { headers });
+    //         setAdminaccounts(response.data)
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
-    const phoneNumbers = adminaccounts && adminaccounts
-        .filter(account => account.status.includes("Active"))
-        .map(activeAccount => activeAccount.phoneNumber);
+    // const phoneNumbers = adminaccounts && adminaccounts
+    //     .filter(account => account.status.includes("Active"))
+    //     .map(activeAccount => activeAccount.phoneNumber);
 
 
-    useEffect(() => {
-        handleGetData()
-    }, [])
+    // useEffect(() => {
+    //     handleGetData()
+    // }, [])
 
-    const handleSendSMS = async (message) => {
-        try {
-            const response = await axios.post(`${url}/api/sendSms`,
-                { phoneNumbers: phoneNumbers, message: message }, { headers });
-            setSmsSent(true)
-            console.log(response)
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
+    // const handleSendSMS = async (message) => {
+    //     try {
+    //         const response = await axios.post(`${url}/api/sendSms`,
+    //             { phoneNumbers: phoneNumbers, message: message }, { headers });
+    //         setSmsSent(true)
+    //         console.log(response)
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // }
 
     return (
         <AdminLayout>
@@ -211,9 +211,9 @@ const AdminMenu = ({ children }) => {
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Settings</Link>
-                        <button onClick={() => handleSendSMS("Hello This is test")} className={`mx-2 flex items-center px-8 py-2 `}
+                        {/* <button onClick={() => handleSendSMS("Hello This is test")} className={`mx-2 flex items-center px-8 py-2 `}
                         >
-                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button>
+                            <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button> */}
                         <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
                             href={'/Admin/AdminSettings'} onClick={handleSignOut}><div className="pr-3">
                                 <MdLogout size={24} /></div>Logout</Link >

@@ -19,6 +19,8 @@ import { DateRangePicker } from 'react-date-range';
 import Link from "next/link";
 import { FcApprove } from "react-icons/fc";
 import { useRouter, useSearchParams } from "next/navigation";
+import DownloadButton from "@/utils/DownloadButton";
+import { GoSearch } from "react-icons/go";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -159,9 +161,19 @@ const Page = () => {
         }
     }
 
+    const [yearLevel, setYearLevel] = useState()
+    const [program, setProgram] = useState()
+    const [course, setCourse] = useState()
+    const [college, setCollege] = useState()
+
     const data = filteredAndSortedData &&
-        Object.values(filteredAndSortedData).filter(report =>
-            report.status === `${status ? 'Cleared' : 'Pending'}`)
+        Object.values(filteredAndSortedData).filter(report => {
+            const statusCondition = report.status === (status ? 'Cleared' : 'Pending');
+            const courseSelections = [yearLevel, program, course];
+            const courseCondition = !courseSelections.some(course => course && report.course.includes(course));
+            const collegeCondition = !college || report.college === college;
+            return statusCondition && collegeCondition && courseCondition;
+        });
 
 
     useEffect(() => {
@@ -224,6 +236,7 @@ const Page = () => {
                             </div>
                         </InformationModal>}
                     </div>
+
                     <div className={`rounded-full mr-5 p-1 text-white bg-red-700 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                         {status && <div className="grid items-center mx-4">Pending</div>}
                         <button onClick={handleChangeStatus} className={`rounded-full px-2 bg-amber-500 border boder-black`}>
@@ -236,8 +249,62 @@ const Page = () => {
 
             </div>
 
-
-
+            <div className="flex m-7 flex-wrap gap-4">
+                <select
+                    onChange={(e) => setCollege(e.target.value)}
+                    className="border w-36"
+                >
+                    <option value="">Select College</option>
+                    <option value="CBA">CBA</option>
+                    <option value="CIT">CIT</option>
+                    <option value="COED">COED</option>
+                    <option value="CICS">CICS</option>
+                    <option value="COE">COE</option>
+                </select>
+                <select
+                    onChange={(e) => setYearLevel(e.target.value)}
+                    className="border w-36"
+                >
+                    <option value="">Select Year level</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <select
+                    onChange={(e) => setProgram(e.target.value)}
+                    className="border w-36"
+                >
+                    <option value="">Select Program</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <select
+                    onChange={(e) => setCourse(e.target.value)}
+                    className="border w-36"
+                >
+                    <option value="">Select Course</option>
+                    <option value="BSIT">BSIT</option>
+                    <option value="CICS">CICS</option>
+                    <option value="COE">COE</option>
+                    <option value="BSA">BSA</option>
+                    <option value="BSE">BSE</option>
+                </select>
+            </div>
+            <div className="flex justify-center">
+                <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
+                    <input
+                        className="rounded-l-full pl-2 focus:outline-none py-2"
+                        // value={search}
+                        // onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search Name" />
+                    <GoSearch className="mx-2 text-white" size={25} />
+                </div>
+            </div>
 
             {openInfo && info &&
                 <InformationModal>
@@ -391,6 +458,7 @@ const Page = () => {
                                             placeholder="Further Details"
                                             className="mb-8 bg-gray-200"
                                             required />
+                                        <DownloadButton />
                                     </div>
 
                                     <div className="flex justify-center items-center h-max my-auto gap-4">

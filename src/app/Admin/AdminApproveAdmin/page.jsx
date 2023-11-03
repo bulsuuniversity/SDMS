@@ -17,6 +17,7 @@ import Link from "next/link";
 import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { useRouter, useSearchParams } from "next/navigation";
+import { GoSearch } from "react-icons/go";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -143,6 +144,16 @@ const Page = () => {
             <div className="m-7 flex items-center">
                 <MdAdminPanelSettings size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Admin Accounts</p>
+            </div>
+            <div className="flex justify-center">
+                <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
+                    <input
+                        className="rounded-l-full pl-2 focus:outline-none py-2"
+                        // value={search}
+                        // onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search Name" />
+                    <GoSearch className="mx-2 text-white" size={25} />
+                </div>
             </div>
             {/* <div className="flex gap-6 pl-10">
                 <Link href={'/Admin/AdminStudentRecord'} className="font-bold p-2">Student</Link>

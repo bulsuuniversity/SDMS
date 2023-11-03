@@ -104,6 +104,7 @@ const page = () => {
             setConfirmation(true)
             setMessage("Submitted successfully!")
             stopLoading()
+            handleSendSMS("Hello there Admin. There is a new report submitted.")
             handleNotif()
             setReportData({
                 reporter: "",
@@ -191,9 +192,34 @@ const page = () => {
 
     useEffect(() => {
         getLatestTicket()
+        handleGetData()
     }, [])
 
 
+    const [adminaccounts, setAdminaccounts] = useState()
+
+    const handleGetData = async () => {
+        try {
+            const response = await axios.get(`${url}/api/AdminAccount`, { headers });
+            setAdminaccounts(response.data)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const phoneNumbers = adminaccounts && adminaccounts
+        .filter(account => account.status.includes("Active"))
+        .map(activeAccount => activeAccount.phoneNumber);
+
+    const handleSendSMS = async (message) => {
+        try {
+            const response = await axios.post(`${url}/api/sendSms`,
+                { phoneNumbers: phoneNumbers, message: message }, { headers });
+            console.log(response)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
 
     return (
         <Layout>
@@ -231,7 +257,8 @@ const page = () => {
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
                             </div>
-                            {/* <button className="bg-blue-600 p-10 border" onClick={handlemakeNotif}>Make Notification</button> */}
+                            {/* <button className="bg-blue-600 p-4 border"
+                                onClick={() => handleSendSMS("Hello there Admin. There is a new report submitted.")}>Send SMS</button> */}
                         </p>
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>

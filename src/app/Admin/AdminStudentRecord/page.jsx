@@ -1,7 +1,7 @@
 "use client"
 
 import StudentRecordDatagridview from "./StudentRecordDatagridview";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import InformationModal from "@/utils/InformationModal";
 import Modal from "@/utils/Modal";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -19,6 +19,8 @@ import { GoSearch } from "react-icons/go";
 import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
 import SendMessage from "@/components/SendMessage";
 import { useRouter, useSearchParams } from "next/navigation";
+import PrintButton from "@/utils/PrintButton";
+import PrintableComponent from "@/components/PrintableComponent";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -32,7 +34,7 @@ const Page = () => {
     const { startLoading, loading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
     const [search, setSearch] = useState()
-
+    const componentRef = useRef();
 
     const handleSetImage = (image) => {
         setImageToView(image)
@@ -63,7 +65,7 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-            {status: "Registered"},  { headers });
+                { status: "Registered" }, { headers });
             sendEmail()
             stopLoading()
             setMessage("Account approved successfully!")
@@ -151,7 +153,7 @@ const Page = () => {
     useEffect(() => {
         if ("newStudent" === newStudent) {
             handleGetData()
-            router.push("/Admin/AdminApproveAdmin")
+            router.push("/Admin/AdminStudentRecord")
         }
     }, [newStudent])
 
@@ -161,6 +163,7 @@ const Page = () => {
                 <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Student Accounts</p>
             </div>
+            <PrintButton contentRef={componentRef} />
             <div className="flex justify-center">
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
