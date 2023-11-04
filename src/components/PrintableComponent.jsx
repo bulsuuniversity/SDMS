@@ -3,7 +3,7 @@ import React from "react";
 import { useSession } from 'next-auth/react';
 
 
-const PrintableComponent = React.forwardRef(({ content }, ref) => {
+const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, ref) => {
 
   const { data: session } = useSession();
   const header = ["NUMBER", "ID NUMBER", "EMAIL", "NAME", "STATUS"]

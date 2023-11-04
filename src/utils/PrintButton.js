@@ -20,8 +20,8 @@ const PrintButton = ({ content, setPrint }) => {
                         onClick={() => setPrint(!print)} className="rounded-full text-red-600 bg-white">
                         <AiFillCloseCircle size={30} /></button>
                 </div>
-                <button className='bg-red-700 text-white px-4 py-2' onClick={handlePrint}>
-                    <BsFillPrinterFill size={24} />  Print
+                <button className='bg-red-700 text-white flex px-4 py-2' onClick={handlePrint}>
+                    <BsFillPrinterFill size={20} />  Print
                 </button>
                 <PrintableComponent content={content} ref={componentRef} />
             </div>

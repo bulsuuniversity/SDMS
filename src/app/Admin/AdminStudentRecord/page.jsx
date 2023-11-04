@@ -21,6 +21,7 @@ import SendMessage from "@/components/SendMessage";
 import { useRouter, useSearchParams } from "next/navigation";
 import PrintButton from "@/utils/PrintButton";
 import PrintableComponent from "@/components/PrintableComponent";
+import { BsFillPrinterFill } from "react-icons/bs";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -186,10 +187,10 @@ const Page = () => {
                     <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                     <p className="font-bold text-xl">Student Accounts</p>
                 </div>
-                <div className="flex gap-2 items-center"><p>Filter: </p>
-                    <button className="bg-red-700 relative text-white px-4 py-2 whitespace-normal rounded-full"
+                <div className="flex gap-2 relative items-center"><p>Filter: </p>
+                    <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
                         onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
-                    {openFilter && <div className="grid p-6 bg-white z-50 absolute bottom-0 border gap-4 w-max">
+                    {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
                         <div className="flex justify-between">
                             <p>By Year College:</p>
                             <select
@@ -226,8 +227,9 @@ const Page = () => {
                         </div>
                     </div>}
                 </div>
-                <button onClick={() => setPrint(!print)} className="px-4 py-2 bg-red-700 m-4">Print</button>
-                {print && <PrintButton setPrint={setPrint} content={data} contentRef={componentRef} />}
+                <button onClick={() => setPrint(!print)}
+                    className="px-4 py-2 flex bg-red-700 rounded-lg m-4"><BsFillPrinterFill size={20} /> Print</button>
+                {print && <PrintButton college={college} yearLevel={yearLevel} setPrint={setPrint} content={data} contentRef={componentRef} />}
             </div>
             <div className="flex justify-center">
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
