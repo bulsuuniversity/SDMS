@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import DownloadableCert from '@/components/DownloadableCert';
 import InformationModal from './InformationModal';
+import PrintCert from './PrintCert';
 
 
 const DownloadButton = ({ setPrint }) => {
@@ -51,6 +52,7 @@ const DownloadButton = ({ setPrint }) => {
                 </div>
                 <DownloadableCert ref={downloadableDivRef} />
                 <button type='button' onClick={handleDownload}>Download Image</button>
+                <PrintCert />
             </div>
         </InformationModal>
     );

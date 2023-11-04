@@ -226,6 +226,7 @@ const Page = () => {
                         </div>
                     </div>}
                 </div>
+                <button onClick={() => setPrint(!print)} className="px-4 py-2 bg-red-700 m-4">Print</button>
                 {print && <PrintButton setPrint={setPrint} content={data} contentRef={componentRef} />}
             </div>
             <div className="flex justify-center">
