@@ -148,11 +148,11 @@ const PersonalInformation = () => {
                 <div className="grid">
                     <p className="font-semibold">Adviser Information</p>
                     <div className="ml-4 flex gap-5">
-                        <div>
+                        <div className="grid">
                             <label htmlFor="name">Adviser Email: </label>
                             <label htmlFor="college">Adviser Name: </label>
                         </div>
-                        <div>
+                        <div className="grid">
                             <input
                                 value={editedValues.adviserEmail === null ? "" : editedValues.adviserEmail}
                                 type="text"

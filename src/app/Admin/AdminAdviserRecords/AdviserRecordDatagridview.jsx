@@ -30,7 +30,7 @@ const AdviserRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
         {
             name: <div className='flex text-center'>MESSAGE</div>,
             sortable: true,
-            cell: (row) => <div className='flex justify-center w-full' onClick={() => handleSendMessage(row)}><AiOutlineMail size={20} /></div>,
+            cell: (row) => <div className='flex justify-center w-full' onClick={() => handleSendMessage(row.adviserName)}><AiOutlineMail size={20} /></div>,
         },
     ];
     const data = Object.values(tableData).map((account, index) => ({
@@ -45,8 +45,9 @@ const AdviserRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
     };
 
     const handleSendMessage = (row) => {
-        setAdviserEmail(row.adviserEmail)
-        setOpenMessage(true)
+        setAdviserEmail(row)
+        { adviserEmail && setOpenMessage(true) }
+        console.log(adviserEmail)
     };
 
     const customStyles = {
