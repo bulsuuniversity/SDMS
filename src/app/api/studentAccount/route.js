@@ -16,7 +16,7 @@ export const POST = async (request) => {
     try {
 
         const body = await request.json();
-        const { email, idNumber, phoneNumber, credentials, password, role } = body;
+        const { email, idNumber, phoneNumber, credentials, password, role, name } = body;
 
         const saltRounds = 10
 
@@ -25,6 +25,7 @@ export const POST = async (request) => {
             const newPost = await prisma.student.create({
                 data: {
                     email: email,
+                    name: name,
                     phoneNumber: phoneNumber,
                     idNumber: idNumber,
                     credentials: "N/A",

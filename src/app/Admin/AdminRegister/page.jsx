@@ -16,6 +16,7 @@ const Register = ({ setActive, setData }) => {
     };
     const [code, setCode] = useState()
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -79,6 +80,7 @@ const Register = ({ setActive, setData }) => {
         phoneNumber: phoneNumber,
         // credentials: credentials,
         password: confirmPassword,
+        name: name,
         role: 'admin',
     };
 
@@ -131,6 +133,16 @@ const Register = ({ setActive, setData }) => {
                             </div>
                             <form onSubmit={handleSubmit} className="grid gap-4">
                                 <div className="grid">
+                                    <div className="mb-4 text-sm">
+                                        <input
+                                            type="name"
+                                            className="w-full text-xs px-3 py-2 border border-black"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            placeholder="Name"
+                                            required
+                                        />
+                                    </div>
                                     <div className="mb-4 text-sm">
                                         <input
                                             type="email"
@@ -199,13 +211,13 @@ const Register = ({ setActive, setData }) => {
                                         />
                                     </div> */}
                                     {notPassword ? <div className="text-white p-2 bg-red-800 w-full h-max flex justify-center">Password do not match</div> :
-                                     <button
-                                        type="submit"
-                                        className={`w-full py-2 my-1 ${uploading ? "bg-gray-600" : 'bg-fuchsia-950 hover:bg-blue-600'}  text-white `}
-                                        disabled={uploading}
-                                    >
-                                        {uploading ? "Please wait" : "Register"}
-                                    </button>}
+                                        <button
+                                            type="submit"
+                                            className={`w-full py-2 my-1 ${uploading ? "bg-gray-600" : 'bg-fuchsia-950 hover:bg-blue-600'}  text-white `}
+                                            disabled={uploading}
+                                        >
+                                            {uploading ? "Please wait" : "Register"}
+                                        </button>}
                                     <Link href={'/Admin/AdminLogin'} onClick={() => setActive('button1')}
                                         className="text-blue-500 cursor-pointer text-xs text-end">
                                         Already have an account? Log in here.
