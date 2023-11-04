@@ -1,7 +1,7 @@
 "use client"
 
 import ReportsDatagridview from "./ReportsDatagridview";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import InformationModal from "@/utils/InformationModal";
 import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import Image from "next/image";
@@ -21,6 +21,7 @@ import { FcApprove } from "react-icons/fc";
 import { useRouter, useSearchParams } from "next/navigation";
 import DownloadButton from "@/utils/DownloadButton";
 import { GoSearch } from "react-icons/go";
+import PrintCert from "@/utils/PrintCert";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -41,6 +42,7 @@ const Page = () => {
     const [kindOfOffense, setKindOfOffense] = useState()
     const [filterReports, setFilterReports] = useState()
     const [openDate, setOpenDate] = useState(false)
+    const componentRef = useRef();
     const [selectedRange, setSelectedRange] = useState(() => {
         const currentDate = new Date();
         const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
@@ -471,9 +473,9 @@ const Page = () => {
                                             className="mb-8 bg-gray-200"
                                             required />
 
-                                    <button onClick={() => setPrint(!print)}
-                                    className="px-4 py-2 bg-red-700 text-white">Certificate</button>
-                                       {print && <DownloadButton setPrint={setPrint}/>}
+                                        <button onClick={() => setPrint(!print)}
+                                            className="px-4 py-2 bg-red-700 text-white">Certificate</button>
+                                        {print && <PrintCert setPrint={setPrint} contentRef={componentRef} />}
                                     </div>
 
                                     <div className="flex justify-center items-center h-max my-auto gap-4">

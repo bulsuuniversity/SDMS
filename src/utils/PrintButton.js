@@ -14,7 +14,7 @@ const PrintButton = ({ content, setPrint }) => {
 
     return (
         <InformationModal>
-            <div className='relative m-10'>
+            <div className='relative m-10 h-screen'>
                 <div className="absolute -top-4 -right-4">
                     <button
                         onClick={() => setPrint(!print)}

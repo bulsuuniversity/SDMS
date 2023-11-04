@@ -8,11 +8,16 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
   const { data: session } = useSession();
   const header = ["NUMBER", "ID NUMBER", "EMAIL", "NAME", "STATUS"]
 
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
 
+  const slashFormattedDate = `${day}/${month}/${year}`;
 
   return (
     <div ref={ref}>
-      <div className="w-full overflow-y-auto h-screen">
+      <div className="w-full overflow-y-auto h-10/12">
         <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
         <div className="w-full flex justify-center gap-6">
           <Image width={30} height={30} src={"/Logo.png"} alt="Logo" />
@@ -41,14 +46,14 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
             )}
           </table>
         </div>
-        <div className="grid justify-center mb-10 gap-4">
+        <div className="grid bottom-0 justify-center mb-10 gap-4">
           <h2>Records Details:</h2>
           <div className="flex">
             {!yearLevel && !college && <p className="text-center">All Student</p>}
             {college && <p className="text-center">{college}</p>}
             {yearLevel && <p className="text-center">{yearLevel}</p>}
           </div>
-          <p className="text-center">As of: {Date.now}</p>
+          <p className="text-center">As of: {slashFormattedDate}</p>
           <div className="grid">
             <p className="text-center">Printed by:</p>
             <p className="underline underline-offset-8 pt-8">{session && session.name}</p>
@@ -60,7 +65,7 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
             <p className="italic text-xs text-center">Signature Over Printed Name</p>
           </div>
         </div>
-        <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
+        {/* <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" /> */}
       </div>
     </div>
   );

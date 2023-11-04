@@ -85,16 +85,17 @@ const Page = () => {
 
     return (
         <AdminMenu>
-            <div className="m-7 flex items-center">
+            <div className="m-7 flex relative items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-lg">Reported Student History</p>
+                <div className="absolute top-4 right-4">
+                    <Link
+                        href={"/Admin/AdminReports"} className="rounded-full text-red-600 bg-white">
+                        <AiFillCloseCircle size={30} />
+                    </Link>
+                </div>
             </div>
-            <div className="top-4 right-4">
-                <Link
-                    href={"/Admin/AdminReports"} className="rounded-full text-red-600 bg-white">
-                    <AiFillCloseCircle size={30} />
-                </Link>
-            </div>
+
             <div className="flex my-6 justify-center">
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
