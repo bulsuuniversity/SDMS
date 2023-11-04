@@ -30,6 +30,7 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
         try {
             const sendCode = await axios.post(`${url}/api/AdminSendMail`, emailData, { headers });
             setSuccess(true)
+            console.log(sendCode)
             setSentEmail("")
             stopLoading()
         } catch (error) {
