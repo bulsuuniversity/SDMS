@@ -55,7 +55,7 @@ const Page = () => {
     useEffect(() => {
         if ("newAdviser" === newAdviser) {
             handleGetData()
-            router.push("/Admin/AdminStudentRecord")
+            router.push("/Admin/AdminAdviserRecord")
         }
     }, [newAdviser])
 
