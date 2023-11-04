@@ -20,7 +20,7 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
       <div className="w-full">
         <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
         <div className="w-full flex justify-center gap-6">
-          <Image width={30}  className="w-full h-full" height={30} src={"/Logo.png"} alt="Logo" />
+          <Image width={30} className="w-max h-max" height={30} src={"/Logo.png"} alt="Logo" />
           <div className="grid my-6">
             <p className="font-semibold text-center">Bulacan State University</p>
             <p className="font-semibold text-center">Discipline Committee</p>
@@ -47,17 +47,17 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
           </table>
         </div>
         <div className="grid bottom-0 justify-center mb-10 gap-4">
-          <h2>Records Details:</h2>
+          <h2 className="text-center">Records Details:</h2>
           <div className="flex">
-            {!yearLevel && !college && <p className="text-center flex justify-center">All Student</p>}
-            {college && <p className="text-center">{college}</p>}
-            {yearLevel && <p className="text-center">{yearLevel}</p>}
+            {!yearLevel && !college && <p className="text-center w-full flex justify-center">All Student</p>}
+            {college && <p className="text-center w-full flex justify-center">{college}</p>}
+            {yearLevel && <p className="text-center w-full flex justify-center">{yearLevel}</p>}
           </div>
           <p className="text-center">As of: {slashFormattedDate}</p>
           <div className="grid">
             <p className="text-center">Printed by:</p>
-            <p className="underline underline-offset-8 text-cente pt-8">{session && session.name}</p>
-            <p className="italic pt-2 text-xs text-cente">Signature Over Printed Name</p>
+            <p className="underline underline-offset-8 text-center pt-8">{session && session.name}</p>
+            <p className="italic pt-2 text-xs text-center">Signature Over Printed Name</p>
           </div>
           <div className="grid w-full justify-center">
             <p className="text-center">Approved By:</p>

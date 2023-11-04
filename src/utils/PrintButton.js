@@ -15,7 +15,7 @@ const PrintButton = ({ content, setPrint }) => {
     return (
         <InformationModal>
             <div className='relative m-16 overflow-y-auto h-screen'>
-                <div className="absolute -top-4 -right-4">
+                <div className="absolute top-4 right-4">
                     <button
                         onClick={() => setPrint(!print)}
                         className="rounded-full px-4 py-2 h-max w-max text-red-600 bg-white">
