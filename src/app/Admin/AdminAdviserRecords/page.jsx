@@ -34,19 +34,14 @@ const Page = () => {
         .filter((adviser, index, self) =>
             adviser.adviserEmail &&
             (search ? adviser.adviserName && (adviser.adviserName.toLowerCase()).includes(search.toLowerCase()) : true) &&
-
             index === self.findIndex((a) => a.adviserEmail === adviser.adviserEmail)
         );
 
-
+    console.log(data)
 
     useEffect(() => {
         handleGetData()
     }, [])
-
-
-
-
 
     const searchParams = useSearchParams()
     const newAdviser = searchParams.get('new')

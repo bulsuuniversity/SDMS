@@ -26,6 +26,7 @@ const Page = () => {
     const [clickedID, setClickedID] = useState()
     const [openFilter, setOpenFilter] = useState(false)
     const [seeImage, setSeeImage] = useState(false)
+    const [print, setPrint] = useState(false)
     const [info, setInfo] = useState()
     const [openInfo, setOpenINfo] = useState(false)
     const [openMessage, setOpenMessage] = useState(false)
@@ -347,6 +348,8 @@ const Page = () => {
                                                 <div className="font-bold">College: {info.college}</div>
                                                 <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
+                                            <Link className="m-3 bg-red-700 text-white px-4 py-2"
+                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}`}>History</Link>
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Act of Misconduct: </p>
@@ -467,7 +470,10 @@ const Page = () => {
                                             placeholder="Further Details"
                                             className="mb-8 bg-gray-200"
                                             required />
-                                        <DownloadButton />
+
+                                    <button onClick={() => setPrint(!print)}
+                                    className="px-4 py-2 bg-red-700 text-white">Certificate</button>
+                                       {print && <DownloadButton setPrint={setPrint}/>}
                                     </div>
 
                                     <div className="flex justify-center items-center h-max my-auto gap-4">

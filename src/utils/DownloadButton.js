@@ -1,9 +1,10 @@
 // DownloadPage.js
 import React, { useRef, useEffect } from 'react';
 import DownloadableCert from '@/components/DownloadableCert';
+import InformationModal from './InformationModal';
 
 
-const DownloadButton = () => {
+const DownloadButton = ({ setPrint }) => {
     const downloadableDivRef = useRef();
 
     const handleDownload = () => {
@@ -41,10 +42,17 @@ const DownloadButton = () => {
 
 
     return (
-        <div>
-            <DownloadableCert ref={downloadableDivRef} />
-            <button type='button' onClick={handleDownload}>Download Image</button>
-        </div>
+        <InformationModal>
+            <div className='relative'>
+                <div className="absolute top-1 right-1">
+                    <button type="button"
+                        onClick={() => setPrint(!print)} className="rounded-full text-red-600 bg-white">
+                        <AiFillCloseCircle size={30} /></button>
+                </div>
+                <DownloadableCert ref={downloadableDivRef} />
+                <button type='button' onClick={handleDownload}>Download Image</button>
+            </div>
+        </InformationModal>
     );
 };
 
