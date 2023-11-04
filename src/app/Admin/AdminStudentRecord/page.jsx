@@ -182,7 +182,7 @@ const Page = () => {
 
     return (
         <AdminMenu>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap items-center">
                 <div className="m-7 flex items-center">
                     <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                     <p className="font-bold text-xl">Student Accounts</p>
@@ -228,8 +228,10 @@ const Page = () => {
                     </div>}
                 </div>
                 <button onClick={() => setPrint(!print)}
-                    className="px-4 py-2 h-max w-max flex bg-red-700 rounded-lg m-4"><BsFillPrinterFill size={20} /> Print</button>
-                {print && <PrintButton college={college} yearLevel={yearLevel} setPrint={setPrint} content={data} contentRef={componentRef} />}
+                    className="px-4 py-2 h-max w-max flex bg-red-700 text-white rounded-lg m-4">
+                    <BsFillPrinterFill size={20} /> Print</button>
+                {print && <PrintButton college={college} yearLevel={yearLevel}
+                    setPrint={setPrint} content={data} contentRef={componentRef} />}
             </div>
             <div className="flex justify-center">
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
