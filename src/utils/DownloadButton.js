@@ -53,7 +53,7 @@ const DownloadButton = ({ setPrint }) => {
                 </div>
                 <DownloadableCert ref={downloadableDivRef} />
                 <button type='button' onClick={handleDownload}>Download Image</button>
-                <PrintCert />
+                {/* <PrintCert /> */}
             </div>
         </InformationModal>
     );
