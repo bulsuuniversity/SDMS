@@ -33,6 +33,7 @@ const Page = () => {
 
     const searchParams = useSearchParams();
     const student = (searchParams.get('student').toString());
+    console.log(student)
 
     const handleSetImage = (image) => {
         setImageToView(image)
