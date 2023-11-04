@@ -34,28 +34,6 @@ const Page = () => {
     const searchParams = useSearchParams()
     const student = searchParams.get('student')
 
-    const filterAndSortData = () => {
-        const startDate = selectedRange.startDate;
-        const endDate = selectedRange.endDate;
-
-
-        const filteredData = filterReports && filterReports.filter(item => {
-            const itemDate = new Date(item.createdAt);
-            return itemDate >= startDate && itemDate <= endDate;
-        });
-        const sortedData = filteredData && filteredData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-
-        return sortedData;
-    };
-
-    const filteredAndSortedData = filterAndSortData();
-
-    const handleChangeStatus = () => {
-        handleGetData()
-        setStatus(!status)
-    }
-
-
 
     const handleSetImage = (image) => {
         setImageToView(image)
@@ -77,8 +55,8 @@ const Page = () => {
 
     const [search, setSearch] = useState()
 
-    const data = filteredAndSortedData &&
-        Object.values(filteredAndSortedData).filter(report => {
+    const data = filterReports &&
+        Object.values(filterReports).filter(report => {
             const statusCondition = report && report.offender && report.actionOfDiscipline.toLowerCase().includes(student.toLowerCase())
             const searchCondition = report && report.actionOfDiscipline && (search ? report.actionOfDiscipline.toLowerCase().includes(search.toLowerCase()) : true)
             return statusCondition && searchCondition;

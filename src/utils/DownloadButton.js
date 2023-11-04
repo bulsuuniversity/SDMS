@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import DownloadableCert from '@/components/DownloadableCert';
 import InformationModal from './InformationModal';
 import PrintCert from './PrintCert';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 
 const DownloadButton = ({ setPrint }) => {
