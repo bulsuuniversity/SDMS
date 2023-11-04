@@ -49,15 +49,15 @@ const Page = () => {
 
 
     const searchParams = useSearchParams()
-    const newStudent = searchParams.get('new')
+    const newAdviser = searchParams.get('new')
     const router = useRouter()
 
     useEffect(() => {
-        if ("newStudent" === newStudent) {
+        if ("newAdviser" === newAdviser) {
             handleGetData()
             router.push("/Admin/AdminStudentRecord")
         }
-    }, [newStudent])
+    }, [newAdviser])
 
     return (
         <AdminMenu>
