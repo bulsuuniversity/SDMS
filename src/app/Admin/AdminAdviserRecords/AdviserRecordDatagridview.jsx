@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const AdviserRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => {
 
     const [openMessage, setOpenMessage] = useState(false)
-    const [sentEmail, setSentEmail] = useState()
+    // const [sentEmail, setSentEmail] = useState()
     const [adviserEmail, setAdviserEmail] = useState()
 
     const suggestions = {
@@ -67,8 +67,6 @@ const AdviserRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
         <>
             {openMessage &&
                 <SendMessage suggestions={suggestions}
-                    sentEmail={sentEmail}
-                    setSentEmail={setSentEmail}
                     email={adviserEmail}
                     setClose={setOpenMessage} />}
             <DataTable

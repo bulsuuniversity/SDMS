@@ -87,86 +87,88 @@ const PersonalInformation = () => {
                     <BsExclamationCircle size={32} />
                 </div>}
             </h2>
-            <form className="md:text-lg  text-xs flex gap-4 ml-6" onSubmit={handleUpdate}>
-                <div className="grid">
-                    <label htmlFor="name">Name: </label>
-                    <label htmlFor="college">College: </label>
-                    <label htmlFor="address">Address: </label>
-                    <label htmlFor="phoneNumber">Contact No.: </label>
-                    <label htmlFor="yearLevel">Year Level: </label>
-                </div>
-                <div className="grid gap-1">
-                    <input
-                        value={editedValues.name === null ? "" : editedValues.name}
-                        type="text"
-                        readOnly={edit}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
-                        className="border"
-                        required
-                    />
-                    <select
-                        disabled={edit}
-                        onChange={(e) => handleInputChange("college", e.target.value)}
-                        className="border"
-                        required
-                    >
-                        <option value={editedValues.college === null ? "" : editedValues.college}>
-                            {editedValues.college === null ? "Select college" : editedValues.college}</option>
-                        <option value="CBA">CBA</option>
-                        <option value="CIT">CIT</option>
-                        <option value="COED">COED</option>
-                        <option value="CICS">CICS</option>
-                        <option value="COE">COE</option>
-                    </select>
-                    <input
-                        value={editedValues.address === null ? "" : editedValues.address}
-                        type="text"
-                        readOnly={edit}
-                        onChange={(e) => handleInputChange("address", e.target.value)}
-                        className="border"
-                        required
-                    />
-                    <input
-                        value={editedValues.phoneNumber === null ? "" : editedValues.phoneNumber}
-                        type="text"
-                        readOnly={edit}
-                        onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
-                        className="border"
-                        required
-                    />
-                    <input
-                        value={editedValues.yearLevel === null ? "" : editedValues.yearLevel}
-                        type="text"
-                        readOnly={edit}
-                        onChange={(e) => handleInputChange("yearLevel", e.target.value)}
-                        className="border"
-                        required
-                    />
+            <form className="md:text-lg grid text-xs ml-6" onSubmit={handleUpdate}>
+                <div className="flex gap-4">
                     <div className="grid">
-                        <p className="font-semibold">Adviser Information</p>
-                        <div className="ml-4 flex gap-5">
-                            <div>
-                                <label htmlFor="name">Adviser Email: </label>
-                                <label htmlFor="college">Adviser Name: </label>
-                            </div>
-                            <div>
-                                <input
-                                    value={editedValues.adviserEmail === null ? "" : editedValues.adviserEmail}
-                                    type="text"
-                                    readOnly={edit}
-                                    onChange={(e) => handleInputChange("adviserEmail", e.target.value)}
-                                    className="border"
-                                    required
-                                />
-                                <input
-                                    value={editedValues.adviserName === null ? "" : editedValues.adviserName}
-                                    type="text"
-                                    readOnly={edit}
-                                    onChange={(e) => handleInputChange("adviserName", e.target.value)}
-                                    className="border"
-                                    required
-                                />
-                            </div>
+                        <label htmlFor="name">Name: </label>
+                        <label htmlFor="college">College: </label>
+                        <label htmlFor="address">Address: </label>
+                        <label htmlFor="phoneNumber">Contact No.: </label>
+                        <label htmlFor="yearLevel">Year Level: </label>
+                    </div>
+                    <div className="grid gap-1">
+                        <input
+                            value={editedValues.name === null ? "" : editedValues.name}
+                            type="text"
+                            readOnly={edit}
+                            onChange={(e) => handleInputChange("name", e.target.value)}
+                            className="border"
+                            required
+                        />
+                        <select
+                            disabled={edit}
+                            onChange={(e) => handleInputChange("college", e.target.value)}
+                            className="border"
+                            required
+                        >
+                            <option value={editedValues.college === null ? "" : editedValues.college}>
+                                {editedValues.college === null ? "Select college" : editedValues.college}</option>
+                            <option value="CBA">CBA</option>
+                            <option value="CIT">CIT</option>
+                            <option value="COED">COED</option>
+                            <option value="CICS">CICS</option>
+                            <option value="COE">COE</option>
+                        </select>
+                        <input
+                            value={editedValues.address === null ? "" : editedValues.address}
+                            type="text"
+                            readOnly={edit}
+                            onChange={(e) => handleInputChange("address", e.target.value)}
+                            className="border"
+                            required
+                        />
+                        <input
+                            value={editedValues.phoneNumber === null ? "" : editedValues.phoneNumber}
+                            type="text"
+                            readOnly={edit}
+                            onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+                            className="border"
+                            required
+                        />
+                        <input
+                            value={editedValues.yearLevel === null ? "" : editedValues.yearLevel}
+                            type="text"
+                            readOnly={edit}
+                            onChange={(e) => handleInputChange("yearLevel", e.target.value)}
+                            className="border"
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="grid">
+                    <p className="font-semibold">Adviser Information</p>
+                    <div className="ml-4 flex gap-5">
+                        <div>
+                            <label htmlFor="name">Adviser Email: </label>
+                            <label htmlFor="college">Adviser Name: </label>
+                        </div>
+                        <div>
+                            <input
+                                value={editedValues.adviserEmail === null ? "" : editedValues.adviserEmail}
+                                type="text"
+                                readOnly={edit}
+                                onChange={(e) => handleInputChange("adviserEmail", e.target.value)}
+                                className="border"
+                                required
+                            />
+                            <input
+                                value={editedValues.adviserName === null ? "" : editedValues.adviserName}
+                                type="text"
+                                readOnly={edit}
+                                onChange={(e) => handleInputChange("adviserName", e.target.value)}
+                                className="border"
+                                required
+                            />
                         </div>
                     </div>
                 </div>

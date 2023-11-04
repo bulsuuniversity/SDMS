@@ -107,7 +107,7 @@ const Page = () => {
         Object.values(filterData).filter(report => {
             const searchCondition = search ?
                 report.name && (report.name.toLowerCase()).includes(search.toLowerCase()) : true;
-            const yearLevelCondition = !yearLevel || report && report.course && report.course.includes(yearLevel);
+            const yearLevelCondition = !yearLevel || report && report.yearLevel && report.yearLevel.includes(yearLevel);
             const collegeCondition = !college || report && report.college === college;
             return collegeCondition && yearLevelCondition && searchCondition;
         });
@@ -186,10 +186,10 @@ const Page = () => {
                     <FaPeopleLine size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                     <p className="font-bold text-xl">Student Accounts</p>
                 </div>
-                <div className="flex gap-4 relative items-center"><p>Filter: </p>
-                    <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
-                        onClick={() => setOpenFilter(!openFilter)}>Select Filter:</button>
-                    {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
+                <div className="flex gap-2 items-center"><p>Filter: </p>
+                    <button className="bg-red-700 relative text-white px-4 py-2 whitespace-normal rounded-full"
+                        onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
+                    {openFilter && <div className="grid p-6 bg-white z-50 absolute bottom-0 border gap-4 w-max">
                         <div className="flex justify-between">
                             <p>By Year College:</p>
                             <select
