@@ -29,7 +29,7 @@ const Page = () => {
             stopLoading()
         }
     }
-
+    console.log(filterData)
     const data = filterData && Object.values(filterData)
         .filter((adviser, index, self) =>
             adviser.adviserEmail &&

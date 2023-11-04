@@ -228,7 +228,7 @@ const Page = () => {
                     </div>}
                 </div>
                 <button onClick={() => setPrint(!print)}
-                    className="px-4 py-2 h-max w-max flex gap-4 bg-red-700 text-white rounded-lg m-4">
+                    className="px-4 py-2 h-max w-max flex items-center gap-4 bg-red-700 text-white rounded-lg m-4">
                     <BsFillPrinterFill size={20} /> Print</button>
                 {print && <PrintButton college={college} yearLevel={yearLevel}
                     setPrint={setPrint} content={data} contentRef={componentRef} />}
