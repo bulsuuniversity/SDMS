@@ -12,10 +12,10 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
 
   return (
     <div ref={ref}>
-      <div className="w-full">
+      <div className="w-full overflow-y-auto h-screen">
         <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
         <div className="w-full flex justify-center gap-6">
-          <Image width={1200} height={300} src={"/Logo.png"} alt="Logo" />
+          <Image width={30} height={30} src={"/Logo.png"} alt="Logo" />
           <div className="grid">
             <p className="font-semibold text-center">Bulacan State University</p>
             <p className="font-semibold text-center">Discipline Committee</p>
