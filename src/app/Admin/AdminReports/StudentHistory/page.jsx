@@ -14,6 +14,7 @@ import useConfirmation from "@/utils/ConfirmationHook";
 import useLoading from "@/utils/Loading";
 import Link from "next/link";
 import { GoSearch } from "react-icons/go";
+import { useSearchParams } from "next/navigation";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
