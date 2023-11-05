@@ -31,8 +31,7 @@ const Page = () => {
 
 
 
-    const searchParams = useSearchParams();
-    const student = (searchParams.get('student').toString());
+
 
 
     const handleSetImage = (image) => {
@@ -54,12 +53,14 @@ const Page = () => {
 
 
     const [search, setSearch] = useState()
+    const searchParams = useSearchParams();
+    const student = (searchParams.get('student').toString());
 
     const data = filterReports &&
         Object.values(filterReports).filter(report => {
-            const student = report && report.offender && report.offender.toLowerCase().includes(student.toLowerCase())
+            const studentCondition = report && report.offender && report.offender.toLowerCase().includes(student.toLowerCase())
             const searchCondition = report && report.actionOfDiscipline && (search ? report.actionOfDiscipline.toLowerCase().includes(search.toLowerCase()) : true)
-            return student && searchCondition;
+            return studentCondition && searchCondition;
         });
 
 

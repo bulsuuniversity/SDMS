@@ -6,7 +6,7 @@ import { BsFillPrinterFill } from 'react-icons/bs';
 import InformationModal from './InformationModal';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-const PrintButton = ({ content, setPrint }) => {
+const PrintButton = ({ college, yearLevel, content, setPrint }) => {
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -24,7 +24,7 @@ const PrintButton = ({ content, setPrint }) => {
                 <button className='bg-red-700 m-6  text-white flex px-4 py-2' onClick={handlePrint}>
                     <BsFillPrinterFill size={20} />  Print
                 </button>
-                <PrintableComponent content={content} ref={componentRef} />
+                <PrintableComponent college={college} yearLevel={yearLevel} content={content} ref={componentRef} />
             </div>
         </InformationModal>
     );
