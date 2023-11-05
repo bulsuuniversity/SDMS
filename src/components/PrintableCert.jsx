@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 const PrintableCert = React.forwardRef((content, ref) => {
     const [studentName, setStudentName] = useState('');

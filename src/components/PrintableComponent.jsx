@@ -19,7 +19,7 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
     <div ref={ref}>
       <div className="w-full">
         <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
-        <div className="w-full flex justify-center gap-6">
+        <div className="w-full h-max flex justify-center gap-6">
           <div className="h-full grid items-center">
             <Image width={30} className="w-max h-max" height={30} src={"/Logo.png"} alt="Logo" />
           </div>
