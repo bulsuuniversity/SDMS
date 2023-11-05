@@ -27,7 +27,7 @@ const PrintableCert = React.forwardRef((content, ref) => {
                     </label>
                     <br />
                 </div>
-                <button type="submit">Submit Agreement</button>
+                {/* <button type="submit">Submit Agreement</button> */}
             </form>
         </div>
     );
