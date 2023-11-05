@@ -9,7 +9,7 @@ const PrintableCert = React.forwardRef((content, ref) => {
     return (
         <div className='w-full h-full p-10'>
             <h1>Student Discipline Agreement</h1>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div ref={ref}>
                     <label>
                         Student Name:
