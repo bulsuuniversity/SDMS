@@ -235,6 +235,11 @@ const Page = () => {
         setOpenFilter(!openFilter)
     }
 
+    const handleClose = () => {
+        setSuccess("")
+        setSuccess(!success)
+    }
+
 
     return (
         <AdminMenu>
@@ -425,7 +430,8 @@ const Page = () => {
                                         </div>
                                         <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
                                         <div className="flex justify-center">
-                                            <button onClick={() => setSuccess('')} className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
+                                            <button onClick={handleClose} 
+                                            className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
                                         </div>
                                     </div>
                                 </InformationModal>}
