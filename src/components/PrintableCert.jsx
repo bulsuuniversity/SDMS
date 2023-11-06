@@ -6,6 +6,12 @@ const PrintableCert = React.forwardRef((content, ref) => {
     const [disciplinaryAction, setDisciplinaryAction] = useState('');
     const [agreementText, setAgreementText] = useState('');
 
+    const now = new Date();
+    const day = now.getDate();
+    const year = now.getFullYear();
+    const month = now.toLocaleString('default', { month: 'long' });
+    const date = `${month} ${day}, ${year}`;
+
     return (
         <div className='w-full h-full p-10'>
             <h1>Student Discipline Agreement</h1>
