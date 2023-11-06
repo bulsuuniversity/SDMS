@@ -306,21 +306,24 @@ const Page = () => {
                                     className="bg-red-600 rounded-full p-2">
                                     <div><GrClose size={24} /></div>
                                 </button> :
-                                <button onClick={handleUpdate}
-                                    className="bg-green-600 rounded-full p-2">
-                                    <div><GiCheckMark size={24} /></div>
-                                </button>
+                                <>
+                                    <button onClick={handleUpdate}
+                                        className="bg-green-600 rounded-full p-2">
+                                        <div><GiCheckMark size={24} /></div>
+                                    </button>
+                                    {info.idNumber.includes("master") ?
+                                    <button onClick={handleRemoveMaster}
+                                        className="bg-red-600 rounded-full p-2">
+                                        <div>Remove as Master</div>
+                                    </button> :
+                                    info.idNumber !== "master" && <button onClick={handleMakeMaster}
+                                        className="bg-green-600 rounded-full p-2">
+                                        <div>Mark as Master</div>
+                                    </button>}
+                                </>
+
                             }
-                            {info.idNumber.includes("master") ?
-                                <button onClick={handleRemoveMaster}
-                                    className="bg-red-600 rounded-full p-2">
-                                    <div>Remove as Master</div>
-                                </button> :
-                                info.idNumber !== "master" && <button onClick={handleMakeMaster}
-                                    className="bg-green-600 rounded-full p-2">
-                                    <div>Mark as Master</div>
-                                </button>
-                            }
+
                         </div>}
                 </div>
             </InformationModal>}
