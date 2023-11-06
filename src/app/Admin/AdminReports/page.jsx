@@ -188,6 +188,12 @@ const Page = () => {
         handleGetData()
     }, [])
 
+    const student = (searchParams.get('student').toString());
+
+    useEffect(() => {
+        const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === student);
+        setInfo(clcikedInfo)
+    }, [student])
 
     useEffect(() => {
         const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === clickedID);
@@ -237,7 +243,7 @@ const Page = () => {
 
                     <div className="flex gap-4 relative items-center"><p>Filter: </p>
                         <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
-                            onClick={() => setOpenFilter(!openFilter)}>Select Filter:</button>
+                            onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
                         {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
                             <div className="flex p-2 items-center rounded-lg">
                                 <p className="font-bold text-red-700">By Date: </p>
@@ -248,7 +254,7 @@ const Page = () => {
                                         <div className="absolute -top-4 -right-4">
                                             <button
                                                 onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
-                                                <AiFillCloseCircle size={30} /></button>
+                                                <AiFillCloseCircle size={44} /></button>
                                         </div>
                                         <DateRangePicker
                                             ranges={[selectedRange]}
