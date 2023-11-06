@@ -300,21 +300,21 @@ const Page = () => {
                             {info.status.includes("Registered") ?
                                 info.idNumber !== "master" && <button onClick={handleRemoveAcc}
                                     className="bg-red-600 rounded-full p-2">
-                                    <div><GrClose size={32} /></div>
+                                    <div><GrClose size={24} /></div>
                                 </button> :
                                 <button onClick={handleUpdate}
                                     className="bg-green-600 rounded-full p-2">
-                                    <div><GiCheckMark size={32} /></div>
+                                    <div><GiCheckMark size={24} /></div>
                                 </button>
                             }
                             {info.idNumber.includes("master") ?
-                                info.idNumber !== "master" && <button onClick={handleMakeMaster}
-                                    className="bg-red-600 rounded-full p-2">
-                                    <div>Mark as Master</div>
-                                </button> :
                                 <button onClick={handleRemoveMaster}
                                     className="bg-green-600 rounded-full p-2">
                                     <div>Remove as Master</div>
+                                </button> :
+                                info.idNumber !== "master" && <button onClick={handleMakeMaster}
+                                    className="bg-red-600 rounded-full p-2">
+                                    <div>Mark as Master</div>
                                 </button>
                             }
                         </div>}
