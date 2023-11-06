@@ -188,7 +188,9 @@ const Page = () => {
         handleGetData()
     }, [])
 
-    const student = searchParams.get('student') && searchParams.get('student').toString();
+    const searchStudent = useSearchParams()
+    const student = searchStudent.get('student') && searchStudent.get('student').toString();
+    
 
     useEffect(() => {
         const clcikedInfo = data && student && Object.values(data).find(selfConsult => selfConsult.id === student);
