@@ -88,7 +88,7 @@ const History = ({ setHistory, student }) => {
 
     return (
         <InformationModal>
-            <div className="m-7 h-screen w-screen overflow-y-auto h-screen flex relative items-center">
+            <div className="m-7 h-10/12 w-screen overflow-y-auto flex relative items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-lg">Reported Student History</p>
                 <div className="absolute top-4 right-4">
