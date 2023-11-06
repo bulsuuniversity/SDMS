@@ -25,9 +25,9 @@ const PrintableCert = React.forwardRef((content, ref) => {
                             CERTIFICATE OF CLEARANCE
                         </div>
 
-                        <p className="indent">
-                            This is to certify that <ins>{content.offender}</ins> of <ins>{course} {college}</ins> has been CLEARED from their misconduct happened within Bulacan State University - Bustos Campus Premises.
-                        </p>
+                        {content && <p className="indent">
+                            This is to certify that <ins>{content.offender}</ins> of <ins>{content.course} {content.college}</ins> has been CLEARED from their misconduct happened within Bulacan State University - Bustos Campus Premises.
+                        </p>}
                         <p className="indent my-2">
                             This certificate were issued on {date}.
                         </p>

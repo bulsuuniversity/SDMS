@@ -487,9 +487,9 @@ const Page = () => {
                                             className="mb-8 bg-gray-200"
                                             required />
 
-                                        <button onClick={() => setPrint(!print)}
+                                        <button type="button" onClick={() => setPrint(!print)}
                                             className="px-4 py-2 bg-red-700 text-white">Certificate</button>
-                                        {print && <PrintCert setPrint={setPrint} contentRef={componentRef} />}
+                                        {print && <PrintCert content={info} setPrint={setPrint} contentRef={componentRef} />}
                                     </div>
 
                                     <div className="flex justify-center items-center h-max my-auto gap-4">

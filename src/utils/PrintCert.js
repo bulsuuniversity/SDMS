@@ -24,7 +24,7 @@ const PrintCert = ({ content, setPrint }) => {
                         className="rounded-full px-4 py-2 h-max w-max text-red-600 bg-white">
                         <AiFillCloseCircle size={30} /></button>
                 </div>
-                <PrintableCert ref={componentRef} />
+                <PrintableCert content={content} ref={componentRef} />
 
             </div>
         </InformationModal>
