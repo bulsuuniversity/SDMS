@@ -369,9 +369,9 @@ const Page = () => {
                                             <button className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
                                                 onClick={() => setHistory(!history)}>History</button>
                                             {history &&
-                                                <div className="overflow-y-auto w-screen mx-6 h-screen">
+                                               
                                                     <History student={info.offender} setHistory={setHistory} />
-                                                </div>
+                                              
                                             }
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">
