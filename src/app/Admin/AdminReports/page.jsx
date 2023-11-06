@@ -366,7 +366,7 @@ const Page = () => {
                                             </label>
                                             {/* <Link className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
                                                 href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}`}>History</Link> */}
-                                            <button className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                                            <button type="button" className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
                                                 onClick={() => setHistory(!history)}>History</button>
                                             {history &&
                                                
