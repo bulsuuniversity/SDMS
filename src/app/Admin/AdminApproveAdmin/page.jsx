@@ -118,6 +118,45 @@ const Page = () => {
         }
     }
 
+
+
+    const handleConvertLevel = async (idNumber) => {
+        startLoading()
+        try {
+            const response = await axios.put(`${url}/api/AdminAccount/${info.id}`,
+                idNumber, { headers });
+            stopLoading()
+            handleGetData()
+            setSuccess("Conversion Successfull!")
+        } catch (err) {
+            console.log(err);
+            stopLoading()
+        }
+    }
+
+
+    const handleMakeMaster = (e) => {
+        const idNumber = "master"
+        e.preventDefault();
+        showConfirmation(<div className='grid justify-center gap-4'>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <p className='text-xl p-6'>Are you sure you want to mark this as master account?</p>
+        </div>, () => {
+            handleConvertLevel(idNumber)
+        });
+    };
+
+    const handleRemoveMaster = (e) => {
+        const idNumber = "admin"
+        e.preventDefault();
+        showConfirmation(<div className='grid justify-center gap-4'>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <p className='text-xl p-6'>Are you sure you want to remove this as master account?</p>
+        </div>, () => {
+            handleConvertLevel(idNumber)
+        });
+    };
+
     useEffect(() => {
         handleGetData()
     }, [])
@@ -257,16 +296,27 @@ const Page = () => {
                     </InformationModal>} */}
                     {/* <div className={`absolute left-24 -bottom-8`}> */}
                     {info.email !== "bulsubulacanstateuniversity@gmail.com" &&
-                        <div className="flex justify-center pt-4">
-                            {info.status !== "Registered" ?
-                                <button onClick={handleUpdate}
-                                    className="bg-green-600 rounded-full p-2">
-                                    <div><GiCheckMark size={32} /></div>
-                                </button> :
+                        <div className="flex gap-2 items-center justify-center pt-4">
+                            {info.status.includes("Registered") ?
                                 info.idNumber !== "master" && <button onClick={handleRemoveAcc}
                                     className="bg-red-600 rounded-full p-2">
                                     <div><GrClose size={32} /></div>
-                                </button>}
+                                </button> :
+                                <button onClick={handleUpdate}
+                                    className="bg-green-600 rounded-full p-2">
+                                    <div><GiCheckMark size={32} /></div>
+                                </button>
+                            }
+                            {info.idNumber.includes("master") ?
+                                info.idNumber !== "master" && <button onClick={handleMakeMaster}
+                                    className="bg-red-600 rounded-full p-2">
+                                    <div>Mark as Master</div>
+                                </button> :
+                                <button onClick={handleRemoveMaster}
+                                    className="bg-green-600 rounded-full p-2">
+                                    <div>Remove as Master</div>
+                                </button>
+                            }
                         </div>}
                 </div>
             </InformationModal>}
