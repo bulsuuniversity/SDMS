@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Image from "next/image";
 
 const PrintableCert = React.forwardRef((content, ref) => {
     const [studentName, setStudentName] = useState('');
