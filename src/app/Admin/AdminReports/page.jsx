@@ -188,14 +188,13 @@ const Page = () => {
         handleGetData()
     }, [])
 
-    const searchStudent = useSearchParams()
-    const student = searchStudent.get('student') && searchStudent.get('student').toString();
-    
+    const searchID = useSearchParams()
+    const id = searchID.get('id') && searchID.get('id').toString();
 
     useEffect(() => {
-        const clcikedInfo = data && student && Object.values(data).find(selfConsult => selfConsult.id === student);
+        const clcikedInfo = data && id && Object.values(data).find(selfConsult => selfConsult.id === id);
         setInfo(clcikedInfo)
-    }, [student])
+    }, [id])
 
     useEffect(() => {
         const clcikedInfo = data && Object.values(data).find(selfConsult => selfConsult.id === clickedID);
@@ -364,7 +363,7 @@ const Page = () => {
                                                 <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
                                             <Link className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
-                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}`}>History</Link>
+                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}id=${info.id}`}>History</Link>
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Act of Misconduct: </p>
@@ -430,8 +429,8 @@ const Page = () => {
                                         </div>
                                         <p>{success === 'Updated' && 'Updated'}{success === 'Cleared' && 'Cleared'} Successfully!</p>
                                         <div className="flex justify-center">
-                                            <button onClick={handleClose} 
-                                            className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
+                                            <button onClick={handleClose}
+                                                className='bg-green-600 text-white w-max rounded-lg py-2 px-4'>Okay</button>
                                         </div>
                                     </div>
                                 </InformationModal>}
