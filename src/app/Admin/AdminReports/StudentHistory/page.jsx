@@ -64,7 +64,7 @@ const Page = () => {
         });
 
     const searchID = useSearchParams();
-    const id = (searchID.get('id').toString());
+    const id = searchID.get('id') && searchID.get('id').toString();
 
     useEffect(() => {
         handleGetData()
