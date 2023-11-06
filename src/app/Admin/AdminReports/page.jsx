@@ -363,7 +363,7 @@ const Page = () => {
                                                 <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
                                             <Link className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
-                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}id=${info.id}`}>History</Link>
+                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}?id=${info.id}`}>History</Link>
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Act of Misconduct: </p>
