@@ -16,7 +16,7 @@ import Link from "next/link";
 import { GoSearch } from "react-icons/go";
 import { useSearchParams } from "next/navigation";
 
-const Page = () => {
+const History = ({ setHistory, student }) => {
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
     const [info, setInfo] = useState()
@@ -53,8 +53,8 @@ const Page = () => {
 
 
     const [search, setSearch] = useState()
-    const searchParams = useSearchParams();
-    const student = (searchParams.get('student').toString());
+    // const searchParams = useSearchParams();
+    // const student = (searchParams.get('student').toString());
 
     const data = filterReports &&
         Object.values(filterReports).filter(report => {
@@ -87,15 +87,19 @@ const Page = () => {
 
 
     return (
-        <AdminMenu>
-            <div className="m-7 flex relative items-center">
+        <InformationModal>
+            <div className="m-7 h-screen w-screen overflow-y-auto h-screen flex relative items-center">
                 <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-lg">Reported Student History</p>
                 <div className="absolute top-4 right-4">
-                    <Link
+                    {/* <Link
                         href={`/Admin/AdminReports/?id=${id && id}`} className="rounded-full text-red-600 bg-white">
                         <AiFillCloseCircle size={30} />
-                    </Link>
+                    </Link> */}
+                    <button
+                        onClick={() => setHistory(!history)} className="rounded-full text-red-600 bg-white">
+                        <AiFillCloseCircle size={30} />
+                    </button>
                 </div>
             </div>
 
@@ -247,8 +251,8 @@ const Page = () => {
                         handleGetData={handleGetData}
                     /> : <div className="flex justify-center p-10 inset-0">No records found</div>}
             </div>
-        </AdminMenu >
+        </InformationModal >
     );
 }
 
-export default Page;
+export default History;

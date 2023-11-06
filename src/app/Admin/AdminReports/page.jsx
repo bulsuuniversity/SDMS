@@ -22,6 +22,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import DownloadButton from "@/utils/DownloadButton";
 import { GoSearch } from "react-icons/go";
 import PrintCert from "@/utils/PrintCert";
+import History from "./StudentHistory/History";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -239,6 +240,7 @@ const Page = () => {
         setSuccess(!success)
     }
 
+    const [history, setHistory] = useState(false)
 
     return (
         <AdminMenu>
@@ -362,8 +364,11 @@ const Page = () => {
                                                 <div className="font-bold">College: {info.college}</div>
                                                 <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
-                                            <Link className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
-                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}/?id=${info.id}`}>History</Link>
+                                            {/* <Link className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                                                href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}`}>History</Link> */}
+                                            <button className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                                                onClick={() => setHistory(!history)}>History</button>
+                                            {history && <History student={info.offender} setHistory={setHistory} />}
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Act of Misconduct: </p>
