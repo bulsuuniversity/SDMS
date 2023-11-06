@@ -110,6 +110,7 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.get(`${url}/api/AdminAccount`, { headers });
+            console.log('AdminApproveAdmin', response)
             setData(response.data)
             stopLoading()
         } catch (err) {
@@ -117,6 +118,10 @@ const Page = () => {
             stopLoading()
         }
     }
+
+    // useEffect(() => {
+
+    // }, [data])
 
 
 
@@ -309,11 +314,11 @@ const Page = () => {
                             }
                             {info.idNumber.includes("master") ?
                                 <button onClick={handleRemoveMaster}
-                                    className="bg-green-600 rounded-full p-2">
+                                    className="bg-red-600 rounded-full p-2">
                                     <div>Remove as Master</div>
                                 </button> :
                                 info.idNumber !== "master" && <button onClick={handleMakeMaster}
-                                    className="bg-red-600 rounded-full p-2">
+                                    className="bg-green-600 rounded-full p-2">
                                     <div>Mark as Master</div>
                                 </button>
                             }
