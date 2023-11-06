@@ -15,7 +15,6 @@ const PrintableCert = React.forwardRef(({ content }, ref) => {
 
     return (
         <div className='w-full h-full p-10'>
-            <h1>Student Discipline Agreement</h1>
             <form>
                 <div className="w-full" ref={ref}>
                     <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
@@ -32,10 +31,10 @@ const PrintableCert = React.forwardRef(({ content }, ref) => {
                             CERTIFICATE OF CLEARANCE
                         </div>
 
-                        {content && <p className="indent">
+                        {content && <p className="indent-8">
                             This is to certify that <ins>{content.offender}</ins> of <ins>{content.college} {content.course}</ins> has been CLEARED from their misconduct happened within Bulacan State University - Bustos Campus Premises.
                         </p>}
-                        <p className="indent my-2">
+                        <p className="indent-8 my-2">
                             This certificate were issued on {date}.
                         </p>
                         <p className="mt-8">
