@@ -368,7 +368,11 @@ const Page = () => {
                                                 href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}`}>History</Link> */}
                                             <button className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
                                                 onClick={() => setHistory(!history)}>History</button>
-                                            {history && <History student={info.offender} setHistory={setHistory} />}
+                                            {history &&
+                                                <div className="overflow-y-auto w-scree mx-6 h-screen">
+                                                    <History student={info.offender} setHistory={setHistory} />
+                                                </div>
+                                            }
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">
                                             <p className="font-bold">Act of Misconduct: </p>
