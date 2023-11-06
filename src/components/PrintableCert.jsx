@@ -14,9 +14,9 @@ const PrintableCert = React.forwardRef(({ content }, ref) => {
     const date = `${month} ${day}, ${year}`;
 
     return (
-        <div className='w-full h-full p-10'>
+        <div className='w-full p-10'>
             <form>
-                <div className="w-full" ref={ref}>
+                <div className="w-full h-full " ref={ref}>
                     <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
                     <div className="mx-6">
                         <div className="w-full h-max flex justify-center items-center gap-6">
