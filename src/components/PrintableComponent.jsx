@@ -62,7 +62,7 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
           <div className="grid w-full justify-center">
             <p className="text-center">Approved By:</p>
             <p className="underline underline-offset-8 text-center pt-8">DR. EDITHA N. DE REGLA</p>
-            <p className="italic pt-2 text-xs text-center">Signature Over Printed Name</p>
+            <p className="italic pt-2 text-xs text-center">Discipline Committee Chair</p>
           </div>
         </div>
         {/* <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" /> */}

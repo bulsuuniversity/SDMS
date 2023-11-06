@@ -93,7 +93,7 @@ const Page = () => {
                 <p className="font-bold text-lg">Reported Student History</p>
                 <div className="absolute top-4 right-4">
                     <Link
-                        href={`/Admin/AdminReports/?student=${id && id}`} className="rounded-full text-red-600 bg-white">
+                        href={`/Admin/AdminReports/?id=${id && id}`} className="rounded-full text-red-600 bg-white">
                         <AiFillCloseCircle size={30} />
                     </Link>
                 </div>
