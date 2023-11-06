@@ -20,7 +20,7 @@ const PrintableCert = React.forwardRef(({ content }, ref) => {
                     <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
                     <div className="mx-6">
                         <div className="w-full h-max flex justify-center items-center gap-6">
-                            <Image className="w-max h-max" width={30} height={30} src={"/Logo.png"} alt="Logo" />
+                            <Image className="w-max h-max" width={44} height={44} src={"/Logo.png"} alt="Logo" />
                             <div className="grid my-6">
                                 <p className="font-semibold text-center">Bulacan State University</p>
                                 <p className="font-semibold text-center">Discipline Committee</p>
