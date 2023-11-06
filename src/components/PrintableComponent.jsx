@@ -57,7 +57,7 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
           <div className="grid">
             <p className="text-center">Printed by:</p>
             <p className="underline underline-offset-8 text-center pt-8">{session && session.name}</p>
-            <p className="italic pt-2 text-xs text-center">Signature Over Printed Name</p>
+            <p className="italic pt-2 text-xs text-center">Discipline Committee</p>
           </div>
           <div className="grid w-full justify-center">
             <p className="text-center">Approved By:</p>
