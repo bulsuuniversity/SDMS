@@ -369,7 +369,7 @@ const Page = () => {
                                             <button className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
                                                 onClick={() => setHistory(!history)}>History</button>
                                             {history &&
-                                                <div className="overflow-y-auto w-scree mx-6 h-screen">
+                                                <div className="overflow-y-auto w-screen mx-6 h-screen">
                                                     <History student={info.offender} setHistory={setHistory} />
                                                 </div>
                                             }
