@@ -74,7 +74,11 @@ export const GET = async () => {
                 role: "user"
             }
         })
-        return NextResponse.json(posts);
+        return NextResponse.json(posts, {
+            headers: {
+                "revalidate": "0"
+            }
+        });
     } catch (err) {
         console.log(err)
         return NextResponse.json({ message: "GET Error", err }, { status: 500 })

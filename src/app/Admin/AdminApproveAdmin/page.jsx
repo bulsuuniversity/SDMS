@@ -110,7 +110,6 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.get(`${url}/api/AdminAccount`, { headers });
-            console.log('AdminApproveAdmin', response)
             setData(response.data)
             stopLoading()
         } catch (err) {

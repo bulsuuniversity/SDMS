@@ -62,12 +62,24 @@ const Page = () => {
         }
     };
 
+    const handleGetData = async () => {
+        startLoading()
+        try {
+            const response = await axios.get(`${url}/api/studentAccount`, { headers });
+            setFilterData(response.data)
+            stopLoading()
+        } catch (err) {
+            console.log(err);
+            stopLoading()
+        }
+    }
 
+    const status = "Registered"
     const handleUpdateApi = async () => {
         startLoading()
         try {
             const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-                { status: "Registered" }, { headers });
+                status, { headers });
             sendEmail()
             stopLoading()
             setMessage("Account approved successfully!")
@@ -89,17 +101,31 @@ const Page = () => {
         });
     };
 
-    const handleGetData = async () => {
+
+    const handleRemoveAccApi = async () => {
         startLoading()
         try {
-            const response = await axios.get(`${url}/api/studentAccount`, { headers });
-            setFilterData(response.data)
+            const response = await axios.put(`${url}/api/RemoveAccount/${info.id}`,
+                { headers });
+            handleGetData()
+            setMessage("Account removed!")
             stopLoading()
+            setSuccess(true)
         } catch (err) {
             console.log(err);
             stopLoading()
         }
     }
+
+    const handleRemoveAcc = (e) => {
+        e.preventDefault();
+        showConfirmation(<div className='grid justify-center gap-4'>
+            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
+            <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
+        </div>, () => {
+            handleRemoveAccApi()
+        });
+    };
 
     const [yearLevel, setYearLevel] = useState()
     const [college, setCollege] = useState()
@@ -123,31 +149,6 @@ const Page = () => {
         setInfo(clcikedInfo)
     }, [clickedID])
 
-    const handleRemoveAccApi = async () => {
-        startLoading()
-        try {
-            const response = await axios.put(`${url}/api/RemoveAccount/${info.id}`,
-                { headers });
-            setData(response.data)
-            // sendEmail()
-            setMessage("Account removed!")
-            stopLoading()
-            setSuccess(true)
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
-    }
-
-    const handleRemoveAcc = (e) => {
-        e.preventDefault();
-        showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
-            <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
-        </div>, () => {
-            handleRemoveAccApi()
-        });
-    };
 
     const handleClose = () => {
         setSuccess(false)

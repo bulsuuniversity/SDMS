@@ -233,11 +233,11 @@ const AdminMenu = ({ children }) => {
                                 className={`mx-2 flex gap-2 items-center`}
                                 href={'/Admin/AdminStudentRecord/?new=newStudent'}>New Student <IoNotificationsCircleSharp size={35} /></Link>
                         </div>}
-                        {session && session.idNumber === "master" && <div className="flex justify-end">
+                        {session && session.idNumber === "master" && newAdmin && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("654220a68db45807d25ac36a")}
                                 className={`mx-2 flex gap-2 items-center`}
                                 href={'/Admin/AdminApproveAdmin/?new=newAdmin'}>New Admin <IoNotificationsCircleSharp size={35} /></Link>
-                  
+
                         </div>}
                         {newReport && <div className="flex justify-end">
                             <Link onClick={() => handleUpdateNotif("6518de8c2bd81071174f2644")}
