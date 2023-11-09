@@ -249,8 +249,8 @@ const page = () => {
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                         </div>
                     </>}
-                <h2 className="text-2xl flex text-white md:w-80 sm:w-[44rem] bg-red-950 w-full justify-center">Report Form</h2>
-                <div className="border-red-950 bg-white border-8 w-full md:w-80 sm:w-[44rem] grid justify-center">
+                <h2 className="text-2xl flex text-white sm:w-[44rem] bg-red-950 w-full justify-center">Report Form</h2>
+                <div className="border-red-950 bg-white border-8 w-full sm:w-[44rem] grid justify-center">
 
                     <div className="w-full grid gap-4 md:px-6 px-1 justify-center">
                         <p className="font-bold py-4 flex gap-2">Ticket No.:
