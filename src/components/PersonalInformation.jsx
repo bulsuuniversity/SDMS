@@ -149,8 +149,8 @@ const PersonalInformation = () => {
                     <p className="font-semibold">Adviser Information</p>
                     <div className="ml-4 flex gap-5">
                         <div className="grid">
-                            <label htmlFor="name">Adviser Email: </label>
-                            <label htmlFor="college">Adviser Name: </label>
+                            <label htmlFor="name whitespace-normal">Adviser Email: </label>
+                            <label htmlFor="college whitespace-normal">Adviser Name: </label>
                         </div>
                         <div className="grid">
                             <input

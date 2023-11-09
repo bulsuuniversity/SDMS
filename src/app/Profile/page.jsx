@@ -32,7 +32,7 @@ const page = () => {
                             <div className="col-span-3 lg:col-span-2 flex w-full h-full items-center">
                                 <div className="bg-green-600">
                                     <div className="relative bg-blue-600 px-6">
-                                        <div className="absolute -top-20 left-0 md:-top-52 md:left-16 rounded-full bg-white border
+                                        <div className="absolute -top-15 left-20 md:-top-52 md:left-16 rounded-full bg-white border
                                      border-white border-8 overflow-hidden z-10 ">
                                             <div className="w-32 h-32 rounded-full overflow-hidden ">
                                                 <Image alt="profile"
@@ -45,14 +45,14 @@ const page = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="absolute top-10 left-10 md:-top-4 md:left-16 z-10 rounded-[2rem] bg-orange-300">
+                                        <div className="absolute top-20 left-20 md:-top-4 md:left-16 z-10 rounded-[2rem] bg-orange-300">
                                             <button
                                                 onClick={handleCLick}
                                                 className="py-3 w-36">
                                                 Change Profile
                                             </button>
                                         </div>
-                                        <div className="absolute left-20 -top-32 overflow-hidden flex flex-col w-28 h-80 justify-center">
+                                        <div className="absolute left-20 -top-32 overflow-hidden md:visible hidden flex flex-col w-28 h-80 justify-center">
                                             <div className="bg-fuchsia-950 h-full">
                                             </div>
                                             <div className={`h-0 w-0 
@@ -65,7 +65,7 @@ const page = () => {
                                 </div>
                             </div>
                             <div className="md:col-span-9 lg:col-span-10 bg-red-50 md:mt-0 xl:ml-10 p-2">
-                                <div className="p-2">
+                                <div className="p-2 text-xs md:text-lg">
                                     <h2 className="font-semibold">Account Information</h2>
                                     <div className="ml-4 font-medium flex gap-5">
                                         <div className="grid">
@@ -79,7 +79,7 @@ const page = () => {
                                             <div id="password">*********</div>
                                         </div>
                                     </div>
-                                    <Link href={'/ChangePassword'} className="text-blue-500 text-sm">
+                                    <Link href={'/ChangePassword'} className="text-blue-500 text-xs md:text-sm">
                                         Want to change password? Click here.
                                     </Link>
                                 </div>
