@@ -262,7 +262,7 @@ const page = () => {
                         </p>
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
-                            <div className="grid indent-6 gap-4">
+                            <div className="grid md:indent-6 indent-2 gap-4">
                                 <label className="md:flex grid justify-center md:justify-between">
                                     <p>Name:</p>
                                     <input
@@ -322,7 +322,7 @@ const page = () => {
 
                             <div className="grid gap-4 ">
                                 <p className="font-bold">Misconduct Details:</p>
-                                <div className="indent-6 grid gap-4">
+                                <div className="md:indent-6 indent-2 grid gap-4">
                                     <label className="md:flex grid justify-center md:justify-between">
                                         <div>Act of Misconduct:</div>
                                         <div

@@ -104,7 +104,7 @@ const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
                             </div>
 
                             <button disabled={loading} type="submit"
-                                className={`${loading ? "bg-gray-400" : "bg-green-400"} rounded-[3rem]`}>
+                                className={`${loading ? "bg-gray-400" : "bg-green-400"} h-14 rounded-[3rem]`}>
                                 {loading ? 'UPLOADING' : 'UPLOAD'}</button>
                         </div>
                     </form>
