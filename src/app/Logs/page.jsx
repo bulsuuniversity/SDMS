@@ -151,7 +151,7 @@ const Page = () => {
                         </div>
                     </InformationModal>}
                     <div className="pt-20">
-                        <div className="mx-10 my-6 border border-blue-400 border-2">
+                        <div className="my-6 border border-blue-400 border-2">
                             {data && data.length > 0 ? <DataGridView
                                 setOpenINfo={setOpenINfo}
                                 setClickedID={setClickedID}
