@@ -76,7 +76,7 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
     };
 
     return (
-        <div className='overflow-x-auto w-screen mx-2'>
+        <div className='overflow-x-auto w-screen px-10'>
             <DataTable
                 fixedHeader
                 fixedHeaderScrollHeight="500px"
