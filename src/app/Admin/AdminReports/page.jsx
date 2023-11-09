@@ -70,7 +70,7 @@ const Page = () => {
 
     const handleDateRangeChange = (ranges) => {
         setSelectedRange(ranges.selection);
-        setOpenDate(!openDate)
+        // setOpenDate(!openDate)
     };
 
     const filterAndSortData = () => {
