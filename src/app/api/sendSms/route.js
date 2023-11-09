@@ -16,8 +16,8 @@ export async function POST(req) {
         for (const phoneNumber of phoneNumbers) {
             const response = await client.messages.create({
                 body: message,
-                // from: '+18149759803',
-                 from: '+12055764627',
+                from: '+18149759803',
+                //  from: '+12055764627',
                 to: '+63' + phoneNumber,
             });
 
