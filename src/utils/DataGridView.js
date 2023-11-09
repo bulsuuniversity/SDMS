@@ -24,7 +24,7 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
             name: <div className='flex text-center'>{headerData[3]}</div>,
             selector: row => row.three,
             sortable: true,
-            cell: (row) => <div  className='line-clamp-3 whitespace-normal'>{row.three}</div>,
+            cell: (row) => <div className='line-clamp-3 whitespace-normal'>{row.three}</div>,
         },
         {
             name: <div className='flex text-center'>{headerData[4]}</div>,
@@ -76,18 +76,17 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
     };
 
     return (
-        <DataTable
-            fixedHeader
-            fixedHeaderScrollHeight="500px"
-            customStyles={customStyles}
-            onRowClicked={handleRowClick}
-            columns={columns}
-            data={data}
-            scrollX
-            width={1000}
-            responsive
-        />
-
+        <div style={{ overflowX: 'auto' }}>
+            <DataTable
+                fixedHeader
+                fixedHeaderScrollHeight="500px"
+                customStyles={customStyles}
+                onRowClicked={handleRowClick}
+                columns={columns}
+                data={data}
+                responsive
+            />
+        </div>
     );
 }
 
