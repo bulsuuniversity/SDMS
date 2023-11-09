@@ -263,7 +263,7 @@ const page = () => {
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
                             <div className="grid indent-6 gap-4">
-                                <label className="md:flex grid md:justify-between">
+                                <label className="md:flex grid justify-center md:justify-between">
                                     <p>Name:</p>
                                     <input
                                         className="border w-52 mr-2 md:mr-10"
@@ -274,7 +274,7 @@ const page = () => {
                                         required
                                     />
                                 </label>
-                                <label className="md:flex grid md:justify-between">
+                                <label className="md:flex grid justify-center md:justify-between">
                                     <p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
@@ -296,7 +296,7 @@ const page = () => {
                                         onChange={(e) => handleInputChange('college', e.target.value)}
                                     />}
                                 </label>
-                                <label className="md:flex grid md:justify-between">
+                                <label className="md:flex grid justify-center md:justify-between">
                                     <p>Course, year & section:</p>
                                     <input
                                         className="border w-52 mr-2 md:mr-10"
@@ -323,7 +323,7 @@ const page = () => {
                             <div className="grid gap-4 ">
                                 <p className="font-bold">Misconduct Details:</p>
                                 <div className="indent-6 grid gap-4">
-                                    <label className="md:flex grid md:justify-between">
+                                    <label className="md:flex grid justify-center md:justify-between">
                                         <div>Act of Misconduct:</div>
                                         <div
                                             className={`${require && "border border-red-600"} ml-6 pr-2 border flex items-center justify-between w-52`}
@@ -339,7 +339,7 @@ const page = () => {
                                             onChange={(e) => handleInputChange('actionOfDiscipline', e.target.value)}
                                         />}
                                     </label>
-                                    <label className="md:flex grid md:justify-between">
+                                    <label className="md:flex grid justify-center md:justify-between">
                                         <div>Date of Incident:</div>
                                         <input
                                             className="border ml-6 w-52"
@@ -352,7 +352,7 @@ const page = () => {
                                             required
                                         />
                                     </label>
-                                    <label className="md:flex grid md:justify-between">
+                                    <label className="md:flex grid justify-center md:justify-between">
                                         <div>Place or Platform of Incident:</div>
                                         <input
                                             className="border ml-6 w-52"
@@ -363,7 +363,7 @@ const page = () => {
                                             required
                                         />
                                     </label>
-                                    <label className="md:flex grid md:justify-between">
+                                    <label className="md:flex grid justify-center md:justify-between">
                                         <div>Rate of Occurrence:</div>
                                         <select
                                             value={reportData.rateOfOccurrence}

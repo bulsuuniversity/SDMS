@@ -3,22 +3,22 @@ import DataTable from 'react-data-table-component';
 const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
     const columns = [
         {
-            name: <div className='flex md:visible invisible text-center'>{headerData[0]}</div>,
+            name: <div className='flex text-center'>{headerData[0]}</div>,
             selector: row => row.zero,
             sortable: true,
-            cell: (row) => <div className='md:visible invisible' onClick={() => handleRowClick(row)} style={{ whiteSpace: 'normal' }}>{row.zero}</div>,
+            cell: (row) => <div onClick={() => handleRowClick(row)} style={{ whiteSpace: 'normal' }}>{row.zero}</div>,
         },
         {
-            name: <div className='flex md:visible invisible text-center'>{headerData[1]}</div>,
+            name: <div className='flex text-center'>{headerData[1]}</div>,
             selector: row => row.one,
             sortable: true,
-            cell: (row) => <div className='md:visible invisible' style={{ whiteSpace: 'normal' }}>{row.one}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.one}</div>,
         },
         {
-            name: <div className='flex md:visible invisible text-center'>{headerData[2]}</div>,
+            name: <div className='flex text-center'>{headerData[2]}</div>,
             selector: row => row.two,
             sortable: true,
-            cell: (row) => <div className='md:visible invisible' style={{ whiteSpace: 'normal' }}>{row.two}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.two}</div>,
         },
         {
             name: <div className='flex text-center'>{headerData[3]}</div>,
@@ -83,8 +83,8 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
             onRowClicked={handleRowClick}
             columns={columns}
             data={data}
-            // scrollX
-            // width={1000}
+            scrollX
+            width={1000}
             responsive
         />
 
