@@ -83,6 +83,7 @@ const DataGridView = ({ headerData, tableData, setClickedID, setOpenINfo }) => {
             onRowClicked={handleRowClick}
             columns={columns}
             data={data}
+            responsive
         />
 
     );

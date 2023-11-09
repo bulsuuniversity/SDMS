@@ -32,7 +32,7 @@ const page = () => {
                             <div className="col-span-3 lg:col-span-2 flex w-full h-full items-center">
                                 <div className="bg-green-600">
                                     <div className="relative bg-blue-600 px-6">
-                                        <div className="absolute -top-52 left-16 rounded-full bg-white border
+                                        <div className="absolute -top-20 left-0 md:-top-52 md:left-16 rounded-full bg-white border
                                      border-white border-8 overflow-hidden z-10 ">
                                             <div className="w-32 h-32 rounded-full overflow-hidden ">
                                                 <Image alt="profile"
@@ -45,7 +45,7 @@ const page = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="absolute -top-4 left-16 z-10 rounded-[2rem] bg-orange-300">
+                                        <div className="absolute top-10 left-10 md:-top-4 md:left-16 z-10 rounded-[2rem] bg-orange-300">
                                             <button
                                                 onClick={handleCLick}
                                                 className="py-3 w-36">

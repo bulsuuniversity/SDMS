@@ -75,7 +75,7 @@ const Menu = ({ profile }) => {
                     <div className='fixed top-1 right-2 bg-amber-400 text-white rounded-full'>
                         <BsExclamationCircle size={20} /></div>
                 }
-                <div className='md:hidden block'>Profile</div>
+                <div className='md:hidden block'>Options</div>
             </span>
             {menuOpen && (
                 <div className="fixed top-8 right-2 flex flex-col">

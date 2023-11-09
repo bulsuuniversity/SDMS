@@ -227,7 +227,7 @@ const page = () => {
             <div style={{ backgroundImage: 'URL("/studentbg.png")' }} className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
                 {openSelectAct &&
                     <>
-                        <div className="p-6 grid text-start absolute border border-2 z-50 bg-white inset-0 m-12">
+                        <div className="p-6 grid text-start absolute border border-2 z-50 bg-white h-max inset-0 m-12">
                             <button className="hover:bg-gray-400 font-bold" type="button" onClick={() => handleAction("")} >Select Action of Discipline</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
@@ -249,10 +249,10 @@ const page = () => {
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                         </div>
                     </>}
-                <h2 className="text-2xl flex text-white w-80 sm:w-[38rem] bg-red-950 w-full justify-center">Report Form</h2>
-                <div className="border-red-950 bg-white border-8 w-80 sm:w-[38rem] grid justify-center">
+                <h2 className="text-2xl flex text-white w-80 sm:w-[44rem] bg-red-950 w-full justify-center">Report Form</h2>
+                <div className="border-red-950 bg-white border-8 w-80 sm:w-[44rem] grid justify-center">
 
-                    <div className="w-full grid gap-4 md:px-6 justify-center">
+                    <div className="w-full grid gap-4 md:px-6 px-1 justify-center">
                         <p className="font-bold py-4 flex gap-2">Ticket No.:
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
@@ -263,12 +263,10 @@ const page = () => {
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
                             <div className="grid indent-6 gap-4">
-
-
                                 <label className="md:flex grid md:justify-between">
                                     <p>Name:</p>
                                     <input
-                                        className="border w-52 mr-10"
+                                        className="border w-52 mr-2 md:mr-10"
                                         placeholder="Name"
                                         type="text"
                                         value={reportData.offender}
@@ -280,7 +278,7 @@ const page = () => {
                                     <p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
-                                        className="border w-52 mr-10"
+                                        className="border w-52 mr-2 md:mr-10"
                                         required
                                     >
                                         <option value="">Select College</option>
@@ -301,7 +299,7 @@ const page = () => {
                                 <label className="md:flex grid md:justify-between">
                                     <p>Course, year & section:</p>
                                     <input
-                                        className="border w-52 mr-10"
+                                        className="border w-52 mr-2 md:mr-10"
                                         placeholder="Course, Year & Section"
                                         type="text"
                                         value={reportData.course}
