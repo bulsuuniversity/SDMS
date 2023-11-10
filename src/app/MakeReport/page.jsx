@@ -96,7 +96,7 @@ const page = () => {
             setConfirmation(true)
             setMessage("Submitted successfully!")
             stopLoading()
-            // handleSendSMS("Hello there Admin. There is a new report submitted.")
+            handleSendSMS("Hello there Admin. There is a new report submitted.")
             handleNotif()
             setReportData({
                 reporter: "",
