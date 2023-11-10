@@ -7,7 +7,10 @@ export async function POST(req) {
 
     const { phoneNumbers, message, ticketNo } = await req.json();
 
-    const accessToken = 'f4e83673d7c03033d767bdacf430f8271c31806d04fd25695eb0e5aea837113f';
+    const accessToken = {
+        app_id: 'RX8KIRjBEoC7kiR88pcB8GCdXXA7Ie7o',
+        app_secret: '33ecf75c0249fe0bff4ecfafb44c5f9a648c97508d9618158ea7df2052f9c6ff'
+    }
     const apiUrl = 'https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/21666240/requests';
 
     const payload = {
@@ -25,6 +28,16 @@ export async function POST(req) {
                 'Content-Type': 'application/json',
             },
         });
+
+        // const apiUrl = 'http://developer.globelabs.com.ph/oauth';
+
+        // try {
+        //     const response = await axios.post(`${apiUrl}?access_token=${accessToken}`, payload, {
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //     });
+
 
         return NextResponse.json({ msg: 'Successfully Sent', response, status: 200 });
     } catch (error) {

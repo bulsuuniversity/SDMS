@@ -259,8 +259,8 @@ const page = () => {
                             <div className="underline underline-offset-4">
                                 {reportData.ticketNo && reportData.ticketNo}
                             </div>
-                            <button className="bg-blue-600 p-4 border"
-                                onClick={() => handleSendSMS("Hello there Admin. There is a new report submitted.")}>Send SMS</button>
+                            {/* <button className="bg-blue-600 p-4 border"
+                                onClick={() => handleSendSMS("Hello there Admin. There is a new report submitted.")}>Send SMS</button> */}
                         </p>
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>
