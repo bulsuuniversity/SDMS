@@ -40,6 +40,7 @@ const Register = ({ setActive, setData }) => {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        validatePassword(e.target.value)
     };
 
     const handleConfirmPasswordChange = (e) => {
@@ -110,6 +111,26 @@ const Register = ({ setActive, setData }) => {
             setUploading(false)
         }
     };
+
+    const [errorMessage, setErrorMessage] = useState('');
+    
+    const validatePassword = (password) => {
+        const isLengthValid = password.length >= 8;
+        const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasNumbers = /\d/.test(password);
+
+        if (!isLengthValid) {
+            setErrorMessage('Password must be at least 8 characters long.');
+        } else if (!hasSpecialCharacters) {
+            setErrorMessage('Password must contain special characters.');
+        } else if (!hasNumbers) {
+            setErrorMessage('Password must include numbers.');
+        }
+        else {
+            setErrorMessage('');
+        }
+    };
+
 
 
     return (
@@ -184,6 +205,7 @@ const Register = ({ setActive, setData }) => {
                                             required
                                         />
                                     </div>
+                                    {errorMessage && <div className="text-red-600">{errorMessage}</div>}
                                     <div className="mb-4 text-sm">
                                         <input
                                             type="password"

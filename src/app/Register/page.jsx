@@ -39,6 +39,7 @@ const Register = ({ setActive, setData }) => {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        validatePassword(e.target.value)
     };
 
     const handleConfirmPasswordChange = (e) => {
@@ -109,6 +110,24 @@ const Register = ({ setActive, setData }) => {
         }
     };
 
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const validatePassword = (password) => {
+        const isLengthValid = password.length >= 8;
+        const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasNumbers = /\d/.test(password);
+
+        if (!isLengthValid) {
+            setErrorMessage('Password must be at least 8 characters long.');
+        } else if (!hasSpecialCharacters) {
+            setErrorMessage('Password must contain special characters.');
+        } else if (!hasNumbers) {
+            setErrorMessage('Password must include numbers.');
+        }
+        else {
+            setErrorMessage('');
+        }
+    };
 
     return (
         <PublicRoute>
@@ -172,6 +191,7 @@ const Register = ({ setActive, setData }) => {
                                             required
                                         />
                                     </div>
+                                    {errorMessage && <div className="text-red-600">{errorMessage}</div>}
                                     <div className="mb-4 text-sm">
                                         <input
                                             type="password"
@@ -199,13 +219,13 @@ const Register = ({ setActive, setData }) => {
                                         />
                                     </div>
                                     {notPassword ? <div className="text-white p-2 bg-red-800 w-full h-max flex justify-center">Password do not match</div> :
-                                     <button
-                                        type="submit"
-                                        className={`w-full py-1 my-1 px-4 ${uploading ? "bg-gray-600" : 'bg-fuchsia-950 hover:bg-blue-600'}  text-white `}
-                                        disabled={uploading}
-                                    >
-                                        {uploading ? "Please wait" : "Register"}
-                                    </button>}
+                                        <button
+                                            type="submit"
+                                            className={`w-full py-1 my-1 px-4 ${uploading ? "bg-gray-600" : 'bg-fuchsia-950 hover:bg-blue-600'}  text-white `}
+                                            disabled={uploading}
+                                        >
+                                            {uploading ? "Please wait" : "Register"}
+                                        </button>}
                                     <Link href={'/Login'} onClick={() => setActive('button1')}
                                         className="text-blue-500 cursor-pointer text-xs text-end">
                                         Already have an account? Log in here.
