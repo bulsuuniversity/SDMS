@@ -181,7 +181,7 @@ const Page = () => {
         }
     }, [newAdmin])
 
-    const onlyMaster = data && Object.values(data).find((admin) => admin.idNumber === "master")
+    const onlyMaster = data && Object.values(data).filter((admin) => admin.idNumber === "master")
     console.log("Only master", onlyMaster)
     console.log("data", data)
 
