@@ -74,6 +74,30 @@ const Page = () => {
         }
     }, [responseData]);
 
+    
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        validatePassword(e.target.value)
+    };
+
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const validatePassword = (password) => {
+        const isLengthValid = password.length >= 8;
+        const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasNumbers = /\d/.test(password);
+
+        if (!isLengthValid) {
+            setErrorMessage('Password must be at least 8 characters long.');
+        } else if (!hasSpecialCharacters) {
+            setErrorMessage('Password must contain special characters.');
+        } else if (!hasNumbers) {
+            setErrorMessage('Password must include numbers.');
+        }
+        else {
+            setErrorMessage('');
+        }
+    };
 
     return (
         <Layout>
@@ -111,8 +135,9 @@ const Page = () => {
                         <input type="password"
                             className="border p-2 text-sm border-2"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={handlePasswordChange}
                             placeholder="New Password" required />
+                        {errorMessage && <div className="text-red-600">{errorMessage}</div>}
                         <input type="password"
                             placeholder="Confirm Password"
                             className={`border ${notPassword && "border-red-600"} p-2 text-sm border-2`}

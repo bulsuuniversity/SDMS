@@ -181,6 +181,8 @@ const Page = () => {
         }
     }, [newAdmin])
 
+    const onlyMaster = data && Object.values(data).find((admin) => admin.idNumber === "master")
+
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
@@ -191,16 +193,11 @@ const Page = () => {
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
                         className="rounded-l-full pl-2 focus:outline-none py-2"
-                        // value={search}
-                        // onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
                 </div>
             </div>
-            {/* <div className="flex gap-6 pl-10">
-                <Link href={'/Admin/AdminStudentRecord'} className="font-bold p-2">Student</Link>
-                <p className="font-bold border border-black p-2 border-bottom">Admin</p>
-            </div> */}
+
             {openInfo && info && <InformationModal>
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">
@@ -250,54 +247,20 @@ const Page = () => {
                                 <p className="font-bold">Email: </p>
                                 <div> {info.email}</div>
                             </label>
-                            {/* <label className="flex gap-3">
-                                <p className="font-bold">Name: </p>
-                                <div> {info.name}</div>
-                            </label> */}
+
                             <label className="flex gap-3">
                                 <p className="font-bold">Status: </p>
                                 <div> {info.status}</div>
                             </label>
-                            {/* <label className="flex gap-6">
-                                <label className="flex gap-3">
-                                    <p className="font-bold">College: </p>
-                                    <div> {info.college}</div>
-                                </label>
-                                <label className="flex gap-3">
-                                    <p className="font-bold">Year Level: </p>
-                                    <div> {info.yearLevel}</div>
-                                </label>
-                            </label> */}
-                            {/* <label className="flex gap-3">
-                                <p className="font-bold">Address: </p>
-                                <div> {info.address}</div>
-                            </label> */}
+
                             <label className="flex gap-3">
                                 <p className="font-bold">Contact No.: </p>
                                 <div> {info.phoneNumber}</div>
                             </label>
-                            {/* <label onClick={() => handleSetImage(info.credentials)} className="flex gap-3">
-                                <p className="font-bold">Attachment: </p>
-                                <div>{info.credentials ? (info.credentials).slice(-8) : "No attachments"}</div>
-                            </label> */}
-                        </div>
-                    </div>
-                    {/* {seeImage && info.attachment !== "" && <InformationModal>
-                        <div className="relative p-6">
-                            <div className="h-96">
-                                <Image width={400} height={200}
-                                    className="object-fill h-96 w-96"
-                                    src={imageToView} alt="attachment" />
-                            </div>
-                            <div className="absolute -top-4 -right-4">
-                                <button
-                                    onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
-                                    <AiFillCloseCircle size={30} /></button>
-                            </div>
 
                         </div>
-                    </InformationModal>} */}
-                    {/* <div className={`absolute left-24 -bottom-8`}> */}
+                    </div>
+
                     {info.email !== "bulsubulacanstateuniversity@gmail.com" &&
                         <div className="flex gap-2 items-center justify-center pt-4">
                             {info.status.includes("Registered") ?
@@ -307,6 +270,7 @@ const Page = () => {
                                         <div><GrClose size={24} /></div>
                                     </button>
                                     {info.idNumber.includes("master") ?
+                                        onlyMaster && onlyMaster.length > 1 &&
                                         <button onClick={handleRemoveMaster}
                                             className="bg-red-600 rounded-full p-2">
                                             <div>Remove as Master</div>
