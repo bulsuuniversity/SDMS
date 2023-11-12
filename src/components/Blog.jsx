@@ -66,7 +66,7 @@ const Blog = ({ images }, ref) => {
     };
 
     return (
-        <div ref={ref} className="w-full md:px-0 px-12 h-96 md:h-screen lg:h-[44rem]">
+        <div ref={ref} className="w-full md:px-0 px-12 h-96 md:h-[55rem]">
             <div className="flex justify-center items-center">
                 <div className="w-3/4">
                     <Slider {...settings}>
