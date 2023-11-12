@@ -100,7 +100,7 @@ export const DELETE = async (request) => {
     try {
         const body = await request.json();
         const { ids } = body
-        console.log(ids)
+        // console.log(ids)
         const deletedPost = await Promise.all(ids.map(async (id) => {
             await prisma.studentreport.delete({
                 where: {

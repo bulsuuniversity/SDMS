@@ -28,9 +28,9 @@ function SendMessage({ sentEmail, setSentEmail, suggestions, email, setClose }) 
     const handleSubmitReport = async () => {
         startLoading()
         try {
-            const sendCode = await axios.post(`${url}/api/AdminSendMail`, emailData, { headers });
+           await axios.post(`${url}/api/AdminSendMail`, emailData, { headers });
             setSuccess(true)
-            console.log(sendCode)
+            // console.log(sendCode)
             setSentEmail("")
             stopLoading()
         } catch (error) {

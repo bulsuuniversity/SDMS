@@ -29,12 +29,12 @@ const Page = () => {
         startLoading()
         try {
             const response = await axios.get(`${url}/api/findByEmail/${emailParams}`, { headers });
-            console.log(response)
+            // console.log(response)
             if (response) {
-                const changed = await axios.put(`${url}/api/changePassword/${response.data[0].id}`, {
+              await axios.put(`${url}/api/changePassword/${response.data[0].id}`, {
                     password
                 }, { headers });
-                console.log(changed)
+           
                 setResponseData("success")
             }
         } catch (error) {
