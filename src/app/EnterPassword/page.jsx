@@ -74,7 +74,7 @@ const Page = () => {
         }
     }, [responseData]);
 
-    
+
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
         validatePassword(e.target.value)
@@ -135,7 +135,7 @@ const Page = () => {
                         <input type="password"
                             className="border p-2 text-sm border-2"
                             value={password}
-                            onChange={handlePasswordChange}
+                            onChange={(e) => handlePasswordChange(e)}
                             placeholder="New Password" required />
                         {errorMessage && <div className="text-red-600">{errorMessage}</div>}
                         <input type="password"
@@ -147,7 +147,7 @@ const Page = () => {
                         <button type="submit"
                             disabled={notPassword}
                             className={`py-2 text-white px-4 ${loading ? "bg-gray-600" : "bg-purple-800"} `}>
-                            {loading ? "Submiting" : "Submit"}
+                            {loading ? "Submiting" : notPassword ? "Passwords don't match!" : "Submit"}
                         </button>
                     </form>
                 </div>

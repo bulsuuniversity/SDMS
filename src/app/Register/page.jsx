@@ -186,7 +186,7 @@ const Register = ({ setActive, setData }) => {
                                             type="password"
                                             className="w-full text-xs px-3 py-2 border border-black"
                                             value={password}
-                                            onChange={handlePasswordChange}
+                                            onChange={(e) => handlePasswordChange(e)}
                                             placeholder="Password"
                                             required
                                         />
