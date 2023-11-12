@@ -146,7 +146,7 @@ const Page = () => {
                         <button type="submit"
                             disabled={notPassword}
                             className={`py-2 text-white px-4 ${loading ? "bg-gray-600" : "bg-purple-800"} `}>
-                            {loading ? "Submiting" : "Submit"}
+                            {loading ? "Submiting" : notPassword ? "Passwords don't match!" : "Submit"}
                         </button>
                     </form>
                 </div>
