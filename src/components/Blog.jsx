@@ -68,7 +68,7 @@ const Blog = ({ images }, ref) => {
     return (
         <div ref={ref} className="w-full md:px-0 px-12 h-96 md:h-screen">
             <div className="flex justify-center items-center">
-                <div className="w-3/4 pt-5 h-full md:h-screen">
+                <div className="w-3/4 pt-5 pb-0 md:pb-16 lg:pb-4">
                     <Slider {...settings}>
                         {carousel ?
                             carousel.map((image, index) => (
