@@ -182,8 +182,8 @@ const Page = () => {
     }, [newAdmin])
 
     const onlyMaster = data && Object.values(data).filter((admin) => admin.idNumber === "master")
-    console.log("Only master", onlyMaster)
-    console.log("data", data)
+    // console.log("Only master", onlyMaster)
+    // console.log("data", data)
 
     return (
         <AdminMenu>
