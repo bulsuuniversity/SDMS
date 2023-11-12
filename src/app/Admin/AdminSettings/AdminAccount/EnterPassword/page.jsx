@@ -145,7 +145,8 @@ const Page = () => {
                             required />
                         <button type="submit"
                             disabled={notPassword}
-                            className={`py-2 text-white px-4 ${loading ? "bg-gray-600" : "bg-purple-800"} `}>
+                            className={`py-2 text-white px-4 ${loading ? "bg-gray-600" :
+                                notPassword ? "bg-red-600" : "bg-purple-800"} `}>
                             {loading ? "Submiting" : notPassword ? "Passwords don't match!" : "Submit"}
                         </button>
                     </form>
