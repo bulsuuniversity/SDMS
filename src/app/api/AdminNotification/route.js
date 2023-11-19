@@ -12,7 +12,7 @@ export const POST = async (request) => {
                 notif: true,
             },
         })
-        return NextResponse.json({ message: "Registered", newPost })
+        return NextResponse.json({ message: "Verified", newPost })
 
 
 

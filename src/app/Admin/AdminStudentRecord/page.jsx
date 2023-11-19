@@ -74,7 +74,7 @@ const Page = () => {
         }
     }
 
-    const status = "Registered"
+    const status = "Verified"
     const handleUpdateApi = async () => {
         startLoading()
         try {
@@ -217,7 +217,7 @@ const Page = () => {
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                {/* <option value="5">5</option> */}
                             </select>
                         </div>
                         <div className="flex justify-between w-full">
@@ -348,7 +348,7 @@ const Page = () => {
                     </Modal>}
                     {/* <div className={`absolute left-24 -bottom-8`}> */}
                     <div className="flex justify-center pt-4">
-                        {info.status !== "Registered" ?
+                        {info.status !== "Verified" ?
                             <button onClick={handleUpdate}
                                 className="bg-green-600 rounded-full p-2">
                                 <div><GiCheckMark size={32} /></div>

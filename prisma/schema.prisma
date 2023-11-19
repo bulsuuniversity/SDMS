@@ -105,3 +105,19 @@ model Notification {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Colleges {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  acronym   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Status {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  owner     String
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

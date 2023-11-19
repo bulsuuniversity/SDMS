@@ -32,8 +32,8 @@ const page = () => {
     }
 
 
-    const registeredUser = users && Object.values(users).filter(user => user.status === "Registered")
-    const unRegisteredUser = users && Object.values(users).filter(user => user.status !== "Registered")
+    const registeredUser = users && Object.values(users).filter(user => user.status === "Verified")
+    const unRegisteredUser = users && Object.values(users).filter(user => user.status !== "Verified")
     const registered = users && Math.round((registeredUser.length / users.length) * 100)
     const unRegistered = users && Math.round((unRegisteredUser.length / users.length) * 100)
 
@@ -62,7 +62,7 @@ const page = () => {
     }, [])
 
     const data = {
-        labels: ['Registered Students', 'Unregistered Students'],
+        labels: ['Verified Students', 'Unverified Students'],
         datasets: [
             {
                 data: [registeredUser && registeredUser.length, unRegisteredUser && unRegisteredUser.length],
@@ -72,7 +72,7 @@ const page = () => {
         ],
     };
     const data1 = {
-        labels: ['Unregistered Students', 'Registered Students'],
+        labels: ['Unverified Students', 'Verified Students'],
         datasets: [
             {
                 data: [unRegisteredUser && unRegisteredUser.length, registeredUser && registeredUser.length],
@@ -204,7 +204,7 @@ const page = () => {
                                 </div>
                                 <div className="flex items-center gap-2 justify-center">
                                     <GrCheckbox className="bg-red-800" />
-                                    Registered Students
+                                    Verified Students
                                 </div>
                             </div>
                             <div>
@@ -214,19 +214,19 @@ const page = () => {
                                 </div>
                                 <div className="flex items-center gap-2 justify-center">
                                     <GrCheckbox className="bg-gray-400" />
-                                    Unregistered Students
+                                    Unverified Students
                                 </div>
                             </div>
                         </div>
                         <div className="bg-white rounded-lg mx-5 p-2 grid justify-center gap-2">
                             <div className="flex gap-6">
                                 <div className="flex gap-6">
-                                    <span className="grid justify-center"><p>Registered Students Count</p>
+                                    <span className="grid justify-center"><p>Verified Students Count</p>
                                         <p className="font-bold text-center">{registeredUser && registeredUser.length}</p>
                                     </span>
                                 </div>
                                 <div className="flex gap-6">
-                                    <span className="grid justify-center gap-6"><p>Unregistered Students Count</p>
+                                    <span className="grid justify-center gap-6"><p>Unverified Students Count</p>
                                         <p className="font-bold text-center">{unRegisteredUser && unRegisteredUser.length}</p>
                                     </span>
                                 </div>
@@ -237,7 +237,7 @@ const page = () => {
                             </div>
                         </div>
                         <h2 className="font-bold flex py-4 justify-center">
-                            Registered Students &#40;by College&#41;
+                        Verified Students &#40;by College&#41;
                         </h2>
                         <div className="flex items-center p-5 gap-5 ">
                             <div className="w-60 h-60 m-4">
@@ -246,7 +246,7 @@ const page = () => {
                             {users && <RegsiteredLegends data={RegsiteredData} />}
                         </div>
                         <h2 className="font-bold flex py-4 justify-center">
-                            Unregistered Students &#40;by College&#41;
+                            Unverifiedd Students &#40;by College&#41;
                         </h2>
                         <div className="flex items-center p-5 gap-5 ">
                             <div className="w-60 h-60">

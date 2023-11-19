@@ -51,7 +51,7 @@ const AdminMenu = ({ children }) => {
         }
     }, [])
 
-    const status = "Registered Inactive"
+    const status = "Verified Inactive"
 
     const handleUpdateStatus = async () => {
         try {

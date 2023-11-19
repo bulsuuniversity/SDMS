@@ -46,7 +46,7 @@ function PrivateRoute({ children }) {
                 </div>
             </>
         )
-    } else if (session && session.status !== 'Registered') {
+    } else if (session && session.status !== 'Verified') {
         return (
             <>
                 <Header />
@@ -113,7 +113,7 @@ function PrivateRouteAdmin({ children }) {
                 </div>
             </>
         )
-    } else if (session && session.role === "admin" && session.status.includes("Unregistered")) {
+    } else if (session && session.role === "admin" && session.status.includes("Unverified")) {
         return (
             <>
                 <Header />

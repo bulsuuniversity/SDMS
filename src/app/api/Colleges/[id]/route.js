@@ -1,11 +1,10 @@
-// url: http://localhost:3000/api/studentAccount/${id}
 import prisma from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
     try {
         const { id } = params;
-        const post = await prisma.student.findUnique({
+        const post = await prisma.colleges.findUnique({
             where: {
                 id
             }
@@ -24,12 +23,15 @@ export const GET = async (request, { params }) => {
 export const PUT = async (request, { params }) => {
     try {
         const { id } = params
-        const updatePost = await prisma.student.update({
+        const body = await request.json();
+        const { name, acronym } = body;
+        const updatePost = await prisma.colleges.update({
             where: {
                 id
             },
             data: {
-                status: "Unverified"
+                name,
+                acronym
             }
         })
 
@@ -40,4 +42,18 @@ export const PUT = async (request, { params }) => {
     }
 }
 
+export const DELETE = async (request, { params }) => {
+    try {
+        const { id } = params;
 
+        await prisma.colleges.delete({
+            where: {
+                id
+            }
+        });
+
+        return NextResponse.json("Post has been deleted");
+    } catch (err) {
+        return NextResponse.json({ message: "DELETE Error", err }, { status: 500 });
+    }
+};

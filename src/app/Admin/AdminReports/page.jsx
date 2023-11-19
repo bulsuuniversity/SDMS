@@ -239,7 +239,10 @@ const Page = () => {
         setSuccess("")
         setSuccess(!success)
     }
-
+    const handleSearch = (e) => {
+        setSearch(e)
+        // setStatus(!status)
+    }
     const [history, setHistory] = useState(false)
 
     return (
@@ -296,7 +299,7 @@ const Page = () => {
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                                    <option value="5">5</option>
+                                    {/* <option value="5">5</option> */}
                                 </select>
                             </div>
                             <div className="flex justify-between w-full">
@@ -325,7 +328,7 @@ const Page = () => {
                     <input
                         className="rounded-l-full pl-2 focus:outline-none py-2"
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => handleSearch(e.target.value)}
                         placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
                 </div>
@@ -369,9 +372,9 @@ const Page = () => {
                                             <button type="button" className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
                                                 onClick={() => setHistory(!history)}>History</button>
                                             {history &&
-                                               
-                                                    <History student={info.offender} setHistory={setHistory} />
-                                              
+
+                                                <History student={info.offender} setHistory={setHistory} />
+
                                             }
                                         </div>
                                         <label className="flex gap-3 text-sm w-full lg:w-96">

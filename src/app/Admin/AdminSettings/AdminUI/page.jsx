@@ -6,6 +6,7 @@ import Image from "next/image";
 import Carousel from "./Carousel";
 import About from "./About";
 import Contact from "./Contact";
+import College from "./College";
 
 
 const Page = () => {
@@ -31,8 +32,16 @@ const Page = () => {
                             <button onClick={() => setOpen("contact")} className="bg-red-800 text-white py-1 px-6">Manage</button>
                         </div>
                     </div>
+
                 </div>
             </div>
+            <div className="flex ml-12 justify-between p-6 w-1/2">
+                <p className="font-bold">Manage College:</p>
+                <button onClick={() => setOpen("college")} className="bg-red-800 text-white py-1 px-6">Manage</button>
+            </div>
+            {open === "college" &&
+                <College setOpen={setOpen} />
+            }
             {open === "carousel" &&
                 <Carousel setOpen={setOpen} />
             }

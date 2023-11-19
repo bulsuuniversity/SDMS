@@ -12,6 +12,7 @@ import { FcAddDatabase } from "react-icons/fc";
 const PersonalInformation = () => {
     const [edit, setEdit] = useState(true);
     const { loading, startLoading, stopLoading } = useLoading()
+    const [isChecked, setChecked] = useState(true);
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { profileData, getProfileData } = useProfileData()
     const [editedValues, setEditedValues] = useState({
@@ -135,18 +136,32 @@ const PersonalInformation = () => {
                             className="border"
                             required
                         />
-                        <input
-                            value={editedValues.yearLevel === null ? "" : editedValues.yearLevel}
-                            type="text"
-                            readOnly={edit}
+                        <select
+                            disabled={edit}
                             onChange={(e) => handleInputChange("yearLevel", e.target.value)}
                             className="border"
                             required
-                        />
+                        >
+                            <option value={editedValues.yearLevel === null ? "" : editedValues.yearLevel}>
+                                {editedValues.yearLevel === null ? "Select Year Level" : editedValues.yearLevel}</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            {/* <option value="COE">COE</option> */}
+                        </select>
                     </div>
                 </div>
                 <div className="grid">
                     <p className="font-semibold">Adviser Information</p>
+                    <div className="flex gap-2 my-2">
+                        <p className="text-sm">Do you know who your adviser is?</p>
+                        <input
+                            type="checkbox"
+                            checked={isChecked}
+                            onChange={() => setChecked(!isChecked)}
+                        />
+                    </div>
                     <div className="ml-4 flex gap-5">
                         <div className="grid">
                             <label htmlFor="name whitespace-normal">Adviser Email: </label>
@@ -159,7 +174,7 @@ const PersonalInformation = () => {
                                 readOnly={edit}
                                 onChange={(e) => handleInputChange("adviserEmail", e.target.value)}
                                 className="border"
-                                required
+                                required={isChecked}
                             />
                             <input
                                 value={editedValues.adviserName === null ? "" : editedValues.adviserName}
@@ -167,7 +182,7 @@ const PersonalInformation = () => {
                                 readOnly={edit}
                                 onChange={(e) => handleInputChange("adviserName", e.target.value)}
                                 className="border"
-                                required
+                                required={isChecked}
                             />
                         </div>
                     </div>

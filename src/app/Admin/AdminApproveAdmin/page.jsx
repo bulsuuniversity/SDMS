@@ -53,7 +53,7 @@ const Page = () => {
         }
     };
 
-    const status = "Registered"
+    const status = "Verified"
 
     const handleUpdateApi = async () => {
         startLoading()
@@ -265,7 +265,7 @@ const Page = () => {
 
                     {info.email !== "bulsubulacanstateuniversity@gmail.com" &&
                         <div className="flex gap-2 items-center justify-center pt-4">
-                            {info.status.includes("Registered") ?
+                            {info.status.includes("Verified") ?
                                 <>
                                     <button onClick={handleRemoveAcc}
                                         className="bg-red-600 rounded-full p-2">

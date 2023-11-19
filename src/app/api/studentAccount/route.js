@@ -31,10 +31,10 @@ export const POST = async (request) => {
                     credentials: "N/A",
                     password: hashedPassword,
                     role: role,
-                    status: "Unregistered"
+                    status: "Unverified"
                 },
             })
-            return NextResponse.json({ message: "Registered", newPost })
+            return NextResponse.json({ message: "Verified", newPost })
         } else {
             const uploadResponse = await cloudinary.uploader.upload(credentials, {
                 upload_preset: "bulsu",
@@ -52,7 +52,7 @@ export const POST = async (request) => {
                         role: role
                     },
                 })
-                return NextResponse.json({ message: "Registered", newPost })
+                return NextResponse.json({ message: "Verified", newPost })
             }
         }
 

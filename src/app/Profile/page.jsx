@@ -8,17 +8,49 @@ import Link from "next/link";
 import SelectImage from "@/utils/SelectImage";
 import { useProfileData } from "../libs/store"
 import { PrivateRoute } from "@/components/auth";
-
+import PrintCert from "@/utils/PrintCert";
+import axios from "axios";
+import { url, headers } from "../libs/api";
 
 const page = () => {
     const [changeProfile, setChangeProfile] = useState(false)
-
+    const [loading, setLoading] = useState(false)
+    const [cleared, setCleared] = useState()
     const { profileData, getProfileData } = useProfileData()
-
+    const [success, setSuccess] = useState(false)
+    const [closeView, setCloseView] = useState(false)
     const handleCLick = () => {
         setChangeProfile(!changeProfile)
     }
 
+    const handleGetClearance = async () => {
+        setLoading(true)
+        try {
+            const response = await axios.get(`${url}/api/Status/${profileData.id}`,
+                { headers });
+            setCleared(response.data)
+            console.log(response.data)
+            setCloseView(true)
+            setLoading(false)
+        } catch (err) {
+            console.log(err);
+            setLoading(false)
+        }
+    }
+
+    const handleRequest = async () => {
+        setLoading(true)
+        try {
+            const response = await axios.post(`${url}/api/Status`,
+                { headers });
+            console.log(response.data)
+            setSuccess(true)
+            setLoading(false)
+        } catch (err) {
+            console.log(err);
+            setLoading(false)
+        }
+    }
 
     return (
         <Layout>
@@ -86,6 +118,16 @@ const page = () => {
 
                                 <div className="p-6 bg-white relative">
                                     <PersonalInformation />
+                                </div>
+                                <div className="flex justify-center">
+                                    {!closeView && profileData && <button onClick={handleGetClearance} className="px-4 py-2 rounded-lg bg-red-700 text-white">{loading ? "Please Wait" : "Check my Clearance"}</button>}
+                                    {closeView && cleared?.length > 0 ?
+                                        (success && cleared?.status === "eligible" ?
+                                            <button className="px-4 py-2 bg-red-700 rounded-lg text-white">Print Certificate of Clearance</button>
+                                            : <button className="px-4 py-2 bg-red-700 rounded-lg text-white">Not Eligible for this Clearance</button>
+                                        ) :
+                                        closeView && <button onClick={handleRequest}
+                                            className="px-4 py-2 rounded-lg bg-red-700 text-white">{loading ? "Please Wait" : "Request Certificate of Clearance"}</button>}
                                 </div>
                             </div>
                         </div>

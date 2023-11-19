@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 
 const page = () => {
     const { profileData } = useProfileData()
+    const [colleges, setColleges] = useState()
     const { loading, startLoading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
     const route = useRouter()
@@ -181,9 +182,19 @@ const page = () => {
 
     }, [latestTicket])
 
+    const getDetails = async () => {
+        try {
+            const details = await axios.get(`${url}/api/Colleges`,
+                { headers });
+            setColleges(details.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     useEffect(() => {
         getLatestTicket()
+        getDetails()
         handleGetData()
     }, [])
 
@@ -240,7 +251,6 @@ const page = () => {
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Indecency in Any Form of Obscene or Lewd Behavior")} >Indecency in Any Form of Obscene or Lewd Behavior</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Littering / Disribution of unauthorized printed materials")} >Littering / Disribution of unauthorized printed materials</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Malicious or unfounded accusations")} >Malicious or unfounded accusations</button>
-                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Physical / Verbal / Sexual / Mental / Emotional Abuse, Threat, Cyberbullying, Hazing, Coercion")} >Smoking, gambling or being under the influence of alcohol</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Plagiarism")} >Plagiarism</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises")} >Possession, Use, Sale or Purchase of Any Illegal Drugs Inside The University Premises</button>
@@ -248,7 +258,7 @@ const page = () => {
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university")} >Theft, attemted theft and/or unauthorized possession or use of property/services belonging to the university</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Unauthorized solicitation of funds or selling of any ticket")} >Unauthorized solicitation of funds or selling of any ticket</button>
                             <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Vandalism / unauthorized posting of printed material")} >Vandalism / Unauthorized posting of printed materials</button>
-
+                            <button className="hover:bg-gray-400" type="button" onClick={() => handleAction("Others")} >Others</button>
                         </div>
                     </>}
                 <h2 className="text-2xl flex text-white sm:w-[44rem] bg-red-950 w-full justify-center">Report Form</h2>
@@ -283,13 +293,9 @@ const page = () => {
                                         className="border w-52 mr-2 md:mr-10"
                                         required
                                     >
-                                        <option value="">Select College</option>
-                                        <option value="CBA">CBA</option>
-                                        <option value="CIT">CIT</option>
-                                        <option value="COED">COED</option>
-                                        <option value="CICS">CICS</option>
-                                        <option value="COE">COE</option>
-                                        {/* <option value="Others">Others</option> */}
+                                        {colleges?.map((college, index) => {
+                                            <option key={index} value={college.name}>{college.name}</option>
+                                        })}
                                     </select>
                                     {customOption && <input
                                         className="border"
@@ -335,7 +341,7 @@ const page = () => {
                                         </div>
                                         {customActionOption && <input
                                             className="border-b-2"
-                                            placeholder="Act of Misconduct."
+                                            placeholder="Enter other Act of Misconduct."
                                             type="text"
                                             value={reportData.actionOfDiscipline}
                                             onChange={(e) => handleInputChange('actionOfDiscipline', e.target.value)}
@@ -374,11 +380,11 @@ const page = () => {
                                             className="border ml-6 w-52"
                                         >
                                             <option value="">Select rate of Occurrence</option>
-                                            <option className="text-center" value="1">1</option>
-                                            <option className="text-center" value="2">2</option>
-                                            <option className="text-center" value="3">3</option>
-                                            <option className="text-center" value="4">4</option>
-                                            <option className="text-center" value="5">5</option>
+                                            <option className="text-center" value="1 - Seldom">1 - Seldom</option>
+                                            <option className="text-center" value="2 - Rarely">2 - Rarely</option>
+                                            <option className="text-center" value="3 - Sometimes">3 - Sometimes</option>
+                                            <option className="text-center" value="4 - Usually">4 - Usually</option>
+                                            <option className="text-center" value="5 - Always">5 - Always</option>
                                         </select>
 
                                     </label>

@@ -52,7 +52,7 @@ const Header = ({ setViewPort }) => {
                 <div className="w-16 flex p-3 overflow h-full">
                     <Image width={400} height={300} className="object-cover" src={Logo} alt="Logo" />
                 </div>
-                <span className=" text-white md:flex hidden text-2xl items-center">Bulacan State University</span>
+                <span className=" text-white font-serift md:flex hidden text-2xl items-center">SDMS of Bulacan State University</span>
             </div>
             {header ?
                 <div className="flex italic text-white pr-4 text-2xl items-center justify-end">
@@ -71,7 +71,7 @@ const Header = ({ setViewPort }) => {
 
                         {isopen &&
                             <div className="fixed inset-0 top-16 z-20">
-                                {session && session.status === "Registered" && session.role === "user" ?
+                                {session && session.status === "Verified" && session.role === "user" ?
                                     <div className="bg-red-900 flex flex-col gap-3 p-8 h-screen">
                                         <Homebutton setViewPort={setViewPort} />
                                         <ContactButton setViewPort={setViewPort} />
@@ -94,7 +94,7 @@ const Header = ({ setViewPort }) => {
                                 <Homebutton setViewPort={setViewPort} />
                                 <ContactButton setViewPort={setViewPort} />
                                 <AboutButton setViewPort={setViewPort} />
-                                <Menu profile={profileData.profile} />
+                                <Menu profile={profileData?.profile} />
                             </div>
                             :
                             <>

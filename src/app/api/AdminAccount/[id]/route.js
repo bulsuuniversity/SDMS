@@ -23,3 +23,20 @@ export const PUT = async (request, { params }) => {
 }
 
 
+
+export const GET = async (request, { params }) => {
+    try {
+        const { id } = params;
+
+        const getData = await prisma.student.findMany({
+            where: {
+                role: "admin",
+                status: "Verified Active"
+            }
+        });
+
+        return NextResponse.json(getData);
+    } catch (err) {
+        return NextResponse.json({ message: "get Error", err }, { status: 500 });
+    }
+};

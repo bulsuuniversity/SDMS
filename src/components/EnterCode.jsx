@@ -120,7 +120,7 @@ const EnterCode = ({ registerData, sentCode }) => {
             {submitted && <ConfirmationModal>
                 <div className="flex flex-col justify-center p-7 justify-center">
                     <div className="text-4xl font-bold whitespace-normal text-center ">
-                        Succesfully Registered!
+                        Succesfully Verified!
                     </div>
                     <div className="text-center">
                         Please wait for the admin to review and approve you account.

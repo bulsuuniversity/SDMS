@@ -29,7 +29,7 @@ const Login = () => {
         setPassword(e.target.value);
     };
 
-    const status = "Registered Active"
+    const status = "Verified Active"
 
     const handleUpdateStatus = async (id) => {
         try {
@@ -49,7 +49,7 @@ const Login = () => {
             && emailCheck.data.length > 0
             && emailCheck.data[0].role === "admin") {
             {
-                emailCheck.data[0].status.includes("Unregistered") ? "" :
+                emailCheck.data[0].status.includes("Unverified") ? "" :
                 handleUpdateStatus(emailCheck.data[0].id)
             }
             const response = await signIn('credentials', {
