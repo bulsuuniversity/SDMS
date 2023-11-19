@@ -42,9 +42,10 @@ const page = () => {
         setLoading(true)
         try {
             const response = await axios.post(`${url}/api/Status`,
-                { headers });
+                { owner: profileData.id, status: "Please Wait" }, { headers });
             console.log(response.data)
             setSuccess(true)
+            handleGetClearance()
             setLoading(false)
         } catch (err) {
             console.log(err);
@@ -124,7 +125,7 @@ const page = () => {
                                     {closeView && cleared?.length > 0 ?
                                         (success && cleared?.status === "eligible" ?
                                             <button className="px-4 py-2 bg-red-700 rounded-lg text-white">Print Certificate of Clearance</button>
-                                            : <button className="px-4 py-2 bg-red-700 rounded-lg text-white">Not Eligible for this Clearance</button>
+                                            : <button className="px-4 py-2 bg-red-700 rounded-lg text-white">{cleared.status}</button>
                                         ) :
                                         closeView && <button onClick={handleRequest}
                                             className="px-4 py-2 rounded-lg bg-red-700 text-white">{loading ? "Please Wait" : "Request Certificate of Clearance"}</button>}

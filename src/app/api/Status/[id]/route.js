@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
         const { id } = params;
         const post = await prisma.status.findUnique({
             where: {
-                id
+                owner: id
             }
         });
         return NextResponse.json(post);
