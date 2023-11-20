@@ -19,7 +19,6 @@ import { DateRangePicker } from 'react-date-range';
 import Link from "next/link";
 import { FcApprove } from "react-icons/fc";
 import { useRouter, useSearchParams } from "next/navigation";
-import DownloadButton from "@/utils/DownloadButton";
 import { GoSearch } from "react-icons/go";
 import PrintCert from "@/utils/PrintCert";
 import History from "./StudentHistory/History";
@@ -415,9 +414,7 @@ const Page = () => {
                                                 </Link>
                                             </div>
                                         </InformationModal>}
-
                                     </div>
-
                                     <div className="border px-8 bg-white py-4 border-black">
                                         <label className="grid gap-1 text-sm">
                                             <p className="font-bold pb-1 text-lg">REPORT HOLDER DETAILS </p>
@@ -452,11 +449,6 @@ const Page = () => {
                                         <p className="text-center">Please wait...</p>
                                     </div>
                                 </InformationModal>}
-
-
-
-
-
                                 <div className="grid text-sm gap-2">
                                     <div className="border bg-white grid gap-1 border-black p-4">
                                         <p className="font-bold text-lg">SANCTION</p>
@@ -496,10 +488,10 @@ const Page = () => {
                                             cols="30"
                                             placeholder="Further Details"
                                             className="mb-8 bg-gray-200"
-                                            required />
+                                             />
 
                                         <button type="button" onClick={() => setPrint(!print)}
-                                            className="px-4 py-2 bg-red-700 text-white">Certificate</button>
+                                            className="px-4 py-2 bg-red-700 text-white">Report Clearance</button>
                                         {print && <PrintCert content={info} setPrint={setPrint} contentRef={componentRef} />}
                                     </div>
 
@@ -520,7 +512,7 @@ const Page = () => {
                     <ReportsDatagridview
                         setOpenINfo={setOpenINfo}
                         setClickedID={setClickedID}
-                        tableData={data}
+                        tableData={data.reverse()}
                         status={status}
                         handleGetData={handleGetData}
                     /> : <div className="flex justify-center p-10 inset-0">No records found</div>}

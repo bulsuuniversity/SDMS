@@ -22,6 +22,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PrintButton from "@/utils/PrintButton";
 import PrintableComponent from "@/components/PrintableComponent";
 import { BsFillPrinterFill } from "react-icons/bs";
+import History from "./StudentHistory/History";
+import PrintCert2 from "@/utils/PrintCert2";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -36,7 +38,9 @@ const Page = () => {
     const { startLoading, loading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
     const [search, setSearch] = useState()
+    const [history, setHistory] = useState(false)
     const componentRef = useRef();
+
 
     const handleSetImage = (image) => {
         setImageToView(image)
@@ -296,6 +300,12 @@ const Page = () => {
                                 <p className="font-bold">Student ID:</p>
                                 <div className="bg-gray-300 p-2">{info.idNumber}</div>
                             </label>
+                            {/* Resesrve for History */}
+                            {/* <button type="button" className="font-semibold"
+                                onClick={() => setHistory(!history)}>History</button>
+                            {history &&
+                                <History student={info.name} setHistory={setHistory} />
+                            } */}
                             <label className="flex gap-3">
                                 <p className="font-bold">Email: </p>
                                 <div> {info.email}</div>
@@ -347,17 +357,25 @@ const Page = () => {
                         </div>
                     </Modal>}
                     {/* <div className={`absolute left-24 -bottom-8`}> */}
-                    <div className="flex justify-center pt-4">
-                        {info.status !== "Verified" ?
+
+                    {info.status !== "Verified" ?
+                        <div className="flex justify-center pt-4">
                             <button onClick={handleUpdate}
                                 className="bg-green-600 rounded-full p-2">
                                 <div><GiCheckMark size={32} /></div>
-                            </button> :
+                            </button>
+                        </div> :
+                        <div className="flex gap-2 justify-center pt-4">
                             <button onClick={handleRemoveAcc}
                                 className="bg-red-600 rounded-full p-2">
                                 <div><GrClose size={32} /></div>
-                            </button>}
-                    </div>
+                            </button>
+                            <button type="button" onClick={() => setPrint(!print)}
+                                className="px-4 rounded-full py-2 bg-red-700 text-white">Clearance Certificate</button>
+                            {print && <PrintCert2 content={info} setPrint={setPrint} contentRef={componentRef} />}
+                        </div>
+                    }
+
                 </div>
             </InformationModal >}
             <div className="md:mx-10 mx-1 mb-20 mt-10 border border-red-700 border-2">

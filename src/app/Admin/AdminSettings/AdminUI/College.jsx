@@ -134,7 +134,7 @@ const College = ({ setOpen }) => {
                                 value={acronym}
                                 onChange={(e) => setAcronym(e.target.value)}
                                 type="text"
-                                placeholder="Name"
+                                placeholder="Acronym"
                                 required />
                             <div className="flex justify-center mx-6 mt-6">
                                 <button disabled={loading} type="submit" className="py-1 mx-1 px-8 bg-red-800 rounded-lg text-white">{loading ? "Saving" : "Save"}</button>
@@ -157,7 +157,7 @@ const College = ({ setOpen }) => {
                                 value={acronym}
                                 onChange={(e) => setAcronym(e.target.value)}
                                 type="text"
-                                placeholder="Name"
+                                placeholder="Acronym"
                                 required />
                             <div className="flex justify-between mx-6 mt-6">
                                 <button disabled={loading} type="submit" className="py-1 px-8 mx-1 bg-red-800 rounded-lg text-white">{loading ? "Saving" : "Save"}</button>

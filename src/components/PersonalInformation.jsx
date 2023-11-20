@@ -14,6 +14,7 @@ const PersonalInformation = () => {
     const { loading, startLoading, stopLoading } = useLoading()
     const [isChecked, setChecked] = useState(true);
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
+    const [colleges, setColleges] = useState()
     const { profileData, getProfileData } = useProfileData()
     const [editedValues, setEditedValues] = useState({
         name: "",
@@ -68,6 +69,21 @@ const PersonalInformation = () => {
         });
     };
 
+    const getDetails = async () => {
+        try {
+            const details = await axios.get(`${url}/api/Colleges`,
+                { headers });
+            setColleges(details.data)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getDetails()
+    }, [])
+
     return (
         <div className="">
             <ConfirmationDialog />
@@ -106,20 +122,20 @@ const PersonalInformation = () => {
                             className="border"
                             required
                         />
-                        <select
-                            disabled={edit}
-                            onChange={(e) => handleInputChange("college", e.target.value)}
-                            className="border"
-                            required
-                        >
-                            <option value={editedValues.college === null ? "" : editedValues.college}>
-                                {editedValues.college === null ? "Select college" : editedValues.college}</option>
-                            <option value="CBA">CBA</option>
-                            <option value="CIT">CIT</option>
-                            <option value="COED">COED</option>
-                            <option value="CICS">CICS</option>
-                            <option value="COE">COE</option>
-                        </select>
+                        {colleges &&
+                            <select
+                                disabled={edit}
+                                onChange={(e) => handleInputChange("college", e.target.value)}
+                                className="border"
+                                required
+                            >
+                                {edit ? <option value={editedValues.college === null ? "" : editedValues.college}>{editedValues.college}</option> : <option value="">Select College</option>}
+                                {colleges?.map((college, index) => (
+                                    <option key={index} value={college.name}>
+                                        {college.acronym}
+                                    </option>
+                                ))}
+                            </select>}
                         <input
                             value={editedValues.address === null ? "" : editedValues.address}
                             type="text"

@@ -29,7 +29,7 @@ const Page = () => {
             stopLoading()
         }
     }
-    console.log(filterData)
+  
     const data = filterData && Object.values(filterData)
         .filter((adviser, index, self) =>
             adviser.adviserEmail &&
@@ -37,7 +37,7 @@ const Page = () => {
             index === self.findIndex((a) => a.adviserEmail === adviser.adviserEmail)
         );
 
-    console.log(data)
+
 
     useEffect(() => {
         handleGetData()

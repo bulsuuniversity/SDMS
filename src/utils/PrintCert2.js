@@ -1,0 +1,34 @@
+// PrintCert2.js
+import React, { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { BsFillPrinterFill } from 'react-icons/bs';
+import InformationModal from './InformationModal';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import PrintableCert2 from '@/components/PrintableCert2';
+
+const PrintCert2 = ({ content, setPrint }) => {
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
+    return (
+        <InformationModal>
+            <div className='relative overflow-y-auto h-screen m-10'>
+                <button type='button' className='bg-red-700 m-6 flex gap-3 text-white px-4 py-2' onClick={handlePrint}>
+                    <BsFillPrinterFill size={24} />  Print
+                </button>
+                <div className="absolute top-0 right-0">
+                    <button type='button'
+                        onClick={() => setPrint(!print)}
+                        className="rounded-full px-4 py-2 h-max w-max text-red-600 bg-white">
+                        <AiFillCloseCircle size={30} /></button>
+                </div>
+                <PrintableCert2 content={content} ref={componentRef} />
+
+            </div>
+        </InformationModal>
+    );
+};
+
+export default PrintCert2;
