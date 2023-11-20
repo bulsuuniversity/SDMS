@@ -187,11 +187,12 @@ const page = () => {
             const details = await axios.get(`${url}/api/Colleges`,
                 { headers });
             setColleges(details.data)
+
         } catch (err) {
             console.log(err)
         }
     }
-
+  
     useEffect(() => {
         getLatestTicket()
         getDetails()
@@ -286,24 +287,20 @@ const page = () => {
                                         required
                                     />
                                 </label>
-                                <label className="md:flex grid justify-center md:justify-between">
+                                {colleges && <label className="md:flex grid justify-center md:justify-between">
                                     <p>College:</p>
                                     <select
                                         onChange={handleChangeCollege}
                                         className="border w-52 mr-2 md:mr-10"
                                         required
                                     >
-                                        {colleges?.map((college, index) => {
-                                            <option key={index} value={college.name}>{college.name}</option>
-                                        })}
+                                        {colleges?.map((college, index) => (
+                                            <option key={index} value={college.name}>
+                                                {college.acronym}
+                                            </option>
+                                        ))}
                                     </select>
-                                    {customOption && <input
-                                        className="border"
-                                        type="text"
-                                        value={reportData.college}
-                                        onChange={(e) => handleInputChange('college', e.target.value)}
-                                    />}
-                                </label>
+                                </label>}
                                 <label className="md:flex grid justify-center md:justify-between">
                                     <p>Course, year & section:</p>
                                     <input
