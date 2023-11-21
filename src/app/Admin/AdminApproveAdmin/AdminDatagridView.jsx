@@ -41,18 +41,6 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
             sortable: true,
             cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.name}</div>,
         },
-        // {
-        //     name: <div className='flex text-center'>COLLEGE</div>,
-        //     selector: row => row.college,
-        //     sortable: true,
-        //     cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.college}</div>,
-        // },
-        // {
-        //     name: <div className='flex text-center'>YEAR LEVEL</div>,
-        //     selector: row => row.yearLevel,
-        //     sortable: true,
-        //     cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.yearLevel}</div>,
-        // },
         {
             name: <div className='flex text-center'>STATUS</div>,
             selector: row => row.status,
@@ -66,7 +54,7 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
                     },
                 },
                 {
-                    when: (row) => row.status.includes("Verified"),
+                    when: (row) => row.status?.includes("Verified"),
                     style: {
                         color: 'green',
                     },
@@ -80,13 +68,10 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
         // },
     ];
     const data = Object.values(tableData).map((account, index) => ({
-        id: account.id,
-        // idNumber: account.idNumber,
-        email: account.email,
-        name: account.name,
-        // college: account.college,
-        // yearLevel: account.yearLevel,
-        status: account.status,
+        id: account?.id,
+        email: account?.email,
+        name: account?.name,
+        status: account?.status,
     }))
 
     const handleRowClick = (row) => {
