@@ -26,6 +26,7 @@ const Page = () => {
     const [openInfo, setOpenINfo] = useState(false)
     const [data, setData] = useState()
     const [imageToView, setImageToView] = useState()
+    const [search, setSearch] = useState()
     const [success, setSuccess] = useState("")
     const { showConfirmation, ConfirmationDialog } = useConfirmation();
     const { startLoading, loading, stopLoading } = useLoading()
@@ -117,9 +118,12 @@ const Page = () => {
         }
     }
 
-    // useEffect(() => {
-
-    // }, [data])
+    const filterData = data &&
+        Object.values(data).filter(admin => {
+            const searchCondition = search ?
+                admin.name && (admin.name.toLowerCase()).includes(search.toLowerCase()) : true;
+            return searchCondition;
+        });
 
 
 
@@ -181,7 +185,7 @@ const Page = () => {
         }
     }, [newAdmin])
 
-    const onlyMaster = data && Object.values(data).filter((admin) => admin.idNumber === "master")
+    const onlyMaster = data && Object.values(data).filter((admin) => admin?.idNumber === "master")
     // console.log("Only master", onlyMaster)
     // console.log("data", data)
 
@@ -194,6 +198,7 @@ const Page = () => {
             <div className="flex justify-center">
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
+                        onChange={(e) => setSearch(e.target.value)}
                         className="rounded-l-full pl-2 focus:outline-none py-2"
                         placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
@@ -243,7 +248,7 @@ const Page = () => {
                         <div className="grid gap-2 text-xs">
                             <label className="flex gap-3 items-center">
                                 <p className="font-bold">Account type:</p>
-                                <div className="bg-gray-300 p-2">{info.idNumber}</div>
+                                <div className="bg-gray-300 p-2">{info?.idNumber}</div>
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Email: </p>
@@ -263,15 +268,15 @@ const Page = () => {
                         </div>
                     </div>
 
-                    {info.email !== "bulsubulacanstateuniversity@gmail.com" &&
+                    {info?.email !== "bulsubulacanstateuniversity@gmail.com" &&
                         <div className="flex gap-2 items-center justify-center pt-4">
-                            {info.status.includes("Verified") ?
+                            {info?.status.includes("Verified") ?
                                 <>
                                     <button onClick={handleRemoveAcc}
                                         className="bg-red-600 rounded-full p-2">
                                         <div><GrClose size={24} /></div>
                                     </button>
-                                    {info.idNumber.includes("master") ?
+                                    {info?.idNumber.includes("master") ?
                                         onlyMaster && onlyMaster.length > 1 &&
                                         <button onClick={handleRemoveMaster}
                                             className="bg-red-600 rounded-full p-2">
@@ -294,11 +299,11 @@ const Page = () => {
                 </div>
             </InformationModal>}
             <div className="md:mx-10 mx-1 my-10 border border-blue-400 border-2">
-                {data && data.length > 0 ?
+                {filterData && filterData.length > 0 ?
                     <AdminDatagridView
                         setOpenINfo={setOpenINfo}
                         setClickedID={setClickedID}
-                        tableData={data}
+                        tableData={filterData}
                     /> : <div className="inset-0">No records found</div>}
             </div>
         </AdminMenu>

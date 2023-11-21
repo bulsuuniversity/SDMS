@@ -137,8 +137,9 @@ const Page = () => {
                                         <div>{info.attachment ? (info.attachment).slice(-8) : "No attachment"}</div>
                                     </label>
                                     <div className="flex justify-center my-4">
-                                        <a className='bg-red-800 text-white rounded-lg px-4 py-2'
-                                            href={`mailto:${adminAccount}?subject=Request%20for%20Review&body=I%20am%20${profileData.name}%20requesting%20to%20review%20my%20report%20about%20${info.offender}%20with%20the%20ticket%20No%20${info.ticketNo}.%20`}>Follow Up</a>
+                                        {adminAccount && profileData && <a className='bg-red-800 text-white rounded-lg px-4 py-2'
+                                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${adminAccount}&subject=Request%20for%20Review&body=I%20am%20${profileData.name}%20requesting%20to%20review%20my%20report%20about%20${info.offender}%20with%20the%20ticket%20No%20${info.ticketNo}.%20`}
+                                            target="_blank">Follow Up</a>}
                                     </div>
                                     {seeImage && info.attachment !== "" && <InformationModal>
                                         <div className="relative p-6">
