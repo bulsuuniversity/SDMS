@@ -189,62 +189,62 @@ const page = () => {
         };
     };
 
-    const pieData = collegess?.length > 0 && generatePieData(registeredUser, collegess);
-    const UnpieData = collegess?.length > 0 && generatePieData(unRegisteredUser, collegess);
+    // const pieData = collegess?.length > 0 && generatePieData(registeredUser, collegess);
+    // const UnpieData = collegess?.length > 0 && generatePieData(unRegisteredUser, collegess);
 
 
 
 
-    // const pieData = {
-    //     labels: ['CBA',
-    //         'CIT',
-    //         'COED',
-    //         'CICS',
-    //         'COE',
-    //     ],
-    //     datasets: [
-    //         {
-    //             label: 'Student Count',
-    //             data: [CBA,
-    //                 CIT,
-    //                 COED,
-    //                 CICS,
-    //                 COE,],
-    //             backgroundColor: [
-    //                 'rgb(202, 138, 4)',
-    //                 'rgb(22, 163, 74)',
-    //                 'rgb(37, 99, 235)',
-    //                 'rgb(156, 163, 175)',
-    //                 'rgb(217, 119, 6)',
-    //             ],
-    //             borderWidth: 1,
-    //         },
-    //     ],
-    // };
+    const pieData = {
+        labels: ['CBA',
+            'CIT',
+            'COED',
+            'CICS',
+            'COE',
+        ],
+        datasets: [
+            {
+                label: 'Student Count',
+                data: [CBA,
+                    CIT,
+                    COED,
+                    CICS,
+                    COE,],
+                backgroundColor: [
+                    'rgb(202, 138, 4)',
+                    'rgb(22, 163, 74)',
+                    'rgb(37, 99, 235)',
+                    'rgb(156, 163, 175)',
+                    'rgb(217, 119, 6)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
 
-    // const UnpieData = {
-    //     labels: ['CBA',
-    //         'CIT',
-    //         'COED',
-    //         'CICS',
-    //         'COE',
-    //         'Unknown'],
-    //     datasets: [
-    //         {
-    //             label: 'Student Count',
-    //             data: [unCBA, unCIT, unCOED, unCICS, unCOE, Others],
-    //             backgroundColor: [
-    //                 'rgb(202, 138, 4)',
-    //                 'rgb(22, 163, 74)',
-    //                 'rgb(37, 99, 235)',
-    //                 'rgb(156, 163, 175)',
-    //                 'rgb(217, 119, 6)',
-    //                 'rgb(124, 58, 237)'
-    //             ],
-    //             borderWidth: 1,
-    //         },
-    //     ],
-    // };
+    const UnpieData = {
+        labels: ['CBA',
+            'CIT',
+            'COED',
+            'CICS',
+            'COE',
+            'Unknown'],
+        datasets: [
+            {
+                label: 'Student Count',
+                data: [unCBA, unCIT, unCOED, unCICS, unCOE, Others],
+                backgroundColor: [
+                    'rgb(202, 138, 4)',
+                    'rgb(22, 163, 74)',
+                    'rgb(37, 99, 235)',
+                    'rgb(156, 163, 175)',
+                    'rgb(217, 119, 6)',
+                    'rgb(124, 58, 237)'
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
     return (
         <DashboardLayout>
             <div className=" px-14">
