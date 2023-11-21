@@ -248,7 +248,7 @@ const Page = () => {
                         <div className="grid gap-2 text-xs">
                             <label className="flex gap-3 items-center">
                                 <p className="font-bold">Account type:</p>
-                                <div className="bg-gray-300 p-2">{info?.idNumber}</div>
+                                <div className="bg-gray-300 p-2">{info?.idNumber === "master" ? "Master Admin" : "Admin"}</div>
                             </label>
                             <label className="flex gap-3">
                                 <p className="font-bold">Email: </p>
@@ -280,11 +280,11 @@ const Page = () => {
                                         onlyMaster && onlyMaster.length > 1 &&
                                         <button onClick={handleRemoveMaster}
                                             className="bg-red-600 rounded-full p-2">
-                                            <div>Remove as Master</div>
+                                            <div>Remove as Master Admin</div>
                                         </button> :
                                         <button onClick={handleMakeMaster}
                                             className="bg-green-600 rounded-full p-2">
-                                            <div>Mark as Master</div>
+                                            <div>Mark as Master Admin</div>
                                         </button>}
                                 </>
                                 :
