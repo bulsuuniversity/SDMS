@@ -27,7 +27,7 @@ const page = () => {
                 {profileData && profileData.id &&
                     <div className="bg-red-100 border text-lg border-2 h-screen flex justify-center  p-4 z-1">
                         <div className="grid md:grid-cols-12 grid-cols-1 w-screen lg:w-10/12 md:bg-red-50 mb-10 bg-fuchsia-950 h-full items-center">
-                            <div className="col-span-3 lg:col-span-2 flex w-full h-full items-center">
+                            <div className="col-span-4 xl:col-span-3 flex w-full h-full items-center">
                                 <div className="bg-green-600">
                                     <div className="relative bg-blue-600 px-6">
                                         <div className="absolute -top-20 left-24 md:-top-52 md:left-16 rounded-full bg-white border
@@ -50,7 +50,7 @@ const page = () => {
                                                 Change Profile
                                             </button>
                                         </div>
-                                        <div className="absolute left-20 -top-32 overflow-hidden md:visible hidden flex flex-col w-28 h-80 justify-center">
+                                        <div className="absolute left-20 -top-32 overflow-hidden md:flex hidden flex flex-col w-28 h-80 justify-center">
                                             <div className="bg-fuchsia-950 h-full">
                                             </div>
                                             <div className={`h-0 w-0 
@@ -62,10 +62,10 @@ const page = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="md:col-span-9 lg:col-span-10 bg-red-50 md:mt-0 xl:ml-10 p-2">
+                            <div className="col-span-8 xl:col-span-9 bg-red-50 md:mt-0 mt-20 p-2">
                                 <div className="p-2 text-xs md:text-lg">
                                     <h2 className="font-semibold">Account Information</h2>
-                                    <div className="ml-4 font-medium flex gap-5">
+                                    <div className="md:ml-4 ml-0 font-medium flex gap-5">
                                         <div className="grid">
                                             <label htmlFor="email">Email:</label>
                                             <label htmlFor="idNumber">ID Number:</label>
@@ -82,7 +82,7 @@ const page = () => {
                                     </Link>
                                 </div>
 
-                                <div className="p-6 bg-white relative">
+                                <div className="md:p-6 p-2 bg-white relative">
                                     <PersonalInformation />
                                 </div>
                             </div>

@@ -16,7 +16,20 @@ Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const page = () => {
     const [users, setUsers] = useState()
+    const [colleges, setColleges] = useState()
     const { loading, startLoading, stopLoading } = useLoading()
+
+    const getDetails = async () => {
+        try {
+            const details = await axios.get(`${url}/api/Colleges`,
+                { headers });
+            setColleges(details.data)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
     const handleGetData = async () => {
         startLoading()
@@ -32,6 +45,12 @@ const page = () => {
     }
 
 
+    useEffect(() => {
+        handleGetData()
+        getDetails()
+    }, [])
+
+
     const registeredUser = users && Object.values(users).filter(user => user.status === "Verified")
     const unRegisteredUser = users && Object.values(users).filter(user => user.status !== "Verified")
     const registered = users && Math.round((registeredUser.length / users.length) * 100)
@@ -44,7 +63,7 @@ const page = () => {
     const COE = users ? (Object.values(registeredUser).filter(user => user.college === "COE")).length : 1
 
     const RegsiteredData = { CBA, CIT, COED, CICS, COE }
-    const RegsiteredAllData = CBA + CIT + COED + CICS + COE
+
 
     const unCBA = users ? (Object.values(unRegisteredUser).filter(user => user.college === "CBA")).length : 1
     const unCIT = users ? (Object.values(unRegisteredUser).filter(user => user.college === "CIT")).length : 1
@@ -54,12 +73,20 @@ const page = () => {
     const Others = users ? unRegisteredUser.length - (unCBA + unCIT + unCOED + unCICS + unCOE) : 1
 
     const unRegsiteredData = { unCBA, unCIT, unCOED, unCICS, unCOE, Others }
-    const unRegsiteredAllData = unCBA + unCIT + unCOED + unCICS + unCOE + Others
 
 
-    useEffect(() => {
-        handleGetData()
-    }, [])
+    const getCollegeCount = (userList, college) => users ? Object.values(userList).filter(user => user.college === college).length : 1;
+
+    const collegess = colleges?.map((college) => college.acronym);
+
+    const RegsiteredDatass = collegess && Object.fromEntries(collegess?.map(college =>
+        [college, getCollegeCount(registeredUser, college)]));
+    const unRegsiteredDatas = collegess && Object.fromEntries([...collegess, "Others"].map(college =>
+        [college, college === "Others" ? users ? unRegisteredUser.length - collegess.reduce((acc, college) =>
+            acc + getCollegeCount(unRegisteredUser, college), 0) : 1 :
+            getCollegeCount(unRegisteredUser, college)]));
+
+
 
     const data = {
         labels: ['Verified Students', 'Unverified Students'],
@@ -137,56 +164,87 @@ const page = () => {
         }
     };
 
-    const pieData = {
-        labels: ['CBA',
-            'CIT',
-            'COED',
-            'CICS',
-            'COE',
-        ],
-        datasets: [
-            {
-                label: 'Student Count',
-                data: [CBA,
-                    CIT,
-                    COED,
-                    CICS,
-                    COE,],
-                backgroundColor: [
-                    'rgb(202, 138, 4)',
-                    'rgb(22, 163, 74)',
-                    'rgb(37, 99, 235)',
-                    'rgb(156, 163, 175)',
-                    'rgb(217, 119, 6)',
-                ],
-                borderWidth: 1,
-            },
-        ],
+
+    const generatePieData = (userData, colleges) => {
+        const counts = colleges?.map(college => users ? Object.values(userData).filter(user => user.college === college).length : 1);
+        const total = users ? Object.values(userData).length : 1;
+
+        return {
+            labels: [...colleges, 'Unknown'],
+            datasets: [
+                {
+                    label: 'Student Count',
+                    data: [...counts, total - counts.reduce((acc, count) => acc + count, 0)],
+                    backgroundColor: [
+                        'rgb(202, 138, 4)',
+                        'rgb(22, 163, 74)',
+                        'rgb(37, 99, 235)',
+                        'rgb(156, 163, 175)',
+                        'rgb(217, 119, 6)',
+                        'rgb(124, 58, 237)'
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        };
     };
 
-    const UnpieData = {
-        labels: ['CBA',
-            'CIT',
-            'COED',
-            'CICS',
-            'COE',
-            'Unknown'],
-        datasets: [
-            {
-                label: 'Student Count',
-                data: [unCBA, unCIT, unCOED, unCICS, unCOE, Others],
-                backgroundColor: [
-                    'rgb(202, 138, 4)',
-                    'rgb(22, 163, 74)',
-                    'rgb(37, 99, 235)',
-                    'rgb(156, 163, 175)',
-                    'rgb(217, 119, 6)',
-                    'rgb(124, 58, 237)'
-                ],
-                borderWidth: 1,
-            },
-        ],
-    };
+    const pieData = collegess?.length > 0 && generatePieData(registeredUser, collegess);
+    const UnpieData = collegess?.length > 0 && generatePieData(unRegisteredUser, collegess);
+
+
+
+
+    // const pieData = {
+    //     labels: ['CBA',
+    //         'CIT',
+    //         'COED',
+    //         'CICS',
+    //         'COE',
+    //     ],
+    //     datasets: [
+    //         {
+    //             label: 'Student Count',
+    //             data: [CBA,
+    //                 CIT,
+    //                 COED,
+    //                 CICS,
+    //                 COE,],
+    //             backgroundColor: [
+    //                 'rgb(202, 138, 4)',
+    //                 'rgb(22, 163, 74)',
+    //                 'rgb(37, 99, 235)',
+    //                 'rgb(156, 163, 175)',
+    //                 'rgb(217, 119, 6)',
+    //             ],
+    //             borderWidth: 1,
+    //         },
+    //     ],
+    // };
+
+    // const UnpieData = {
+    //     labels: ['CBA',
+    //         'CIT',
+    //         'COED',
+    //         'CICS',
+    //         'COE',
+    //         'Unknown'],
+    //     datasets: [
+    //         {
+    //             label: 'Student Count',
+    //             data: [unCBA, unCIT, unCOED, unCICS, unCOE, Others],
+    //             backgroundColor: [
+    //                 'rgb(202, 138, 4)',
+    //                 'rgb(22, 163, 74)',
+    //                 'rgb(37, 99, 235)',
+    //                 'rgb(156, 163, 175)',
+    //                 'rgb(217, 119, 6)',
+    //                 'rgb(124, 58, 237)'
+    //             ],
+    //             borderWidth: 1,
+    //         },
+    //     ],
+    // };
     return (
         <DashboardLayout>
             <div className=" px-14">
@@ -237,7 +295,7 @@ const page = () => {
                             </div>
                         </div>
                         <h2 className="font-bold flex py-4 justify-center">
-                        Verified Students &#40;by College&#41;
+                            Verified Students &#40;by College&#41;
                         </h2>
                         <div className="flex items-center p-5 gap-5 ">
                             <div className="w-60 h-60 m-4">
@@ -246,7 +304,7 @@ const page = () => {
                             {users && <RegsiteredLegends data={RegsiteredData} />}
                         </div>
                         <h2 className="font-bold flex py-4 justify-center">
-                            Unverifiedd Students &#40;by College&#41;
+                            Unverified Students &#40;by College&#41;
                         </h2>
                         <div className="flex items-center p-5 gap-5 ">
                             <div className="w-60 h-60">

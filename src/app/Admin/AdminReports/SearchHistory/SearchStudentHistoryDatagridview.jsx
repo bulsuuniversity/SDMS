@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { IoEyeSharp } from "react-icons/io5";
 
 
-const StudentHistoryDatagridview = ({ tableData, setClickedID, setOpenINfo, status, handleGetData }) => {
+const SearchStudentHistoryDatagridview = ({ tableData, setClickedID, setOpenINfo, status, handleGetData }) => {
     const [selectedRows, setSelectedRows] = useState([]);
 
     useEffect(() => {
@@ -150,4 +150,4 @@ const StudentHistoryDatagridview = ({ tableData, setClickedID, setOpenINfo, stat
     );
 }
 
-export default StudentHistoryDatagridview;
+export default SearchStudentHistoryDatagridview;

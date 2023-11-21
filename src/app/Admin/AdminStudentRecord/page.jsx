@@ -22,7 +22,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PrintButton from "@/utils/PrintButton";
 import PrintableComponent from "@/components/PrintableComponent";
 import { BsFillPrinterFill } from "react-icons/bs";
-import History from "./StudentHistory/History";
 import PrintCert2 from "@/utils/PrintCert2";
 
 const Page = () => {
@@ -38,7 +37,6 @@ const Page = () => {
     const { startLoading, loading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
     const [search, setSearch] = useState()
-    const [history, setHistory] = useState(false)
     const componentRef = useRef();
 
 
@@ -300,12 +298,6 @@ const Page = () => {
                                 <p className="font-bold">Student ID:</p>
                                 <div className="bg-gray-300 p-2">{info.idNumber}</div>
                             </label>
-                            {/* Resesrve for History */}
-                            {/* <button type="button" className="font-semibold"
-                                onClick={() => setHistory(!history)}>History</button>
-                            {history &&
-                                <History student={info.name} setHistory={setHistory} />
-                            } */}
                             <label className="flex gap-3">
                                 <p className="font-bold">Email: </p>
                                 <div> {info.email}</div>

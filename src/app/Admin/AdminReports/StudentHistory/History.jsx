@@ -58,7 +58,7 @@ const History = ({ setHistory, student }) => {
 
     const data = filterReports &&
         Object.values(filterReports).filter(report => {
-            const studentCondition = report && report.offender && report.offender.toLowerCase().includes(student.toLowerCase())
+            const studentCondition = report && report.offender && report.offender.toLowerCase().includes(student?.toLowerCase())
             const searchCondition = report && report.actionOfDiscipline && (search ? report.actionOfDiscipline.toLowerCase().includes(search.toLowerCase()) : true)
             return studentCondition && searchCondition;
         });
@@ -98,7 +98,7 @@ const History = ({ setHistory, student }) => {
                         <AiFillCloseCircle size={30} />
                     </Link> */}
                         <button
-                            onClick={() => setHistory(!history)} className="rounded-full text-red-600 bg-white">
+                            onClick={() => setHistory(false)} className="rounded-full text-red-600 bg-white">
                             <AiFillCloseCircle size={30} />
                         </button>
                     </div>

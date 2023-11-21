@@ -22,6 +22,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { GoSearch } from "react-icons/go";
 import PrintCert from "@/utils/PrintCert";
 import History from "./StudentHistory/History";
+import SearchHistory from "./SearchHistory/SearchHistory";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -243,7 +244,7 @@ const Page = () => {
         // setStatus(!status)
     }
     const [history, setHistory] = useState(false)
-
+    const [searchHistory, setSearchHistory] = useState(false)
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
@@ -315,6 +316,11 @@ const Page = () => {
                             {status ? 'Cleared' : 'Pending'}</button>
                         {!status && <div className="grid items-center mx-4">Cleared</div>}
                     </div>
+                    <button type="button" className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                        onClick={() => setSearchHistory(!searchHistory)}>Reports History</button>
+                    {searchHistory &&
+                        <SearchHistory setSearchHistory={setSearchHistory} />
+                    }
                     <div className="font-bold text-red-700 grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
                     </div>
                 </div>
@@ -488,7 +494,7 @@ const Page = () => {
                                             cols="30"
                                             placeholder="Further Details"
                                             className="mb-8 bg-gray-200"
-                                             />
+                                        />
 
                                         <button type="button" onClick={() => setPrint(!print)}
                                             className="px-4 py-2 bg-red-700 text-white">Report Clearance</button>

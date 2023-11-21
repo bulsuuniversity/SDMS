@@ -1,6 +1,6 @@
 "use client"
 
-import StudentHistoryDatagridview from "./StudentHistoryDatagridview";
+import SearchStudentHistoryDatagridview from "./SearchStudentHistoryDatagridview";
 import { useEffect, useState } from "react";
 import InformationModal from "@/utils/InformationModal";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -17,7 +17,7 @@ import { GoSearch } from "react-icons/go";
 import { useSearchParams } from "next/navigation";
 import { GiConsoleController } from "react-icons/gi";
 
-const History = ({ setHistory, student }) => {
+const SearchHistory = ({ setSearchHistory }) => {
     const [clickedID, setClickedID] = useState()
     const [seeImage, setSeeImage] = useState(false)
     const [info, setInfo] = useState()
@@ -60,9 +60,8 @@ const History = ({ setHistory, student }) => {
 
     const data = filterReports &&
         Object.values(filterReports).filter(report => {
-            const studentCondition = report && report.offender && report.offender.toLowerCase().includes(student?.toLowerCase())
-            const searchCondition = report && report.actionOfDiscipline && (search ? report.actionOfDiscipline.toLowerCase().includes(search.toLowerCase()) : true)
-            return studentCondition && searchCondition;
+            const searchCondition = report && report.offender && (search ? report.offender.toLowerCase().includes(search.toLowerCase()) : true)
+            return searchCondition;
         });
 
     const searchID = useSearchParams();
@@ -93,14 +92,10 @@ const History = ({ setHistory, student }) => {
             <div className="overflow-y-auto w-screen m-6 h-screen">
                 <div className="m-7 h-max flex relative items-center">
                     <ImNewspaper size={50} /> <p className="border border-2 border-black h-16 mx-4" />
-                    <p className="font-bold text-lg">Account History</p>
+                    <p className="font-bold text-lg">Reports History</p>
                     <div className="absolute top-4 right-4">
-                        {/* <Link
-                        href={`/Admin/AdminReports/?id=${id && id}`} className="rounded-full text-red-600 bg-white">
-                        <AiFillCloseCircle size={30} />
-                    </Link> */}
                         <button
-                            onClick={() => setHistory(!history)} className="rounded-full text-red-600 bg-white">
+                            onClick={() => setSearchHistory(false)} className="rounded-full text-red-600 bg-white">
                             <AiFillCloseCircle size={30} />
                         </button>
                     </div>
@@ -246,7 +241,7 @@ const History = ({ setHistory, student }) => {
 
                 <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
                     {data && data.length > 0 ?
-                        <StudentHistoryDatagridview
+                        <SearchStudentHistoryDatagridview
                             setOpenINfo={setOpenINfo}
                             setClickedID={setClickedID}
                             tableData={data}
@@ -259,4 +254,4 @@ const History = ({ setHistory, student }) => {
     );
 }
 
-export default History;
+export default SearchHistory;
