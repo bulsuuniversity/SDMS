@@ -10,7 +10,7 @@ const AdviserRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
     const [adviserEmail, setAdviserEmail] = useState()
 
     const suggestions = {
-        one: `Good day! This is to inform you that your one of your student has been reported.`,
+        one: `Good day! This is to inform you that one of your students has been reported.`,
     }
 
 
