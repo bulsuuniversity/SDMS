@@ -130,12 +130,16 @@ const page = () => {
         e.preventDefault();
         getLatestTicket()
         if (reportData.actionOfDiscipline) {
-            showConfirmation(<div className='grid justify-center gap-4'>
-                <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcAddDatabase size={32} />Submit Report</div>
-                <p className='text-xl p-6'>Are you sure you want to submit this report?</p>
-            </div>, () => {
-                handleSubmit()
-            });
+            showConfirmation(
+                <div className='grid justify-center gap-4'>
+                    <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'>
+                        <FcAddDatabase size={32} />Submit Report
+                    </div>
+                    <p className='text-xl p-6'>Are you sure you want to submit this report?</p>
+                    <p className="italic text-xs">Any information found to be untrue in this report may result in liability, with corresponding penalties.</p>
+                </div>, () => {
+                    handleSubmit()
+                });
         } else {
             setRequire(true)
         }
@@ -192,7 +196,7 @@ const page = () => {
             console.log(err)
         }
     }
-  
+
     useEffect(() => {
         getLatestTicket()
         getDetails()
@@ -225,15 +229,7 @@ const page = () => {
         }
     }
 
-    // const handleSendSMS = async (message) => {
-    //     try {
-    //         const response = await axios.post(`${url}/api/SendSMSGlobeLabs`,
-    //             { phoneNumbers: phoneNumbers, message: message, ticketNo: reportData.ticketNo }, { headers });
-    //         console.log(response)
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
-    // }
+
 
     return (
         <Layout>
