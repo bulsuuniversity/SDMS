@@ -83,15 +83,15 @@ const Semester = ({ setOpen }) => {
                     <div className='p-10 border-2 grid w-[30rem] gap-4 justify-center items-center'>
                         <label className='flex justify-between'>
                             Start of Semester:
-                            <p className='bg-red-800 px-2 text-white'>{fetchedData.start}</p>
+                            <p className='bg-red-800 px-2  w-28 text-white'>{fetchedData.start}</p>
                         </label>
                         <label className='flex justify-between'>
                             End of Semester:
-                            <p className='bg-red-800 px-2 text-white'>{fetchedData.end}</p>
+                            <p className='bg-red-800  w-28 px-2 text-white'>{fetchedData.end}</p>
                         </label>
                         <label className='flex justify-between'>
                             School Year:
-                            <p className='bg-red-800 px-2 text-white'>{fetchedData.sy}</p>
+                            <p className='bg-red-800 px-2  w-28 text-white'>{fetchedData.sy}</p>
                         </label>
                         <div className='flex justify-center'>
                             <button className='bg-red-700 text-white w-max py-2 px-2'
@@ -112,45 +112,45 @@ const Semester = ({ setOpen }) => {
                             <button onClick={() => setMessage("")} className="bg-green-500 text-white py-2 w-max px-4 rounded-lg">Okay</button>
                         </div>
                     </div></InformationModal>}
-                {edit && 
-                <form onSubmit={handleEdit} className='p-10 border-2 grid gap-4 justify-center items-center'>
-                    <label className='flex gap-2'>
-                        Start of Semester:
-                        <input
-                            value={data.start}
-                            type="date"
-                            className='bg-red-700 text-white'
-                            onChange={(e) => handleChange("start", e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label className='flex gap-2'>
-                        End of Semester:
-                        <input
-                            value={data.end}
-                            type="date"
-                            className='bg-red-700 text-white'
-                            onChange={(e) => handleChange("end", e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label className='flex gap-2'>
-                        School Year:
-                        <input
-                            value={data.sy}
-                            type="text"
-                            className=''
-                            onChange={(e) => handleChange("sy", e.target.value)}
-                            required
-                        />
-                    </label>
-                    <div className='flex justify-center'>
-                        <button className='bg-red-700 text-white w-max py-2 px-2'
-                            disabled={loading}
-                            type='submit'>{loading ? "Please wait..." : "SAVE"}</button>
-                    </div>
+                {edit &&
+                    <form onSubmit={handleEdit} className='p-10 border-2 grid gap-4 justify-center items-center'>
+                        <label className='flex gap-2 justify-between'>
+                            Start of Semester:
+                            <input
+                                value={data.start}
+                                type="date"
+                                className='bg-red-700  w-28 text-white'
+                                onChange={(e) => handleChange("start", e.target.value)}
+                                required
+                            />
+                        </label>
+                        <label className='flex gap-2 justify-between'>
+                            End of Semester:
+                            <input
+                                value={data.end}
+                                type="date"
+                                className='bg-red-700  w-28 text-white'
+                                onChange={(e) => handleChange("end", e.target.value)}
+                                required
+                            />
+                        </label>
+                        <label className='flex gap-2 justify-between'>
+                            School Year:
+                            <input
+                                value={data.sy}
+                                type="text"
+                                className=''
+                                onChange={(e) => handleChange("sy", e.target.value)}
+                                required
+                            />
+                        </label>
+                        <div className='flex justify-center'>
+                            <button className='bg-red-700 text-white w-max py-2 px-2'
+                                disabled={loading}
+                                type='submit'>{loading ? "Please wait..." : "SAVE"}</button>
+                        </div>
 
-                </form>}
+                    </form>}
             </div>
         </InformationModal>
     );

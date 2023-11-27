@@ -320,7 +320,8 @@ const Page = () => {
                 <p className="font-bold text-lg">Reports</p>
                 <div className="flex flex-wrap gap-10 py-2 ml-4 px-4 justify-center items-center">
 
-                    <div className="flex gap-4 relative text-red-700 items-center"><p>Filter: </p>
+                    <div className="flex gap-4 relative items-center">
+                        <p className=" text-red-700 font-semibold">Filter: </p>
                         <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
                             onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
                         {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
@@ -555,7 +556,7 @@ const Page = () => {
                                         </div>
                                     </div>
 
-                                    <div className="border bg-white grid border-black p-4">
+                                    {!viewArchivedReports && <div className="border bg-white grid border-black p-4">
                                         <p className="font-bold text-lg">NOTES</p>
                                         <p className="italic text-xs">Further details in accordance with the sanction.</p>
                                         <textarea
@@ -570,13 +571,13 @@ const Page = () => {
                                         <button type="button" onClick={() => setPrint(!print)}
                                             className="px-4 py-2 bg-red-700 text-white">Report Clearance</button>
                                         {print && <PrintCert content={info} setPrint={setPrint} contentRef={componentRef} />}
-                                    </div>
+                                    </div>}
 
-                                    <div className="flex justify-center items-center h-max my-auto gap-4">
+                                    {!viewArchivedReports && <div className="flex justify-center items-center h-max my-auto gap-4">
                                         <button type="button" onClick={() => setOpenMessage(true)} className="flex gap-2 items-center bg-amber-400 p-4"><MdOutlineEmail size={20} /> Message</button>
                                         <button type="button" onClick={handleAskUpdateReport} className="flex gap-2 items-center bg-amber-400 p-4"><GrUpdate size={20} /> Update</button>
                                         {info.status === "Pending" && <button type="submit" className="flex gap-2 items-center bg-green-600 p-4"><GiCheckMark size={20} /> Clear</button>}
-                                    </div>
+                                    </div>}
                                 </div>
                             </div>
                         </form>
