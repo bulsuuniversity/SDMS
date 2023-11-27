@@ -94,7 +94,7 @@ const Semester = ({ setOpen }) => {
                             <p className='bg-red-800 px-2  w-28 text-white'>{fetchedData.sy}</p>
                         </label>
                         <div className='flex justify-center'>
-                            <button className='bg-red-700 text-white w-max py-2 px-2'
+                            <button className='bg-red-700 text-white w-max py-2 px-6'
                                 onClick={() => setEdit(!edit)}
                                 disabled={loading}
                                 type='button'>EDIT</button>
@@ -145,7 +145,7 @@ const Semester = ({ setOpen }) => {
                             />
                         </label>
                         <div className='flex justify-center'>
-                            <button className='bg-red-700 text-white w-max py-2 px-2'
+                            <button className='bg-red-700 text-white w-max py-2 px-6'
                                 disabled={loading}
                                 type='submit'>{loading ? "Please wait..." : "SAVE"}</button>
                         </div>

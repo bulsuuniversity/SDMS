@@ -217,7 +217,7 @@ const Page = () => {
         setViewArchivedReports(event.target.checked);
     };
 
-    console.log("minDate", minDate, "maxDate", maxDate, "dayBeforeMindate", dayBeforeMindate)
+   
 
     useEffect(() => {
         if (viewArchivedReports) {
@@ -235,7 +235,7 @@ const Page = () => {
         }
     }, [viewArchivedReports, fetchedSemester])
 
-    console.log("selectedRange", selectedRange)
+
 
     const [yearLevel, setYearLevel] = useState()
     const [college, setCollege] = useState()
@@ -341,6 +341,8 @@ const Page = () => {
                                             onChange={handleDateRangeChange}
                                             minDate={viewArchivedReports ? undefined : new Date(minDate)}
                                             maxDate={new Date(viewArchivedReports ? dayBeforeMindate : maxDate)}
+                                            staticRanges={[]}
+                                            inputRanges={[]}
                                         />
                                     </div>
                                 </InformationModal>}

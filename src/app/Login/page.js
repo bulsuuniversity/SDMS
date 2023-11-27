@@ -150,9 +150,9 @@ const Login = () => {
               >
                 Log In
               </button>
-              <Link href="/Register" className="text-blue-500 cursor-pointer text-xs text-end">
+              {/* <Link href="/Register" className="text-blue-500 cursor-pointer text-xs text-end">
                 Don't have an account? Register here.
-              </Link>
+              </Link> */}
             </form>
           </div>
         </div>
