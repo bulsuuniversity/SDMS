@@ -294,7 +294,7 @@ const page = () => {
                                         required
                                     >
                                         {colleges?.map((college, index) => (
-                                            <option key={index} value={college.name}>
+                                            <option key={index} value={college.acronym}>
                                                 {college.acronym}
                                             </option>
                                         ))}
