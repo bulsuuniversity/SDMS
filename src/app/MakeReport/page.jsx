@@ -135,8 +135,12 @@ const page = () => {
                     <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'>
                         <FcAddDatabase size={32} />Submit Report
                     </div>
-                    <p className='text-xl p-6'>Are you sure you want to submit this report?</p>
-                    <p className="italic text-xs">Any information found to be untrue in this report may result in liability, with corresponding penalties.</p>
+                    <div className="grid gap-1">
+                        <p className='text-xl p-6'>Are you sure you want to submit this report?</p>
+                        <p className="italic text-xs w-32">Any information found to be untrue in this report may result in liability, with corresponding penalties.</p>
+                    </div>
+
+
                 </div>, () => {
                     handleSubmit()
                 });

@@ -103,7 +103,7 @@ const College = ({ setOpen }) => {
                             <button onClick={() => setMessage("")} className="bg-green-500 text-white py-2 w-max px-4 rounded-lg">Okay</button>
                         </div>
                     </div></InformationModal>}
-                <div className="grid gap-2">
+                <div className="grid p-10 border-2 gap-2">
                     <p className="flex text-center text-lg my-2 font-semibold">College List</p>
                     {colleges?.map((college, index) => (
                         <li key={index} className="bg-red-700 text-white px-4 py-1 rounded-lg flex items-center justify-between">

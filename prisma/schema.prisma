@@ -114,3 +114,11 @@ model Colleges {
   updatedAt DateTime @updatedAt
 }
 
+model Semester {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  start     String
+  end       String
+  sy        String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

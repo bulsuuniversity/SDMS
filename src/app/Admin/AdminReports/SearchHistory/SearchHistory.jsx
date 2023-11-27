@@ -107,7 +107,7 @@ const SearchHistory = ({ setSearchHistory }) => {
                             className="rounded-l-full pl-2 focus:outline-none py-2"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search Offense" />
+                            placeholder="Search Name" />
                         <GoSearch className="mx-2 text-white" size={25} />
                     </div>
                 </div>

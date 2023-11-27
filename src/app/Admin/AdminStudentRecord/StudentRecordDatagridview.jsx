@@ -60,13 +60,13 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
             cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.status}</div>,
             conditionalCellStyles: [
                 {
-                    when: (row) => row.status === "Unverified",
+                    when: (row) => row.status === "Inactive",
                     style: {
                         color: 'red',
                     },
                 },
                 {
-                    when: (row) => row.status === "Verified",
+                    when: (row) => row.status === "Active",
                     style: {
                         color: 'green',
                     },

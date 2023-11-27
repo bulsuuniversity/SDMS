@@ -25,6 +25,9 @@ import History from "./StudentHistory/History";
 import SearchHistory from "./SearchHistory/SearchHistory";
 
 const Page = () => {
+    const [history, setHistory] = useState(false)
+    const [fetchedSemester, setFetchedSemester] = useState()
+    const [searchHistory, setSearchHistory] = useState(false)
     const [clickedID, setClickedID] = useState()
     const [openFilter, setOpenFilter] = useState(false)
     const [seeImage, setSeeImage] = useState(false)
@@ -44,17 +47,49 @@ const Page = () => {
     const [filterReports, setFilterReports] = useState()
     const [openDate, setOpenDate] = useState(false)
     const componentRef = useRef();
-    const [selectedRange, setSelectedRange] = useState(() => {
-        const currentDate = new Date();
-        const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-        const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0);
+    const [selectedRange, setSelectedRange] = useState(
+        () => {
+            const currentDate = new Date();
+            const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0);
 
-        return {
-            startDate: startOfMonth,
-            endDate: endOfMonth,
-            key: 'selection',
-        };
-    });
+            if (fetchedSemester) {
+                const [year, month, day] = fetchedSemester.start.split('-').map(Number);
+                const [endYear, endMonth, endDay] = fetchedSemester.end.split('-').map(Number);
+                const fetchedStartDate = new Date(year, month - 1, day);
+                const fetchedEndDate = new Date(endYear, endMonth - 1, endDay);
+                console.log("fetchedStartDate", fetchedStartDate)
+                return {
+                    startDate: fetchedStartDate,
+                    endDate: fetchedEndDate,
+                    key: 'selection',
+                };
+            }
+
+            return {
+                startDate: startOfMonth,
+                endDate: endOfMonth,
+                key: 'selection',
+            };
+        }
+    );
+
+    const [viewArchivedReports, setViewArchivedReports] = useState(false);
+
+
+
+
+    const handleGetSemester = async () => {
+        try {
+            const response = await axios.get(`${url}/api/Semester`, { headers });
+            setFetchedSemester(response.data[0])
+            console.log("fetched Data", response.data[0])
+        } catch (error) {
+            alert("Something went wrong!")
+            console.error(error);
+        }
+    };
+
 
 
     const searchParams = useSearchParams()
@@ -70,12 +105,11 @@ const Page = () => {
 
     const handleDateRangeChange = (ranges) => {
         setSelectedRange(ranges.selection);
-        // setOpenDate(!openDate)
     };
 
     const filterAndSortData = () => {
-        const startDate = selectedRange.startDate;
-        const endDate = selectedRange.endDate;
+        const startDate = selectedRange?.startDate;
+        const endDate = selectedRange?.endDate;
 
 
         const filteredData = filterReports && filterReports.filter(item => {
@@ -167,9 +201,46 @@ const Page = () => {
         }
     }
 
+    const minDateString = fetchedSemester && fetchedSemester.start;
+    const [minYear, minMonth, minDay] = minDateString ? minDateString.split('-').map(Number) : [0, 0, 0];
+    const minDate = `${minYear}, ${minMonth}, ${minDay}`;
+
+    const maxDateString = fetchedSemester && fetchedSemester.end;
+    const [maxYear, maxMonth, maxDay] = maxDateString ? maxDateString.split('-').map(Number) : [0, 0, 0];
+    const maxDate = `${maxYear}, ${maxMonth}, ${maxDay}`;
+
+    const lastDayOfTheMonth = new Date(minYear, minMonth, 0).getDate();
+
+    const dayBeforeMindate = `${minYear}, ${minDay !== 1 ? minMonth : minMonth - 1}, ${minDay !== 1 ? minDay - 1 : lastDayOfTheMonth - 1}`;
+
+    const handleCheckboxChange = (event) => {
+        setViewArchivedReports(event.target.checked);
+    };
+
+    console.log("minDate", minDate, "maxDate", maxDate, "dayBeforeMindate", dayBeforeMindate)
+
+    useEffect(() => {
+        if (viewArchivedReports) {
+            setSelectedRange({
+                startDate: null,
+                endDate: new Date(dayBeforeMindate),
+                key: 'selection',
+            })
+        } else if (!viewArchivedReports) {
+            setSelectedRange({
+                startDate: fetchedSemester?.start ? new Date(fetchedSemester.start) : null,
+                endDate: fetchedSemester?.end ? new Date(fetchedSemester.end) : null,
+                key: 'selection',
+            });
+        }
+    }, [viewArchivedReports, fetchedSemester])
+
+    console.log("selectedRange", selectedRange)
+
     const [yearLevel, setYearLevel] = useState()
     const [college, setCollege] = useState()
     const [search, setSearch] = useState()
+
 
     const data = filteredAndSortedData &&
         Object.values(filteredAndSortedData).filter(report => {
@@ -180,13 +251,11 @@ const Page = () => {
             return statusCondition && collegeCondition && yearLevelCondition && searchCondition;
         });
 
-    // useEffect(() => {
-
-    // }, [yearLevel, search, college,])
 
 
     useEffect(() => {
         handleGetData()
+        handleGetSemester()
     }, [])
 
     const searchID = useSearchParams()
@@ -243,8 +312,7 @@ const Page = () => {
         setSearch(e)
         // setStatus(!status)
     }
-    const [history, setHistory] = useState(false)
-    const [searchHistory, setSearchHistory] = useState(false)
+
     return (
         <AdminMenu>
             <div className="m-7 flex items-center">
@@ -252,7 +320,7 @@ const Page = () => {
                 <p className="font-bold text-lg">Reports</p>
                 <div className="flex flex-wrap gap-10 py-2 ml-4 px-4 justify-center items-center">
 
-                    <div className="flex gap-4 relative items-center"><p>Filter: </p>
+                    <div className="flex gap-4 relative text-red-700 items-center"><p>Filter: </p>
                         <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
                             onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
                         {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
@@ -262,7 +330,7 @@ const Page = () => {
                                     onClick={() => setOpenDate(!openDate)}>Select Date <MdDateRange size={24} /></button>
                                 {openDate && <InformationModal>
                                     <div className="relative">
-                                        <div className="absolute -top-4 -right-4">
+                                        <div className="absolute -top-8 -right-9">
                                             <button
                                                 onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
                                                 <AiFillCloseCircle size={44} /></button>
@@ -270,6 +338,8 @@ const Page = () => {
                                         <DateRangePicker
                                             ranges={[selectedRange]}
                                             onChange={handleDateRangeChange}
+                                            minDate={viewArchivedReports ? undefined : new Date(minDate)}
+                                            maxDate={new Date(viewArchivedReports ? dayBeforeMindate : maxDate)}
                                         />
                                     </div>
                                 </InformationModal>}
@@ -321,14 +391,11 @@ const Page = () => {
                     {searchHistory &&
                         <SearchHistory setSearchHistory={setSearchHistory} />
                     }
-                    <div className="font-bold text-red-700 grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
-                    </div>
                 </div>
-
             </div>
-
-
-            <div className="flex my-6 justify-center">
+            <div className="flex my-6 mx-6 justify-between">
+                <div className="font-semibold text-red-700 grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
+                </div>
                 <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
                     <input
                         className="rounded-l-full pl-2 focus:outline-none py-2"
@@ -336,6 +403,10 @@ const Page = () => {
                         onChange={(e) => handleSearch(e.target.value)}
                         placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
+                </div>
+                <div className="flex font-semibold text-red-700 items-center gap-2">
+                    <input type="checkbox" onChange={handleCheckboxChange} />
+                    <label>View Archived Reports</label>
                 </div>
             </div>
 

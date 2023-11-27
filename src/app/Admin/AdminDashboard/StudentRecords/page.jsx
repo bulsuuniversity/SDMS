@@ -295,7 +295,7 @@ const page = () => {
                             </div>
                         </div>
                         <h2 className="font-bold flex py-4 justify-center">
-                            Verified Students &#40;by College&#41;
+                            Active Students &#40;by College&#41;
                         </h2>
                         <div className="flex items-center p-5 gap-5 ">
                             <div className="w-60 h-60 m-4">
@@ -304,7 +304,7 @@ const page = () => {
                             {users && <RegsiteredLegends data={RegsiteredData} />}
                         </div>
                         <h2 className="font-bold flex py-4 justify-center">
-                            Unverified Students &#40;by College&#41;
+                            Inactive Students &#40;by College&#41;
                         </h2>
                         <div className="flex items-center p-5 gap-5 ">
                             <div className="w-60 h-60">

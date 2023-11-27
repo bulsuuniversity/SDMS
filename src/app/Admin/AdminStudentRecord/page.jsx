@@ -37,6 +37,7 @@ const Page = () => {
     const { startLoading, loading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
     const [search, setSearch] = useState()
+    const [colleges, setColleges] = useState()
     const componentRef = useRef();
 
 
@@ -144,6 +145,7 @@ const Page = () => {
 
     useEffect(() => {
         handleGetData()
+        getColleges()
     }, [])
 
     useEffect(() => {
@@ -168,7 +170,15 @@ const Page = () => {
         }
     }, [newStudent])
 
-
+    const getColleges = async () => {
+        try {
+            const details = await axios.get(`${url}/api/Colleges`,
+                { headers });
+            setColleges(details.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const handleClearFilter = () => {
         setOpenFilter(!openFilter)
@@ -194,20 +204,19 @@ const Page = () => {
                     <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
                         onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
                     {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
-                        <div className="flex justify-between">
+                        {colleges && <div className="flex justify-between">
                             <p>By Year College:</p>
                             <select
                                 onChange={(e) => setCollege(e.target.value)}
                                 className="border w-36"
-                            >
-                                <option value="">Select College</option>
-                                <option value="CBA">CBA</option>
-                                <option value="CIT">CIT</option>
-                                <option value="COED">COED</option>
-                                <option value="CICS">CICS</option>
-                                <option value="COE">COE</option>
+                            > <option value="">Select College</option>
+                                {colleges?.map((college, index) => (
+                                    <option key={index} value={college.name}>
+                                        {college.acronym}
+                                    </option>
+                                ))}
                             </select>
-                        </div>
+                        </div>}
                         <div className="flex justify-between">
                             <p>By Year Level:</p>
                             <select
@@ -350,7 +359,7 @@ const Page = () => {
                     </Modal>}
                     {/* <div className={`absolute left-24 -bottom-8`}> */}
 
-                    {info.status !== "Verified" ?
+                    {/* {info.status !== "Verified" ?
                         <div className="flex justify-center pt-4">
                             <button onClick={handleUpdate}
                                 className="bg-green-600 rounded-full p-2">
@@ -366,8 +375,12 @@ const Page = () => {
                                 className="px-4 rounded-full py-2 bg-red-700 text-white">Clearance Certificate</button>
                             {print && <PrintCert2 content={info} setPrint={setPrint} contentRef={componentRef} />}
                         </div>
-                    }
-
+                    } */}
+                    <div className="flex gap-2 justify-center pt-4">
+                        <button type="button" onClick={() => setPrint(!print)}
+                            className="px-4 rounded-full py-2 bg-red-700 text-white">Clearance Certificate</button>
+                        {print && <PrintCert2 content={info} setPrint={setPrint} contentRef={componentRef} />}
+                    </div>
                 </div>
             </InformationModal >}
             <div className="md:mx-10 mx-1 mb-20 mt-10 border border-red-700 border-2">
