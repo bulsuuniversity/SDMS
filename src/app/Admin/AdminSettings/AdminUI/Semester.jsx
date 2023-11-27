@@ -113,7 +113,7 @@ const Semester = ({ setOpen }) => {
                         </div>
                     </div></InformationModal>}
                 {edit &&
-                    <form onSubmit={handleEdit} className='p-10 border-2 grid gap-4 justify-center items-center'>
+                    <form onSubmit={handleEdit} className='p-10 border-2 w-[30rem] grid gap-4 justify-center items-center'>
                         <label className='flex gap-2 justify-between'>
                             Start of Semester:
                             <input
