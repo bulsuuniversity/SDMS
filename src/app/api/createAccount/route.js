@@ -18,7 +18,7 @@ export const POST = async (request) => {
                     email,
                 },
             });
-        
+
             if (emailExists && emailExists.length > 0) {
                 // Email already exists, skip to the next array element
                 continue;
@@ -47,9 +47,9 @@ export const POST = async (request) => {
                     email,
                     name,
                     phoneNumber: phoneNumber.toString(),
-                    idNumber,
+                    idNumber: idNumber.toString(),
                     college,
-                    yearLevel,
+                    yearLevel: yearLevel.toString(),
                     password: hashedPassword,
                     role: "user",
                     status: "Inactive",

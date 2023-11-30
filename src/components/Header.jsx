@@ -71,7 +71,7 @@ const Header = ({ setViewPort }) => {
 
                         {isopen &&
                             <div className="fixed inset-0 top-16 z-20">
-                                {session && session.status === "Verified" && session.role === "user" ?
+                                {session && session.role === "user" ?
                                     <div className="bg-red-900 flex flex-col gap-3 p-8 h-screen">
                                         <Homebutton setViewPort={setViewPort} />
                                         <ContactButton setViewPort={setViewPort} />
@@ -79,10 +79,10 @@ const Header = ({ setViewPort }) => {
                                         <Menu profile={profileData.profile} />
                                     </div>
                                     :
-                                    <>
+                                    <div className="bg-red-900 grid gap-2 p-10">
                                         <LoginButton active={active} />
                                         <RegisterButton active={active} />
-                                    </>}
+                                    </div>}
                             </div>
 
                         }

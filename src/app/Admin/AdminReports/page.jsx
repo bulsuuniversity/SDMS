@@ -217,7 +217,7 @@ const Page = () => {
         setViewArchivedReports(event.target.checked);
     };
 
-   
+
 
     useEffect(() => {
         if (viewArchivedReports) {
@@ -295,9 +295,22 @@ const Page = () => {
     }
 
     const handleClearFilter = () => {
-        setOpenFilter(!openFilter)
+        if (viewArchivedReports) {
+            setSelectedRange({
+                startDate: null,
+                endDate: new Date(dayBeforeMindate),
+                key: 'selection',
+            })
+        } else if (!viewArchivedReports) {
+            setSelectedRange({
+                startDate: fetchedSemester?.start ? new Date(fetchedSemester.start) : null,
+                endDate: fetchedSemester?.end ? new Date(fetchedSemester.end) : null,
+                key: 'selection',
+            });
+        }
         setYearLevel()
         setCollege()
+        setOpenFilter(!openFilter)
     }
 
     const handleConfirm = (e) => {

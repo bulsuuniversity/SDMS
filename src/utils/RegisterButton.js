@@ -4,7 +4,7 @@ const RegisterButton = ({ active }) => {
     return (
         <Link href={'/Register'}
             className={`flex pr-10 items-center ${active === "button2" ? 'bg-[#F9DBBB] text-black' : 'bg-red-900'}`}>
-            <div className="overflow-hidden flex relative items-center h-16">
+            <div className="overflow-hidden hidden md:flex relative items-center h-16">
                 <div className={`h-0 w-0 
             border-y-[4rem] border-y-transparent 
             border-r-[6rem]
