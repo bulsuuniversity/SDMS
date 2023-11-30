@@ -12,7 +12,6 @@ const Semester = ({ setOpen }) => {
     const [data, setData] = useState({
         start: fetchedData?.start || "",
         end: fetchedData?.end || "",
-        sy: fetchedData?.sy || ""
     });
     const { loading, startLoading, stopLoading } = useLoading()
 
@@ -89,10 +88,6 @@ const Semester = ({ setOpen }) => {
                             End of Semester:
                             <p className='bg-red-800  w-28 px-2 text-white'>{fetchedData.end}</p>
                         </label>
-                        <label className='flex justify-between'>
-                            School Year:
-                            <p className='bg-red-800 px-2  w-28 text-white'>{fetchedData.sy}</p>
-                        </label>
                         <div className='flex justify-center'>
                             <button className='bg-red-700 text-white w-max py-2 px-6'
                                 onClick={() => setEdit(!edit)}
@@ -131,16 +126,6 @@ const Semester = ({ setOpen }) => {
                                 type="date"
                                 className='bg-red-700  w-28 text-white'
                                 onChange={(e) => handleChange("end", e.target.value)}
-                                required
-                            />
-                        </label>
-                        <label className='flex gap-2 justify-between'>
-                            School Year:
-                            <input
-                                value={data.sy}
-                                type="text"
-                                className=''
-                                onChange={(e) => handleChange("sy", e.target.value)}
                                 required
                             />
                         </label>

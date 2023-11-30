@@ -168,7 +168,7 @@ const PersonalInformation = () => {
                         </select>
                     </div>
                 </div>
-                <div className="grid">
+                {/* <div className="grid">
                     <p className="font-semibold">Adviser Information</p>
                     <div className="flex gap-2 my-2">
                         <p className="text-sm">Do you know who your adviser is?</p>
@@ -202,7 +202,7 @@ const PersonalInformation = () => {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="flex items-center justify-center">
                     {!edit && (
                         <button disabled={loading} type="submit"

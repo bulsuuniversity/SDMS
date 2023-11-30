@@ -6,10 +6,11 @@ export const POST = async (request) => {
     try {
         const body = await request.json();
         const { data } = body;
-        const report = await prisma.semester.create({
+        const report = await prisma.adviser.create({
             data: {
-                start: data.start,
-                end: data.end,
+                name: data.name,
+                email: data.email,
+                section: data.section
             },
         });
         return NextResponse.json({ message: "Created", report });
@@ -26,16 +27,11 @@ export const PUT = async (request) => {
         const body = await request.json();
         const { data } = body;
 
-        const posts = await prisma.semester.findMany({
-
-        })
-        const report = await prisma.semester.update({
-            where: {
-                id: posts[0].id
-            },
+        const report = await prisma.adviser.update({
             data: {
-                start: data.start,
-                end: data.end,
+                name: data.name,
+                email: data.email,
+                section: data.section
             },
         });
         return NextResponse.json({ message: "Created", report });
@@ -48,7 +44,7 @@ export const PUT = async (request) => {
 
 export const GET = async () => {
     try {
-        const posts = await prisma.semester.findMany({
+        const posts = await prisma.adviser.findMany({
 
         })
         return NextResponse.json(posts);
@@ -59,19 +55,3 @@ export const GET = async () => {
 }
 
 
-export const DELETE = async (request) => {
-    try {
-        const body = await request.json();
-        const { id } = body
-        const semester = await prisma.semester.findMany({})
-        const deletedPost = await prisma.semester.delete({
-            where: {
-                id: semester.data[0].id
-            }
-        });
-        return NextResponse.json(deletedPost);
-    } catch (err) {
-        console.log(err)
-        return NextResponse.json({ message: "DELETE Error", err }, { status: 500 });
-    }
-};

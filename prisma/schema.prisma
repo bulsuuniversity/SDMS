@@ -118,7 +118,15 @@ model Semester {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   start     String
   end       String
-  sy        String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Adviser {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String
+  section   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
