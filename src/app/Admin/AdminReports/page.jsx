@@ -58,7 +58,6 @@ const Page = () => {
                 const [endYear, endMonth, endDay] = fetchedSemester.end.split('-').map(Number);
                 const fetchedStartDate = new Date(year, month - 1, day);
                 const fetchedEndDate = new Date(endYear, endMonth - 1, endDay);
-                console.log("fetchedStartDate", fetchedStartDate)
                 return {
                     startDate: fetchedStartDate,
                     endDate: fetchedEndDate,
@@ -83,7 +82,6 @@ const Page = () => {
         try {
             const response = await axios.get(`${url}/api/Semester`, { headers });
             setFetchedSemester(response.data[0])
-            console.log("fetched Data", response.data[0])
         } catch (error) {
             alert("Something went wrong!")
             console.error(error);
