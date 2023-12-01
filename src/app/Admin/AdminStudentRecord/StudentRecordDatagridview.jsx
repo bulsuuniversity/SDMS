@@ -48,7 +48,7 @@ const StudentRecordDatagridview = ({ tableData, setClickedID, setOpenINfo }) => 
             cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.college}</div>,
         },
         {
-            name: <div className='flex text-center'>YEAR LEVEL</div>,
+            name: <div className='flex text-center'>YEAR LEVEL AND SECTION</div>,
             selector: row => row.yearLevel,
             sortable: true,
             cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.yearLevel}</div>,

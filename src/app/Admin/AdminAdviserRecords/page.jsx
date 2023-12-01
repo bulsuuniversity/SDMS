@@ -17,11 +17,36 @@ const Page = () => {
     const [add, setAdd] = useState(false)
     const { startLoading, loading, stopLoading } = useLoading()
     const [search, setSearch] = useState()
+    const [sectionData, setSectionData] = useState([])
     const [data, setData] = useState({
         name: "",
         email: "",
         section: "",
     })
+
+
+    useEffect(() => {
+        if (sectionData) {
+            handleSetData("section", sectionData.join(", "))
+        }
+    }, [sectionData])
+
+    const handleSectionInputChange = (index, value) => {
+        const updatedSections = [...sectionData];
+        updatedSections[index] = value;
+        setSectionData(updatedSections);
+    };
+
+    const handleAddSectionInput = () => {
+        setSectionData([...sectionData, '']);
+
+    };
+
+    const handleRemoveSectionInput = (index) => {
+        const updatedSections = [...sectionData];
+        updatedSections.splice(index, 1);
+        setSectionData(updatedSections);
+    };
 
     const handleSetData = (name, value) => {
         setData(prevData => ({
@@ -112,15 +137,28 @@ const Page = () => {
                     </label>
                     <br />
                     <label className="flex justify-between">
-                        Section:
-                        <input
-                            type="text"
-                            className="border-black border-2 ml-2"
-                            name="section"
-                            value={data.section}
-                            onChange={(e) => handleSetData('section', e.target.value)}
-                            required
-                        />
+                        Section/s:
+                        <div className="grid gap-1">
+                            {sectionData.map((section, index) => (
+                                <div className="flex gap-1">
+                                    <input
+                                        key={index}
+                                        type="text"
+                                        className="border-black border-2 ml-2"
+                                        value={section}
+                                        onChange={(e) => handleSectionInputChange(index, e.target.value)}
+                                        required
+                                    />
+                                    <button type="button" className="text-2xl text-red-700" onClick={() => handleRemoveSectionInput(index)}>
+                                        -
+                                    </button>
+                                </div>
+
+                            ))}
+                            <button type="button" className="text-2xl text-red-700" onClick={handleAddSectionInput}>
+                                +
+                            </button>
+                        </div>
                     </label>
                     <br />
                     <div className="flex justify-between my-3">

@@ -7,9 +7,10 @@ import axios from 'axios';
 import { url, headers } from '@/app/libs/api';
 import { PiPencilFill } from "react-icons/pi";
 import InformationModal from '@/utils/InformationModal';
+import useLoading from '@/utils/Loading';
 
 const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, setOpenINfo }) => {
-
+    const { loading, startLoading, stopLoading } = useLoading()
     const [openMessage, setOpenMessage] = useState()
     const [sentEmail, setSentEmail] = useState()
     const [adviserEmail, setAdviserEmail] = useState()
@@ -39,12 +40,15 @@ const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, set
 
     const handleEdit = async (e) => {
         e.preventDefault()
+        startLoading()
         try {
             const response = await axios.put(`${url}/api/Adviser/${clicked.id}`, { data }, { headers });
             alert("Successfully edited the Adviser!")
             handleGetData()
             setClicked()
+            stopLoading()
         } catch (err) {
+            stopLoading()
             console.log(err);
         }
     }
@@ -59,7 +63,7 @@ const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, set
             name: <div className='flex justify-center'>ADVISER NAME</div>,
             selector: row => row.name,
             sortable: true,
-            cell: (row) => <div onClick={() => handleRowClick(row)} style={{ whiteSpace: 'normal' }}>{row.name}</div>,
+            cell: (row) => <div style={{ whiteSpace: 'normal' }}>{row.name}</div>,
         },
         {
             name: <div className='flex text-center'>ADVISER EMAIL</div>,
@@ -102,13 +106,15 @@ const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, set
     }))
 
     const handleDelete = async (id) => {
+        startLoading()
         try {
             const response = await axios.delete(`${url}/api/Adviser/${id}`, { headers });
             alert("Successfully deleted the Adviser!")
             handleGetData()
-
+            stopLoading()
         } catch (err) {
             console.log(err);
+            stopLoading()
         }
     }
 
@@ -145,6 +151,9 @@ const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, set
 
     return (
         <>
+            {loading && <InformationModal>
+                <p>Please wait...</p>
+            </InformationModal>}
             {clicked && <InformationModal>
                 <form className="border grid gap-3 border-2 p-10" onSubmit={handleEdit}>
                     <label className="flex justify-between">
@@ -196,7 +205,7 @@ const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, set
                 fixedHeader
                 fixedHeaderScrollHeight="500px"
                 customStyles={customStyles}
-                onRowClicked={handleRowClick}
+                // onRowClicked={handleRowClick}
                 columns={columns}
                 data={datas}
                 pagination={tableData.length > 10}

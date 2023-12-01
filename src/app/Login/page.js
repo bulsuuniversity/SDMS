@@ -88,7 +88,7 @@ const Login = () => {
         clearTimeout(timer);
       };
     } else if (session && session.role.includes("admin")) {
-      route.push('/admin')
+      route.push('/Admin')
     }
   }, [session]);
 

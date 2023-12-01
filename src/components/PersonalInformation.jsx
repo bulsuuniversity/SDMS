@@ -111,7 +111,7 @@ const PersonalInformation = () => {
                         <label htmlFor="college">College: </label>
                         <label htmlFor="address">Address: </label>
                         <label htmlFor="phoneNumber">Contact No.: </label>
-                        <label htmlFor="yearLevel">Year Level: </label>
+                        <label htmlFor="yearLevel">Year Level and Section: </label>
                     </div>
                     <div className="grid gap-1">
                         <input
@@ -152,20 +152,14 @@ const PersonalInformation = () => {
                             className="border"
                             required
                         />
-                        <select
-                            disabled={edit}
+                         <input
+                            value={editedValues.yearLevel === null ? "" : editedValues.yearLevel}
+                            type="text"
+                            readOnly={edit}
                             onChange={(e) => handleInputChange("yearLevel", e.target.value)}
                             className="border"
                             required
-                        >
-                            <option value={editedValues.yearLevel === null ? "" : editedValues.yearLevel}>
-                                {editedValues.yearLevel === null ? "Select Year Level" : editedValues.yearLevel}</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            {/* <option value="COE">COE</option> */}
-                        </select>
+                        />
                     </div>
                 </div>
                 {/* <div className="grid">
