@@ -322,7 +322,7 @@ const Page = () => {
                                     <div> {info.college}</div>
                                 </label>
                                 <label className="flex gap-3">
-                                    <p className="font-bold">Year Level: </p>
+                                    <p className="font-bold">Year Level and Section: </p>
                                     <div> {info.yearLevel}</div>
                                 </label>
                             </label>

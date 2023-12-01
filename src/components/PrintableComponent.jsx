@@ -51,7 +51,7 @@ const PrintableComponent = React.forwardRef(({ college, yearLevel, content }, re
           <div className="flex">
             {!yearLevel && !college && <p className="text-center w-full flex justify-center">All Student</p>}
             {college && <p className="text-center w-full flex whitespace-normal justify-center">College: {college}</p>}
-            {yearLevel && <p className="text-center w-full flex whitespace-normal justify-center">Year Level:{yearLevel}</p>}
+            {yearLevel && <p className="text-center w-full flex whitespace-normal justify-center"> and Section:{yearLevel}</p>}
           </div>
           <p className="text-center">As of: {slashFormattedDate}</p>
           <div className="grid">
