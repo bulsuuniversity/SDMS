@@ -165,14 +165,13 @@ const Page = () => {
                             {sectionData.map((section, index) => (
                                 <div className="flex gap-1">
                                     <input
-                                        key={index}
+                                        disabled={index !== sectionData.length - 1}
                                         type="text"
                                         className="border-black border-2 ml-2"
                                         value={section}
                                         onChange={(e) => handleSectionInputChange(index, e.target.value)}
                                         required
                                     />
-
                                     < button type="button" className="text-2xl text-red-700" onClick={() => handleRemoveSectionInput(index)}>
                                         -
                                     </button>
