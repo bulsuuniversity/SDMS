@@ -68,24 +68,39 @@ const Page = () => {
     }
 
     const handleCreateData = async (e) => {
-        e.preventDefault()
-        startLoading()
+        e.preventDefault();
+        startLoading();
+
+        const partialMatch = filterData && filterData.find((adviser) => {
+            const matchingParts = adviser.section &&
+                adviser.section.toLowerCase().includes(data.section.toLowerCase()
+                );
+            return matchingParts
+        });
+        if (partialMatch) {
+            alert(`Section: ${partialMatch.section} already under ${partialMatch.name}!`);
+            stopLoading();
+            return;
+        }
+
+
+
         try {
             const response = await axios.post(`${url}/api/Adviser`, { data }, { headers });
-            alert("Successfully Added the Adviser!")
-            handleGetData()
-            stopLoading()
-            setAdd(!add)
+            alert("Successfully Added the Adviser!");
+            handleGetData();
+            stopLoading();
+            setAdd(!add);
         } catch (err) {
             console.log(err);
-            stopLoading()
+            stopLoading();
         }
-    }
+    };
+
 
     const datas = filterData && Object.values(filterData)
         .filter((adviser) =>
             (search ? adviser.section && (adviser.section.toLowerCase()).includes(search.toLowerCase()) : true));
-
 
 
     useEffect(() => {
