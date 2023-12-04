@@ -38,8 +38,18 @@ const Page = () => {
     };
 
     const handleAddSectionInput = () => {
+        const partialMatch = filterData && filterData.find((adviser) => {
+            const matchingParts = adviser.section &&
+                adviser.section.toLowerCase().includes(sectionData[sectionData.length - 1]?.toLowerCase()
+                );
+            return matchingParts
+        });
+        if (partialMatch) {
+            alert(`Section: ${partialMatch.section} already under ${partialMatch.name}!`);
+            stopLoading();
+            return;
+        }
         setSectionData([...sectionData, '']);
-
     };
 
     const handleRemoveSectionInput = (index) => {
@@ -73,7 +83,7 @@ const Page = () => {
 
         const partialMatch = filterData && filterData.find((adviser) => {
             const matchingParts = adviser.section &&
-                adviser.section.toLowerCase().includes(data.section.toLowerCase()
+                adviser.section.toLowerCase().includes(sectionData[sectionData.length - 1]?.toLowerCase()
                 );
             return matchingParts
         });
@@ -82,8 +92,6 @@ const Page = () => {
             stopLoading();
             return;
         }
-
-
 
         try {
             const response = await axios.post(`${url}/api/Adviser`, { data }, { headers });
@@ -164,7 +172,8 @@ const Page = () => {
                                         onChange={(e) => handleSectionInputChange(index, e.target.value)}
                                         required
                                     />
-                                    <button type="button" className="text-2xl text-red-700" onClick={() => handleRemoveSectionInput(index)}>
+
+                                    < button type="button" className="text-2xl text-red-700" onClick={() => handleRemoveSectionInput(index)}>
                                         -
                                     </button>
                                 </div>
