@@ -5,8 +5,6 @@ import { useEffect, useState, useRef } from "react";
 import InformationModal from "@/utils/InformationModal";
 import { AiFillCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import Image from "next/image";
-import { url, headers } from "@/app/libs/api";
-import axios from "axios";
 import AdminMenu from "@/components/AdminMenu";
 import { GiCheckMark } from "react-icons/gi";
 import { GrUpdate } from "react-icons/gr";
@@ -23,6 +21,7 @@ import { GoSearch } from "react-icons/go";
 import PrintCert from "@/utils/PrintCert";
 import History from "./StudentHistory/History";
 import SearchHistory from "./SearchHistory/SearchHistory";
+import reportsData from "@/utils/reportsData";
 
 const Page = () => {
     const [history, setHistory] = useState(false)
@@ -79,13 +78,20 @@ const Page = () => {
 
 
     const handleGetSemester = async () => {
-        try {
-            const response = await axios.get(`${url}/api/Semester`, { headers });
-            setFetchedSemester(response.data[0])
-        } catch (error) {
-            alert("Something went wrong!")
-            console.error(error);
-        }
+        setFetchedSemester({
+            "_id": {
+                "$oid": "65638d04e79c5f92243b45f6"
+            },
+            "start": "2023-10-01",
+            "end": "2023-12-20",
+            "sy": "2023-2023",
+            "createdAt": {
+                "$date": "2023-11-26T18:23:00.309Z"
+            },
+            "updatedAt": {
+                "$date": "2023-12-01T04:09:16.634Z"
+            }
+        })
     };
 
 
@@ -119,7 +125,7 @@ const Page = () => {
         return sortedData;
     };
 
-    const filteredAndSortedData = filterAndSortData();
+    const filteredAndSortedData = filterReports;
 
     const handleChangeStatus = () => {
         handleGetData()
@@ -128,22 +134,14 @@ const Page = () => {
 
     const handleUpdateApi = async () => {
         startLoading()
-        try {
-            const response = await axios.put(`${url}/api/studentReport/${info.id}`,
-                { headers });
-            handleGetData()
-            stopLoading()
-            setSuccess('Cleared')
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        stopLoading()
+        setSuccess('Cleared')
     }
 
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Clear Report</div>
+            <div className='bg-slate-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Clear Report</div>
             <p className='text-lg p-6'>Are you sure you want to clear this report?</p>
         </div>, () => {
             handleUpdateReport()
@@ -154,32 +152,18 @@ const Page = () => {
     const handleAskUpdateReport = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Update Case</div>
+            <div className='bg-slate-700 flex items-center text-white gap-4 rounded-t-lg rounded-t-lg w-full'><FcApprove size={32} />Update Case</div>
             <p className='text-lg p-6'>Are you sure you want to update this case?</p>
         </div>, () => {
             handleUpdateReport()
         });
     };
 
-    const sanctions = {
-        degreeOfOffense,
-        kindOfOffense,
-        notes
-    }
-
 
     const handleUpdateReport = async () => {
         startLoading()
-        try {
-            const response = await axios.put(`${url}/api/AdminUpdateReport/${info.id}`,
-                { sanctions: sanctions }, { headers });
-            stopLoading()
-            handleGetData()
-            setSuccess('Updated')
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        stopLoading()
+        setSuccess('Updated')
     }
 
     const handleSetImage = (image) => {
@@ -188,15 +172,7 @@ const Page = () => {
     }
 
     const handleGetData = async () => {
-        startLoading()
-        try {
-            const response = await axios.get(`${url}/api/studentReport`, { headers });
-            setFilterReports(response.data)
-            stopLoading()
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        setFilterReports(reportsData)
     }
 
     const minDateString = fetchedSemester && fetchedSemester.start;
@@ -321,7 +297,6 @@ const Page = () => {
     }
     const handleSearch = (e) => {
         setSearch(e)
-        // setStatus(!status)
     }
 
     return (
@@ -332,19 +307,19 @@ const Page = () => {
                 <div className="flex flex-wrap gap-10 py-2 ml-4 px-4 justify-center items-center">
 
                     <div className="flex gap-4 relative items-center">
-                        <p className=" text-red-700 font-semibold">Filter: </p>
-                        <button className="bg-red-700 text-white px-4 py-2 whitespace-normal rounded-full"
+                        <p className=" text-slate-700 font-semibold">Filter: </p>
+                        <button className="bg-slate-700 text-white px-4 py-2 whitespace-normal rounded-full"
                             onClick={() => setOpenFilter(!openFilter)}>Select Filter</button>
                         {openFilter && <div className="grid p-6 bg-white z-50 absolute top-0 border gap-4 w-max">
                             <div className="flex p-2 items-center rounded-lg">
-                                <p className="font-bold text-red-700">By Date: </p>
-                                <button className="bg-red-700 rounded-lg px-4 py-1 text-white flex"
+                                {/* <p className="font-bold text-slate-700">By Date: </p>
+                                <button className="bg-slate-700 rounded-lg px-4 py-1 text-white flex"
                                     onClick={() => setOpenDate(!openDate)}>Select Date <MdDateRange size={24} /></button>
                                 {openDate && <InformationModal>
                                     <div className="relative">
                                         <div className="absolute -top-8 -right-9">
                                             <button
-                                                onClick={() => setOpenDate(!openDate)} className="rounded-full text-red-600 bg-white">
+                                                onClick={() => setOpenDate(!openDate)} className="rounded-full text-slate-600 bg-white">
                                                 <AiFillCloseCircle size={44} /></button>
                                         </div>
                                         <DateRangePicker
@@ -356,7 +331,7 @@ const Page = () => {
                                             inputRanges={[]}
                                         />
                                     </div>
-                                </InformationModal>}
+                                </InformationModal>} */}
                             </div>
                             <div className="flex justify-between">
                                 <p>By Year College:</p>
@@ -388,19 +363,19 @@ const Page = () => {
                             </div>
                             <div className="flex justify-between w-full">
                                 <button onClick={handleClearFilter}
-                                    className="bg-red-700 rounded-full px-4 py-2 text-white">Clear Filter</button>
+                                    className="bg-slate-700 rounded-full px-4 py-2 text-white">Clear Filter</button>
                                 <button onClick={handleConfirm}
-                                    className="bg-red-700 rounded-full px-4 py-2 text-white">Confirm</button>
+                                    className="bg-slate-700 rounded-full px-4 py-2 text-white">Confirm</button>
                             </div>
                         </div>}
                     </div>
-                    <div className={`rounded-full mr-5 p-1 text-white bg-red-700 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
+                    <div className={`rounded-full mr-5 p-1 text-white bg-slate-700 w-max flex ${status ? 'justify-start' : 'justify-end'}`}>
                         {status && <div className="grid items-center mx-4">Pending</div>}
                         <button onClick={handleChangeStatus} className={`rounded-full px-2 bg-amber-500 border boder-black`}>
                             {status ? 'Cleared' : 'Pending'}</button>
                         {!status && <div className="grid items-center mx-4">Cleared</div>}
                     </div>
-                    <button type="button" className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                    <button type="button" className="m-3 rounded-full bg-slate-700 text-white px-4 py-2"
                         onClick={() => setSearchHistory(!searchHistory)}>Reports History</button>
                     {searchHistory &&
                         <SearchHistory setSearchHistory={setSearchHistory} />
@@ -408,9 +383,9 @@ const Page = () => {
                 </div>
             </div>
             <div className="flex my-6 mx-6 justify-between">
-                <div className="font-semibold text-red-700 grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
+                <div className="font-semibold text-slate-700 grid items-center"> Number of {!status ? 'Pending' : 'Cleared'} reports: {data && data.length}
                 </div>
-                <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
+                <div className="rounded-full flex border border-2 border-slate-700 bg-slate-700 items-center">
                     <input
                         className="rounded-l-full pl-2 focus:outline-none py-2"
                         value={search}
@@ -418,7 +393,7 @@ const Page = () => {
                         placeholder="Search Name" />
                     <GoSearch className="mx-2 text-white" size={25} />
                 </div>
-                <div className="flex font-semibold text-red-700 items-center gap-2">
+                <div className="flex font-semibold text-slate-700 items-center gap-2">
                     <input type="checkbox" onChange={handleCheckboxChange} />
                     <label>View Archived Reports</label>
                 </div>
@@ -439,7 +414,7 @@ const Page = () => {
                             <div className="bg-gray-500 p-4 m-4 relative grid-cols-2 grid gap-4">
                                 <div className="absolute -top-4 -right-4">
                                     <button
-                                        onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
+                                        onClick={() => setOpenINfo(false)} className="rounded-full text-slate-600 bg-white">
                                         <AiFillCloseCircle size={30} />
                                     </button>
                                 </div>
@@ -457,9 +432,9 @@ const Page = () => {
                                                 <div className="font-bold">College: {info.college}</div>
                                                 <div className="font-bold">Course, Year & Section: {info.course}</div>
                                             </label>
-                                            {/* <Link className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                                            {/* <Link className="m-3 rounded-full bg-slate-700 text-white px-4 py-2"
                                                 href={`/Admin/AdminReports/StudentHistory/?student=${info.offender}`}>History</Link> */}
-                                            <button type="button" className="m-3 rounded-full bg-red-700 text-white px-4 py-2"
+                                            <button type="button" className="m-3 rounded-full bg-slate-700 text-white px-4 py-2"
                                                 onClick={() => setHistory(!history)}>History</button>
                                             {history &&
 
@@ -494,7 +469,7 @@ const Page = () => {
                                         {seeImage && info.attachment !== "" && <InformationModal>
                                             <div className="absolute top-1 right-1">
                                                 <button type="button"
-                                                    onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
+                                                    onClick={() => setSeeImage(false)} className="rounded-full text-slate-600 bg-white">
                                                     <AiFillCloseCircle size={30} /></button>
                                             </div>
                                             <div className="relative p-6">
@@ -535,7 +510,7 @@ const Page = () => {
                                     </div>
                                 </InformationModal>}
                                 {loading && <InformationModal>
-                                    <div className="grid justify-center text-white bg-red-800 p-10">
+                                    <div className="grid justify-center text-white bg-slate-800 p-10">
                                         <div>Redirecting where you left.</div>
                                         <p className="text-center">Please wait...</p>
                                     </div>
@@ -582,7 +557,7 @@ const Page = () => {
                                         />
 
                                         <button type="button" onClick={() => setPrint(!print)}
-                                            className="px-4 py-2 bg-red-700 text-white">Report Clearance</button>
+                                            className="px-4 py-2 bg-slate-700 text-white">Report Clearance</button>
                                         {print && <PrintCert content={info} setPrint={setPrint} contentRef={componentRef} />}
                                     </div>}
 
@@ -598,7 +573,7 @@ const Page = () => {
                 </InformationModal>
             }
 
-            <div className="md:mx-10 mx-1 mb-14 border border-red-700 border-2">
+            <div className="md:mx-10 mx-1 mb-14 border border-slate-700 border-2">
                 {data && data.length > 0 ?
                     <ReportsDatagridview
                         setOpenINfo={setOpenINfo}

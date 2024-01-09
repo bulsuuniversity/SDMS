@@ -17,14 +17,13 @@ const PrintableCert = React.forwardRef(({ content }, ref) => {
         <div className='w-full p-10'>
             <form>
                 <div className="w-full h-full " ref={ref}>
-                    <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
                     <div className="mx-6">
                         <div className="w-full h-max flex justify-center items-center gap-6">
                             <Image className="w-max h-max" width={44} height={44} src={"/Logo.png"} alt="Logo" />
                             <div className="grid my-6">
-                                <p className="font-semibold text-center">Bulacan State University</p>
+                                <p className="font-semibold text-center">Aaron Anablon University</p>
                                 <p className="font-semibold text-center">Discipline Committee</p>
-                                <p className="italic text-center">Bustos Campus, Bustos, Bulacan</p>
+                                <p className="italic text-center">Baguio, City</p>
                             </div>
                         </div>
                         <div className="text-center w-full my-6">
@@ -41,13 +40,12 @@ const PrintableCert = React.forwardRef(({ content }, ref) => {
                             Acknowledged By:
                         </p>
                         <p className="mt-4 underline underline-offset-8 ">
-                            DR. EDITHA N. DE REGLA
+                            Jane Doe
                         </p>
                         <p className="italic pt-2 text-xs">Discipline Committee Chair</p>
                         <br />
                     </div>
                 </div>
-                {/* <button type="submit">Submit Agreement</button> */}
             </form>
         </div>
     );

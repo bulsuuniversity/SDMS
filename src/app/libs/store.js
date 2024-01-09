@@ -15,16 +15,12 @@ export const useProfileData = create((set) => ({
     profilePublicId: "",
     college: " ",
   },
-  getProfileData: async (session) => {
-    try {
-      const response = await axios.get(`${url}/api/studentAccount/${session}`, { headers });
-      set((state) => ({
-        profileData: response.data,
-      }));
-    } catch (err) {
-      console.log(err);
+  setProfileData: (props) => ({
+    profileData: {
+      ...prevState,
+      props
     }
-  }
+  })
 }));
 
 

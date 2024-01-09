@@ -1,10 +1,8 @@
 "use client"
 
 import DashboardLayout from "../DashboardLayout";
-import { Doughnut, Pie } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
-import axios from "axios";
-import { url, headers } from "@/app/libs/api";
 import { useState, useEffect } from "react";
 import useLoading from "@/utils/Loading";
 import ReportedCasesLegends from "./ReportedCasesLegends";
@@ -14,6 +12,7 @@ import Dishonesty from "./Dishonesty";
 import GraveOffenses from "./GraveOffenses";
 import LessGraveOffenses from "./LessGraveOffenses";
 import LightOffenses from "./LightOffenses";
+import reportsData from "@/utils/reportsData"
 
 Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
@@ -27,16 +26,7 @@ const Page = () => {
     }
 
     const handleGetData = async () => {
-        startLoading()
-        try {
-            const response = await axios.get(`${url}/api/studentReport`, { headers });
-            const responseData = response.data
-            setFilterReports(responseData)
-            stopLoading()
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        setFilterReports(reportsData)
     }
 
 
@@ -196,7 +186,7 @@ const Page = () => {
                             <div className="font-bold grid items-center"> Number of {status ? 'Pending' : 'Cleared'} reports: {reports && reports.length}</div>
                         </div>
                         <div className="overflow-y-auto grid bg-blue-100 justify-center gap-10 max-h-96 py-6">
-                          
+
                             <LightOffenses reports={reports} status={status} />
                             <LessGraveOffenses reports={reports} status={status} />
                             <GraveOffenses reports={reports} status={status} />

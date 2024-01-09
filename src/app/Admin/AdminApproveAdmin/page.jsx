@@ -89,7 +89,7 @@ const Page = () => {
     const handleRemoveAcc = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
+            <div className='bg-slate-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
             <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
         </div>, () => {
             handleRemoveAccApi()
@@ -99,7 +99,7 @@ const Page = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <div className='bg-slate-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
             <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
         </div>, () => {
             handleUpdateApi()
@@ -146,7 +146,7 @@ const Page = () => {
         const idNumber = "master"
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <div className='bg-slate-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
             <p className='text-xl p-6'>Are you sure you want to mark this as master account?</p>
         </div>, () => {
             handleConvertLevel(idNumber)
@@ -157,7 +157,7 @@ const Page = () => {
         const idNumber = "admin"
         e.preventDefault();
         showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
+            <div className='bg-slate-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
             <p className='text-xl p-6'>Are you sure you want to remove this as master account?</p>
         </div>, () => {
             handleConvertLevel(idNumber)
@@ -196,7 +196,7 @@ const Page = () => {
                 <p className="font-bold text-xl">Admin Accounts</p>
             </div>
             <div className="flex justify-center">
-                <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
+                <div className="rounded-full flex border border-2 border-slate-700 bg-slate-700 items-center">
                     <input
                         onChange={(e) => setSearch(e.target.value)}
                         className="rounded-l-full pl-2 focus:outline-none py-2"
@@ -209,7 +209,7 @@ const Page = () => {
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">
                         <button
-                            onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
+                            onClick={() => setOpenINfo(false)} className="rounded-full text-slate-600 bg-white">
                             <AiFillCloseCircle size={30} /></button>
                     </div>
                     <ConfirmationDialog />
@@ -273,13 +273,13 @@ const Page = () => {
                             {info?.status.includes("Verified") ?
                                 <>
                                     <button onClick={handleRemoveAcc}
-                                        className="bg-red-600 rounded-full p-2">
+                                        className="bg-slate-600 rounded-full p-2">
                                         <div><GrClose size={24} /></div>
                                     </button>
                                     {info?.idNumber.includes("master") ?
                                         onlyMaster && onlyMaster.length > 1 &&
                                         <button onClick={handleRemoveMaster}
-                                            className="bg-red-600 rounded-full p-2">
+                                            className="bg-slate-600 rounded-full p-2">
                                             <div>Remove as Master Admin</div>
                                         </button> :
                                         <button onClick={handleMakeMaster}

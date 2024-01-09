@@ -9,20 +9,14 @@ import Image from "next/image";
 import { url, headers } from "@/app/libs/api";
 import axios from "axios";
 import AdminMenu from "@/components/AdminMenu";
-import { GiCheckMark } from "react-icons/gi";
 import { FaPeopleLine } from "react-icons/fa6";
-import useConfirmation from "@/utils/ConfirmationHook";
-import useLoading from "@/utils/Loading";
 import Link from "next/link";
-import { GrClose } from "react-icons/gr";
 import { GoSearch } from "react-icons/go";
-import { FcApprove, FcDeleteDatabase } from "react-icons/fc";
-import SendMessage from "@/components/SendMessage";
 import { useRouter, useSearchParams } from "next/navigation";
 import PrintButton from "@/utils/PrintButton";
-import PrintableComponent from "@/components/PrintableComponent";
 import { BsFillPrinterFill } from "react-icons/bs";
 import PrintCert2 from "@/utils/PrintCert2";
+import studentAccountData from "@/utils/studentAccountData";
 
 const Page = () => {
     const [clickedID, setClickedID] = useState()
@@ -30,11 +24,9 @@ const Page = () => {
     const [openFilter, setOpenFilter] = useState(false)
     const [info, setInfo] = useState()
     const [openInfo, setOpenINfo] = useState(false)
-    const [filterData, setFilterData] = useState()
+    const [filterData, setFilterData] = useState(studentAccountData)
     const [imageToView, setImageToView] = useState()
     const [success, setSuccess] = useState(false)
-    const { showConfirmation, ConfirmationDialog } = useConfirmation();
-    const { startLoading, loading, stopLoading } = useLoading()
     const [message, setMessage] = useState()
     const [search, setSearch] = useState()
     const [colleges, setColleges] = useState()
@@ -46,89 +38,9 @@ const Page = () => {
         setSeeImage(true)
     }
 
-    const emailData = {
-        email: info && info.email,
-        subject: "SDMS Admin",
-        message: "This is to inform you that your registration account in SDMS is approved by the Admin.",
-        html: `<p>This is to inform you that your registration account in SDMS is approved by the Admin.</p>`
-    }
-
-    const sendEmail = async () => {
-        startLoading()
-        try {
-            const sendCode = await axios.post(`${url}/api/AdminSendMail`, emailData, { headers });
-            setSuccess(true)
-            stopLoading()
-        } catch (error) {
-            console.error('Error:', error);
-            stopLoading()
-        }
-    };
-
     const handleGetData = async () => {
-        startLoading()
-        try {
-            const response = await axios.get(`${url}/api/studentAccount`, { headers });
-            setFilterData(response.data)
-            stopLoading()
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        setFilterData(studentAccountData)
     }
-
-    const status = "Verified"
-    const handleUpdateApi = async () => {
-        startLoading()
-        try {
-            const response = await axios.put(`${url}/api/AdminApproveAccount/${info.id}`,
-                status, { headers });
-            sendEmail()
-            stopLoading()
-            setMessage("Account approved successfully!")
-            setSuccess(true)
-            handleGetData()
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
-    }
-
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcApprove size={32} />Approve Account</div>
-            <p className='text-xl p-6'>Are you sure you want to approve this account?</p>
-        </div>, () => {
-            handleUpdateApi()
-        });
-    };
-
-
-    const handleRemoveAccApi = async () => {
-        startLoading()
-        try {
-            const response = await axios.put(`${url}/api/RemoveAccount/${info.id}`,
-                { headers });
-            handleGetData()
-            setMessage("Account removed!")
-            stopLoading()
-            setSuccess(true)
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
-    }
-
-    const handleRemoveAcc = (e) => {
-        e.preventDefault();
-        showConfirmation(<div className='grid justify-center gap-4'>
-            <div className='bg-red-700 flex items-center text-white gap-4 rounded-t-lg w-full'><FcDeleteDatabase size={32} />Remove Account</div>
-            <p className='text-xl p-6'>Are you sure you want to remove this account?</p>
-        </div>, () => {
-            handleRemoveAccApi()
-        });
-    };
 
     const [yearLevel, setYearLevel] = useState()
     const [college, setCollege] = useState()
@@ -263,18 +175,11 @@ const Page = () => {
                             onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
                             <AiFillCloseCircle size={30} /></button>
                     </div>
-                    <ConfirmationDialog />
                     {success && <InformationModal>
                         <div className='grid p-10 border border-black rounded-lg gap-7'>
-                            <p>{message}</p>
                             <div className="flex justify-center">
                                 <button onClick={handleClose} className='bg-green-500 text-white w-max rounded-lg py-2 px-4'>Okay</button>
                             </div>
-                        </div>
-                    </InformationModal>}
-                    {loading && <InformationModal>
-                        <div className="grid justify-center p-6">
-                            <p>Please wait...</p>
                         </div>
                     </InformationModal>}
                     <div className="grid gap-4 justify-center items-center">
@@ -357,25 +262,6 @@ const Page = () => {
 
                         </div>
                     </Modal>}
-                    {/* <div className={`absolute left-24 -bottom-8`}> */}
-
-                    {/* {info.status !== "Verified" ?
-                        <div className="flex justify-center pt-4">
-                            <button onClick={handleUpdate}
-                                className="bg-green-600 rounded-full p-2">
-                                <div><GiCheckMark size={32} /></div>
-                            </button>
-                        </div> :
-                        <div className="flex gap-2 justify-center pt-4">
-                            <button onClick={handleRemoveAcc}
-                                className="bg-red-600 rounded-full p-2">
-                                <div><GrClose size={32} /></div>
-                            </button>
-                            <button type="button" onClick={() => setPrint(!print)}
-                                className="px-4 rounded-full py-2 bg-red-700 text-white">Clearance Certificate</button>
-                            {print && <PrintCert2 content={info} setPrint={setPrint} contentRef={componentRef} />}
-                        </div>
-                    } */}
                     <div className="flex gap-2 justify-center pt-4">
                         <button type="button" onClick={() => setPrint(!print)}
                             className="px-4 rounded-full py-2 bg-red-700 text-white">Clearance Certificate</button>

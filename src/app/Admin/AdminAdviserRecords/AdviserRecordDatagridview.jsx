@@ -190,8 +190,8 @@ const AdviserRecordDatagridview = ({ tableData, handleGetData, setClickedID, set
                         />
                     </label>
                     <div className="flex justify-between my-2">
-                        <button onClick={() => setClicked("")} className="bg-red-800 text-white px-4 py-2" type="button">Cancel</button>
-                        <button className="bg-red-800 text-white px-4 py-2" type="submit">Submit</button>
+                        <button onClick={() => setClicked("")} className="bg-slate-800 text-white px-4 py-2" type="button">Cancel</button>
+                        <button className="bg-slate-800 text-white px-4 py-2" type="submit">Submit</button>
                     </div>
                 </form>
             </InformationModal>}

@@ -10,7 +10,7 @@ import { GoSearch } from "react-icons/go";
 import { useRouter, useSearchParams } from "next/navigation";
 import { GiTeacher } from "react-icons/gi";
 import InformationModal from "@/utils/InformationModal";
-
+import adviserData from "@/utils/adviserData"
 
 const Page = () => {
     const [filterData, setFilterData] = useState()
@@ -66,15 +66,7 @@ const Page = () => {
     };
 
     const handleGetData = async () => {
-        startLoading()
-        try {
-            const response = await axios.get(`${url}/api/Adviser`, { headers });
-            setFilterData(response.data)
-            stopLoading()
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        setFilterData(adviserData)
     }
 
     const handleCreateData = async (e) => {
@@ -131,7 +123,7 @@ const Page = () => {
             <div className="m-7 flex items-center">
                 <GiTeacher size={50} /> <p className="border border-2 border-black h-16 mx-4" />
                 <p className="font-bold text-xl">Advisers</p>
-                <button onClick={() => setAdd(!add)} className="px-4 m-10 py-2 bg-red-800 text-white">Add Adviser</button>
+                <button onClick={() => setAdd(!add)} className="px-4 m-10 py-2 bg-slate-800 text-white">Add Adviser</button>
             </div>
             {add && <InformationModal>
                 <form className="border grid gap-1 border-2 p-10" onSubmit={handleCreateData}>
@@ -172,27 +164,27 @@ const Page = () => {
                                         onChange={(e) => handleSectionInputChange(index, e.target.value)}
                                         required
                                     />
-                                    < button type="button" className="text-2xl text-red-700" onClick={() => handleRemoveSectionInput(index)}>
+                                    < button type="button" className="text-2xl text-slate-700" onClick={() => handleRemoveSectionInput(index)}>
                                         -
                                     </button>
                                 </div>
 
                             ))}
-                            <button type="button" className="text-2xl text-red-700" onClick={handleAddSectionInput}>
+                            <button type="button" className="text-2xl text-slate-700" onClick={handleAddSectionInput}>
                                 +
                             </button>
                         </div>
                     </label>
                     <br />
                     <div className="flex justify-between my-3">
-                        <button onClick={() => setAdd(!add)} className="bg-red-800 text-white px-4 py-2" type="button">Cancel</button>
-                        <button className="bg-red-800 text-white px-4 py-2" type="submit">Submit</button>
+                        <button onClick={() => setAdd(!add)} className="bg-slate-800 text-white px-4 py-2" type="button">Cancel</button>
+                        <button className="bg-slate-800 text-white px-4 py-2" type="submit">Submit</button>
                     </div>
 
                 </form>
             </InformationModal>}
             <div className="flex justify-center">
-                <div className="rounded-full flex border border-2 border-red-700 bg-red-700 items-center">
+                <div className="rounded-full flex border border-2 border-slate-700 bg-slate-700 items-center">
                     <input
                         className="rounded-l-full pl-2 focus:outline-none py-2"
                         value={search}
@@ -202,7 +194,7 @@ const Page = () => {
                 </div>
             </div>
             {loading && <p>Loading...</p>}
-            <div className="md:mx-10 mx-1 mb-20 mt-10 border border-red-700 border-2">
+            <div className="md:mx-10 mx-1 mb-20 mt-10 border border-slate-700 border-2">
                 {datas && datas.length > 0 ?
                     <AdviserRecordDatagridview
                         handleGetData={handleGetData}

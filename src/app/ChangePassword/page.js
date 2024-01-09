@@ -18,57 +18,17 @@ const Page = () => {
     const [error, setError] = useState("")
 
 
-    const emailData = {
-        email,
-        subject: "Change password link",
-        message: `Greetings! This is your password link. Please keep it private and do not share it with other students.`,
-        html: `<p>Greetings! This is your password link. Please keep it private and do not share it with other students.</p>
-                <a href="${url}/EnterPassword?email=${email}">Click this.</a> 
-                <p>Ticket Number:</p>`,
-    };
-
-    useEffect(() => {
-        if (profileData && profileData.id !== " ") {
-            setEmail(profileData.email)
-        }
-    }, [])
-
     const handleSendCode = async (e) => {
         e.preventDefault();
         startLoading();
-        try {
-
-            // const response = await axios.get(`${url}/api/findByEmail/${email}`, { headers });
-            // console.log(response)
-            // if (response.data !== null) {
-            const sendCode = await axios.post(`${url}/api/Mailer`, emailData, { headers });
-            setSent(true);
-            // } else {
-            //     setError("No email found!")
-            // }
-
-        } catch (error) {
-            setError("Something went wrong!")
-            console.error('Error:', error);
-        } finally {
-            stopLoading();
-        }
+        setSent(true);
+        stopLoading();
     };
 
     return (
         <Layout>
             <AccountModal>
                 <div className="grid justify-center items-center py-6 bg-white px-10">
-                    {error !== "" &&
-                        <ConfirmationModal>
-                            <div className="p-10 grid border border-black justify-center gap-4 items-center">
-                                <div>
-                                    {error}
-                                </div>
-                                <button onClick={() => setError("")} className="bg-green-500 text-white px-4 py-2 rounded-lg">Okay</button>
-                            </div>
-                        </ConfirmationModal>
-                    }
                     <div className="font-bold text-center text-2xl">
                         {profileData.id !== " " ? 'Change Password' : 'Forgot Password'}
                     </div>
@@ -76,8 +36,6 @@ const Page = () => {
                         {sent ? 'Please verify if it is you.' :
                             `Please ${profileData.id !== " " ? "enter" : "correct"} the needed information below.`}
                     </div>
-                    {sent && <div className="whitespace-normal my-2 text-center text-xs rounded-[2rem] bg-green-300 p-2">
-                        Reset link has been sent to your <p>email! Please check.</p> </div>}
                     <form className="grid gap-5" onSubmit={handleSendCode}>
                         <input
                             type="email"

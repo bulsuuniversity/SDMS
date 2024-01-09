@@ -37,20 +37,6 @@ const AdminMenu = ({ children }) => {
     }, [currentPathname])
 
 
-    if (session && session.role !== "admin") {
-        return (
-            <>
-                Unathorized
-            </>
-        )
-    }
-
-    useEffect(() => {
-        if (!session) {
-            router.push("/Admin/AdminLogin")
-        }
-    }, [])
-
     const status = "Verified Inactive"
 
     const handleUpdateStatus = async () => {
@@ -117,47 +103,6 @@ const AdminMenu = ({ children }) => {
         return () => clearInterval(intervalId);
     }, []);
 
-    // const [smsSent, setSmsSent] = useState(false)
-
-    // useEffect(() => {
-    //     if (newReport && !smsSent) {
-    //         handleSendSMS("Hello there Admin!. There is a new reported case.");
-    //         // setSmsSent(true);
-    //     } else if (!newReport && smsSent) {
-    //         setSmsSent(false);
-    //     }
-    // }, [newReport]);
-
-    // const [adminaccounts, setAdminaccounts] = useState()
-
-    // const handleGetData = async () => {
-    //     try {
-    //         const response = await axios.get(`${url}/api/AdminAccount`, { headers });
-    //         setAdminaccounts(response.data)
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
-
-    // const phoneNumbers = adminaccounts && adminaccounts
-    //     .filter(account => account.status.includes("Active"))
-    //     .map(activeAccount => activeAccount.phoneNumber);
-
-
-    // useEffect(() => {
-    //     handleGetData()
-    // }, [])
-
-    // const handleSendSMS = async (message) => {
-    //     try {
-    //         const response = await axios.post(`${url}/api/sendSms`,
-    //             { phoneNumbers: phoneNumbers, message: message }, { headers });
-    //         setSmsSent(true)
-    //         console.log(response)
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
-    // }
 
     return (
         <AdminLayout>
@@ -175,8 +120,6 @@ const AdminMenu = ({ children }) => {
                             href={'/Admin/AdminApproveAdmin'}>Admin Accounts</Link>}
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminReports" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminReports'}>Reports</Link>
-                        {/* <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminCounseling" ? "bg-gray-600" : "hover:bg-gray-600"}`}
-                            href={'/Admin/AdminCounseling'}>Counselling</Link> */}
                         <Link onClick={() => setMenuOpen(false)} className={`px-4 pl-8 pt-2 ${active === "/Admin/AdminSettings" ? "bg-gray-600" : "hover:bg-gray-600"}`}
                             href={'/Admin/AdminSettings'}>Settings</Link>
                         <Link className="px-4 pl-8 pt-2 hover:bg-gray-600" href={'/Admin/AdminSettings'} onClick={handleSignOut}>Logout</Link >
@@ -184,8 +127,7 @@ const AdminMenu = ({ children }) => {
                 }
                 <div className="bg-gray-800 md:block hidden col-span-3 pt-4">
                     <div className="flex pl-4 text-lg text-amber-400 items-center gap-5">
-                        <Image alt="design" height={50} width={50} src={Logo} /> Admin</div>
-                    {/* <button onClick={handleGetNotif} className="flex pl-4 text-lg text-amber-400 items-center gap-5">GetNotif</button> */}
+                        <Image alt="design" className="bg-white rounded-full" height={50} width={50} src={Logo} /> Admin</div>
                     <ConfirmationDialog />
                     <div className="text-white grid mt-4">
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminDashboard") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
@@ -207,11 +149,11 @@ const AdminMenu = ({ children }) => {
                             <div className="pr-3"><ImNewspaper size={24} /></div>Reports
                             {newReport &&
                                 <div className="w-full flex justify-end"><IoNotificationsCircleSharp size={20} /></div>}</Link>
-                        <Link
+                        {/* <Link
                             className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminAdviserRecords") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminAdviserRecords?new=newAdviser'}>
                             <div className="pr-3"><GiTeacher size={24} /></div>Advisers
-                        </Link>
+                        </Link> */}
                         {/* <Link className={`mx-2 flex items-center px-8 py-2 ${(active && active.includes("/Admin/AdminCounseling")) ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
                             href={'/Admin/AdminCounseling'}>Counselling</Link> */}
                         <Link className={`mx-2 flex items-center px-8 py-2 ${active && active.includes("/Admin/AdminSettings") ? "bg-gray-600 rounded-lg" : "hover:rounded-lg hover:bg-gray-600"}`}
@@ -221,7 +163,7 @@ const AdminMenu = ({ children }) => {
                         >
                             <div className="pr-3"><MdSettingsSuggest size={24} /></div>Send SMS</button> */}
                         <Link className="mx-2 flex items-center px-8 py-2 hover:bg-gray-600 hover:rounded-lg"
-                            href={'/Admin/AdminSettings'} onClick={handleSignOut}><div className="pr-3">
+                            href={'/'} ><div className="pr-3">
                                 <MdLogout size={24} /></div>Logout</Link >
                     </div>
 

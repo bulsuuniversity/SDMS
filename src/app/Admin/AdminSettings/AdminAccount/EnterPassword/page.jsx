@@ -1,16 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { url, headers } from "@/app/libs/api";
-import axios from "axios";
 import useLoading from "@/utils/Loading";
-import ConfirmationModal from "@/utils/ConfirmationModal";
 import { useRouter, useSearchParams } from 'next/navigation'
 import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
 import AdminAccountModal from "@/utils/AdminAccountModal";
-import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const Page = () => {
     const [password, setPassword] = useState()
@@ -28,21 +24,9 @@ const Page = () => {
     const handlePassword = async (e) => {
         e.preventDefault()
         startLoading()
-        try {
-            const response = await axios.get(`${url}/api/findByEmail/${emailParams}`, { headers });
-            // console.log(response)
-            if (response) {
-                const changed = await axios.put(`${url}/api/changePassword/${response.data[0].id}`, {
-                    password
-                }, { headers });
-                setResponseData("success")
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-            setResponseData("failed")
-        } finally {
-            stopLoading()
-        }
+        setResponseData("success")
+        stopLoading()
+
     };
 
     useEffect(() => {
@@ -102,32 +86,6 @@ const Page = () => {
         <Layout>
             <AdminAccountModal>
                 <div className="grid bg-white py-5 px-12">
-                    {responseData === "success" && <ConfirmationModal>
-                        <div>
-                            <div className="flex flex-col justify-center p-10 justify-center">
-                                <div className="flex justify-center">
-                                    <AiOutlineCheckCircle size={32} />
-                                </div>
-                                <div className="text-2xl font-bold whitespace-normal text-center ">
-                                    SUCCESSFULLY CHANGED PASSWORD!
-                                </div>
-                                <div className="text-center italic text-sm">Redirecting you now to the home page.</div>
-                                <span className="loader" />
-                            </div>
-                        </div>
-                    </ConfirmationModal>}
-
-                    {responseData === "failed" && <ConfirmationModal>
-                        <div>
-                            <div className="flex flex-col justify-center p-7 justify-center">
-                                <div className="text-2xl font-bold whitespace-normal text-center ">
-                                    PASSWORD CHANGE FAILED!
-                                </div>
-                                <button onClick={() => setResponseData("")} className="bg-amber-300 py-2 px-4 rounded-lg">Okay</button>
-                            </div>
-                        </div>
-                    </ConfirmationModal>}
-
                     <div className="text-2xl text-center font-bold">New Password</div>
                     <div className="text-sm text-center italic">Change your password.</div>
                     <form className="grid my-4 gap-5" onSubmit={handlePassword}>

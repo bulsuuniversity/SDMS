@@ -9,10 +9,8 @@ import useLoading from "@/utils/Loading";
 import ConfirmationModal from "@/utils/ConfirmationModal";
 import useConfirmation from "@/utils/ConfirmationHook";
 import { formatDate, reverseFormatDate } from "@/utils/formatDate";
-import { PrivateRoute } from "@/components/auth";
 import { SlArrowDown } from "react-icons/sl";
 import { FcAddDatabase } from "react-icons/fc";
-import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 
 const page = () => {
@@ -79,46 +77,12 @@ const page = () => {
         'Accept': 'application/json',
     };
 
-    const handleNotif = async () => {
-        try {
-            await axios.put(`${url}/api/AdminNotification/6518de8c2bd81071174f2644`,
-                { notif: true }, { headers });
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
 
 
     const handleSubmit = async () => {
         startLoading()
-        try {
-            const response = await axios.post(`${url}/api/studentReport`, reportData, { headers });
-            setConfirmation(true)
-            setMessage("Submitted successfully!")
-            stopLoading()
-            handleSendSMS("Hello there Admin. There is a new report submitted.")
-            handleNotif()
-            setReportData({
-                reporter: "",
-                actionOfDiscipline: '',
-                offender: '',
-                ticketNo: '',
-                college: "",
-                course: "",
-                attachment: '',
-                dateOfIncident: '',
-                platformOfIncident: '',
-                rateOfOccurrence: '',
-                describeTheSituation: '',
-                status: 'Pending',
-            });
-        } catch (error) {
-            console.error('Error:', error);
-            stopLoading()
-            setConfirmation(true)
-            setMessage("Something went wrong.")
-        }
+        setMessage("Submitted successfully!")
+        stopLoading()
     };
 
     const handleOkay = () => {
@@ -175,69 +139,10 @@ const page = () => {
         setOpenSelectAct(false)
     }
 
-    const getLatestTicket = async () => {
-        try {
-            const response = await axios.get(`${url}/api/studentReport`, { headers });
-            const lastitem = response.data[0]
-            setlatestTicket(lastitem.ticketNo)
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    useEffect(() => {
-        handleInputChange("ticketNo", String((Number(latestTicket) + 1)).padStart(6, '0'))
-
-    }, [latestTicket])
-
-    const getDetails = async () => {
-        try {
-            const details = await axios.get(`${url}/api/Colleges`,
-                { headers });
-            setColleges(details.data)
-
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    useEffect(() => {
-        getLatestTicket()
-        getDetails()
-        handleGetData()
-    }, [])
-
-
-    const [adminaccounts, setAdminaccounts] = useState()
-
-    const handleGetData = async () => {
-        try {
-            const response = await axios.get(`${url}/api/AdminAccount`, { headers });
-            setAdminaccounts(response.data)
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    const phoneNumbers = adminaccounts && adminaccounts
-        .filter(account => account.status.includes("Active"))
-        .map(activeAccount => activeAccount.phoneNumber);
-
-    const handleSendSMS = async (message) => {
-        try {
-            const response = await axios.post(`${url}/api/sendSms`,
-                { phoneNumbers: phoneNumbers, message: message }, { headers });
-            console.log(response)
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
 
 
     return (
         <Layout>
-            {/* <PrivateRoute> */}
             <div style={{ backgroundImage: 'URL("/studentbg.png")' }} className="py-6 bg-no-repeat w-full h-full bg-cover grid justify-center pb-10">
                 {openSelectAct &&
                     <>
@@ -267,10 +172,8 @@ const page = () => {
                     <div className="w-full grid gap-4 md:px-6 px-1 justify-center">
                         <p className="font-bold py-4 flex gap-2">Ticket No.:
                             <div className="underline underline-offset-4">
-                                {reportData.ticketNo && reportData.ticketNo}
+                                00001
                             </div>
-                            {/* <button className="bg-blue-600 p-4 border"
-                                onClick={() => handleSendSMS("Hello there Admin. There is a new report submitted.")}>Send SMS</button> */}
                         </p>
                         <form className="grid relative pb-8 w-full" onSubmit={handleSubmitReport}>
                             <p className="font-bold">Student-of-Concerns Details:</p>

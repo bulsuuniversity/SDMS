@@ -1,5 +1,3 @@
-import axios from "axios";
-import { url, headers } from "@/app/libs/api";
 import { useState } from "react";
 import Image from "next/image";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -31,22 +29,9 @@ const SelectImage = ({ handleCLick, profileData, getProfileData }) => {
 
     const handleChangeProfile = async () => {
         startLoading()
-        try {
-            if (profileData.id && file) {
-                await axios.put(`${url}/api/studentProfile/${profileData.id}`, {
-                    file,
-                    prevProfileImage: profileData.profilePublicId,
-                }, { headers });
-                getProfileData(profileData.id)
-                setMessage(true)
-                setResponse("Successfully Updated Profile!")
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-            setResponse("Something went wrong!")
-        } finally {
-            stopLoading();
-        }
+        setMessage(true)
+        setResponse("Successfully Updated Profile!")
+        stopLoading();
     };
 
     const handleUpdate = (e) => {

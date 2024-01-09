@@ -25,10 +25,10 @@ const Layout = ({ children }) => {
                             className={`sm:pl-4 px-1 sm:pr-2 py-2 hover:text-white hover:rounded-full hover:bg-amber-600 ${active === "/Admin/AdminSettings/AdminAccount" ?
                                 "bg-amber-600 rounded-full text-white" : "bg-gray-400 rounded-full"}`}>
                             ACCOUNT</Link>
-                        <Link href={"/Admin/AdminSettings/AdminUI"}
+                        {/* <Link href={"/Admin/AdminSettings/AdminUI"}
                             className={`sm:pl-2 px-2 sm:pr-4 py-2 hover:text-white hover:rounded-full hover:bg-amber-600 ${active === "/Admin/AdminSettings/AdminUI" ?
                                 "bg-amber-600 rounded-full text-white" : "bg-gray-400 rounded-full"}`}>
-                            USER PAGE</Link>
+                            USER PAGE</Link> */}
                     </div>
                 </div>
 

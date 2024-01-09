@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Slider from "react-slick";
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import { RiNavigationFill } from "react-icons/ri";
-import { useEffect } from "react";
-import axios from "axios";
-import { url, headers } from "@/app/libs/api";
+
 
 const Next = ({ className, style, onClick, }) => {
     return (
@@ -18,7 +16,7 @@ const Next = ({ className, style, onClick, }) => {
             }}
             onClick={onClick}
         >
-            <RiNavigationFill size={40} className="rotate-[130deg]"/>
+            <RiNavigationFill size={40} className="rotate-[130deg]" />
         </div>
     );
 };
@@ -41,20 +39,7 @@ const Prev = ({ className, style, onClick }) => {
 };
 
 const Blog = ({ images }, ref) => {
-    const [carousel, setCarousel] = useState()
-    useEffect(() => {
-        handleGetImages()
-    }, [])
-
-    const handleGetImages = async () => {
-        try {
-            const response = await axios.get(`${url}/api/HomeCarousel`, { headers });
-            setCarousel(response.data)
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
-    };
-    const settings = {
+      const settings = {
         dots: true,
         infinite: true,
         slidesToShow: 1,
@@ -64,28 +49,18 @@ const Blog = ({ images }, ref) => {
         nextArrow: <Next />,
         prevArrow: <Prev />,
     };
-
     return (
         <div ref={ref} className="w-full md:px-0 px-12 h-96 md:h-[55rem]">
             <div className="flex justify-center items-center">
                 <div className="w-3/4">
                     <Slider {...settings}>
-                        {carousel ?
-                            carousel.map((image, index) => (
-                                <div key={index} className="grid items-center justify-center">
-                                    <div className="m-auto xl:h-[44rem] 2xl:w-[52rem] lg:w-[48rem] md:h-[30rem] md:mt-24 mt-10  h-52 object-contain w-60 md:w-[32rem]">
-                                        <Image src={image.image} width={900} height={700} className="object-fit" alt={index} />
-                                    </div>
+                        {images.map((image, index) => (
+                            <div key={index} className="grid items-center justify-center">
+                                <div className="m-auto lg:h-[44rem] 2xl:w-[52rem] lg:w-[48rem] md:h-[25rem] h-52 md:h-96 object-fit w-60 md:w-[32rem]">
+                                    <Image src={image} width={900} height={700} className="md:pt-24 pt-10 object-contain" alt={index} />
                                 </div>
-                            ))
-                            :
-                            images.map((image, index) => (
-                                <div key={index} className="grid items-center justify-center">
-                                    <div className="m-auto lg:h-[44rem] 2xl:w-[52rem] lg:w-[48rem] md:h-[25rem] h-52 md:h-96 object-fit w-60 md:w-[32rem]">
-                                        <Image src={image} width={900} height={700} className="md:pt-24 pt-10 object-contain" alt={index} />
-                                    </div>
-                                </div>
-                            ))}
+                            </div>
+                        ))}
                     </Slider>
                 </div>
             </div>

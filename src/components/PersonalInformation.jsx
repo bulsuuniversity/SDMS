@@ -17,13 +17,13 @@ const PersonalInformation = () => {
     const [colleges, setColleges] = useState()
     const { profileData, getProfileData } = useProfileData()
     const [editedValues, setEditedValues] = useState({
-        name: "",
-        phoneNumber: "",
-        address: "",
-        yearLevel: "",
-        college: "",
-        adviserName: "",
-        adviserEmail: "",
+        name: "Aaron Anablon",
+        phoneNumber: "09273420007",
+        address: "Baguio City, Philippines",
+        yearLevel: "4th",
+        college: "CCS",
+        adviserName: "Adviser",
+        adviserEmail: "adviser@gmail.com",
     });
 
     useEffect(() => {

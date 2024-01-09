@@ -33,12 +33,6 @@ const StudentHistoryDatagridview = ({ tableData, setClickedID, setOpenINfo, stat
             cell: (row) => <div className='line-clamp-3 whitespace-normal text-center'>{row.action}</div>,
         },
         {
-            name: <div className='flex text-center'>DATE REPORTED &#40;MM/DD/YYYY&#41;</div>,
-            selector: row => row.date,
-            sortable: true,
-            cell: (row) => <div style={{ whiteSpace: 'normal', textAlign: 'center' }}>{row.date}</div>,
-        },
-        {
             name: <div className='flex text-center'>RATE OF OCCURENCE</div>,
             selector: row => row.rate,
             sortable: true,

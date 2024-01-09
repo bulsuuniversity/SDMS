@@ -80,7 +80,7 @@ const Page = () => {
                 <div className="relative p-6">
                     <div className="absolute -top-4 -right-4">
                         <button
-                            onClick={() => setOpenINfo(false)} className="rounded-full text-red-600 bg-white">
+                            onClick={() => setOpenINfo(false)} className="rounded-full text-slate-600 bg-white">
                             <AiFillCloseCircle size={30} /></button>
                     </div>
                     <ConfirmationDialog />
@@ -94,7 +94,7 @@ const Page = () => {
                         </div>
                     </InformationModal>}
                     {loading && <InformationModal>
-                        <div className="grid bg-red-700 text-white justify-center p-10">
+                        <div className="grid bg-slate-700 text-white justify-center p-10">
                             <div className="text-center">Redirecting where you left.</div>
                             <p className="text-center">Please wait...</p>
                         </div>
@@ -145,7 +145,7 @@ const Page = () => {
                                     </div>
                                     <div className="absolute -top-4 -right-4">
                                         <button
-                                            onClick={() => setSeeImage(false)} className="rounded-full text-red-600 bg-white">
+                                            onClick={() => setSeeImage(false)} className="rounded-full text-slate-600 bg-white">
                                             <AiFillCloseCircle size={30} /></button>
                                     </div>
 

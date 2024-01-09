@@ -10,10 +10,9 @@ const Contact = ({ data }, ref) => {
         <div ref={ref} className=" w-full grid bg-white text-black h-max">
             <div className="h-10"></div>
             <div className="w-full relative">
-                <div className="absolute font-bold w-full h-full items-center text-xs md:text-2xl flex justify-center text-white">
+                <div className="absolute font-bold w-full h-16 bg-slate-700 items-center text-xs md:text-2xl flex justify-center text-white">
                     <p>GUIDE ON HOW TO REPORT MISCONDUCT</p>
                 </div>
-                <Image width={1500} className="w-full" layout="responsive" height={500} src={"/HEADER.png"} alt="header" />
             </div>
             <div className="grid justify-center lg:mx-36 md:mx-28 ">
                 <div className="w-24 px-10 h-full bg-amber-400">
@@ -23,7 +22,7 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         1
                     </div>
-                      <div className="mx-2 h-24 w-24">
+                    <div className="mx-2 h-24 w-24">
                         <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 1.png"} alt="step 1" />
                         {/* <FcAssistant size={70} /> */}
@@ -37,7 +36,7 @@ const Contact = ({ data }, ref) => {
                     <div className="text-5xl w-24 px-10 flex font-bold items-center h-full justify-center bg-amber-400">
                         2
                     </div>
-                      <div className="mx-2 h-24 w-24">
+                    <div className="mx-2 h-24 w-24">
                         <Image className="object-cover w-max" width={500} height={500}
                             src={"/Step 2.png"} alt="step2" />
                         {/* <FcCameraIdentification size={70} /> */}

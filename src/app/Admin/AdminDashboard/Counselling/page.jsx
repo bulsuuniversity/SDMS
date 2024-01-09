@@ -179,7 +179,7 @@ const page = () => {
                                     <div className="absolute text-4xl top-24 left-14">{registered}&#37;</div>
                                 </div>
                                 <div className="flex items-center gap-2 justify-center">
-                                    <GrCheckbox className="bg-red-800" />
+                                    <GrCheckbox className="bg-slate-800" />
                                     Self Consultation
                                 </div>
                             </div>

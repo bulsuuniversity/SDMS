@@ -16,6 +16,7 @@ import Link from "next/link";
 import { GoSearch } from "react-icons/go";
 import { useSearchParams } from "next/navigation";
 import { GiConsoleController } from "react-icons/gi";
+import reportsData from "@/utils/reportsData";
 
 const SearchHistory = ({ setSearchHistory }) => {
     const [clickedID, setClickedID] = useState()
@@ -41,22 +42,10 @@ const SearchHistory = ({ setSearchHistory }) => {
     }
 
     const handleGetData = async () => {
-        startLoading()
-        try {
-            const response = await axios.get(`${url}/api/studentReport`, { headers });
-            setFilterReports(response.data)
-            // console.log(response)
-            stopLoading()
-        } catch (err) {
-            console.log(err);
-            stopLoading()
-        }
+        setFilterReports(reportsData)
     }
-    // console.log(student)
 
     const [search, setSearch] = useState()
-    // const searchParams = useSearchParams();
-    // const student = (searchParams.get('student').toString());
 
     const data = filterReports &&
         Object.values(filterReports).filter(report => {
