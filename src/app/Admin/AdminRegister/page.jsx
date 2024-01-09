@@ -1,14 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import AccountModal from "@/utils/AccountModal";
 import axios from "axios";
-import Layout from "@/components/Layout";
 import Link from "next/link";
-import EnterCode from "@/components/EnterCode";
 import { url, headers } from "@/app/libs/api";
 import InformationModal from "@/utils/InformationModal";
-import { PublicRoute } from "@/components/auth";
+
 
 const Register = ({ setActive, setData }) => {
     const closeModal = () => {
@@ -113,7 +110,7 @@ const Register = ({ setActive, setData }) => {
     };
 
     const [errorMessage, setErrorMessage] = useState('');
-    
+
     const validatePassword = (password) => {
         const isLengthValid = password.length >= 8;
         const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(password);
@@ -134,8 +131,7 @@ const Register = ({ setActive, setData }) => {
 
 
     return (
-        <PublicRoute>
-            <InformationModal>
+                <InformationModal>
                 {info && <InformationModal>
                     <div className="p-6 grid justify-center gap-4">
                         <div>Email already exist!</div>
@@ -145,7 +141,7 @@ const Register = ({ setActive, setData }) => {
                     </div>
                 </InformationModal>}
                 {code ?
-                    <EnterCode registerData={data} sentCode={code} /> :
+                    <p></p> :
                     <div className="bg-white p-6 shadow-lg z-10">
                         <div className="mx-4">
                             <div className="flex flex-col text-xs justify-center">
@@ -249,8 +245,7 @@ const Register = ({ setActive, setData }) => {
                         </div>
                     </div>}
             </InformationModal>
-        </PublicRoute>
-    );
+        );
 }
 
 export default Register;

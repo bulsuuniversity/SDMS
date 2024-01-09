@@ -1,14 +1,12 @@
 "use client"
 
 import Layout from "@/components/Layout";
-import { PrivateRoute } from "@/components/auth";
 import Link from "next/link";
 
 const page = () => {
     return (
         <Layout>
-            <PrivateRoute>
-                <div className="pt-7">
+                        <div className="pt-7">
                     <div className="bg-orange-200 mb-24 w-full py-4 text-4xl font-bold text-center">CONSULTATION</div>
                     <div className="md:flex grid gap-6 px-16 mb-24">
                         <Link href="/Consult/Self" className="border bg-amber-100 border-amber-900 border-4 rounded-lg p-6">
@@ -26,8 +24,7 @@ const page = () => {
                     </div>
 
                 </div>
-            </PrivateRoute>
-        </Layout>
+                  </Layout>
     );
 }
 
