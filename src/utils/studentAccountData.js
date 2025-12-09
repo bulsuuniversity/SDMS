@@ -1,22 +1,4 @@
-const studentAccountData = [{
-    "_id": {
-        "$oid": "64fa8af70056094f4a9b4def"
-    },
-    "mail": "bulsubulacanuniversity@gmail.com",
-    "phone": "9273420007",
-    "idNumber": "master",
-    "credentials": "https://res.cloudinary.com/dckxajww8/image/upload/v1694141174/credentials/vut3jtryhnh4wpa1axfz.png",
-    "password": "$2b$10$V7nwcZzSdSZyzw9YsyxBsOpsyicsD8UC42yTb.DL7dL3RAmoBpG/m",
-    "role": "admin",
-    "createdAt": {
-        "$date": "2023-09-08T02:46:14.558Z"
-    },
-    "updatedAt": {
-        "$date": "2023-12-12T08:43:48.262Z"
-    },
-    "status": "Verified Inactive",
-    "userName": "Administrator"
-},
+const studentAccountData = [
 {
     "_id": {
         "$oid": "650159799b11ea6f59f25b3f"
@@ -42,32 +24,6 @@ const studentAccountData = [{
     "yearLevel": "4",
     "adviserEmail": "irishnicole.alvarez.v@bulsu.edu.ph",
     "adviserName": "rommel pabustan"
-},
-{
-    "_id": {
-        "$oid": "6502b2b341a64d28514dbec4"
-    },
-    "mail": "mayveth.paulino.b@bulsu.edu.ph",
-    "phone": "09885641275",
-    "idNumber": "2020963355",
-    "credentials": "https://res.cloudinary.com/df9trcyks/image/upload/v1695001680/credentials/cbjjhied6etjnpgjagcj_rq3tjk.png",
-    "password": "$2b$10$ljggRkcXUldL6F0uwktd.ecsq6HAAu47udSkLtvkWsAzyMiYAXWZO",
-    "role": "user",
-    "createdAt": {
-        "$date": "2023-09-14T07:13:54.601Z"
-    },
-    "updatedAt": {
-        "$date": "2023-12-05T04:31:28.017Z"
-    },
-    "profile": "https://res.cloudinary.com/df9trcyks/image/upload/v1698214567/profile/yqelvclskf4571ahssn9.png",
-    "profilePublicId": "profile/yqelvclskf4571ahssn9",
-    "userName": " Ma. Yveth Paulino",
-    "address": "San Rafael, Bulacan",
-    "college": "College of Information and Computing Sciences",
-    "yearLevel": " 4",
-    "status": "Active",
-    "adviserEmail": "sampleEmail@gmail.com",
-    "adviserName": "Sample"
 },
 {
     "_id": {
@@ -284,97 +240,6 @@ const studentAccountData = [{
 },
 {
     "_id": {
-        "$oid": "655d4769a6152223d3e6c28a"
-    },
-    "mail": "mail@gmail.com",
-    "phone": "09557894563",
-    "idNumber": "2020201522",
-    "credentials": "https://res.cloudinary.com/df9trcyks/image/upload/v1700611945/credentials/a6ft2pumymni9s3ditmj.png",
-    "password": "$2b$10$b4US0kDG7ITzX2pKL9j8mOGEOSHoJZWUoLLRHlHLIpM3vwTinrJZ.",
-    "role": "user",
-    "createdAt": {
-        "$date": "2023-11-22T00:12:25.835Z"
-    },
-    "updatedAt": {
-        "$date": "2023-11-22T00:15:11.268Z"
-    },
-    "status": "Verified",
-    "userName": "Ma. Yveth",
-    "address": "San Rafael",
-    "college": "College of Information and Computing Sciences",
-    "yearLevel": "4",
-    "adviserEmail": null,
-    "adviserName": null
-},
-{
-    "_id": {
-        "$oid": "655d82d8685217e0e53957af"
-    },
-    "mail": "mail.bulsu@gmail.com",
-    "phone": "09223456789",
-    "idNumber": "2020201234",
-    "credentials": "https://res.cloudinary.com/df9trcyks/image/upload/v1700627159/credentials/dbqcruo8dfcb1gbjlfim.png",
-    "password": "$2b$10$ISc/IcE2q/3AgdpYU.qure4r.vJzqBh/jn/7bUgchcZnQZ4FmKiom",
-    "role": "user",
-    "createdAt": {
-        "$date": "2023-11-22T04:26:00.078Z"
-    },
-    "updatedAt": {
-        "$date": "2023-11-22T04:30:01.073Z"
-    },
-    "status": "Verified",
-    "userName": "Celynne",
-    "address": "bustos",
-    "college": "College of Information and Computing Sciences",
-    "yearLevel": "4",
-    "adviserEmail": null,
-    "adviserName": null
-},
-{
-    "_id": {
-        "$oid": "65620cc5bc01ed32eb06aea4"
-    },
-    "userName": "Aaron Anablon",
-    "mail": "mail@gmail.com",
-    "phone": "9273420007",
-    "idNumber": "12-10699",
-    "college": "CICS",
-    "yearLevel": "2B",
-    "password": "$2b$10$K7TqjZg9BZv4C4Vsa5XFN.HDcJAgNA21gzxdEb4YGWwav2DSpwDGO",
-    "status": "Inactive",
-    "role": "user",
-    "createdAt": {
-        "$date": "2023-11-25T15:03:33.183Z"
-    },
-    "updatedAt": {
-        "$date": "2023-11-25T15:03:33.183Z"
-    }
-},
-{
-    "_id": {
-        "$oid": "65620cc8bc01ed32eb06aea5"
-    },
-    "userName": "John Tuguinay",
-    "mail": "aaronanablon6@gmail.com",
-    "phone": "9273420007",
-    "idNumber": "12-10689",
-    "college": "College of Information and Computing Sciences",
-    "yearLevel": "2C",
-    "password": "$2b$10$fqymW/pldteRM7kTmlbgqebmPmzWDVZDUbMx2r2CM0i1QArrPigIa",
-    "status": "Active",
-    "role": "user",
-    "createdAt": {
-        "$date": "2023-11-25T15:03:36.758Z"
-    },
-    "updatedAt": {
-        "$date": "2023-12-01T03:54:36.633Z"
-    },
-    "address": "Baguio",
-    "adviserEmail": "adviser@gmail.com",
-    "adviserName": "Adviser Name"
-},
-{
-    "_id": {
         "$oid": "6562a68b11425dbfe3efe9e6"
     },
     "userName": "John Doe",
@@ -391,26 +256,6 @@ const studentAccountData = [{
     },
     "updatedAt": {
         "$date": "2023-11-26T01:59:39.780Z"
-    }
-},
-{
-    "_id": {
-        "$oid": "6567d5cf0d3839faf0e13b7e"
-    },
-    "userName": "Sample",
-    "mail": "newsample@gmail.com",
-    "phone": "9232222222",
-    "idNumber": "a2020101010",
-    "college": "CICS",
-    "yearLevel": "2b",
-    "password": "$2b$10$/63HbTsEwQMXzR3YM8lj3.cEekR17QjXmTNk3zhXxUaoidkOSezr2",
-    "status": "Inactive",
-    "role": "user",
-    "createdAt": {
-        "$date": "2023-11-30T00:22:39.567Z"
-    },
-    "updatedAt": {
-        "$date": "2023-11-30T00:22:39.567Z"
     }
 },
 {
@@ -451,25 +296,6 @@ const studentAccountData = [{
     },
     "updatedAt": {
         "$date": "2023-11-30T08:00:47.231Z"
-    }
-},
-{
-    "_id": {
-        "$oid": "656e87bee918a21bef66b885"
-    },
-    "userName": "SDMS",
-    "mail": "sdmscapstone@gmail.com",
-    "phone": "09885632147",
-    "idNumber": "admin",
-    "credentials": "N/A",
-    "password": "$2b$10$fCmCMg3FyVuZFBD/AQTo/ORMovW0PtcIhIRpMfNR7SE3kyDXNpWTa",
-    "status": "Unverified",
-    "role": "admin",
-    "createdAt": {
-        "$date": "2023-12-05T02:15:25.439Z"
-    },
-    "updatedAt": {
-        "$date": "2023-12-05T05:49:14.379Z"
     }
 },
 {
